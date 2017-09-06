@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Wenhao's Worklog]]></title>
+  <link href="https://whhotw.github.io/atom.xml" rel="self"/>
+  <link href="https://whhotw.github.io/"/>
+  <updated>2017-09-06T16:42:57+08:00</updated>
+  <id>https://whhotw.github.io/</id>
+  <author>
+    <name><![CDATA[Wenhao Ho]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[First React Native App]]></title>
+    <link href="https://whhotw.github.io/blog/2017/09/06/first-react-native-app/"/>
+    <updated>2017-09-06T14:49:07+08:00</updated>
+    <id>https://whhotw.github.io/blog/2017/09/06/first-react-native-app</id>
+    <content type="html"><![CDATA[<h2>Install React Native</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>npm install -g create-react-native-app</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Create React Native App</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>create-react-native-app ${ProjectName}
+</span><span class='line'>cd ${ProjectName}
+</span><span class='line'>npm run ios(or android)</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Import react-native-vector-icons</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>import Ionicons from 'react-native-vector-icons/Ionicons';</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>import Icon as IonIcon from 'react-native-vector-icons/Ionicons';</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+</feed>
