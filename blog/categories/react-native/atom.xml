@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Wenhao's Worklog]]></title>
-  <link href="https://whhotw.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: React-native | Wenhao's Worklog]]></title>
+  <link href="https://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="https://whhotw.github.io/"/>
   <updated>2017-09-06T16:21:22+08:00</updated>
   <id>https://whhotw.github.io/</id>
@@ -24,13 +24,10 @@
 
 <h1>Create React Native App</h1>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>create-react-native-app ${ProjectName}
-</span><span class='line'>cd ${ProjectName}
-</span><span class='line'>npm run ios(or android)</span></code></pre></td></tr></table></div></figure>
-
+<pre><code>create-react-native-app ${ProjectName}
+cd ${ProjectName}
+npm run ios(or android)
+</code></pre>
 
 <h1>Import react-native-vector-icons</h1>
 
