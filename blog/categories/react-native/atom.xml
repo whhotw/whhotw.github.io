@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: React-native | Wenhao's Worklog]]></title>
+  <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
+  <link href="http://whhotw.github.io/"/>
+  <updated>2017-09-06T17:57:55+08:00</updated>
+  <id>http://whhotw.github.io/</id>
+  <author>
+    <name><![CDATA[Wenhao Ho]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[First React Native App]]></title>
+    <link href="http://whhotw.github.io/blog/2017/09/06/first-react-native-app/"/>
+    <updated>2017-09-06T14:49:07+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/09/06/first-react-native-app</id>
+    <content type="html"><![CDATA[<h1>Install React Native</h1>
+
+<p><code>npm install -g create-react-native-app</code></p>
+
+<h1>Create React Native App</h1>
+
+<pre><code>create-react-native-app ${ProjectName}
+cd ${ProjectName}
+npm run ios(or android)
+</code></pre>
+
+<h1>Import react-native-vector-icons</h1>
+
+<p><code>import Ionicons from 'react-native-vector-icons/Ionicons';</code></p>
+
+<p>or</p>
+
+<p><code>import Icon as IonIcon from 'react-native-vector-icons/Ionicons';</code></p>
+]]></content>
+  </entry>
+  
+</feed>
