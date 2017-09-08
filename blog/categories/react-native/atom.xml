@@ -4,7 +4,7 @@
   <title><![CDATA[Category: React-native | Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-09-06T18:33:07+08:00</updated>
+  <updated>2017-09-08T09:40:21+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -30,9 +30,26 @@ cd ${ProjectName}
 npm run ios(or android)
 </code></pre>
 
-<h2>Import react-native-vector-icons</h2>
+<h2>Install React Native CLI</h2>
 
-<pre><code>import Ionicons from 'react-native-vector-icons/Ionicons';
+<pre><code>npm install -g react-native-cli
+</code></pre>
+
+<h2>Init &amp; Run Project</h2>
+
+<pre><code>react-native init ${ProjectName}
+cd ${ProjectName}
+react-native run-ios(or -anroid)
+</code></pre>
+
+<p>remind: stop apache</p>
+
+<h2>Install &amp; Import react-native-vector-icons</h2>
+
+<pre><code>npm install react-native-vector-icons --save
+npm install -g rnpm
+rnpm link
+import Ionicons from 'react-native-vector-icons/Ionicons';
 </code></pre>
 
 <p>or</p>

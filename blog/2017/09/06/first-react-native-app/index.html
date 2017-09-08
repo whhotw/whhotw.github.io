@@ -117,10 +117,34 @@ cd ${ProjectName} &hellip;">
 </span><span class='line'>npm run ios(or android)</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>Import react-native-vector-icons</h2>
+<h2>Install React Native CLI</h2>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>import Ionicons from 'react-native-vector-icons/Ionicons';</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>npm install -g react-native-cli</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Init &amp; Run Project</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>react-native init ${ProjectName}
+</span><span class='line'>cd ${ProjectName}
+</span><span class='line'>react-native run-ios(or -anroid)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>remind: stop apache</p>
+
+<h2>Install &amp; Import react-native-vector-icons</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>npm install react-native-vector-icons --save
+</span><span class='line'>npm install -g rnpm
+</span><span class='line'>rnpm link
+</span><span class='line'>import Ionicons from 'react-native-vector-icons/Ionicons';</span></code></pre></td></tr></table></div></figure>
 
 
 <p>or</p>
@@ -167,6 +191,8 @@ cd ${ProjectName} &hellip;">
     <p class="meta">
       
       
+        <a class="basic-alignment right" href="/blog/2017/09/07/osx-shang-jie-jue-port-bei-shi-yong-de-wen-ti/" title="Next Post: OSX 上解決 port 被使用的問題">OSX 上解決 port 被使用的問題 &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -178,6 +204,10 @@ cd ${ProjectName} &hellip;">
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/09/07/osx-shang-jie-jue-port-bei-shi-yong-de-wen-ti/">OSX 上解決 Port 被使用的問題</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/09/06/first-react-native-app/">First React Native App</a>

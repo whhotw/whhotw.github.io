@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Command | Wenhao's Worklog]]></title>
+  <link href="http://whhotw.github.io/blog/categories/command/atom.xml" rel="self"/>
+  <link href="http://whhotw.github.io/"/>
+  <updated>2017-09-08T09:40:21+08:00</updated>
+  <id>http://whhotw.github.io/</id>
+  <author>
+    <name><![CDATA[Wenhao Ho]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[OSX 上解決 Port 被使用的問題]]></title>
+    <link href="http://whhotw.github.io/blog/2017/09/07/osx-shang-jie-jue-port-bei-shi-yong-de-wen-ti/"/>
+    <updated>2017-09-07T10:18:55+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/09/07/osx-shang-jie-jue-port-bei-shi-yong-de-wen-ti</id>
+    <content type="html"><![CDATA[<p>在開發的時候會需要開一些服務，來幫助除錯或是測試程式，但有時候會遇到無法正常啟動的問題，這時候可以檢查看看是不是舊服務把 port 佔住，導致新的服務開不起來，可以使用 <code>lsof(list open files)</code> 這個指令檢查一下把不要的服務 kill</p>
+
+<pre><code>lsof -t -i:${PORT}
+kill -9 $(lsof -t -i:${PORT})
+</code></pre>
+
+<h5>-i 顯示所有端口<br/>-i:${PORT} 顯示指定端口<br/>-t 只印出 PID</h5>
+]]></content>
+  </entry>
+  
+</feed>

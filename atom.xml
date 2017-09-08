@@ -4,7 +4,7 @@
   <title><![CDATA[Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-09-06T18:33:07+08:00</updated>
+  <updated>2017-09-08T09:40:21+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OSX 上解決 Port 被使用的問題]]></title>
+    <link href="http://whhotw.github.io/blog/2017/09/07/osx-shang-jie-jue-port-bei-shi-yong-de-wen-ti/"/>
+    <updated>2017-09-07T10:18:55+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/09/07/osx-shang-jie-jue-port-bei-shi-yong-de-wen-ti</id>
+    <content type="html"><![CDATA[<p>在開發的時候會需要開一些服務，來幫助除錯或是測試程式，但有時候會遇到無法正常啟動的問題，這時候可以檢查看看是不是舊服務把 port 佔住，導致新的服務開不起來，可以使用 <code>lsof(list open files)</code> 這個指令檢查一下把不要的服務 kill</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>lsof -t -i:${PORT}
+</span><span class='line'>kill -9 $(lsof -t -i:${PORT})</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>-i 顯示所有端口<br/>-i:${PORT} 顯示指定端口<br/>-t 只印出 PID</h5>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[First React Native App]]></title>
@@ -34,10 +51,34 @@
 </span><span class='line'>npm run ios(or android)</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>Import react-native-vector-icons</h2>
+<h2>Install React Native CLI</h2>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>import Ionicons from 'react-native-vector-icons/Ionicons';</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>npm install -g react-native-cli</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Init &amp; Run Project</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>react-native init ${ProjectName}
+</span><span class='line'>cd ${ProjectName}
+</span><span class='line'>react-native run-ios(or -anroid)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>remind: stop apache</p>
+
+<h2>Install &amp; Import react-native-vector-icons</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>npm install react-native-vector-icons --save
+</span><span class='line'>npm install -g rnpm
+</span><span class='line'>rnpm link
+</span><span class='line'>import Ionicons from 'react-native-vector-icons/Ionicons';</span></code></pre></td></tr></table></div></figure>
 
 
 <p>or</p>
