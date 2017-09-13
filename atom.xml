@@ -4,7 +4,7 @@
   <title><![CDATA[Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-09-08T09:40:21+08:00</updated>
+  <updated>2017-09-13T16:05:36+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -12,6 +12,108 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[React Native - Setting onMessage on a WebView Overrides Existing Values of window.postMessage]]></title>
+    <link href="http://whhotw.github.io/blog/2017/09/13/react-native-setting-onmessage-on-a-webview-overrides-existing-values-of-window-dot-postmessage/"/>
+    <updated>2017-09-13T15:56:07+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/09/13/react-native-setting-onmessage-on-a-webview-overrides-existing-values-of-window-dot-postmessage</id>
+    <content type="html"><![CDATA[<p>最近在玩 React Native 遇到的一個問題。假如想讓 WebView 與 React Native 溝通的話可以用 <code>onMessage</code> 這個介面，但是假如原本的網頁內容你不確定怎麼寫的，可能會遇到 <code>Setting onMessage on a WebView overrides existing values of window.postMessage</code>
+這樣的錯誤訊息，搜尋了一下解法，紀錄一下</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>const patchPostMessageFunction = () =&gt; {
+</span><span class='line'>  const originalPostMessage = window.postMessage;
+</span><span class='line'>
+</span><span class='line'>  const patchedPostMessage = (message, targetOrigin, transfer) =&gt; {
+</span><span class='line'>    originalPostMessage(message, targetOrigin, transfer);
+</span><span class='line'>  };
+</span><span class='line'>
+</span><span class='line'>  patchedPostMessage.toString = () =&gt; String(Object.hasOwnProperty).replace('hasOwnProperty', 'postMessage');
+</span><span class='line'>
+</span><span class='line'>  window.postMessage = patchedPostMessage;
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>const patchPostMessageJsCode = `(${String(patchPostMessageFunction)})();`;</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript Singleton]]></title>
+    <link href="http://whhotw.github.io/blog/2017/09/12/javascript-singleton/"/>
+    <updated>2017-09-12T09:52:10+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/09/12/javascript-singleton</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>static instance = null;
+</span><span class='line'>static createInstance() {
+</span><span class='line'>  return new Class();
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>static getInstance() {
+</span><span class='line'>  if (!Class.instance) {
+</span><span class='line'>      Class.instance = Class.createInstance();
+</span><span class='line'>  }
+</span><span class='line'>
+</span><span class='line'>  return Class.instance;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Promise]]></title>
+    <link href="http://whhotw.github.io/blog/2017/09/08/promise/"/>
+    <updated>2017-09-08T14:14:37+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/09/08/promise</id>
+    <content type="html"><![CDATA[<p>最早是在社群提出，但 <code>ES6</code> 推出後就被列入標準了，原生提供 <code>Promise</code> 對象，讓前端工程師處理非同步問題。例如：下載網路上的圖片之後顯示。</p>
+
+<h1>基本用法</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var promise = new Promise(function(resolve, reject) {
+</span><span class='line'>  // ... some code
+</span><span class='line'>
+</span><span class='line'>  if (true){
+</span><span class='line'>    resolve(value);
+</span><span class='line'>  } else {
+</span><span class='line'>    reject(error);
+</span><span class='line'>  }
+</span><span class='line'>});</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OSX 上解決 Port 被使用的問題]]></title>
@@ -35,13 +137,15 @@
     <link href="http://whhotw.github.io/blog/2017/09/06/first-react-native-app/"/>
     <updated>2017-09-06T14:49:07+08:00</updated>
     <id>http://whhotw.github.io/blog/2017/09/06/first-react-native-app</id>
-    <content type="html"><![CDATA[<h2>Install React Native</h2>
+    <content type="html"><![CDATA[<h1>快速建立一個 React-Native App</h1>
+
+<h3>Install create-react-native-app</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>npm install -g create-react-native-app</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>Create React Native App</h2>
+<h3>Create React Native App</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -51,13 +155,15 @@
 </span><span class='line'>npm run ios(or android)</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>Install React Native CLI</h2>
+<h1>建立一個 React-Native App</h1>
+
+<h3>Install react-native-cli</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>npm install -g react-native-cli</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>Init &amp; Run Project</h2>
+<h3>Init &amp; Run Project</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -67,25 +173,28 @@
 </span><span class='line'>react-native run-ios(or -anroid)</span></code></pre></td></tr></table></div></figure>
 
 
-<p>remind: stop apache</p>
+<blockquote><p>remind: stop apache</p></blockquote>
 
-<h2>Install &amp; Import react-native-vector-icons</h2>
+<h1>常用的第三方套件</h1>
+
+<h3>Install &amp; Import react-native-vector-icons</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>npm install react-native-vector-icons --save
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>npm install --save react-native-vector-icons
 </span><span class='line'>npm install -g rnpm
 </span><span class='line'>rnpm link
-</span><span class='line'>import Ionicons from 'react-native-vector-icons/Ionicons';</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>
+</span><span class='line'>import Icon from 'react-native-vector-icons/Ionicons';</span></code></pre></td></tr></table></div></figure>
 
 
-<p>or</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>import Icon as IonIcon from 'react-native-vector-icons/Ionicons';</span></code></pre></td></tr></table></div></figure>
-
+<blockquote><p>react-native-i18n: 多語系<br/>
+react-native-keychain: 帳密處理<br/>
+react-native-navigation: 導覽列佈局<br/>
+react-native-vector-icons: 圖資源<br/></p></blockquote>
 ]]></content>
   </entry>
   

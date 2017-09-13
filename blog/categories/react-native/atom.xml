@@ -4,7 +4,7 @@
   <title><![CDATA[Category: React-native | Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-09-08T09:40:21+08:00</updated>
+  <updated>2017-09-13T16:05:36+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -18,44 +18,51 @@
     <link href="http://whhotw.github.io/blog/2017/09/06/first-react-native-app/"/>
     <updated>2017-09-06T14:49:07+08:00</updated>
     <id>http://whhotw.github.io/blog/2017/09/06/first-react-native-app</id>
-    <content type="html"><![CDATA[<h2>Install React Native</h2>
+    <content type="html"><![CDATA[<h1>快速建立一個 React-Native App</h1>
+
+<h3>Install create-react-native-app</h3>
 
 <pre><code>npm install -g create-react-native-app
 </code></pre>
 
-<h2>Create React Native App</h2>
+<h3>Create React Native App</h3>
 
 <pre><code>create-react-native-app ${ProjectName}
 cd ${ProjectName}
 npm run ios(or android)
 </code></pre>
 
-<h2>Install React Native CLI</h2>
+<h1>建立一個 React-Native App</h1>
+
+<h3>Install react-native-cli</h3>
 
 <pre><code>npm install -g react-native-cli
 </code></pre>
 
-<h2>Init &amp; Run Project</h2>
+<h3>Init &amp; Run Project</h3>
 
 <pre><code>react-native init ${ProjectName}
 cd ${ProjectName}
 react-native run-ios(or -anroid)
 </code></pre>
 
-<p>remind: stop apache</p>
+<blockquote><p>remind: stop apache</p></blockquote>
 
-<h2>Install &amp; Import react-native-vector-icons</h2>
+<h1>常用的第三方套件</h1>
 
-<pre><code>npm install react-native-vector-icons --save
+<h3>Install &amp; Import react-native-vector-icons</h3>
+
+<pre><code>npm install --save react-native-vector-icons
 npm install -g rnpm
 rnpm link
-import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import Icon from 'react-native-vector-icons/Ionicons';
 </code></pre>
 
-<p>or</p>
-
-<pre><code>import Icon as IonIcon from 'react-native-vector-icons/Ionicons';
-</code></pre>
+<blockquote><p>react-native-i18n: 多語系<br/>
+react-native-keychain: 帳密處理<br/>
+react-native-navigation: 導覽列佈局<br/>
+react-native-vector-icons: 圖資源<br/></p></blockquote>
 ]]></content>
   </entry>
   
