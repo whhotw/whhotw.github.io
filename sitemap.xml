@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2017/09/20/react-native-rang-an-zhuo-fan-hui-jian-shi-xiao/</loc>
+<lastmod>2017-09-20T17:28:47+08:00</lastmod>
+</url>
+<url>
+<loc>http://whhotw.github.io/blog/2017/09/14/install-local-plugin-to-cordova-project/</loc>
+<lastmod>2017-09-14T17:35:19+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2017/09/13/react-native-setting-onmessage-on-a-webview-overrides-existing-values-of-window-dot-postmessage/</loc>
 <lastmod>2017-09-13T15:56:07+08:00</lastmod>
 </url>
@@ -37,5 +45,8 @@
 </url>
 <url>
 <loc>http://whhotw.github.io/blog/categories/javascript/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/blog/categories/cordova/</loc>
 </url>
 </urlset>

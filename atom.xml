@@ -4,7 +4,7 @@
   <title><![CDATA[Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-09-13T16:05:36+08:00</updated>
+  <updated>2017-09-20T17:37:57+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[React Native - 讓安卓返回鍵失效]]></title>
+    <link href="http://whhotw.github.io/blog/2017/09/20/react-native-rang-an-zhuo-fan-hui-jian-shi-xiao/"/>
+    <updated>2017-09-20T17:28:47+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/09/20/react-native-rang-an-zhuo-fan-hui-jian-shi-xiao</id>
+    <content type="html"><![CDATA[<p>設定 <code>overrideBackPress=true</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>this.props.navigator.showLightBox({
+</span><span class='line'>    screen: '',
+</span><span class='line'>    passProps: {},
+</span><span class='line'>    style: {},
+</span><span class='line'>    overrideBackPress: true
+</span><span class='line'>});</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Install Local Plugin to Cordova Project]]></title>
+    <link href="http://whhotw.github.io/blog/2017/09/14/install-local-plugin-to-cordova-project/"/>
+    <updated>2017-09-14T17:35:19+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/09/14/install-local-plugin-to-cordova-project</id>
+    <content type="html"><![CDATA[<p>use it.
+<code>plugman install --platform ios --project path/to/your/ionicapp/platforms/android --plugin /Path/to/your/cordova-plugin/MyDemo/</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[React Native - Setting onMessage on a WebView Overrides Existing Values of window.postMessage]]></title>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: React-native | Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-09-13T16:05:36+08:00</updated>
+  <updated>2017-09-20T17:37:57+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[React Native - 讓安卓返回鍵失效]]></title>
+    <link href="http://whhotw.github.io/blog/2017/09/20/react-native-rang-an-zhuo-fan-hui-jian-shi-xiao/"/>
+    <updated>2017-09-20T17:28:47+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/09/20/react-native-rang-an-zhuo-fan-hui-jian-shi-xiao</id>
+    <content type="html"><![CDATA[<p>設定 <code>overrideBackPress=true</code></p>
+
+<pre><code>this.props.navigator.showLightBox({
+    screen: '',
+    passProps: {},
+    style: {},
+    overrideBackPress: true
+});
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[First React Native App]]></title>
