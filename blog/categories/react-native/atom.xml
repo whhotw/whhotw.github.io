@@ -4,7 +4,7 @@
   <title><![CDATA[Category: React-native | Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-09-20T17:37:57+08:00</updated>
+  <updated>2017-10-05T11:17:53+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ignore Self Signed Cert on React-Native App]]></title>
+    <link href="http://whhotw.github.io/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app/"/>
+    <updated>2017-10-05T11:06:00+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app</id>
+    <content type="html"><![CDATA[<p><img class="<a" src="href="http://placekitten.com/890/280">http://placekitten.com/890/280</a>"></p>
+
+<p>RN 裡面預設是不接受自簽憑證的，但是往往在開發環境中，有些時候還是會用到自簽憑證，這時候就會變得很麻煩，因為寫程式的時候等於不能跑在測試環境，這時候就必須手動修改 React 的程式讓網路連線可以通過 <code>https</code> 的錯誤</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[React Native - 讓安卓返回鍵失效]]></title>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Git | Wenhao's Worklog]]></title>
+  <link href="http://whhotw.github.io/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://whhotw.github.io/"/>
+  <updated>2017-10-05T11:17:53+08:00</updated>
+  <id>http://whhotw.github.io/</id>
+  <author>
+    <name><![CDATA[Wenhao Ho]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How About Push Large Size File to Git]]></title>
+    <link href="http://whhotw.github.io/blog/2017/09/29/how-about-push-large-size-file-to-git/"/>
+    <updated>2017-09-29T10:36:15+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/09/29/how-about-push-large-size-file-to-git</id>
+    <content type="html"><![CDATA[<p>想要上傳超過 100MB 的檔案到 Git 被 rejected 的解法</p>
+
+<h3>安裝</h3>
+
+<p><code>brew install git-lfs</code></p>
+
+<h3>操作</h3>
+
+<pre><code>cd ${project}
+git lfs install
+git lfs track "*.ext" =&gt; 依副檔名
+git lfs track "*/**" =&gt; 依資料夾
+git add file.ext
+git commit -m "something..."
+git push origin master
+</code></pre>
+
+<p>關鍵是 <code>track</code> 某個檔案或是資料夾，可以利用 <code>git lfs ls-files</code> 查看哪些檔案被追蹤</p>
+
+<pre><code>$ git lfs ls-files
+74015d7b01 * src/ios/xxx
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

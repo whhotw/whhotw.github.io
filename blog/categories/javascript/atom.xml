@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-09-20T17:37:57+08:00</updated>
+  <updated>2017-10-05T11:17:53+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JS RSA 加密/簽名]]></title>
+    <link href="http://whhotw.github.io/blog/2017/09/26/js-rsa-jia-mi-slash-qian-ming/"/>
+    <updated>2017-09-26T11:14:39+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/09/26/js-rsa-jia-mi-slash-qian-ming</id>
+    <content type="html"><![CDATA[<p>大致上的流程就是伺服端生成公私鑰對後，將公鑰儲存在前端。登入時利用公鑰將敏感資料加密傳送給後端。通常我會習慣轉成 base64 後才傳給後端</p>
+
+<p>先安裝 <code>jsrsasign</code></p>
+
+<pre><code>import rs from 'jsrsasign';
+
+let pub = rs.KEYUTIL.getKey(file);
+let cipher = rs.KJUR.crypto.Cipher.encrypt(this.state.passwd, pub, 'RSA');
+return rs.hextob64(cipher);
+</code></pre>
+
+<p>getKey() 裡面放要使用的鑰匙資訊，像我是透過 <code>pem</code> 所以會從檔案中把資訊取出來。 可以使用 <code>react-native-fs</code> 存取檔案系統</p>
+
+<p>一開始以為可以透過類似讀圖片的方式 <code>require('url')</code> 得到憑證檔案，因為自己的想法是，假如要先手動把一些自定義的檔案放入個別的系統，真的很麻煩。經過了一個下午的努力與 google 的結果，似乎除了圖片目前還沒有自動連結實體檔案的方法，下次有時間研究一下 <code>rnpm link</code> 是怎麼做的！雖然是針對套件不過應該可以自己寫個 script 解決我這個問題</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Promise]]></title>

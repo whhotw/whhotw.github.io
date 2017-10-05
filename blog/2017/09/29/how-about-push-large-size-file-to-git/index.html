@@ -5,13 +5,21 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>OSX 上解決 Port 被使用的問題 - Wenhao's Worklog</title>
+  <title>How About Push Large Size File to Git - Wenhao's Worklog</title>
   <meta name="author" content="Wenhao Ho">
 
   
-  <meta name="description" content="在開發的時候會需要開一些服務，來幫助除錯或是測試程式，但有時候會遇到無法正常啟動的問題，這時候可以檢查看看是不是舊服務把 port 佔住，導致新的服務開不起來，可以使用 lsof(list open files) 這個指令檢查一下把不要的服務 kill 1
+  <meta name="description" content="想要上傳超過 100MB 的檔案到 Git 被 rejected 的解法 安裝 brew install git-lfs 操作 1
 2
-lsof -t -i:${PORT &hellip;">
+3
+4
+5
+6
+7
+cd ${project}
+git lfs install
+git lfs track "*.ext" =&gt; 依副檔名
+git lfs &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +28,7 @@ lsof -t -i:${PORT &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/2017/09/07/osx-shang-jie-jue-port-bei-shi-yong-de-wen-ti/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2017/09/29/how-about-push-large-size-file-to-git/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Wenhao's Worklog" type="application/atom+xml">
@@ -82,7 +90,7 @@ lsof -t -i:${PORT &hellip;">
   
   <header>
     
-      <h1 class="entry-title">OSX 上解決 Port 被使用的問題</h1>
+      <h1 class="entry-title">How About Push Large Size File to Git</h1>
     
     
       <p class="meta">
@@ -91,22 +99,44 @@ lsof -t -i:${PORT &hellip;">
 
 
 
-<time class='entry-date' datetime='2017-09-07T10:18:55+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:18 am</span></time>
+<time class='entry-date' datetime='2017-09-29T10:36:15+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:36 am</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>在開發的時候會需要開一些服務，來幫助除錯或是測試程式，但有時候會遇到無法正常啟動的問題，這時候可以檢查看看是不是舊服務把 port 佔住，導致新的服務開不起來，可以使用 <code>lsof(list open files)</code> 這個指令檢查一下把不要的服務 kill</p>
+<div class="entry-content"><p>想要上傳超過 100MB 的檔案到 Git 被 rejected 的解法</p>
+
+<h3>安裝</h3>
+
+<p><code>brew install git-lfs</code></p>
+
+<h3>操作</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>lsof -t -i:${PORT}
-</span><span class='line'>kill -9 $(lsof -t -i:${PORT})</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ${project}
+</span><span class='line'>git lfs install
+</span><span class='line'>git lfs track "*.ext" =&gt; 依副檔名
+</span><span class='line'>git lfs track "*/**" =&gt; 依資料夾
+</span><span class='line'>git add file.ext
+</span><span class='line'>git commit -m "something..."
+</span><span class='line'>git push origin master</span></code></pre></td></tr></table></div></figure>
 
 
-<h5>-i 顯示所有端口<br/>-i:${PORT} 顯示指定端口<br/>-t 只印出 PID</h5>
+<p>關鍵是 <code>track</code> 某個檔案或是資料夾，可以利用 <code>git lfs ls-files</code> 查看哪些檔案被追蹤</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git lfs ls-files
+</span><span class='line'>74015d7b01 * src/ios/xxx</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
@@ -122,12 +152,12 @@ lsof -t -i:${PORT &hellip;">
 
 
 
-<time class='entry-date' datetime='2017-09-07T10:18:55+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:18 am</span></time>
+<time class='entry-date' datetime='2017-09-29T10:36:15+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:36 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/command/'>command</a>
+    <a class='category' href='/blog/categories/git/'>git</a>
   
 </span>
 
@@ -145,10 +175,10 @@ lsof -t -i:${PORT &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2017/09/06/first-react-native-app/" title="Previous Post: First React Native App">&laquo; First React Native App</a>
+        <a class="basic-alignment left" href="/blog/2017/09/26/js-rsa-jia-mi-slash-qian-ming/" title="Previous Post: JS RSA 加密/簽名">&laquo; JS RSA 加密/簽名</a>
       
       
-        <a class="basic-alignment right" href="/blog/2017/09/08/promise/" title="Next Post: Promise">Promise &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app/" title="Next Post: Ignore self signed cert on React-Native App">Ignore self signed cert on React-Native App &raquo;</a>
       
     </p>
   </footer>

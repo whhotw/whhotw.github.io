@@ -4,7 +4,7 @@
   <title><![CDATA[Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-09-20T17:37:57+08:00</updated>
+  <updated>2017-10-05T11:17:53+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ignore Self Signed Cert on React-Native App]]></title>
+    <link href="http://whhotw.github.io/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app/"/>
+    <updated>2017-10-05T11:06:00+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app</id>
+    <content type="html"><![CDATA[<p><img src="http://placekitten.com/890/280"></p>
+
+<p>RN 裡面預設是不接受自簽憑證的，但是往往在開發環境中，有些時候還是會用到自簽憑證，這時候就會變得很麻煩，因為寫程式的時候等於不能跑在測試環境，這時候就必須手動修改 React 的程式讓網路連線可以通過 <code>https</code> 的錯誤</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How About Push Large Size File to Git]]></title>
+    <link href="http://whhotw.github.io/blog/2017/09/29/how-about-push-large-size-file-to-git/"/>
+    <updated>2017-09-29T10:36:15+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/09/29/how-about-push-large-size-file-to-git</id>
+    <content type="html"><![CDATA[<p>想要上傳超過 100MB 的檔案到 Git 被 rejected 的解法</p>
+
+<h3>安裝</h3>
+
+<p><code>brew install git-lfs</code></p>
+
+<h3>操作</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ${project}
+</span><span class='line'>git lfs install
+</span><span class='line'>git lfs track "*.ext" =&gt; 依副檔名
+</span><span class='line'>git lfs track "*/**" =&gt; 依資料夾
+</span><span class='line'>git add file.ext
+</span><span class='line'>git commit -m "something..."
+</span><span class='line'>git push origin master</span></code></pre></td></tr></table></div></figure>
+
+
+<p>關鍵是 <code>track</code> 某個檔案或是資料夾，可以利用 <code>git lfs ls-files</code> 查看哪些檔案被追蹤</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git lfs ls-files
+</span><span class='line'>74015d7b01 * src/ios/xxx</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JS RSA 加密/簽名]]></title>
+    <link href="http://whhotw.github.io/blog/2017/09/26/js-rsa-jia-mi-slash-qian-ming/"/>
+    <updated>2017-09-26T11:14:39+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/09/26/js-rsa-jia-mi-slash-qian-ming</id>
+    <content type="html"><![CDATA[<p>大致上的流程就是伺服端生成公私鑰對後，將公鑰儲存在前端。登入時利用公鑰將敏感資料加密傳送給後端。通常我會習慣轉成 base64 後才傳給後端</p>
+
+<p>先安裝 <code>jsrsasign</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>import rs from 'jsrsasign';
+</span><span class='line'>
+</span><span class='line'>let pub = rs.KEYUTIL.getKey(file);
+</span><span class='line'>let cipher = rs.KJUR.crypto.Cipher.encrypt(this.state.passwd, pub, 'RSA');
+</span><span class='line'>return rs.hextob64(cipher);</span></code></pre></td></tr></table></div></figure>
+
+
+<p>getKey() 裡面放要使用的鑰匙資訊，像我是透過 <code>pem</code> 所以會從檔案中把資訊取出來。 可以使用 <code>react-native-fs</code> 存取檔案系統</p>
+
+<p>一開始以為可以透過類似讀圖片的方式 <code>require('url')</code> 得到憑證檔案，因為自己的想法是，假如要先手動把一些自定義的檔案放入個別的系統，真的很麻煩。經過了一個下午的努力與 google 的結果，似乎除了圖片目前還沒有自動連結實體檔案的方法，下次有時間研究一下 <code>rnpm link</code> 是怎麼做的！雖然是針對套件不過應該可以自己寫個 script 解決我這個問題</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[React Native - 讓安卓返回鍵失效]]></title>
