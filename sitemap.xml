@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2017/10/12/ding-qi-zhi-xing-sqlyu-fa-and-ji-song-you-jian/</loc>
+<lastmod>2017-10-12T15:08:30+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app/</loc>
 <lastmod>2017-10-05T11:06:00+08:00</lastmod>
 </url>
@@ -63,5 +67,8 @@
 </url>
 <url>
 <loc>http://whhotw.github.io/blog/categories/git/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/blog/categories/sql/</loc>
 </url>
 </urlset>

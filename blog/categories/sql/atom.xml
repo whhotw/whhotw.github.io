@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Sql | Wenhao's Worklog]]></title>
+  <link href="http://whhotw.github.io/blog/categories/sql/atom.xml" rel="self"/>
+  <link href="http://whhotw.github.io/"/>
+  <updated>2017-10-16T18:12:13+08:00</updated>
+  <id>http://whhotw.github.io/</id>
+  <author>
+    <name><![CDATA[Wenhao Ho]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[定期執行SQL語法]]></title>
+    <link href="http://whhotw.github.io/blog/2017/10/12/ding-qi-zhi-xing-sqlyu-fa-and-ji-song-you-jian/"/>
+    <updated>2017-10-12T15:08:30+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/10/12/ding-qi-zhi-xing-sqlyu-fa-and-ji-song-you-jian</id>
+    <content type="html"><![CDATA[<h3>設定 mysql event schedule</h3>
+
+<pre><code>CREATE EVENT `&lt;table_name&gt;`.`&lt;event_name&gt;`
+ON SCHEDULE EVERY 1 YEAR
+ON COMPLETION PRESERVE
+ENABLE
+DO
+insert into field('b') values(now())
+</code></pre>
+
+<p><code>DO</code> 後面就是接一般的 <code>SQL</code> 語法新增，刪除，修改等</p>
+
+<h3>顯示 event schedule</h3>
+
+<p><code>mysql&gt; show processlist;</code></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-10-05T11:39:43+08:00</updated>
+  <updated>2017-10-16T18:12:13+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -29,7 +29,6 @@
 <pre><code>cd ${project}
 git lfs install
 git lfs track "*.ext" =&gt; 依副檔名
-git lfs track "*/**" =&gt; 依資料夾
 git add file.ext
 git commit -m "something..."
 git push origin master

@@ -4,7 +4,7 @@
   <title><![CDATA[Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-10-05T11:39:43+08:00</updated>
+  <updated>2017-10-16T18:12:13+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[定期執行SQL語法]]></title>
+    <link href="http://whhotw.github.io/blog/2017/10/12/ding-qi-zhi-xing-sqlyu-fa-and-ji-song-you-jian/"/>
+    <updated>2017-10-12T15:08:30+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/10/12/ding-qi-zhi-xing-sqlyu-fa-and-ji-song-you-jian</id>
+    <content type="html"><![CDATA[<h3>設定 mysql event schedule</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>CREATE EVENT `&lt;table_name&gt;`.`&lt;event_name&gt;`
+</span><span class='line'>ON SCHEDULE EVERY 1 YEAR
+</span><span class='line'>ON COMPLETION PRESERVE
+</span><span class='line'>ENABLE
+</span><span class='line'>DO
+</span><span class='line'>insert into field('b') values(now())</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>DO</code> 後面就是接一般的 <code>SQL</code> 語法新增，刪除，修改等</p>
+
+<h3>顯示 event schedule</h3>
+
+<p><code>mysql&gt; show processlist;</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ignore Self Signed Cert on React-Native App]]></title>
@@ -51,11 +80,9 @@
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-<span class='line-number'>7</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>cd ${project}
 </span><span class='line'>git lfs install
 </span><span class='line'>git lfs track "*.ext" =&gt; 依副檔名
-</span><span class='line'>git lfs track "*/**" =&gt; 依資料夾
 </span><span class='line'>git add file.ext
 </span><span class='line'>git commit -m "something..."
 </span><span class='line'>git push origin master</span></code></pre></td></tr></table></div></figure>
