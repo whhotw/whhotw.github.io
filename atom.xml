@@ -4,7 +4,7 @@
   <title><![CDATA[Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-10-16T18:12:13+08:00</updated>
+  <updated>2017-11-01T18:03:43+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Reactotron 使用]]></title>
+    <link href="http://whhotw.github.io/blog/2017/11/01/reactotron-shi-yong/"/>
+    <updated>2017-11-01T16:27:58+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/11/01/reactotron-shi-yong</id>
+    <content type="html"><![CDATA[<h3><a href="https://github.com/infinitered/reactotron">Reactotron</a></h3>
+
+<p>開發 React 應用的時候，可以試試這個工具。可以觀察網路連線的資訊還可以印出自定義的日誌</p>
+
+<p>import 下面這行到你要用的地方
+<code>import Reactotron from 'reactotron-react-js'</code></p>
+
+<p>預設有三種等級可以選擇</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Reactotron.log('log')
+</span><span class='line'>Reactotron.warn('warn')
+</span><span class='line'>Reactotron.error('error')</span></code></pre></td></tr></table></div></figure>
+
+
+<p>也可以印出物件</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Reactotron.display({
+</span><span class='line'>  name: 'ORANGE',
+</span><span class='line'>  preview: 'Who?',
+</span><span class='line'>  value: 'Orange you glad you don\'t know me in real life?',
+</span><span class='line'>  important: true
+</span><span class='line'>})</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[定期執行SQL語法]]></title>
