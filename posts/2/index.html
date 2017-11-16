@@ -9,9 +9,21 @@
   <meta name="author" content="Wenhao Ho">
 
   
-  <meta name="description" content="在開發的時候會需要開一些服務，來幫助除錯或是測試程式，但有時候會遇到無法正常啟動的問題，這時候可以檢查看看是不是舊服務把 port 佔住，導致新的服務開不起來，可以使用 lsof(list open files) 這個指令檢查一下把不要的服務 kill 1
+  <meta name="description" content="1
 2
-lsof -t -i:${PORT &hellip;">
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+static instance = null;
+static createInstance() { return new Class();
+} static getInstance() { if (!Class.instance) { &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +91,110 @@ lsof -t -i:${PORT &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/09/12/javascript-singleton/">JavaScript Singleton</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-09-12T09:52:10+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>9:52 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>static instance = null;
+</span><span class='line'>static createInstance() {
+</span><span class='line'>  return new Class();
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>static getInstance() {
+</span><span class='line'>  if (!Class.instance) {
+</span><span class='line'>      Class.instance = Class.createInstance();
+</span><span class='line'>  }
+</span><span class='line'>
+</span><span class='line'>  return Class.instance;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/09/08/promise/">Promise</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-09-08T14:14:37+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>2:14 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最早是在社群提出，但 <code>ES6</code> 推出後就被列入標準了，原生提供 <code>Promise</code> 對象，讓前端工程師處理非同步問題。例如：下載網路上的圖片之後顯示。</p>
+
+<h1>基本用法</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var promise = new Promise(function(resolve, reject) {
+</span><span class='line'>  // ... some code
+</span><span class='line'>
+</span><span class='line'>  if (true){
+</span><span class='line'>    resolve(value);
+</span><span class='line'>  } else {
+</span><span class='line'>    reject(error);
+</span><span class='line'>  }
+</span><span class='line'>});</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -218,6 +334,14 @@ react-native-vector-icons: 圖資源<br/></p></blockquote>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits/">Leetcode #357. Count Numbers With Unique Digits</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/11/02/cli-fang-shi-qi-dong-android-mo-ni-qi/">CLI 方式啟動 Android 模擬器</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/11/01/reactotron-shi-yong/">Reactotron 使用</a>
       </li>
     
@@ -227,14 +351,6 @@ react-native-vector-icons: 圖資源<br/></p></blockquote>
     
       <li class="post">
         <a href="/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app/">Ignore Self Signed Cert on React-Native App</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/09/29/how-about-push-large-size-file-to-git/">How About Push Large Size File to Git</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/09/26/js-rsa-jia-mi-slash-qian-ming/">JS RSA 加密/簽名</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-11-01T18:03:43+08:00</updated>
+  <updated>2017-11-16T14:55:51+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -12,6 +12,146 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Leetcode #357. Count Numbers With Unique Digits]]></title>
+    <link href="http://whhotw.github.io/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits/"/>
+    <updated>2017-11-16T14:44:14+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits</id>
+    <content type="html"><![CDATA[<p><em>Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x &lt; 10n.
+Example:
+Given n = 2, return 91. (The answer should be the total numbers in the range of 0 ≤ x &lt; 100, excluding [11,22,33,44,55,66,77,88,99])</em></p>
+
+<p>起初用暴力解但效率只能到達 n=6, 以上就會 time limit exceeded</p>
+
+<p><strong>我自己想的解法</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var countNumbersWithUniqueDigits = function(n) {
+</span><span class='line'>    console.log(Math.pow(10, n));
+</span><span class='line'>    let maxNum = Math.pow(10, n);
+</span><span class='line'>    let count = 0;
+</span><span class='line'>    for (let i = 10; i &lt; maxNum; i++) {
+</span><span class='line'>        let arr = i.toString().split('');
+</span><span class='line'>        let set = new Set(arr);
+</span><span class='line'>        if (arr.length !== set.size) {
+</span><span class='line'>            count++;
+</span><span class='line'>        }
+</span><span class='line'>    }
+</span><span class='line'>    
+</span><span class='line'>    return maxNum - count;
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>參考解答後優化的解法</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var countNumbersWithUniqueDigits = function(n) {
+</span><span class='line'>    if (n === 0) {
+</span><span class='line'>        return 1;
+</span><span class='line'>    } else {
+</span><span class='line'>        let v = 9;
+</span><span class='line'>        for (let i = 1; i &lt; n; i++) {
+</span><span class='line'>            v *= (11 - i - 1);
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        return countNumbersWithUniqueDigits(n - 1) + v;
+</span><span class='line'>    }
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+
+
+<p>主要是運用動態規劃的方式</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>f(1)=f(0)+9
+</span><span class='line'>f(2)=f(1)+9*9
+</span><span class='line'>f(3)=f(2)+9*9*8
+</span><span class='line'>...
+</span><span class='line'>f(9)=f(8)+9*8*7*6*5*4*3*2
+</span><span class='line'>f(10)=f(9)+9*8*7*6*5*4*3*2*1</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CLI 方式啟動 Android 模擬器]]></title>
+    <link href="http://whhotw.github.io/blog/2017/11/02/cli-fang-shi-qi-dong-android-mo-ni-qi/"/>
+    <updated>2017-11-02T17:18:48+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/11/02/cli-fang-shi-qi-dong-android-mo-ni-qi</id>
+    <content type="html"><![CDATA[<p><a href="https://developer.android.com/studio/run/emulator-commandline.html">android-emulator-commandline</a></p>
+
+<p><a href="https://developer.android.com/studio/command-line/avdmanager.html">avdmanager-commandline</a></p>
+
+<p>List avd</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>./avdmanager list avd
+</span><span class='line'>Available Android Virtual Devices:
+</span><span class='line'>    Name: Pixel_API_25
+</span><span class='line'>  Device: pixel (Google)
+</span><span class='line'>    Path: /Users/whh/.android/avd/Pixel_API_25.avd
+</span><span class='line'>  Target: Google APIs (Google Inc.)
+</span><span class='line'>          Based on: Android 7.1.1 (Nougat) Tag/ABI: google_apis/x86_64
+</span><span class='line'>    Skin: pixel
+</span><span class='line'>  Sdcard: 100M</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Run android emulator</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ${ANDROID_HOME}/tools
+</span><span class='line'>emulator @${YOUR_AVD_NAME}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>List of devices attached</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>adb devices
+</span><span class='line'>List of devices attached
+</span><span class='line'>emulator-5554 device</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Reactotron 使用]]></title>

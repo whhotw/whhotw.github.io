@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Android | Wenhao's Worklog]]></title>
+  <link href="http://whhotw.github.io/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://whhotw.github.io/"/>
+  <updated>2017-11-16T14:55:51+08:00</updated>
+  <id>http://whhotw.github.io/</id>
+  <author>
+    <name><![CDATA[Wenhao Ho]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[CLI 方式啟動 Android 模擬器]]></title>
+    <link href="http://whhotw.github.io/blog/2017/11/02/cli-fang-shi-qi-dong-android-mo-ni-qi/"/>
+    <updated>2017-11-02T17:18:48+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/11/02/cli-fang-shi-qi-dong-android-mo-ni-qi</id>
+    <content type="html"><![CDATA[<p><a href="https://developer.android.com/studio/run/emulator-commandline.html">android-emulator-commandline</a></p>
+
+<p><a href="https://developer.android.com/studio/command-line/avdmanager.html">avdmanager-commandline</a></p>
+
+<p>List avd</p>
+
+<pre><code>./avdmanager list avd
+Available Android Virtual Devices:
+    Name: Pixel_API_25
+  Device: pixel (Google)
+    Path: /Users/whh/.android/avd/Pixel_API_25.avd
+  Target: Google APIs (Google Inc.)
+          Based on: Android 7.1.1 (Nougat) Tag/ABI: google_apis/x86_64
+    Skin: pixel
+  Sdcard: 100M
+</code></pre>
+
+<p>Run android emulator</p>
+
+<pre><code>cd ${ANDROID_HOME}/tools
+emulator @${YOUR_AVD_NAME}
+</code></pre>
+
+<p>List of devices attached</p>
+
+<pre><code>adb devices
+List of devices attached
+emulator-5554   device
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

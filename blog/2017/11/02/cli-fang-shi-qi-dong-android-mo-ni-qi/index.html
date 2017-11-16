@@ -5,13 +5,21 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>OSX 上解決 Port 被使用的問題 - Wenhao's Worklog</title>
+  <title>CLI 方式啟動 Android 模擬器 - Wenhao's Worklog</title>
   <meta name="author" content="Wenhao Ho">
 
   
-  <meta name="description" content="在開發的時候會需要開一些服務，來幫助除錯或是測試程式，但有時候會遇到無法正常啟動的問題，這時候可以檢查看看是不是舊服務把 port 佔住，導致新的服務開不起來，可以使用 lsof(list open files) 這個指令檢查一下把不要的服務 kill 1
+  <meta name="description" content="android-emulator-commandline avdmanager-commandline List avd 1
 2
-lsof -t -i:${PORT &hellip;">
+3
+4
+5
+6
+7
+8
+9
+./avdmanager list avd
+Available Android Virtual Devices: Name: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +28,7 @@ lsof -t -i:${PORT &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/2017/09/07/osx-shang-jie-jue-port-bei-shi-yong-de-wen-ti/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2017/11/02/cli-fang-shi-qi-dong-android-mo-ni-qi/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Wenhao's Worklog" type="application/atom+xml">
@@ -82,7 +90,7 @@ lsof -t -i:${PORT &hellip;">
   
   <header>
     
-      <h1 class="entry-title">OSX 上解決 Port 被使用的問題</h1>
+      <h1 class="entry-title">CLI 方式啟動 Android 模擬器</h1>
     
     
       <p class="meta">
@@ -91,22 +99,56 @@ lsof -t -i:${PORT &hellip;">
 
 
 
-<time class='entry-date' datetime='2017-09-07T10:18:55+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:18 am</span></time>
+<time class='entry-date' datetime='2017-11-02T17:18:48+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2017</span></span> <span class='time'>5:18 pm</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>在開發的時候會需要開一些服務，來幫助除錯或是測試程式，但有時候會遇到無法正常啟動的問題，這時候可以檢查看看是不是舊服務把 port 佔住，導致新的服務開不起來，可以使用 <code>lsof(list open files)</code> 這個指令檢查一下把不要的服務 kill</p>
+<div class="entry-content"><p><a href="https://developer.android.com/studio/run/emulator-commandline.html">android-emulator-commandline</a></p>
+
+<p><a href="https://developer.android.com/studio/command-line/avdmanager.html">avdmanager-commandline</a></p>
+
+<p>List avd</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>lsof -t -i:${PORT}
-</span><span class='line'>kill -9 $(lsof -t -i:${PORT})</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>./avdmanager list avd
+</span><span class='line'>Available Android Virtual Devices:
+</span><span class='line'>    Name: Pixel_API_25
+</span><span class='line'>  Device: pixel (Google)
+</span><span class='line'>    Path: /Users/whh/.android/avd/Pixel_API_25.avd
+</span><span class='line'>  Target: Google APIs (Google Inc.)
+</span><span class='line'>          Based on: Android 7.1.1 (Nougat) Tag/ABI: google_apis/x86_64
+</span><span class='line'>    Skin: pixel
+</span><span class='line'>  Sdcard: 100M</span></code></pre></td></tr></table></div></figure>
 
 
-<h5>-i 顯示所有端口<br/>-i:${PORT} 顯示指定端口<br/>-t 只印出 PID</h5>
+<p>Run android emulator</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ${ANDROID_HOME}/tools
+</span><span class='line'>emulator @${YOUR_AVD_NAME}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>List of devices attached</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>adb devices
+</span><span class='line'>List of devices attached
+</span><span class='line'>emulator-5554 device</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
@@ -122,12 +164,12 @@ lsof -t -i:${PORT &hellip;">
 
 
 
-<time class='entry-date' datetime='2017-09-07T10:18:55+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:18 am</span></time>
+<time class='entry-date' datetime='2017-11-02T17:18:48+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2017</span></span> <span class='time'>5:18 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/command/'>command</a>
+    <a class='category' href='/blog/categories/android/'>android</a>
   
 </span>
 
@@ -145,10 +187,10 @@ lsof -t -i:${PORT &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2017/09/06/first-react-native-app/" title="Previous Post: First React Native App">&laquo; First React Native App</a>
+        <a class="basic-alignment left" href="/blog/2017/11/01/reactotron-shi-yong/" title="Previous Post: Reactotron 使用">&laquo; Reactotron 使用</a>
       
       
-        <a class="basic-alignment right" href="/blog/2017/09/08/promise/" title="Next Post: Promise">Promise &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits/" title="Next Post: Leetcode #357. Count Numbers with Unique Digits">Leetcode #357. Count Numbers with Unique Digits &raquo;</a>
       
     </p>
   </footer>

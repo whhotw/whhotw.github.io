@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits/</loc>
+<lastmod>2017-11-16T14:44:14+08:00</lastmod>
+</url>
+<url>
+<loc>http://whhotw.github.io/blog/2017/11/02/cli-fang-shi-qi-dong-android-mo-ni-qi/</loc>
+<lastmod>2017-11-02T17:18:48+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2017/11/01/reactotron-shi-yong/</loc>
 <lastmod>2017-11-01T16:27:58+08:00</lastmod>
 </url>
@@ -77,5 +85,14 @@
 </url>
 <url>
 <loc>http://whhotw.github.io/blog/categories/react/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/blog/categories/android/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/blog/categories/leetcode/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/posts/2/</loc>
 </url>
 </urlset>
