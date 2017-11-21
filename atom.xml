@@ -4,7 +4,7 @@
   <title><![CDATA[Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-11-16T14:55:51+08:00</updated>
+  <updated>2017-11-21T17:13:28+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Git 設定忽略自簽憑證]]></title>
+    <link href="http://whhotw.github.io/blog/2017/11/21/git-she-ding-hu-lue-zi-qian-ping-zheng/"/>
+    <updated>2017-11-21T17:07:54+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/11/21/git-she-ding-hu-lue-zi-qian-ping-zheng</id>
+    <content type="html"><![CDATA[<p>公司的 git server 為了安全性有掛上自簽憑證，但是 git <code>http.sslVerify</code> 預設 <code>true</code> 因此會無法上傳 code，這時候可以手動修改 <code>http.sslVerify</code> 這個值</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git config --global http.sslVerify false</span></code></pre></td></tr></table></div></figure>
+
+
+<p>想要安全一些的話就設定自簽憑證路徑</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git config --system http.sslCAPath /path/to/cacerts</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以上兩種都可行</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[動態載入模組]]></title>
+    <link href="http://whhotw.github.io/blog/2017/11/20/mo-zu/"/>
+    <updated>2017-11-20T15:53:41+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/11/20/mo-zu</id>
+    <content type="html"><![CDATA[<p>兩個關鍵字 <code>import``export</code>，用於載入與輸出模組。但實際上不一定會使用到模組的程式碼，這時候就需要動態載入，在確定需要使用的時候載入</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>export let go = () =&gt; {
+</span><span class='line'>  return 'AAA';
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>async () =&gt; {
+</span><span class='line'>  let Module = await import('./Module.js');
+</span><span class='line'>  console.log(Module.go());
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>輸出</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>AAA</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Leetcode #357. Count Numbers With Unique Digits]]></title>
