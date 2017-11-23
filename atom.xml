@@ -4,7 +4,7 @@
   <title><![CDATA[Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-11-23T16:25:50+08:00</updated>
+  <updated>2017-11-23T17:05:26+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -61,7 +61,7 @@
 </span><span class='line'>        &lt;key&gt;uploadSymbols&lt;/key&gt;
 </span><span class='line'>        &lt;true/&gt;
 </span><span class='line'>        &lt;key&gt;compileBitcode&lt;/key&gt;
-</span><span class='line'>       &lt;true/&gt;
+</span><span class='line'>        &lt;true/&gt;
 </span><span class='line'>&lt;/dict&gt;
 </span><span class='line'>&lt;/plist&gt;</span></code></pre></td></tr></table></div></figure>
 
