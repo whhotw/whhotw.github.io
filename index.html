@@ -9,8 +9,8 @@
   <meta name="author" content="Wenhao Ho">
 
   
-  <meta name="description" content="公司的 git server 為了安全性有掛上自簽憑證，但是 git http.sslVerify 預設 true 因此會無法上傳 code，這時候可以手動修改 http.sslVerify 這個值 1
-git config --global http.sslVerify false &hellip;">
+  <meta name="description" content="自動打包這件事情，在很多時候可以幫助開發者，節省很多的等待時間。簡單來說就是開始執行你就可以不用管了，之後的產出甚至可以結合自動測試，發布等等。這邊單純分享打包用的指令 Archive 1
+$ xcodebuild -workspace ${PROJECT_NAME}.xcworkspace - &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +84,99 @@ git config --global http.sslVerify false &hellip;">
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2017/11/23/ios-app-da-bao-zhi-ling/">iOS App 打包用的指令</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-11-23T15:30:49+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2017</span></span> <span class='time'>3:30 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>自動打包這件事情，在很多時候可以幫助開發者，節省很多的等待時間。簡單來說就是開始執行你就可以不用管了，之後的產出甚至可以結合自動測試，發布等等。這邊單純分享打包用的指令</p>
+
+<h3>Archive</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ xcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${TARGET_NAME} -sdk iphoneos -configuration archive -archivePath $PWD/build/${TARGET_NAME}.xcarchive</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Export *.ipa</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ xcodebuild -exportArchive -archivePath $PWD/build/${TARGET_NAME}.xcarchive -exportOptionsPlist BUILD.plist -exportPath $PWD/build</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>BUILD.plist</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cat BUILD.plist
+</span><span class='line'>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+</span><span class='line'>&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+</span><span class='line'>&lt;plist version="1.0"&gt;
+</span><span class='line'>&lt;dict&gt;
+</span><span class='line'>        &lt;key&gt;teamID&lt;/key&gt;
+</span><span class='line'>        &lt;string&gt;${TEAM_ID}&lt;/string&gt;
+</span><span class='line'>        &lt;key&gt;method&lt;/key&gt;
+</span><span class='line'>        &lt;string&gt;${METHOD}&lt;/string&gt;
+</span><span class='line'>        &lt;key&gt;uploadSymbols&lt;/key&gt;
+</span><span class='line'>        &lt;true/&gt;
+</span><span class='line'>        &lt;key&gt;compileBitcode&lt;/key&gt;
+</span><span class='line'>       &lt;true/&gt;
+</span><span class='line'>&lt;/dict&gt;
+</span><span class='line'>&lt;/plist&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>Xcode8.3 以上透過 command-line 輸出 ipa 需要打入 <code>exportOptionsPlist</code> 這個鍵值，因此需要多配置一個檔案類似如上</p></blockquote>
+
+<ul>
+<li>method: (String) The method of distribution, which can be set as any of the following:
+
+<ul>
+<li>app-store</li>
+<li>enterprise</li>
+<li>ad-hoc</li>
+<li>development</li>
+</ul>
+</li>
+<li>teamID: (String) The development program team identifier.</li>
+<li>uploadSymbols: (Boolean) Option to include symbols in the generated ipa file.</li>
+<li>uploadBitcode: (Boolean) Option to include Bitcode.</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2017/11/21/git-she-ding-hu-lue-zi-qian-ping-zheng/">Git 設定忽略自簽憑證</a></h1>
     
     
@@ -125,7 +218,7 @@ git config --global http.sslVerify false &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2017/11/20/mo-zu/">動態載入模組</a></h1>
+      <h1 class="entry-title"><a href="/blog/2017/11/20/mo-zu/">Js 動態載入模組</a></h1>
     
     
       <p class="meta">
@@ -141,7 +234,7 @@ git config --global http.sslVerify false &hellip;">
   </header>
 
 
-  <div class="entry-content"><p>兩個關鍵字 <code>import``export</code>，用於載入與輸出模組。但實際上不一定會使用到模組的程式碼，這時候就需要動態載入，在確定需要使用的時候載入</p>
+  <div class="entry-content"><p>兩個關鍵字 <code>import</code> <code>export</code>，用於載入與輸出模組。但實際上不一定會使用到模組的程式碼，這時候就需要動態載入，在確定需要使用的時候載入</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -605,49 +698,6 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/09/20/react-native-rang-an-zhuo-fan-hui-jian-shi-xiao/">React Native - 讓安卓返回鍵失效</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-09-20T17:28:47+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>5:28 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>設定 <code>overrideBackPress=true</code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>this.props.navigator.showLightBox({
-</span><span class='line'>    screen: '',
-</span><span class='line'>    passProps: {},
-</span><span class='line'>    style: {},
-</span><span class='line'>    overrideBackPress: true
-</span><span class='line'>});</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -663,11 +713,15 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/11/23/ios-app-da-bao-zhi-ling/">iOS App 打包用的指令</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/11/21/git-she-ding-hu-lue-zi-qian-ping-zheng/">Git 設定忽略自簽憑證</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2017/11/20/mo-zu/">動態載入模組</a>
+        <a href="/blog/2017/11/20/mo-zu/">Js 動態載入模組</a>
       </li>
     
       <li class="post">
@@ -676,10 +730,6 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
     
       <li class="post">
         <a href="/blog/2017/11/02/cli-fang-shi-qi-dong-android-mo-ni-qi/">CLI 方式啟動 Android 模擬器</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/11/01/reactotron-shi-yong/">Reactotron 使用</a>
       </li>
     
   </ul>

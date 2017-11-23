@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2017/11/23/ios-app-da-bao-zhi-ling/</loc>
+<lastmod>2017-11-23T15:30:49+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2017/11/21/git-she-ding-hu-lue-zi-qian-ping-zheng/</loc>
 <lastmod>2017-11-21T17:07:54+08:00</lastmod>
 </url>
@@ -102,6 +106,9 @@
 </url>
 <url>
 <loc>http://whhotw.github.io/blog/categories/js/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/blog/categories/ios/</loc>
 </url>
 <url>
 <loc>http://whhotw.github.io/posts/2/</loc>

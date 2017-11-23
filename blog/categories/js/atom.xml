@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Js | Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/blog/categories/js/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-11-21T17:13:28+08:00</updated>
+  <updated>2017-11-23T16:25:50+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -14,11 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[動態載入模組]]></title>
+    <title type="html"><![CDATA[Js 動態載入模組]]></title>
     <link href="http://whhotw.github.io/blog/2017/11/20/mo-zu/"/>
     <updated>2017-11-20T15:53:41+08:00</updated>
     <id>http://whhotw.github.io/blog/2017/11/20/mo-zu</id>
-    <content type="html"><![CDATA[<p>兩個關鍵字 <code>import``export</code>，用於載入與輸出模組。但實際上不一定會使用到模組的程式碼，這時候就需要動態載入，在確定需要使用的時候載入</p>
+    <content type="html"><![CDATA[<p>兩個關鍵字 <code>import</code> <code>export</code>，用於載入與輸出模組。但實際上不一定會使用到模組的程式碼，這時候就需要動態載入，在確定需要使用的時候載入</p>
 
 <pre><code>export let go = () =&gt; {
     return 'AAA';

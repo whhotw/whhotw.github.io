@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ios | Wenhao's Worklog]]></title>
+  <link href="http://whhotw.github.io/blog/categories/ios/atom.xml" rel="self"/>
+  <link href="http://whhotw.github.io/"/>
+  <updated>2017-11-23T16:25:50+08:00</updated>
+  <id>http://whhotw.github.io/</id>
+  <author>
+    <name><![CDATA[Wenhao Ho]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[iOS App 打包用的指令]]></title>
+    <link href="http://whhotw.github.io/blog/2017/11/23/ios-app-da-bao-zhi-ling/"/>
+    <updated>2017-11-23T15:30:49+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/11/23/ios-app-da-bao-zhi-ling</id>
+    <content type="html"><![CDATA[<p>自動打包這件事情，在很多時候可以幫助開發者，節省很多的等待時間。簡單來說就是開始執行你就可以不用管了，之後的產出甚至可以結合自動測試，發布等等。這邊單純分享打包用的指令</p>
+
+<h3>Archive</h3>
+
+<pre><code>$ xcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${TARGET_NAME} -sdk iphoneos -configuration archive -archivePath $PWD/build/${TARGET_NAME}.xcarchive
+</code></pre>
+
+<h3>Export *.ipa</h3>
+
+<pre><code>$ xcodebuild -exportArchive -archivePath $PWD/build/${TARGET_NAME}.xcarchive -exportOptionsPlist BUILD.plist -exportPath $PWD/build
+</code></pre>
+
+<h3>BUILD.plist</h3>
+
+<pre><code>$ cat BUILD.plist
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;plist version="1.0"&gt;
+&lt;dict&gt;
+        &lt;key&gt;teamID&lt;/key&gt;
+        &lt;string&gt;${TEAM_ID}&lt;/string&gt;
+        &lt;key&gt;method&lt;/key&gt;
+        &lt;string&gt;${METHOD}&lt;/string&gt;
+        &lt;key&gt;uploadSymbols&lt;/key&gt;
+        &lt;true/&gt;
+        &lt;key&gt;compileBitcode&lt;/key&gt;
+         &lt;true/&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre>
+
+<blockquote><p>Xcode8.3 以上透過 command-line 輸出 ipa 需要打入 <code>exportOptionsPlist</code> 這個鍵值，因此需要多配置一個檔案類似如上</p></blockquote>
+
+<ul>
+<li>method: (String) The method of distribution, which can be set as any of the following:
+
+<ul>
+<li>app-store</li>
+<li>enterprise</li>
+<li>ad-hoc</li>
+<li>development</li>
+</ul>
+</li>
+<li>teamID: (String) The development program team identifier.</li>
+<li>uploadSymbols: (Boolean) Option to include symbols in the generated ipa file.</li>
+<li>uploadBitcode: (Boolean) Option to include Bitcode.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
