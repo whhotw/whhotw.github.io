@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2017/11/27/leetcode-number-102-binary-tree-level-order-traversal/</loc>
+<lastmod>2017-11-27T13:30:41+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2017/11/23/ios-app-da-bao-zhi-ling/</loc>
 <lastmod>2017-11-23T15:30:49+08:00</lastmod>
 </url>
