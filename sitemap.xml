@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2017/11/28/leetcode-number-2-add-two-numbers/</loc>
+<lastmod>2017-11-28T17:31:11+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2017/11/27/leetcode-number-102-binary-tree-level-order-traversal/</loc>
 <lastmod>2017-11-27T13:30:41+08:00</lastmod>
 </url>
@@ -88,10 +92,13 @@
 <loc>http://whhotw.github.io/blog/categories/command/</loc>
 </url>
 <url>
-<loc>http://whhotw.github.io/blog/categories/javascript/</loc>
+<loc>http://whhotw.github.io/blog/categories/js/</loc>
 </url>
 <url>
 <loc>http://whhotw.github.io/blog/categories/cordova/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/blog/categories/javascript/</loc>
 </url>
 <url>
 <loc>http://whhotw.github.io/blog/categories/git/</loc>
@@ -109,12 +116,6 @@
 <loc>http://whhotw.github.io/blog/categories/leetcode/</loc>
 </url>
 <url>
-<loc>http://whhotw.github.io/blog/categories/js/</loc>
-</url>
-<url>
 <loc>http://whhotw.github.io/blog/categories/ios/</loc>
-</url>
-<url>
-<loc>http://whhotw.github.io/posts/2/</loc>
 </url>
 </urlset>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-11-27T13:44:01+08:00</updated>
+  <updated>2017-11-28T17:40:20+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -32,28 +32,6 @@ return rs.hextob64(cipher);
 <p>getKey() 裡面放要使用的鑰匙資訊，像我是透過 <code>pem</code> 所以會從檔案中把資訊取出來。 可以使用 <code>react-native-fs</code> 存取檔案系統</p>
 
 <p>一開始以為可以透過類似讀圖片的方式 <code>require('url')</code> 得到憑證檔案，因為自己的想法是，假如要先手動把一些自定義的檔案放入個別的系統，真的很麻煩。經過了一個下午的努力與 google 的結果，似乎除了圖片目前還沒有自動連結實體檔案的方法，下次有時間研究一下 <code>rnpm link</code> 是怎麼做的！雖然是針對套件不過應該可以自己寫個 script 解決我這個問題</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Promise]]></title>
-    <link href="http://whhotw.github.io/blog/2017/09/08/promise/"/>
-    <updated>2017-09-08T14:14:37+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/09/08/promise</id>
-    <content type="html"><![CDATA[<p>最早是在社群提出，但 <code>ES6</code> 推出後就被列入標準了，原生提供 <code>Promise</code> 對象，讓前端工程師處理非同步問題。例如：下載網路上的圖片之後顯示。</p>
-
-<h1>基本用法</h1>
-
-<pre><code>var promise = new Promise(function(resolve, reject) {
-  // ... some code
-
-  if (true){
-    resolve(value);
-  } else {
-    reject(error);
-  }
-});
-</code></pre>
 ]]></content>
   </entry>
   

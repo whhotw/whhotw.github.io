@@ -5,20 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Promise - Wenhao's Worklog</title>
+  <title>Leetcode #2. Add Two Numbers - Wenhao's Worklog</title>
   <meta name="author" content="Wenhao Ho">
 
   
-  <meta name="description" content="最早是在社群提出，但 ES6 推出後就被列入標準了，原生提供 Promise 對象，讓前端工程師處理非同步問題。例如：下載網路上的圖片之後顯示。 基本用法 1
-2
-3
-4
-5
-6
-7
-8
-9
-let promise = new Promise(function(resolve, reject &hellip;">
+  <meta name="description" content="You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -27,7 +18,7 @@ let promise = new Promise(function(resolve, reject &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/2017/09/08/promise/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2017/11/28/leetcode-number-2-add-two-numbers/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Wenhao's Worklog" type="application/atom+xml">
@@ -89,7 +80,7 @@ let promise = new Promise(function(resolve, reject &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Promise</h1>
+      <h1 class="entry-title">Leetcode #2. Add Two Numbers</h1>
     
     
       <p class="meta">
@@ -98,16 +89,25 @@ let promise = new Promise(function(resolve, reject &hellip;">
 
 
 
-<time class='entry-date' datetime='2017-09-08T14:14:37+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>2:14 pm</span></time>
+<time class='entry-date' datetime='2017-11-28T17:31:11+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>5:31 pm</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>最早是在社群提出，但 <code>ES6</code> 推出後就被列入標準了，原生提供 <code>Promise</code> 對象，讓前端工程師處理非同步問題。例如：下載網路上的圖片之後顯示。</p>
+<div class="entry-content"><p><em>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</em></p>
 
-<h3>基本用法</h3>
+<p><em>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</em></p>
+
+<p><em>Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8</em></p>
+
+<blockquote><p>相加兩個 linked lists</p></blockquote>
+
+<p>兩個 list 不一定會是等長，因此當沒有下一個節點的時候會新增一個假的節點，在下一回合檢查的時候 <code>if (!l1.next &amp;&amp; !l2.next)</code> 為真即最後回合。</p>
+
+<p>PS. 處理進位問題不是很漂亮應該有更好的寫法！</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -118,57 +118,61 @@ let promise = new Promise(function(resolve, reject &hellip;">
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let promise = new Promise(function(resolve, reject) {
-</span><span class='line'>  // ... some code
-</span><span class='line'>
-</span><span class='line'>  if (true){
-</span><span class='line'>    resolve(value);
-</span><span class='line'>  } else {
-</span><span class='line'>    reject(error);
-</span><span class='line'>  }
-</span><span class='line'>});</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Promise.resolve()</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let p = Promise.resolve(arg);</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>傳入的參數是 <code>thenable</code> 將會執行該對象的 <code>then</code> 然後回傳一個 <code>Promise</code> 狀態為 <code>resolved</code> 的對象</li>
-<li>傳入的參數不具有 <code>thenable</code> 將會回傳一個 <code>Promise</code> 狀態為 <code>resolved</code> 的對象</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let p = Promise.resolve('Hello');
-</span><span class='line'>
-</span><span class='line'>p.then(function (s){
-</span><span class='line'>  console.log(s)
-</span><span class='line'>});
-</span><span class='line'>// Hello</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>沒有傳入參數將會回傳一個 <code>Promise</code> 狀態為 <code>resolved</code> 的對象</li>
-</ul>
-
-
-<h3>Promise.reject()</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let p = Promise.reject(arg);</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>大致原理跟 <code>Promise.resolve()</code> 一樣，只是狀態為 <code>rejected</code></li>
-</ul>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var addTwoNumbers = function(l1, l2) {
+</span><span class='line'>    if (l1 && l2) { 
+</span><span class='line'>        let val = l1.val + l2.val;
+</span><span class='line'>        let l = new ListNode(val % 10);
+</span><span class='line'>        
+</span><span class='line'>        if (!l1.next && !l2.next) {
+</span><span class='line'>            l.next = (val &gt; 9 ? new ListNode(1) : null);
+</span><span class='line'>            return l;
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        if (!l1.next) {
+</span><span class='line'>            l1.next = new ListNode(0);
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        if (!l2.next) {
+</span><span class='line'>            l2.next = new ListNode(0);
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        if (val &gt; 9) {
+</span><span class='line'>            if (l1.next) {
+</span><span class='line'>                l1.next.val++;    
+</span><span class='line'>            } else {
+</span><span class='line'>                l1.next = new ListNode(1);
+</span><span class='line'>            }
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        l.next = addTwoNumbers(l1.next, l2.next);    
+</span><span class='line'>        return l;
+</span><span class='line'>    } else {
+</span><span class='line'>        return null;
+</span><span class='line'>    }
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -185,12 +189,12 @@ let promise = new Promise(function(resolve, reject &hellip;">
 
 
 
-<time class='entry-date' datetime='2017-09-08T14:14:37+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>2:14 pm</span></time>
+<time class='entry-date' datetime='2017-11-28T17:31:11+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>5:31 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/js/'>js</a>
+    <a class='category' href='/blog/categories/leetcode/'>leetcode</a>
   
 </span>
 
@@ -208,10 +212,8 @@ let promise = new Promise(function(resolve, reject &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2017/09/07/osx-shang-jie-jue-port-bei-shi-yong-de-wen-ti/" title="Previous Post: OSX 上解決 port 被使用的問題">&laquo; OSX 上解決 port 被使用的問題</a>
+        <a class="basic-alignment left" href="/blog/2017/11/27/leetcode-number-102-binary-tree-level-order-traversal/" title="Previous Post: Leetcode #102. Binary Tree Level Order Traversal">&laquo; Leetcode #102. Binary Tree Level Order Traversal</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2017/09/12/javascript-singleton/" title="Next Post: JavaScript Singleton">JavaScript Singleton &raquo;</a>
       
     </p>
   </footer>

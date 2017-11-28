@@ -4,7 +4,7 @@
   <title><![CDATA[Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-11-27T13:44:01+08:00</updated>
+  <updated>2017-11-28T17:40:20+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -12,6 +12,92 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Leetcode #2. Add Two Numbers]]></title>
+    <link href="http://whhotw.github.io/blog/2017/11/28/leetcode-number-2-add-two-numbers/"/>
+    <updated>2017-11-28T17:31:11+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/11/28/leetcode-number-2-add-two-numbers</id>
+    <content type="html"><![CDATA[<p><em>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</em></p>
+
+<p><em>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</em></p>
+
+<p><em>Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8</em></p>
+
+<blockquote><p>相加兩個 linked lists</p></blockquote>
+
+<p>兩個 list 不一定會是等長，因此當沒有下一個節點的時候會新增一個假的節點，在下一回合檢查的時候 <code>if (!l1.next &amp;&amp; !l2.next)</code> 為真即最後回合。</p>
+
+<p>PS. 處理進位問題不是很漂亮應該有更好的寫法！</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var addTwoNumbers = function(l1, l2) {
+</span><span class='line'>    if (l1 && l2) { 
+</span><span class='line'>        let val = l1.val + l2.val;
+</span><span class='line'>        let l = new ListNode(val % 10);
+</span><span class='line'>        
+</span><span class='line'>        if (!l1.next && !l2.next) {
+</span><span class='line'>            l.next = (val &gt; 9 ? new ListNode(1) : null);
+</span><span class='line'>            return l;
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        if (!l1.next) {
+</span><span class='line'>            l1.next = new ListNode(0);
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        if (!l2.next) {
+</span><span class='line'>            l2.next = new ListNode(0);
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        if (val &gt; 9) {
+</span><span class='line'>            if (l1.next) {
+</span><span class='line'>                l1.next.val++;    
+</span><span class='line'>            } else {
+</span><span class='line'>                l1.next = new ListNode(1);
+</span><span class='line'>            }
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        l.next = addTwoNumbers(l1.next, l2.next);    
+</span><span class='line'>        return l;
+</span><span class='line'>    } else {
+</span><span class='line'>        return null;
+</span><span class='line'>    }
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Leetcode #102. Binary Tree Level Order Traversal]]></title>
@@ -582,7 +668,7 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
     <id>http://whhotw.github.io/blog/2017/09/08/promise</id>
     <content type="html"><![CDATA[<p>最早是在社群提出，但 <code>ES6</code> 推出後就被列入標準了，原生提供 <code>Promise</code> 對象，讓前端工程師處理非同步問題。例如：下載網路上的圖片之後顯示。</p>
 
-<h1>基本用法</h1>
+<h3>基本用法</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -593,7 +679,7 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>var promise = new Promise(function(resolve, reject) {
+</pre></td><td class='code'><pre><code class=''><span class='line'>let promise = new Promise(function(resolve, reject) {
 </span><span class='line'>  // ... some code
 </span><span class='line'>
 </span><span class='line'>  if (true){
@@ -602,6 +688,48 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 </span><span class='line'>    reject(error);
 </span><span class='line'>  }
 </span><span class='line'>});</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Promise.resolve()</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let p = Promise.resolve(arg);</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>傳入的參數是 <code>thenable</code> 將會執行該對象的 <code>then</code> 然後回傳一個 <code>Promise</code> 狀態為 <code>resolved</code> 的對象</li>
+<li>傳入的參數不具有 <code>thenable</code> 將會回傳一個 <code>Promise</code> 狀態為 <code>resolved</code> 的對象</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let p = Promise.resolve('Hello');
+</span><span class='line'>
+</span><span class='line'>p.then(function (s){
+</span><span class='line'>  console.log(s)
+</span><span class='line'>});
+</span><span class='line'>// Hello</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>沒有傳入參數將會回傳一個 <code>Promise</code> 狀態為 <code>resolved</code> 的對象</li>
+</ul>
+
+
+<h3>Promise.reject()</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let p = Promise.reject(arg);</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>大致原理跟 <code>Promise.resolve()</code> 一樣，只是狀態為 <code>rejected</code></li>
+</ul>
 
 ]]></content>
   </entry>
