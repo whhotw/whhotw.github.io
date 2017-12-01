@@ -4,7 +4,7 @@
   <title><![CDATA[Wenhao's Worklog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-11-28T17:40:20+08:00</updated>
+  <updated>2017-12-01T16:37:57+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[Wenhao Ho]]></name>
@@ -207,6 +207,11 @@ Output: 7 -> 0 -> 8</em></p>
 <li>uploadSymbols: (Boolean) Option to include symbols in the generated ipa file.</li>
 <li>uploadBitcode: (Boolean) Option to include Bitcode.</li>
 </ul>
+
+
+<h3>我自己寫的 Shell Script</h3>
+
+<script src="https://gist.github.com/whhotw/b1d12e06844cbf08ae7dfa088e306fad.js"></script>
 
 ]]></content>
   </entry>
