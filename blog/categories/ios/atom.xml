@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Ios | Wenhao's Worklog]]></title>
+  <title><![CDATA[Category: Ios | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-12-01T16:37:57+08:00</updated>
+  <updated>2017-12-14T04:06:30+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
-    <name><![CDATA[Wenhao Ho]]></name>
+    <name><![CDATA[w]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>

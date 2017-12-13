@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Wenhao's Worklog</title>
-  <meta name="author" content="Wenhao Ho">
+  <title>wlog</title>
+  <meta name="author" content="w">
 
   
-  <meta name="description" content="You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes &hellip;">
+  <meta name="description" content="其實用 PHP 寫的東西不是很多，再加上一直都不算是網頁端的開發者，所以很多相關的知識其實不太熟悉，哈；目前台灣傳統的資訊公司（新創應該都是 Node.js 了），應該還是用 PHP 來開發網路應用，一來當然是廣大社群的力量（有問題 google 一下，基本上都能找到解法），很多很棒的第三方套件， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +21,7 @@
   <link rel="canonical" href="http://whhotw.github.io/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Wenhao's Worklog" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="wlog" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -48,7 +48,7 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">Wenhao's Worklog</a></h1>
+  <h1><a href="/">wlog</a></h1>
   
     <h2>About my working experience and reminder</h2>
   
@@ -77,6 +77,110 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/12/14/php-htaccess-she-ding/">PHP .htaccess 設定</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-12-14T03:44:11+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:44 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>其實用 <code>PHP</code> 寫的東西不是很多，再加上一直都不算是網頁端的開發者，所以很多相關的知識其實不太熟悉，哈；目前台灣傳統的資訊公司（新創應該都是 <code>Node.js</code> 了），應該還是用 <code>PHP</code> 來開發網路應用，一來當然是廣大社群的力量（有問題 google 一下，基本上都能找到解法），很多很棒的第三方套件，再加上建置成本相對便宜的因素。最近民間友人拜託看一個 bug ，就當作工作之餘也摸一些網頁的東西，並且趁這次記錄一下。註：我是 OSX 的環境</p>
+
+<h2>遇到 http 500 internal server error</h2>
+
+<p>確定 apache 的模組有載入</p>
+
+<p>vim /etc/apache2/httpd.conf</p>
+
+<p><code>LoadModule rewrite_module libexec/apache2/mod_rewrite.so</code></p>
+
+<h2>開啟 .htaccess 功能</h2>
+
+<p>類似這樣</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;Directory "/myweb"&gt;
+</span><span class='line'>  ...
+</span><span class='line'>  AllowOverride all
+</span><span class='line'>  ...
+</span><span class='line'>&lt;/Directory&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>.htaccess 檔案內容</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;IfModule mod_rewrite.c&gt;
+</span><span class='line'>    RewriteEngine on
+</span><span class='line'>    RewriteBase /
+</span><span class='line'>    #RewriteCond $1 !^(index\.php|assets|.*\.ipa|images|swf|uploads|js|css|assets|robots\.txt|$)
+</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-f
+</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-d
+</span><span class='line'>    RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
+</span><span class='line'>&lt;/IfModule&gt;</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/12/13/react-native-app-package/">React-Native App Package 名稱設定</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-12-13T15:43:29+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:43 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>建立 RN app 時設定 package 名稱</p>
+
+<p><code>react-native init MyApp --package=com.xxx.myapp</code></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -675,94 +779,6 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/10/12/ding-qi-zhi-xing-sqlyu-fa-and-ji-song-you-jian/">定期執行SQL語法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-10-12T15:08:30+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:08 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>設定 mysql event schedule</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>CREATE EVENT `&lt;table_name&gt;`.`&lt;event_name&gt;`
-</span><span class='line'>ON SCHEDULE EVERY 1 YEAR
-</span><span class='line'>ON COMPLETION PRESERVE
-</span><span class='line'>ENABLE
-</span><span class='line'>DO
-</span><span class='line'>insert into field('b') values(now())</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>DO</code> 後面就是接一般的 <code>SQL</code> 語法新增，刪除，修改等</p>
-
-<h3>顯示 event schedule</h3>
-
-<p><code>mysql&gt; show processlist;</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app/">Ignore Self Signed Cert on React-Native App</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-10-05T11:06:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:06 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/assets/Simulator%20Screen%20Shot%20Oct%205%2C%202017%2C%2011.19.10%20AM.png" width="360" height="640"></p>
-
-<p>RN 裡面是不接受自簽憑證的，但是往往在開發環境中，有些時候還是會用到自簽憑證，這時候就會變得很麻煩，因為寫程式的時候等於不能跑在測試環境，這時候就可以新增 <code>NSURLRequest</code> 的 category 讓網路連線可以通過 <code>https</code> 的錯誤</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>+ (BOOL)allowsAnyHTTPSCertificateForHost:(NSString *)host {
-</span><span class='line'>  return YES;
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -778,6 +794,14 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/12/14/php-htaccess-she-ding/">PHP .htaccess 設定</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/12/13/react-native-app-package/">React-Native App Package 名稱設定</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/11/28/leetcode-number-2-add-two-numbers/">Leetcode #2. Add Two Numbers</a>
       </li>
     
@@ -787,14 +811,6 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
     
       <li class="post">
         <a href="/blog/2017/11/23/ios-app-da-bao-zhi-ling/">iOS App 打包用的指令</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/11/21/git-she-ding-hu-lue-zi-qian-ping-zheng/">Git 設定忽略自簽憑證</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/11/20/mo-zu/">Js 動態載入模組</a>
       </li>
     
   </ul>
@@ -839,7 +855,7 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2017 - Wenhao Ho -
+  Copyright &copy; 2017 - w -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

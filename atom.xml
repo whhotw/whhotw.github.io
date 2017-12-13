@@ -1,17 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Wenhao's Worklog]]></title>
+  <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-12-01T16:37:57+08:00</updated>
+  <updated>2017-12-14T04:06:30+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
-    <name><![CDATA[Wenhao Ho]]></name>
+    <name><![CDATA[w]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[PHP .htaccess 設定]]></title>
+    <link href="http://whhotw.github.io/blog/2017/12/14/php-htaccess-she-ding/"/>
+    <updated>2017-12-14T03:44:11+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/12/14/php-htaccess-she-ding</id>
+    <content type="html"><![CDATA[<p>其實用 <code>PHP</code> 寫的東西不是很多，再加上一直都不算是網頁端的開發者，所以很多相關的知識其實不太熟悉，哈；目前台灣傳統的資訊公司（新創應該都是 <code>Node.js</code> 了），應該還是用 <code>PHP</code> 來開發網路應用，一來當然是廣大社群的力量（有問題 google 一下，基本上都能找到解法），很多很棒的第三方套件，再加上建置成本相對便宜的因素。最近民間友人拜託看一個 bug ，就當作工作之餘也摸一些網頁的東西，並且趁這次記錄一下。註：我是 OSX 的環境</p>
+
+<h2>遇到 http 500 internal server error</h2>
+
+<p>確定 apache 的模組有載入</p>
+
+<p>vim /etc/apache2/httpd.conf</p>
+
+<p><code>LoadModule rewrite_module libexec/apache2/mod_rewrite.so</code></p>
+
+<h2>開啟 .htaccess 功能</h2>
+
+<p>類似這樣</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;Directory "/myweb"&gt;
+</span><span class='line'>  ...
+</span><span class='line'>  AllowOverride all
+</span><span class='line'>  ...
+</span><span class='line'>&lt;/Directory&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>.htaccess 檔案內容</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;IfModule mod_rewrite.c&gt;
+</span><span class='line'>    RewriteEngine on
+</span><span class='line'>    RewriteBase /
+</span><span class='line'>    #RewriteCond $1 !^(index\.php|assets|.*\.ipa|images|swf|uploads|js|css|assets|robots\.txt|$)
+</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-f
+</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-d
+</span><span class='line'>    RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
+</span><span class='line'>&lt;/IfModule&gt;</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[React-Native App Package 名稱設定]]></title>
+    <link href="http://whhotw.github.io/blog/2017/12/13/react-native-app-package/"/>
+    <updated>2017-12-13T15:43:29+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/12/13/react-native-app-package</id>
+    <content type="html"><![CDATA[<p>建立 RN app 時設定 package 名稱</p>
+
+<p><code>react-native init MyApp --package=com.xxx.myapp</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Leetcode #2. Add Two Numbers]]></title>
@@ -753,72 +817,6 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 
 
 <h5>-i 顯示所有端口<br/>-i:${PORT} 顯示指定端口<br/>-t 只印出 PID</h5>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[First React Native App]]></title>
-    <link href="http://whhotw.github.io/blog/2017/09/06/first-react-native-app/"/>
-    <updated>2017-09-06T14:49:07+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/09/06/first-react-native-app</id>
-    <content type="html"><![CDATA[<h1>快速建立一個 React-Native App</h1>
-
-<h3>Install create-react-native-app</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>npm install -g create-react-native-app</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Create React Native App</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>create-react-native-app ${ProjectName}
-</span><span class='line'>cd ${ProjectName}
-</span><span class='line'>npm run ios(or android)</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>建立一個 React-Native App</h1>
-
-<h3>Install react-native-cli</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>npm install -g react-native-cli</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Init &amp; Run Project</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>react-native init ${ProjectName}
-</span><span class='line'>cd ${ProjectName}
-</span><span class='line'>react-native run-ios(or -anroid)</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>remind: stop apache</p></blockquote>
-
-<h1>常用的第三方套件</h1>
-
-<h3>Install &amp; Import react-native-vector-icons</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>npm install --save react-native-vector-icons
-</span><span class='line'>npm install -g rnpm
-</span><span class='line'>rnpm link
-</span><span class='line'>
-</span><span class='line'>import Icon from 'react-native-vector-icons/Ionicons';</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>react-native-i18n: 多語系<br/>
-react-native-keychain: 帳密處理<br/>
-react-native-navigation: 導覽列佈局<br/>
-react-native-vector-icons: 圖資源<br/></p></blockquote>
 ]]></content>
   </entry>
   

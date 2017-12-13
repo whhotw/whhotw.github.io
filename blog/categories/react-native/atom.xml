@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: React-native | Wenhao's Worklog]]></title>
+  <title><![CDATA[Category: React-native | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-12-01T16:37:57+08:00</updated>
+  <updated>2017-12-14T04:06:30+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
-    <name><![CDATA[Wenhao Ho]]></name>
+    <name><![CDATA[w]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[React-Native App Package 名稱設定]]></title>
+    <link href="http://whhotw.github.io/blog/2017/12/13/react-native-app-package/"/>
+    <updated>2017-12-13T15:43:29+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/12/13/react-native-app-package</id>
+    <content type="html"><![CDATA[<p>建立 RN app 時設定 package 名稱</p>
+
+<p><code>react-native init MyApp --package=com.xxx.myapp</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ignore Self Signed Cert on React-Native App]]></title>
