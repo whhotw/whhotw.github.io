@@ -105,9 +105,17 @@
 
 <p>確定 apache 的模組有載入</p>
 
-<p>vim /etc/apache2/httpd.conf</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ vim /etc/apache2/httpd.conf
+</span><span class='line'>
+</span><span class='line'>...
+</span><span class='line'>LoadModule rewrite_module libexec/apache2/mod_rewrite.so
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
 
-<p><code>LoadModule rewrite_module libexec/apache2/mod_rewrite.so</code></p>
 
 <h2>開啟 .htaccess 功能</h2>
 
