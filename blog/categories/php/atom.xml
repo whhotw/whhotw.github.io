@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Php | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-12-14T14:10:00+08:00</updated>
+  <updated>2017-12-14T14:11:57+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -30,44 +30,9 @@ $ brew install php56-mcrypt --without-homebrew-php
 
 <p>網路上找到的解決辦法</p>
 
-<p><div><script src='https://gist.github.com/24479f34dc5007e50d47.js'></script>
-<noscript><pre><code># Setup `php-mycrypt` on macOS (and versions of Mac OS X)
-
-These steps should have been mentioned in the prerequisites of the [Laravel Installation Guide](https://laravel.com/docs/5.4/installation), since I&#39;m surely not the only person trying to get Laravel running on macOS.
-
-## Install
-
-Install Mcrypt using [Homebrew](http://brew.sh/)
-
-```bash
-# PHP 7
-brew install php70-mcrypt
-
-# PHP 5
-brew install php56-mcrypt --without-homebrew-php
-````
-
-Add this line to `/private/etc/php.ini`:
-
-```bash
-# PHP 7
-extension=&quot;/usr/local/Cellar/php70-mcrypt/7.0.x/mcrypt.so&quot;
-
-# PHP 5
-extension=&quot;/usr/local/Cellar/php56-mcrypt/5.6.x/mcrypt.so&quot;
-```
-
-You are ready to go!
-
-## Upgrade
-
-Upgrade Mcrypt using [Homebrew](http://brew.sh/)
-
-```bash
-brew reinstall -fs php71-mcrypt
-```
-
-</code></pre></noscript></div>
+<p><div><script src='https://gist.github.com/5672127.js'></script>
+<noscript><pre><code>@import &quot;../custom/theme/_colors.*&quot;; // can set defaults to override theme colors
+@import &quot;colors&quot;;                    // Sets colors with $color: #aaa !default;</code></pre></noscript></div>
 </p>
 ]]></content>
   </entry>

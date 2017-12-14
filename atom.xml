@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-12-14T14:10:00+08:00</updated>
+  <updated>2017-12-14T14:11:57+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -33,44 +33,9 @@
 
 <p>網路上找到的解決辦法</p>
 
-<div><script src='https://gist.github.com/24479f34dc5007e50d47.js'></script>
-<noscript><pre><code># Setup `php-mycrypt` on macOS (and versions of Mac OS X)
-
-These steps should have been mentioned in the prerequisites of the [Laravel Installation Guide](https://laravel.com/docs/5.4/installation), since I&#39;m surely not the only person trying to get Laravel running on macOS.
-
-## Install
-
-Install Mcrypt using [Homebrew](http://brew.sh/)
-
-```bash
-# PHP 7
-brew install php70-mcrypt
-
-# PHP 5
-brew install php56-mcrypt --without-homebrew-php
-````
-
-Add this line to `/private/etc/php.ini`:
-
-```bash
-# PHP 7
-extension=&quot;/usr/local/Cellar/php70-mcrypt/7.0.x/mcrypt.so&quot;
-
-# PHP 5
-extension=&quot;/usr/local/Cellar/php56-mcrypt/5.6.x/mcrypt.so&quot;
-```
-
-You are ready to go!
-
-## Upgrade
-
-Upgrade Mcrypt using [Homebrew](http://brew.sh/)
-
-```bash
-brew reinstall -fs php71-mcrypt
-```
-
-</code></pre></noscript></div>
+<div><script src='https://gist.github.com/5672127.js'></script>
+<noscript><pre><code>@import &quot;../custom/theme/_colors.*&quot;; // can set defaults to override theme colors
+@import &quot;colors&quot;;                    // Sets colors with $color: #aaa !default;</code></pre></noscript></div>
 
 ]]></content>
   </entry>
@@ -345,7 +310,63 @@ Output: 7 -> 0 -> 8</em></p>
 
 <h3>我自己寫的 Shell Script</h3>
 
-<script src="https://gist.github.com/whhotw/b1d12e06844cbf08ae7dfa088e306fad.js"></script>
+<div><script src='https://gist.github.com/b1d12e06844cbf08ae7dfa088e306fad.js'></script>
+<noscript><pre><code>#!/bin/sh
+
+TARGET_NAME=$1
+
+if [ -n $TARGET_NAME ]; then
+        TARGET_NAME=&quot;&quot;
+fi
+
+ROOT_PATH=$HOME/$TARGET_NAME
+ARCHIVE_DIR=$ROOT_PATH/ios/archive
+BUNDLE_DIR=$ROOT_PATH/ios/bundle
+TIME=$(date +&quot;%s&quot;)
+BUNDLE_SHO_VER=&quot;1.0&quot;
+BUNDLE_VER=$TIME
+USER_NAME=&quot;username@mail.com&quot;
+
+read -s -p &quot;input password of ${USER_NAME}&quot; PASSWORD
+sleep 1
+
+echo &quot;!!! START BUILD&quot; $TIME
+
+if [ -d $BUNDLE_DIR ]; then
+        rm -rf $BUNDLE_DIR
+fi
+
+mkdir -p $BUNDLE_DIR
+
+cd $ROOT_PATH
+
+react-native bundle --entry-file index.ios.js --platform ios --dev false --bundle-output $BUNDLE_DIR/main.jsbundle --assets-dest $BUNDLE_DIR
+
+cd $ROOT_PATH/ios
+
+/usr/libexec/PlistBuddy -c &quot;Set :CFBundleShortVersionString ${BUNDLE_SHO_VER}&quot; $ROOT_PATH/ios/$TARGET_NAME/Info.plist
+/usr/libexec/PlistBuddy -c &quot;Set :CFBundleVersion ${BUNDLE_VER}&quot; $ROOT_PATH/ios/$TARGET_NAME/Info.plist
+
+if [ -d $ARCHIVE_DIR ]; then
+        rm -rf $ARCHIVE_DIR
+fi
+
+mkdir -p $ARCHIVE_DIR
+
+xcodebuild -scheme $TARGET_NAME clean archive \
+    -archivePath $ARCHIVE_DIR/$TARGET_NAME.xcarchive \
+
+xcodebuild -exportArchive \
+        -archivePath $ARCHIVE_DIR/$TARGET_NAME.xcarchive \
+        -exportPath $ARCHIVE_DIR \
+        -exportOptionsPlist $ROOT_PATH/BUILD.plist
+
+/Applications/Xcode.app/Contents/Applications/Application\ Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool --upload-app -f $ROOT_PATH/ios/archive/$TARGET_NAME.ipa -u $USER_NAME -p $PASSWORD
+
+/usr/libexec/PlistBuddy -c &quot;Set :CFBundleShortVersionString 1.0&quot; $ROOT_PATH/ios/ASAPShop/Info.plist
+/usr/libexec/PlistBuddy -c &quot;Set :CFBundleVersion 1&quot; $ROOT_PATH/ios/ASAPShop/Info.plist</code></pre></noscript></div>
+
+
 
 ]]></content>
   </entry>

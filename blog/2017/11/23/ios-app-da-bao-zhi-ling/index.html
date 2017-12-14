@@ -169,7 +169,63 @@ $ xcodebuild -workspace ${PROJECT_NAME}.xcworkspace - &hellip;">
 
 <h3>我自己寫的 Shell Script</h3>
 
-<script src="https://gist.github.com/whhotw/b1d12e06844cbf08ae7dfa088e306fad.js"></script>
+<div><script src='https://gist.github.com/b1d12e06844cbf08ae7dfa088e306fad.js'></script>
+<noscript><pre><code>#!/bin/sh
+
+TARGET_NAME=$1
+
+if [ -n $TARGET_NAME ]; then
+        TARGET_NAME=&quot;&quot;
+fi
+
+ROOT_PATH=$HOME/$TARGET_NAME
+ARCHIVE_DIR=$ROOT_PATH/ios/archive
+BUNDLE_DIR=$ROOT_PATH/ios/bundle
+TIME=$(date +&quot;%s&quot;)
+BUNDLE_SHO_VER=&quot;1.0&quot;
+BUNDLE_VER=$TIME
+USER_NAME=&quot;username@mail.com&quot;
+
+read -s -p &quot;input password of ${USER_NAME}&quot; PASSWORD
+sleep 1
+
+echo &quot;!!! START BUILD&quot; $TIME
+
+if [ -d $BUNDLE_DIR ]; then
+        rm -rf $BUNDLE_DIR
+fi
+
+mkdir -p $BUNDLE_DIR
+
+cd $ROOT_PATH
+
+react-native bundle --entry-file index.ios.js --platform ios --dev false --bundle-output $BUNDLE_DIR/main.jsbundle --assets-dest $BUNDLE_DIR
+
+cd $ROOT_PATH/ios
+
+/usr/libexec/PlistBuddy -c &quot;Set :CFBundleShortVersionString ${BUNDLE_SHO_VER}&quot; $ROOT_PATH/ios/$TARGET_NAME/Info.plist
+/usr/libexec/PlistBuddy -c &quot;Set :CFBundleVersion ${BUNDLE_VER}&quot; $ROOT_PATH/ios/$TARGET_NAME/Info.plist
+
+if [ -d $ARCHIVE_DIR ]; then
+        rm -rf $ARCHIVE_DIR
+fi
+
+mkdir -p $ARCHIVE_DIR
+
+xcodebuild -scheme $TARGET_NAME clean archive \
+    -archivePath $ARCHIVE_DIR/$TARGET_NAME.xcarchive \
+
+xcodebuild -exportArchive \
+        -archivePath $ARCHIVE_DIR/$TARGET_NAME.xcarchive \
+        -exportPath $ARCHIVE_DIR \
+        -exportOptionsPlist $ROOT_PATH/BUILD.plist
+
+/Applications/Xcode.app/Contents/Applications/Application\ Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool --upload-app -f $ROOT_PATH/ios/archive/$TARGET_NAME.ipa -u $USER_NAME -p $PASSWORD
+
+/usr/libexec/PlistBuddy -c &quot;Set :CFBundleShortVersionString 1.0&quot; $ROOT_PATH/ios/ASAPShop/Info.plist
+/usr/libexec/PlistBuddy -c &quot;Set :CFBundleVersion 1&quot; $ROOT_PATH/ios/ASAPShop/Info.plist</code></pre></noscript></div>
+
+
 
 </div>
 
