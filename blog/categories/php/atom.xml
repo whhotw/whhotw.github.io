@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Php | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-12-14T14:11:57+08:00</updated>
+  <updated>2017-12-14T14:17:35+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -25,15 +25,12 @@ $ brew tap homebrew/homebrew-php
 $ brew install php56-mcrypt --without-homebrew-php
 </code></pre>
 
-<blockquote><p>php.ini 加入 extension 位置
-重啟 apache</p></blockquote>
+<blockquote><p>php.ini 加入 extension, 重啟 apache</p></blockquote>
 
 <p>網路上找到的解決辦法</p>
 
-<p><div><script src='https://gist.github.com/5672127.js'></script>
-<noscript><pre><code>@import &quot;../custom/theme/_colors.*&quot;; // can set defaults to override theme colors
-@import &quot;colors&quot;;                    // Sets colors with $color: #aaa !default;</code></pre></noscript></div>
-</p>
+<script src="https://gist.github.com/idleberg/24479f34dc5007e50d47.js"></script>
+
 ]]></content>
   </entry>
   
