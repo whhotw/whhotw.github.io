@@ -9,11 +9,9 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="快速建立一個 React-Native App Install create-react-native-app 1
-npm install -g create-react-native-app Create React Native App 1
+  <meta name="description" content="在開發的時候會需要開一些服務，來幫助除錯或是測試程式，但有時候會遇到無法正常啟動的問題，這時候可以檢查看看是不是舊服務把 port 佔住，導致新的服務開不起來，可以使用 lsof(list open files) 這個指令檢查一下把不要的服務 kill 1
 2
-3
-create-react-native- &hellip;">
+lsof -t -i:${PORT &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +79,46 @@ create-react-native- &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/09/07/osx-shang-jie-jue-port-bei-shi-yong-de-wen-ti/">OSX 上解決 Port 被使用的問題</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-09-07T10:18:55+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:18 am</span></time>
+        
+           | <a href="/blog/2017/09/07/osx-shang-jie-jue-port-bei-shi-yong-de-wen-ti/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2017/09/07/osx-shang-jie-jue-port-bei-shi-yong-de-wen-ti/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在開發的時候會需要開一些服務，來幫助除錯或是測試程式，但有時候會遇到無法正常啟動的問題，這時候可以檢查看看是不是舊服務把 port 佔住，導致新的服務開不起來，可以使用 <code>lsof(list open files)</code> 這個指令檢查一下把不要的服務 kill</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>lsof -t -i:${PORT}
+</span><span class='line'>kill -9 $(lsof -t -i:${PORT})</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>-i 顯示所有端口<br/>-i:${PORT} 顯示指定端口<br/>-t 只印出 PID</h5>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -186,6 +224,10 @@ react-native-vector-icons: 圖資源<br/></p></blockquote>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/12/14/php-an-zhuang-mcrypt/">在 OSX 環境下安裝 PHP Mcrypt 套件</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/12/14/php-htaccess-she-ding/">.htaccess 設定</a>
       </li>
     
@@ -201,10 +243,6 @@ react-native-vector-icons: 圖資源<br/></p></blockquote>
         <a href="/blog/2017/11/27/leetcode-number-102-binary-tree-level-order-traversal/">Leetcode #102. Binary Tree Level Order Traversal</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2017/11/23/ios-app-da-bao-zhi-ling/">iOS App 打包用的指令</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -218,6 +256,7 @@ react-native-vector-icons: 圖資源<br/></p></blockquote>
 <li class='category'><a href='/blog/categories/ios/'>ios (1)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (3)</a></li>
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (3)</a></li>
+<li class='category'><a href='/blog/categories/php/'>php (1)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
 <li class='category'><a href='/blog/categories/react-native/'>react-native (4)</a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (1)</a></li>

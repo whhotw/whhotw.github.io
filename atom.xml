@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-12-14T10:53:06+08:00</updated>
+  <updated>2017-12-14T13:34:00+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[在 OSX 環境下安裝 PHP Mcrypt 套件]]></title>
+    <link href="http://whhotw.github.io/blog/2017/12/14/php-an-zhuang-mcrypt/"/>
+    <updated>2017-12-14T11:09:46+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/12/14/php-an-zhuang-mcrypt</id>
+    <content type="html"><![CDATA[<p>指令</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew install mcrypt
+</span><span class='line'>$ brew tap homebrew/homebrew-php
+</span><span class='line'>$ brew install php56-mcrypt --without-homebrew-php</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>php.ini 加入 extension 位置
+重啟 apache</p></blockquote>
+
+<p>網路上找到的解決辦法</p>
+
+<script src="https://gist.github.com/idleberg/24479f34dc5007e50d47.js"></script>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[.htaccess 設定]]></title>
@@ -808,23 +833,6 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 <li>大致原理跟 <code>Promise.resolve()</code> 一樣，只是狀態為 <code>rejected</code></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[OSX 上解決 Port 被使用的問題]]></title>
-    <link href="http://whhotw.github.io/blog/2017/09/07/osx-shang-jie-jue-port-bei-shi-yong-de-wen-ti/"/>
-    <updated>2017-09-07T10:18:55+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/09/07/osx-shang-jie-jue-port-bei-shi-yong-de-wen-ti</id>
-    <content type="html"><![CDATA[<p>在開發的時候會需要開一些服務，來幫助除錯或是測試程式，但有時候會遇到無法正常啟動的問題，這時候可以檢查看看是不是舊服務把 port 佔住，導致新的服務開不起來，可以使用 <code>lsof(list open files)</code> 這個指令檢查一下把不要的服務 kill</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>lsof -t -i:${PORT}
-</span><span class='line'>kill -9 $(lsof -t -i:${PORT})</span></code></pre></td></tr></table></div></figure>
-
-
-<h5>-i 顯示所有端口<br/>-i:${PORT} 顯示指定端口<br/>-t 只印出 PID</h5>
 ]]></content>
   </entry>
   

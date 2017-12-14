@@ -5,11 +5,17 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>.htaccess 設定 - wlog</title>
+  <title>在 OSX 環境下安裝 PHP Mcrypt 套件 - wlog</title>
   <meta name="author" content="w">
 
   
-  <meta name="description" content="其實用 PHP 寫的東西不是很多，再加上一直都不算是網頁端的開發者，所以很多相關的知識其實不太熟悉，哈；目前台灣傳統的資訊公司（新創應該都是 Node.js 了），應該還是用 PHP 來開發網路應用，一來當然是廣大社群的力量（有問題 google 一下，基本上都能找到解法），很多很棒的第三方套件， &hellip;">
+  <meta name="description" content="指令 1
+2
+3
+$ brew install mcrypt
+$ brew tap homebrew/homebrew-php
+$ brew install php56-mcrypt --without-homebrew-php php.ini 加入 extension 位置
+重啟 apache &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/2017/12/14/php-htaccess-she-ding/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2017/12/14/php-an-zhuang-mcrypt/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="wlog" type="application/atom+xml">
@@ -80,7 +86,7 @@
   
   <header>
     
-      <h1 class="entry-title">.htaccess 設定</h1>
+      <h1 class="entry-title">在 OSX 環境下安裝 PHP Mcrypt 套件</h1>
     
     
       <p class="meta">
@@ -89,7 +95,7 @@
 
 
 
-<time class='entry-date' datetime='2017-12-14T03:44:11+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:44 am</span></time>
+<time class='entry-date' datetime='2017-12-14T11:09:46+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:09 am</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://whhotw.github.io">Comments</a>
@@ -99,58 +105,22 @@
   </header>
 
 
-<div class="entry-content"><p>其實用 <code>PHP</code> 寫的東西不是很多，再加上一直都不算是網頁端的開發者，所以很多相關的知識其實不太熟悉，哈；目前台灣傳統的資訊公司（新創應該都是 <code>Node.js</code> 了），應該還是用 <code>PHP</code> 來開發網路應用，一來當然是廣大社群的力量（有問題 google 一下，基本上都能找到解法），很多很棒的第三方套件，再加上建置成本相對便宜的因素。最近民間友人拜託看一個 bug ，就當作工作之餘也摸一些網頁的東西，並且趁這次記錄一下。註：我是 OSX 的環境</p>
-
-<h2>遇到 http 500 internal server error</h2>
-
-<p>確定 apache 的模組有載入</p>
+<div class="entry-content"><p>指令</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vim /etc/apache2/httpd.conf
-</span><span class='line'>
-</span><span class='line'>...
-</span><span class='line'>LoadModule rewrite_module libexec/apache2/mod_rewrite.so
-</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew install mcrypt
+</span><span class='line'>$ brew tap homebrew/homebrew-php
+</span><span class='line'>$ brew install php56-mcrypt --without-homebrew-php</span></code></pre></td></tr></table></div></figure>
 
 
-<h2>開啟 .htaccess 功能</h2>
+<blockquote><p>php.ini 加入 extension 位置
+重啟 apache</p></blockquote>
 
-<p>類似這樣</p>
+<p>網路上找到的解決辦法</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;Directory "/myweb"&gt;
-</span><span class='line'>  ...
-</span><span class='line'>  AllowOverride all
-</span><span class='line'>  ...
-</span><span class='line'>&lt;/Directory&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>.htaccess 檔案內容</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;IfModule mod_rewrite.c&gt;
-</span><span class='line'>    RewriteEngine on
-</span><span class='line'>    RewriteBase /
-</span><span class='line'>    #RewriteCond $1 !^(index\.php|assets|.*\.ipa|images|swf|uploads|js|css|assets|robots\.txt|$)
-</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-f
-</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-d
-</span><span class='line'>    RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
-</span><span class='line'>&lt;/IfModule&gt;</span></code></pre></td></tr></table></div></figure>
+<script src="https://gist.github.com/idleberg/24479f34dc5007e50d47.js"></script>
 
 </div>
 
@@ -167,12 +137,12 @@
 
 
 
-<time class='entry-date' datetime='2017-12-14T03:44:11+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:44 am</span></time>
+<time class='entry-date' datetime='2017-12-14T11:09:46+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:09 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/apache/'>apache</a>
+    <a class='category' href='/blog/categories/php/'>php</a>
   
 </span>
 
@@ -190,10 +160,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2017/12/13/react-native-app-package/" title="Previous Post: React-Native app package 名稱設定">&laquo; React-Native app package 名稱設定</a>
+        <a class="basic-alignment left" href="/blog/2017/12/14/php-htaccess-she-ding/" title="Previous Post: .htaccess 設定">&laquo; .htaccess 設定</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2017/12/14/php-an-zhuang-mcrypt/" title="Next Post: 在 OSX 環境下安裝 PHP mcrypt 套件">在 OSX 環境下安裝 PHP mcrypt 套件 &raquo;</a>
       
     </p>
   </footer>
@@ -208,8 +176,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2017/12/14/php-htaccess-she-ding/';
-        var disqus_url = 'http://whhotw.github.io/blog/2017/12/14/php-htaccess-she-ding/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2017/12/14/php-an-zhuang-mcrypt/';
+        var disqus_url = 'http://whhotw.github.io/blog/2017/12/14/php-an-zhuang-mcrypt/';
         var disqus_script = 'embed.js';
       
     (function () {
@@ -323,8 +291,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2017/12/14/php-htaccess-she-ding/';
-        var disqus_url = 'http://whhotw.github.io/blog/2017/12/14/php-htaccess-she-ding/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2017/12/14/php-an-zhuang-mcrypt/';
+        var disqus_url = 'http://whhotw.github.io/blog/2017/12/14/php-an-zhuang-mcrypt/';
         var disqus_script = 'embed.js';
       
     (function () {

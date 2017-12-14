@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Php | wlog]]></title>
+  <link href="http://whhotw.github.io/blog/categories/php/atom.xml" rel="self"/>
+  <link href="http://whhotw.github.io/"/>
+  <updated>2017-12-14T13:34:00+08:00</updated>
+  <id>http://whhotw.github.io/</id>
+  <author>
+    <name><![CDATA[w]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[在 OSX 環境下安裝 PHP Mcrypt 套件]]></title>
+    <link href="http://whhotw.github.io/blog/2017/12/14/php-an-zhuang-mcrypt/"/>
+    <updated>2017-12-14T11:09:46+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/12/14/php-an-zhuang-mcrypt</id>
+    <content type="html"><![CDATA[<p>指令</p>
+
+<pre><code>$ brew install mcrypt
+$ brew tap homebrew/homebrew-php
+$ brew install php56-mcrypt --without-homebrew-php
+</code></pre>
+
+<blockquote><p>php.ini 加入 extension 位置
+重啟 apache</p></blockquote>
+
+<p>網路上找到的解決辦法</p>
+
+<script src="https://gist.github.com/idleberg/24479f34dc5007e50d47.js"></script>
+
+]]></content>
+  </entry>
+  
+</feed>
