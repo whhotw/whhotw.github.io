@@ -9,9 +9,16 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="在開發的時候會需要開一些服務，來幫助除錯或是測試程式，但有時候會遇到無法正常啟動的問題，這時候可以檢查看看是不是舊服務把 port 佔住，導致新的服務開不起來，可以使用 lsof(list open files) 這個指令檢查一下把不要的服務 kill 1
+  <meta name="description" content="最早是在社群提出，但 ES6 推出後就被列入標準了，原生提供 Promise 對象，讓前端工程師處理非同步問題。例如：下載網路上的圖片之後顯示。 基本用法 1
 2
-lsof -t -i:${PORT &hellip;">
+3
+4
+5
+6
+7
+8
+9
+let promise = new Promise(function(resolve, reject &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +87,102 @@ lsof -t -i:${PORT &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/09/08/promise/">Promise</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-09-08T14:14:37+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>2:14 pm</span></time>
+        
+           | <a href="/blog/2017/09/08/promise/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2017/09/08/promise/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最早是在社群提出，但 <code>ES6</code> 推出後就被列入標準了，原生提供 <code>Promise</code> 對象，讓前端工程師處理非同步問題。例如：下載網路上的圖片之後顯示。</p>
+
+<h3>基本用法</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let promise = new Promise(function(resolve, reject) {
+</span><span class='line'>  // ... some code
+</span><span class='line'>
+</span><span class='line'>  if (true){
+</span><span class='line'>    resolve(value);
+</span><span class='line'>  } else {
+</span><span class='line'>    reject(error);
+</span><span class='line'>  }
+</span><span class='line'>});</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Promise.resolve()</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let p = Promise.resolve(arg);</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>傳入的參數是 <code>thenable</code> 將會執行該對象的 <code>then</code> 然後回傳一個 <code>Promise</code> 狀態為 <code>resolved</code> 的對象</li>
+<li>傳入的參數不具有 <code>thenable</code> 將會回傳一個 <code>Promise</code> 狀態為 <code>resolved</code> 的對象</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let p = Promise.resolve('Hello');
+</span><span class='line'>
+</span><span class='line'>p.then(function (s){
+</span><span class='line'>  console.log(s)
+</span><span class='line'>});
+</span><span class='line'>// Hello</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>沒有傳入參數將會回傳一個 <code>Promise</code> 狀態為 <code>resolved</code> 的對象</li>
+</ul>
+
+
+<h3>Promise.reject()</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let p = Promise.reject(arg);</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>大致原理跟 <code>Promise.resolve()</code> 一樣，只是狀態為 <code>rejected</code></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -225,6 +328,10 @@ react-native-vector-icons: 圖資源<br/></p></blockquote>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/12/18/">在 OSX 環境建置 Nginx+PHP</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/12/14/php-an-zhuang-mcrypt/">在 OSX 環境下安裝 PHP Mcrypt 套件</a>
       </li>
     
@@ -240,24 +347,19 @@ react-native-vector-icons: 圖資源<br/></p></blockquote>
         <a href="/blog/2017/11/28/leetcode-number-2-add-two-numbers/">Leetcode #2. Add Two Numbers</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2017/11/27/leetcode-number-102-binary-tree-level-order-traversal/">Leetcode #102. Binary Tree Level Order Traversal</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/android/'>android (1)</a></li>
-<li class='category'><a href='/blog/categories/apache/'>apache (1)</a></li>
 <li class='category'><a href='/blog/categories/command/'>command (1)</a></li>
 <li class='category'><a href='/blog/categories/cordova/'>cordova (1)</a></li>
 <li class='category'><a href='/blog/categories/git/'>git (2)</a></li>
 <li class='category'><a href='/blog/categories/ios/'>ios (1)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (3)</a></li>
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (3)</a></li>
-<li class='category'><a href='/blog/categories/php/'>php (1)</a></li>
+<li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
 <li class='category'><a href='/blog/categories/react-native/'>react-native (4)</a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (1)</a></li>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Php | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-12-14T14:28:03+08:00</updated>
+  <updated>2017-12-18T17:01:56+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[在 OSX 環境建置 Nginx+PHP]]></title>
+    <link href="http://whhotw.github.io/blog/2017/12/18/"/>
+    <updated>2017-12-18T16:14:50+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/12/</id>
+    <content type="html"><![CDATA[<p>參考
+<a href="https://gist.github.com/dtomasi/ab76d14338db82ec24a1fc137caff75b">https://gist.github.com/dtomasi/ab76d14338db82ec24a1fc137caff75b</a></p>
+
+<h2>Install Commandline Tools</h2>
+
+<p><code>$ xcode-select --install</code></p>
+
+<h2>Install Nginx</h2>
+
+<p><code>$ brew update</code></p>
+
+<h3>After install run</h3>
+
+<p><code>sudo nginx</code></p>
+
+<h3>Configuration</h3>
+
+<p><code>/usr/local/etc/nginx/nginx.conf</code></p>
+
+<h3>Stop nginx service</h3>
+
+<p><code>sudo nginx -s stop</code></p>
+
+<h3>Reload nginx service</h3>
+
+<p><code>sudo nginx -s reload</code></p>
+
+<h3>Nginx.conf</h3>
+
+<pre><code>$ vim /usr/local/etc/nginx/nginx.conf
+
+    server {
+        listen       8080;
+        server_name  localhost;
+
+        root   html;
+
+        location / {
+            try_files index.html /index.php;
+        }
+
+        location ~ \.php$ {
+            fastcgi_pass  127.0.0.1:9000;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            include       fastcgi_params;
+        }
+
+        location ~ /\.ht {
+            deny  all;
+        }
+    }
+</code></pre>
+
+<h3>Install PHP56</h3>
+
+<pre><code>$ brew tap homebrew/homebrew-php
+$ brew install --without-apache --without-fpm --without-mysql php56
+</code></pre>
+
+<h3>php-fpm</h3>
+
+<pre><code>$ php-fpm
+[18-Dec-2017 16:51:20] NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
+[18-Dec-2017 16:51:20] NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root
+
+$sudo php-fpm
+</code></pre>
+
+<blockquote><p>注意權限</p></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[在 OSX 環境下安裝 PHP Mcrypt 套件]]></title>
@@ -31,6 +108,49 @@ $ brew install php56-mcrypt --without-homebrew-php
 
 <script src="https://gist.github.com/idleberg/24479f34dc5007e50d47.js"></script>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[.htaccess 設定]]></title>
+    <link href="http://whhotw.github.io/blog/2017/12/14/php-htaccess-she-ding/"/>
+    <updated>2017-12-14T03:44:11+08:00</updated>
+    <id>http://whhotw.github.io/blog/2017/12/14/php-htaccess-she-ding</id>
+    <content type="html"><![CDATA[<p>其實用 <code>PHP</code> 寫的東西不是很多，再加上一直都不算是網頁端的開發者，所以很多相關的知識其實不太熟悉，哈；目前台灣傳統的資訊公司（新創應該都是 <code>Node.js</code> 了），應該還是用 <code>PHP</code> 來開發網路應用，一來當然是廣大社群的力量（有問題 google 一下，基本上都能找到解法），很多很棒的第三方套件，再加上建置成本相對便宜的因素。最近民間友人拜託看一個 bug ，就當作工作之餘也摸一些網頁的東西，並且趁這次記錄一下。註：我是 OSX 的環境</p>
+
+<h2>遇到 http 500 internal server error</h2>
+
+<p>確定 apache 的模組有載入</p>
+
+<pre><code>$ vim /etc/apache2/httpd.conf
+
+...
+LoadModule rewrite_module libexec/apache2/mod_rewrite.so
+...
+</code></pre>
+
+<h2>開啟 .htaccess 功能</h2>
+
+<p>類似這樣</p>
+
+<pre><code>&lt;Directory "/myweb"&gt;
+    ...
+    AllowOverride all
+    ...
+&lt;/Directory&gt;
+</code></pre>
+
+<h2>.htaccess 檔案內容</h2>
+
+<pre><code>&lt;IfModule mod_rewrite.c&gt;
+    RewriteEngine on
+    RewriteBase /
+    #RewriteCond $1 !^(index\.php|assets|.*\.ipa|images|swf|uploads|js|css|assets|robots\.txt|$)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
+&lt;/IfModule&gt;
+</code></pre>
 ]]></content>
   </entry>
   
