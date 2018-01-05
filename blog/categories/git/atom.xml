@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2017-12-18T17:01:56+08:00</updated>
+  <updated>2018-01-05T10:32:47+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,56 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Commit 空資料夾到 Git]]></title>
+    <link href="http://whhotw.github.io/blog/2018/01/05/git-kong-zi-liao-jia/"/>
+    <updated>2018-01-05T01:29:37+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/01/05/git-kong-zi-liao-jia</id>
+    <content type="html"><![CDATA[<p>有些時候想要在 git 上 commit 一個空資料夾時，可以透過 .gitignore 的設定來做到。</p>
+
+<h3>專案結構</h3>
+
+<pre><code>$ tree -La 1
+.
+├── .git
+├── .gitignore
+├── README.md
+├── application
+├── assets
+├── index.php
+├── system
+└── vendor
+</code></pre>
+
+<blockquote><p>假如你有一個空的資料夾，你是沒有辦法 commit 這個檔案到 git 上的，因此可以建立一個 .gitignore 在這個空的資料夾裡</p></blockquote>
+
+<h3>新的專案結構</h3>
+
+<pre><code>$ tree -La 1
+.
+├── .git
+├── .gitignore
+├── README.md
+├── application
+├── assets
+├── index.php
+├── system
+├── test
+│   └── .gitignore
+└── vendor
+</code></pre>
+
+<blockquote><p>如此一來將可以 commit</p></blockquote>
+
+<p>另外你假如想要保留一個 temp 資料夾在 git 上，你可以順便利用這個 .gitignore</p>
+
+<pre><code>$ vim test/.gitignore
+*
+!.gitignore
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Git 設定忽略自簽憑證]]></title>
