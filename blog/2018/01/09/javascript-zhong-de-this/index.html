@@ -5,20 +5,26 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>How About Push Large Size File to Git - wlog</title>
+  <title>Javascript 中 This 的種種 - wlog</title>
   <meta name="author" content="w">
 
   
-  <meta name="description" content="想要上傳超過 100MB 的檔案到 Git 被 rejected 的解法 安裝 brew install git-lfs 操作 1
+  <meta name="description" content="javscript 中的 this 是一個很容易搞混的東東。 具名函數搭配 bind 的寫法 1
 2
 3
 4
 5
 6
-cd ${project}
-git lfs install
-git lfs track "*.ext" =&gt; 依副檔名
-git add &hellip;">
+7
+8
+9
+10
+11
+12
+13
+function wth() { console.log(this);
+} let o = { name: 1
+}; wth(); // &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -27,7 +33,7 @@ git add &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/2017/09/29/how-about-push-large-size-file-to-git/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="wlog" type="application/atom+xml">
@@ -90,7 +96,7 @@ git add &hellip;">
   
   <header>
     
-      <h1 class="entry-title">How About Push Large Size File to Git</h1>
+      <h1 class="entry-title">Javascript 中 This 的種種</h1>
     
     
       <p class="meta">
@@ -99,7 +105,7 @@ git add &hellip;">
 
 
 
-<time class='entry-date' datetime='2017-09-29T10:36:15+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:36 am</span></time>
+<time class='entry-date' datetime='2018-01-09T09:56:40+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>9:56 am</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://whhotw.github.io">Comments</a>
@@ -109,13 +115,9 @@ git add &hellip;">
   </header>
 
 
-<div class="entry-content"><p>想要上傳超過 100MB 的檔案到 Git 被 rejected 的解法</p>
+<div class="entry-content"><p>javscript 中的 this 是一個很容易搞混的東東。</p>
 
-<h3>安裝</h3>
-
-<p><code>brew install git-lfs</code></p>
-
-<h3>操作</h3>
+<p>具名函數搭配 bind 的寫法</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -123,21 +125,59 @@ git add &hellip;">
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd ${project}
-</span><span class='line'>git lfs install
-</span><span class='line'>git lfs track "*.ext" =&gt; 依副檔名
-</span><span class='line'>git add file.ext
-</span><span class='line'>git commit -m "something..."
-</span><span class='line'>git push origin master</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>function wth() {
+</span><span class='line'>  console.log(this);
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>let o = {
+</span><span class='line'>  name: 1
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>wth(); // window
+</span><span class='line'>
+</span><span class='line'>let wthBind = wth.bind(o);
+</span><span class='line'>
+</span><span class='line'>wthBind(); // object o</span></code></pre></td></tr></table></div></figure>
 
 
-<p>關鍵是 <code>track</code> 某個檔案或是資料夾，可以利用 <code>git lfs ls-files</code> 查看哪些檔案被追蹤</p>
+<p>使用箭頭函數</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ git lfs ls-files
-</span><span class='line'>74015d7b01 * src/ios/xxx</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let wth = () =&gt; {
+</span><span class='line'>  console.log(this);
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>let o = {
+</span><span class='line'>  name: 1
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>wth(); // window
+</span><span class='line'>
+</span><span class='line'>let wthBind = wth.bind(o);
+</span><span class='line'>
+</span><span class='line'>wthBind(); // window</span></code></pre></td></tr></table></div></figure>
 
+
+<p>為什麼執行結果不同呢？是因為透過箭頭函數 this 對象會在宣告時就綁定，因此就算之後用 bind 也不會有變化</p>
 </div>
 
 
@@ -153,12 +193,12 @@ git add &hellip;">
 
 
 
-<time class='entry-date' datetime='2017-09-29T10:36:15+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:36 am</span></time>
+<time class='entry-date' datetime='2018-01-09T09:56:40+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>9:56 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/git/'>git</a>
+    <a class='category' href='/blog/categories/javascript/'>javascript</a>
   
 </span>
 
@@ -176,10 +216,8 @@ git add &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2017/09/26/js-rsa-jia-mi-slash-qian-ming/" title="Previous Post: JS RSA 加密/簽名">&laquo; JS RSA 加密/簽名</a>
+        <a class="basic-alignment left" href="/blog/2018/01/05/git-kong-zi-liao-jia/" title="Previous Post: commit 空資料夾到 git">&laquo; commit 空資料夾到 git</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app/" title="Next Post: Ignore self signed cert on React-Native App">Ignore self signed cert on React-Native App &raquo;</a>
       
     </p>
   </footer>
@@ -194,8 +232,8 @@ git add &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2017/09/29/how-about-push-large-size-file-to-git/';
-        var disqus_url = 'http://whhotw.github.io/blog/2017/09/29/how-about-push-large-size-file-to-git/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/';
         var disqus_script = 'embed.js';
       
     (function () {
@@ -308,8 +346,8 @@ git add &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2017/09/29/how-about-push-large-size-file-to-git/';
-        var disqus_url = 'http://whhotw.github.io/blog/2017/09/29/how-about-push-large-size-file-to-git/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/';
         var disqus_script = 'embed.js';
       
     (function () {

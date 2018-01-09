@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-01-05T10:32:47+08:00</updated>
+  <updated>2018-01-09T10:58:10+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,77 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Javascript 中 This 的種種]]></title>
+    <link href="http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/"/>
+    <updated>2018-01-09T09:56:40+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this</id>
+    <content type="html"><![CDATA[<p>javscript 中的 this 是一個很容易搞混的東東。</p>
+
+<p>具名函數搭配 bind 的寫法</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>function wth() {
+</span><span class='line'>  console.log(this);
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>let o = {
+</span><span class='line'>  name: 1
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>wth(); // window
+</span><span class='line'>
+</span><span class='line'>let wthBind = wth.bind(o);
+</span><span class='line'>
+</span><span class='line'>wthBind(); // object o</span></code></pre></td></tr></table></div></figure>
+
+
+<p>使用箭頭函數</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let wth = () =&gt; {
+</span><span class='line'>  console.log(this);
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>let o = {
+</span><span class='line'>  name: 1
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>wth(); // window
+</span><span class='line'>
+</span><span class='line'>let wthBind = wth.bind(o);
+</span><span class='line'>
+</span><span class='line'>wthBind(); // window</span></code></pre></td></tr></table></div></figure>
+
+
+<p>為什麼執行結果不同呢？是因為透過箭頭函數 this 對象會在宣告時就綁定，因此就算之後用 bind 也不會有變化</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Commit 空資料夾到 Git]]></title>
@@ -869,44 +940,6 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
     <id>http://whhotw.github.io/blog/2017/09/14/install-local-plugin-to-cordova-project</id>
     <content type="html"><![CDATA[<p>use it.
 <code>plugman install --platform ios --project path/to/your/ionicapp/platforms/android --plugin /Path/to/your/cordova-plugin/MyDemo/</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[React Native - Setting onMessage on a WebView Overrides Existing Values of window.postMessage]]></title>
-    <link href="http://whhotw.github.io/blog/2017/09/13/react-native-setting-onmessage-on-a-webview-overrides-existing-values-of-window-dot-postmessage/"/>
-    <updated>2017-09-13T15:56:07+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/09/13/react-native-setting-onmessage-on-a-webview-overrides-existing-values-of-window-dot-postmessage</id>
-    <content type="html"><![CDATA[<p>最近在玩 React Native 遇到的一個問題。假如想讓 WebView 與 React Native 溝通的話可以用 <code>onMessage</code> 這個介面，但是假如原本的網頁內容你不確定怎麼寫的，可能會遇到 <code>Setting onMessage on a WebView overrides existing values of window.postMessage</code>
-這樣的錯誤訊息，搜尋了一下解法，紀錄一下</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>const patchPostMessageFunction = () =&gt; {
-</span><span class='line'>  const originalPostMessage = window.postMessage;
-</span><span class='line'>
-</span><span class='line'>  const patchedPostMessage = (message, targetOrigin, transfer) =&gt; {
-</span><span class='line'>    originalPostMessage(message, targetOrigin, transfer);
-</span><span class='line'>  };
-</span><span class='line'>
-</span><span class='line'>  patchedPostMessage.toString = () =&gt; String(Object.hasOwnProperty).replace('hasOwnProperty', 'postMessage');
-</span><span class='line'>
-</span><span class='line'>  window.postMessage = patchedPostMessage;
-</span><span class='line'>};
-</span><span class='line'>
-</span><span class='line'>const patchPostMessageJsCode = `(${String(patchPostMessageFunction)})();`;</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

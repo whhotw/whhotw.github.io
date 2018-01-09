@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-01-05T10:32:47+08:00</updated>
+  <updated>2018-01-09T10:58:10+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Javascript 中 This 的種種]]></title>
+    <link href="http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/"/>
+    <updated>2018-01-09T09:56:40+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this</id>
+    <content type="html"><![CDATA[<p>javscript 中的 this 是一個很容易搞混的東東。</p>
+
+<p>具名函數搭配 bind 的寫法</p>
+
+<pre><code>function wth() {
+    console.log(this);
+}
+
+let o = {
+    name: 1
+};
+
+wth(); // window
+
+let wthBind = wth.bind(o);
+
+wthBind(); // object o
+</code></pre>
+
+<p>使用箭頭函數</p>
+
+<pre><code>let wth = () =&gt; {
+    console.log(this);
+};
+
+let o = {
+    name: 1
+};
+
+wth(); // window
+
+let wthBind = wth.bind(o);
+
+wthBind(); // window
+</code></pre>
+
+<p>為什麼執行結果不同呢？是因為透過箭頭函數 this 對象會在宣告時就綁定，因此就算之後用 bind 也不會有變化</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Js 動態載入模組]]></title>
