@@ -5,11 +5,20 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Cordova - wlog</title>
+  <title>淺拷貝 vs. 深拷貝 - wlog</title>
   <meta name="author" content="w">
 
   
-  <meta name="description" content="Category: cordova">
+  <meta name="description" content="複製物件你可能會這麼寫 1
+2
+3
+4
+5
+let a = {a: '1', b: '2', c: '3'};
+let x = a;
+x.a = 10
+console.log(a); // {a: '10', b: '2', c: '3'}
+console.log(x === a); // &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +27,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/categories/cordova/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2018/01/11/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="wlog" type="application/atom+xml">
@@ -77,36 +86,161 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Cordova</h1>
+    
+      <h1 class="entry-title">淺拷貝 vs. 深拷貝</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-01-11T22:21:31+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:21 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h3>複製物件你可能會這麼寫</h3>
 
-  
-  <h2>2017</h2>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let a = {a: '1', b: '2', c: '3'};
+</span><span class='line'>let x = a;
+</span><span class='line'>x.a = 10
+</span><span class='line'>console.log(a); // {a: '10', b: '2', c: '3'}
+</span><span class='line'>console.log(x === a); // true</span></code></pre></td></tr></table></div></figure>
 
-<article>
-  
-<h1><a href="/blog/2017/09/14/install-local-plugin-to-cordova-project/">Install Local Plugin to Cordova Project</a></h1>
-<time datetime="2017-09-14T17:35:19+08:00" pubdate><span class='month'>Sep</span> <span class='day'>14</span> <span class='year'>2017</span></time>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/cordova/'>cordova</a></span>
-</footer>
+<p>為什麼新的變數內容改變，舊的變數內容也會變呢？因為以上的寫法為<code>淺拷貝</code>但是很多時候我們並不想這樣，這時候就需要改成<code>深拷貝</code>的寫法</p>
+
+<p>&ndash;</p>
+
+<h3>淺拷貝 => 分身術</h3>
+
+<p>外表（值）長得一樣，靈魂（記憶體位置）<strong>相同</strong></p>
+
+<h3>深拷貝 => 雙胞胎</h3>
+
+<p>外表（值）長得一樣，靈魂（記憶體位置）<strong>不同</strong></p>
+
+<h3>比較圖</h3>
+
+<p><img src="http://i.stack.imgur.com/hOPkR.png" alt="image" /></p>
+
+<p>&ndash;</p>
+
+<h3>Object.assign</h3>
+
+<p>ES6 上可以用的函式但只能處理深度只有一層的物件</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let a = {a: '1', b: '2', c: '3'};
+</span><span class='line'>let x = Object.assign({}, a);
+</span><span class='line'>x.a = 10
+</span><span class='line'>console.log(a); // {a: '1', b: '2', c: '3'}
+</span><span class='line'>console.log(x === a); // false</span></code></pre></td></tr></table></div></figure>
 
 
-</article>
+<h3>lodash</h3>
+
+<p>網路上熱門的<a href="https://lodash.com/">函式庫</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let _ = require('lodash');
+</span><span class='line'>let a = {a: '1', b: '2', c: '3'};
+</span><span class='line'>let x = _.cloneDeep(a);
+</span><span class='line'>x.a = 10
+</span><span class='line'>console.log(a); // {a: '1', b: '2', c: '3'}
+</span><span class='line'>console.log(x === a); // false</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">w</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2018-01-11T22:21:31+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:21 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/js/'>js</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2018/01/09/javascript-zhong-de-this/" title="Previous Post: javascript 中 this 的種種">&laquo; javascript 中 this 的種種</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite">
+
+<script type="text/javascript">
+      var disqus_shortname = 'whhotw';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/11/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/01/11/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+</div>
+  </section>
 
 </div>
 
@@ -208,7 +342,10 @@
       var disqus_shortname = 'whhotw';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/11/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/01/11/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
