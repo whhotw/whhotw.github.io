@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-01-11T23:31:47+08:00</updated>
+  <updated>2018-01-12T11:30:11+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,71 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Stack vs. Heap]]></title>
+    <link href="http://whhotw.github.io/blog/2018/01/12/stack-vs-heap/"/>
+    <updated>2018-01-12T10:58:29+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/01/12/stack-vs-heap</id>
+    <content type="html"><![CDATA[<p>最近複習了一下<code>stack</code>跟<code>heap</code>的觀念。我主要是參考這部<a href="https://www.youtube.com/watch?v=_8-ht2AKyH4">影片</a></p>
+
+<p><img src="https://i.ytimg.com/vi/_8-ht2AKyH4/maxresdefault.jpg" alt="image" /></p>
+
+<blockquote><p>影片中我覺得很重要的一張圖</p></blockquote>
+
+<h3>Global</h3>
+
+<p>全域變數或是靜態變數</p>
+
+<h3>Stack</h3>
+
+<p>可預期生命週期的變數或是函式，例如：區域變數，函式變數</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int f() {
+</span><span class='line'>  int a;
+</span><span class='line'>  a = ff();
+</span><span class='line'>  return a;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>int ff() {
+</span><span class='line'>  return 10;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>編譯器會知道變數的生命週期，像是上面的片段。程式會在<code>stack</code>放入變數<code>a</code>接著等待函式<code>ff</code>的返回，當<code>ff</code>返回時會從<code>stack</code>中釋放變數<code>a</code>，因此程式可以自我管理記憶體空間不需要開發者介入</p>
+
+<h3>Heap</h3>
+
+<p>動態配置的空間，例如：指標</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int f() {
+</span><span class='line'>  int *a;
+</span><span class='line'>  a = (int*)malloc(sizeof(int)); // 配置記憶體
+</span><span class='line'>  *a = 10;
+</span><span class='line'>  free(a); //釋放記憶體
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>編譯器並不會知道何時要釋放變數<code>a</code>，因此開發者必須自行執行函式<code>free</code>將記憶體釋放</p>
+
+<blockquote><p>配置跟釋放有<code>malloc``free</code>跟<code>new``delete</code></p></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[淺拷貝 vs. 深拷貝]]></title>
@@ -976,29 +1041,6 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 <p>getKey() 裡面放要使用的鑰匙資訊，像我是透過 <code>pem</code> 所以會從檔案中把資訊取出來。 可以使用 <code>react-native-fs</code> 存取檔案系統</p>
 
 <p>一開始以為可以透過類似讀圖片的方式 <code>require('url')</code> 得到憑證檔案，因為自己的想法是，假如要先手動把一些自定義的檔案放入個別的系統，真的很麻煩。經過了一個下午的努力與 google 的結果，似乎除了圖片目前還沒有自動連結實體檔案的方法，下次有時間研究一下 <code>rnpm link</code> 是怎麼做的！雖然是針對套件不過應該可以自己寫個 script 解決我這個問題</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[React Native - 讓安卓返回鍵失效]]></title>
-    <link href="http://whhotw.github.io/blog/2017/09/20/react-native-rang-an-zhuo-fan-hui-jian-shi-xiao/"/>
-    <updated>2017-09-20T17:28:47+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/09/20/react-native-rang-an-zhuo-fan-hui-jian-shi-xiao</id>
-    <content type="html"><![CDATA[<p>設定 <code>overrideBackPress=true</code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>this.props.navigator.showLightBox({
-</span><span class='line'>    screen: '',
-</span><span class='line'>    passProps: {},
-</span><span class='line'>    style: {},
-</span><span class='line'>    overrideBackPress: true
-</span><span class='line'>});</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
