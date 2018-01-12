@@ -4,7 +4,7 @@
   <title><![CDATA[Category: React-native | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-01-12T11:30:11+08:00</updated>
+  <updated>2018-01-12T13:47:48+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -14,13 +14,15 @@
 
   
   <entry>
-    <title type="html"><![CDATA[React-Native App Package 名稱設定]]></title>
+    <title type="html"><![CDATA[React-Native Init App]]></title>
     <link href="http://whhotw.github.io/blog/2017/12/13/react-native-app-package/"/>
     <updated>2017-12-13T15:43:29+08:00</updated>
     <id>http://whhotw.github.io/blog/2017/12/13/react-native-app-package</id>
-    <content type="html"><![CDATA[<p>建立 RN app 時設定 package 名稱</p>
+    <content type="html"><![CDATA[<pre><code>$ react-naitve init MyApp
 
-<p><code>react-native init MyApp --package=com.xxx.myapp</code></p>
+// 指定版本
+$ react-naitve init MyApp --version 0.49.0
+</code></pre>
 ]]></content>
   </entry>
   

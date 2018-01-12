@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-01-12T11:30:11+08:00</updated>
+  <updated>2018-01-12T13:47:48+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -72,9 +72,7 @@
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 
-<p>編譯器並不會知道何時要釋放變數<code>a</code>，因此開發者必須自行執行函式<code>free</code>將記憶體釋放</p>
-
-<blockquote><p>配置跟釋放有<code>malloc``free</code>跟<code>new``delete</code></p></blockquote>
+<p>編譯器並不會知道何時要釋放變數<code>a</code>，因此開發者必須自行執行函式<code>free</code>將記憶體釋放。配置跟釋放有<code>malloc``free</code>跟<code>new``delete</code></p>
 ]]></content>
   </entry>
   
@@ -485,13 +483,19 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[React-Native App Package 名稱設定]]></title>
+    <title type="html"><![CDATA[React-Native Init App]]></title>
     <link href="http://whhotw.github.io/blog/2017/12/13/react-native-app-package/"/>
     <updated>2017-12-13T15:43:29+08:00</updated>
     <id>http://whhotw.github.io/blog/2017/12/13/react-native-app-package</id>
-    <content type="html"><![CDATA[<p>建立 RN app 時設定 package 名稱</p>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ react-naitve init MyApp
+</span><span class='line'>
+</span><span class='line'>// 指定版本
+</span><span class='line'>$ react-naitve init MyApp --version 0.49.0</span></code></pre></td></tr></table></div></figure>
 
-<p><code>react-native init MyApp --package=com.xxx.myapp</code></p>
 ]]></content>
   </entry>
   
