@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2018/01/17/testing-ios-notification-with-apns/</loc>
+<lastmod>2018-01-17T16:24:21+08:00</lastmod>
+</url>
+<url>
+<loc>http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods/</loc>
+<lastmod>2018-01-15T11:20:21+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2018/01/12/stack-vs-heap/</loc>
 <lastmod>2018-01-12T10:58:29+08:00</lastmod>
 </url>
@@ -149,11 +157,5 @@
 </url>
 <url>
 <loc>http://whhotw.github.io/blog/categories/php/</loc>
-</url>
-<url>
-<loc>http://whhotw.github.io/posts/2/</loc>
-</url>
-<url>
-<loc>http://whhotw.github.io/posts/3/</loc>
 </url>
 </urlset>

@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-01-12T13:47:48+08:00</updated>
+  <updated>2018-01-18T11:28:27+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Testing iOS Notification With APNs]]></title>
+    <link href="http://whhotw.github.io/blog/2018/01/17/testing-ios-notification-with-apns/"/>
+    <updated>2018-01-17T16:24:21+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/01/17/testing-ios-notification-with-apns</id>
+    <content type="html"><![CDATA[<p>設定步驟可以<a href="https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/HandlingRemoteNotifications.html">參考蘋果的官方</a>或是<a href="https://medium.com/@ankushaggarwal/generate-apns-certificate-for-ios-push-notifications-85e4a917d522">這篇</a></p>
+
+<p>此篇主要是介紹我自己用的測試工具，Github 上可以抓到<a href="https://github.com/pubnub/pubnub-support/blob/master/kb/code/push_debug.py">原檔</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>// for production
+</span><span class='line'>python push_debug.py aps.pem ${device_token}
+</span><span class='line'>
+</span><span class='line'>// for sandbox
+</span><span class='line'>python push_debug.py aps.pem ${device_token} -s</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>產出PEM檔</h3>
+
+<p>從 keychain 導出 p12 檔後需要轉成 pem</p>
+
+<p><img src="https://files.readme.io/bMyAXe1tRjac9USLX1z0_34.jpg" alt="" /></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>openssl pkcs12 -in aps.p12 -out aps.pem -nodes -clcerts</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript 20 Kinds of Methods]]></title>
+    <link href="http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods/"/>
+    <updated>2018-01-15T11:20:21+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods</id>
+    <content type="html"><![CDATA[<p>js 中 20 種必須知道的陣列方法</p>
+
+<p><img src="https://raw.githubusercontent.com/tooto1985/js-array-operations/master/main.jpg" alt="image" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Stack vs. Heap]]></title>
@@ -72,7 +116,7 @@
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 
-<p>編譯器並不會知道何時要釋放變數<code>a</code>，因此開發者必須自行執行函式<code>free</code>將記憶體釋放。配置跟釋放有<code>malloc``free</code>跟<code>new``delete</code></p>
+<p>編譯器並不會知道何時要釋放變數<code>a</code>，因此開發者必須自行執行函式<code>free</code>將記憶體釋放。配置跟釋放有<code>malloc</code> <code>free</code>跟<code>new</code> <code>delete</code></p>
 ]]></content>
   </entry>
   
@@ -150,7 +194,7 @@
     <link href="http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/"/>
     <updated>2018-01-09T09:56:40+08:00</updated>
     <id>http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this</id>
-    <content type="html"><![CDATA[<p>javscript 中的 this 是一個很容易搞混的東東。</p>
+    <content type="html"><![CDATA[<p>JavaScript 中的 this 是一個很容易搞混的東東。</p>
 
 <p>具名函數搭配 bind 的寫法</p>
 
@@ -724,7 +768,7 @@ Output: 7 -> 0 -> 8</em></p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Js 動態載入模組]]></title>
+    <title type="html"><![CDATA[JavaScript 動態載入模組]]></title>
     <link href="http://whhotw.github.io/blog/2017/11/20/mo-zu/"/>
     <updated>2017-11-20T15:53:41+08:00</updated>
     <id>http://whhotw.github.io/blog/2017/11/20/mo-zu</id>
@@ -966,7 +1010,7 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Ignore Self Signed Cert on React-Native App]]></title>
+    <title type="html"><![CDATA[Ignore Self Signed Cert on React Native App]]></title>
     <link href="http://whhotw.github.io/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app/"/>
     <updated>2017-10-05T11:06:00+08:00</updated>
     <id>http://whhotw.github.io/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app</id>
@@ -981,70 +1025,6 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 </span><span class='line'>  return YES;
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How About Push Large Size File to Git]]></title>
-    <link href="http://whhotw.github.io/blog/2017/09/29/how-about-push-large-size-file-to-git/"/>
-    <updated>2017-09-29T10:36:15+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/09/29/how-about-push-large-size-file-to-git</id>
-    <content type="html"><![CDATA[<p>想要上傳超過 100MB 的檔案到 Git 被 rejected 的解法</p>
-
-<h3>安裝</h3>
-
-<p><code>brew install git-lfs</code></p>
-
-<h3>操作</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd ${project}
-</span><span class='line'>git lfs install
-</span><span class='line'>git lfs track "*.ext" =&gt; 依副檔名
-</span><span class='line'>git add file.ext
-</span><span class='line'>git commit -m "something..."
-</span><span class='line'>git push origin master</span></code></pre></td></tr></table></div></figure>
-
-
-<p>關鍵是 <code>track</code> 某個檔案或是資料夾，可以利用 <code>git lfs ls-files</code> 查看哪些檔案被追蹤</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ git lfs ls-files
-</span><span class='line'>74015d7b01 * src/ios/xxx</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JS RSA 加密/簽名]]></title>
-    <link href="http://whhotw.github.io/blog/2017/09/26/js-rsa-jia-mi-slash-qian-ming/"/>
-    <updated>2017-09-26T11:14:39+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/09/26/js-rsa-jia-mi-slash-qian-ming</id>
-    <content type="html"><![CDATA[<p>大致上的流程就是伺服端生成公私鑰對後，將公鑰儲存在前端。登入時利用公鑰將敏感資料加密傳送給後端。通常我會習慣轉成 base64 後才傳給後端</p>
-
-<p>先安裝 <code>jsrsasign</code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>import rs from 'jsrsasign';
-</span><span class='line'>
-</span><span class='line'>let pub = rs.KEYUTIL.getKey(file);
-</span><span class='line'>let cipher = rs.KJUR.crypto.Cipher.encrypt(this.state.passwd, pub, 'RSA');
-</span><span class='line'>return rs.hextob64(cipher);</span></code></pre></td></tr></table></div></figure>
-
-
-<p>getKey() 裡面放要使用的鑰匙資訊，像我是透過 <code>pem</code> 所以會從檔案中把資訊取出來。 可以使用 <code>react-native-fs</code> 存取檔案系統</p>
-
-<p>一開始以為可以透過類似讀圖片的方式 <code>require('url')</code> 得到憑證檔案，因為自己的想法是，假如要先手動把一些自定義的檔案放入個別的系統，真的很麻煩。經過了一個下午的努力與 google 的結果，似乎除了圖片目前還沒有自動連結實體檔案的方法，下次有時間研究一下 <code>rnpm link</code> 是怎麼做的！雖然是針對套件不過應該可以自己寫個 script 解決我這個問題</p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ios | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-01-12T13:47:48+08:00</updated>
+  <updated>2018-01-18T11:28:27+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Testing iOS Notification With APNs]]></title>
+    <link href="http://whhotw.github.io/blog/2018/01/17/testing-ios-notification-with-apns/"/>
+    <updated>2018-01-17T16:24:21+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/01/17/testing-ios-notification-with-apns</id>
+    <content type="html"><![CDATA[<p>設定步驟可以<a href="https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/HandlingRemoteNotifications.html">參考蘋果的官方</a>或是<a href="https://medium.com/@ankushaggarwal/generate-apns-certificate-for-ios-push-notifications-85e4a917d522">這篇</a></p>
+
+<p>此篇主要是介紹我自己用的測試工具，Github 上可以抓到<a href="https://github.com/pubnub/pubnub-support/blob/master/kb/code/push_debug.py">原檔</a></p>
+
+<pre><code>// for production
+python push_debug.py aps.pem ${device_token}
+
+// for sandbox
+python push_debug.py aps.pem ${device_token} -s
+</code></pre>
+
+<h3>產出PEM檔</h3>
+
+<p>從 keychain 導出 p12 檔後需要轉成 pem</p>
+
+<p><img src="https://files.readme.io/bMyAXe1tRjac9USLX1z0_34.jpg" alt="" /></p>
+
+<pre><code>openssl pkcs12 -in aps.p12 -out aps.pem -nodes -clcerts
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[iOS App 打包用的指令]]></title>
