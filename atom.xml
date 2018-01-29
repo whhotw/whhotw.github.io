@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-01-25T11:20:31+08:00</updated>
+  <updated>2018-01-29T18:46:43+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,130 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[LeetCode #581. Shortest Unsorted Continuous Subarray]]></title>
+    <link href="http://whhotw.github.io/blog/2018/01/29/leetcode-number-581-shortest-unsorted-continuous-subarray/"/>
+    <updated>2018-01-29T18:45:26+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/01/29/leetcode-number-581-shortest-unsorted-continuous-subarray</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var findUnsortedSubarray = function(nums) {
+</span><span class='line'>    let n = nums.map((val) =&gt; val);
+</span><span class='line'>    
+</span><span class='line'>    nums.sort((a, b) =&gt; {
+</span><span class='line'>        return a - b;
+</span><span class='line'>    });
+</span><span class='line'>    
+</span><span class='line'>    let l = 0;
+</span><span class='line'>    let r = n.length;
+</span><span class='line'>    
+</span><span class='line'>    while (l &lt;= r) {
+</span><span class='line'>        if (n[l] === nums[l]) {
+</span><span class='line'>            l++;
+</span><span class='line'>        } else if (n[r] === nums[r]) {
+</span><span class='line'>            r--;
+</span><span class='line'>        } else {
+</span><span class='line'>            break;
+</span><span class='line'>        }
+</span><span class='line'>    }
+</span><span class='line'>    
+</span><span class='line'>    return l &gt; r ? 0 : r - l + 1;
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[死結(Deadlock)]]></title>
+    <link href="http://whhotw.github.io/blog/2018/01/29/si-jie/"/>
+    <updated>2018-01-29T10:33:18+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/01/29/si-jie</id>
+    <content type="html"><![CDATA[<p>死結(Deadlock)，只要以下四個條件都滿足就有死結。</p>
+
+<ul>
+<li>這個資源不能同時給兩個人用</li>
+<li>有一個人拿了一個資源，又想拿別人的資源</li>
+<li>如果一個人占了茅坑不拉屎，占用資源很久，仍不能趕他走</li>
+<li>A等B，B等C，C等D，D又等A 等成一圈。</li>
+</ul>
+
+
+<p>要解決這種狀況有Avoid(預防)或避免(Prevent)兩種方式，破除以上四種其中一種即可。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[LeetCode #493. Reverse Pairs]]></title>
+    <link href="http://whhotw.github.io/blog/2018/01/28/leetcode-number-493-reverse-pairs/"/>
+    <updated>2018-01-28T10:48:40+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/01/28/leetcode-number-493-reverse-pairs</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>for (let i = 0; i &lt; nums.length; i++) {
+</span><span class='line'>    for (let j = 0; j &lt; nums.length; j++) {
+</span><span class='line'>        if (i &lt; j && nums[i] &gt; 2 * nums[j]) {
+</span><span class='line'>            x++;
+</span><span class='line'>        }
+</span><span class='line'>    }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>Big O(n<sup>2</sup>)</p></blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Js 相關套件]]></title>
+    <link href="http://whhotw.github.io/blog/2018/01/25/sublime-chang-yong-tao-jian/"/>
+    <updated>2018-01-25T12:49:38+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/01/25/sublime-chang-yong-tao-jian</id>
+    <content type="html"><![CDATA[<h2><a href="https://github.com/jdc0589/JsFormat">JsFormat</a> 格式化程式碼</h2>
+
+<p>手動修改 <code>e4x</code> 屬性支持 <code>jsx</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "e4x": true,
+</span><span class='line'>  // jsformat options
+</span><span class='line'>  "format_on_save": true,
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h2><a href="https://github.com/SublimeLinter/SublimeLinter-jsxhint">SublimeLinter-jsxhint</a></h2>
+
+<p>檢查 jsx 語法錯誤</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[React-Native 開發環境]]></title>
@@ -613,7 +737,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Leetcode #2. Add Two Numbers]]></title>
+    <title type="html"><![CDATA[LeetCode #2. Add Two Numbers]]></title>
     <link href="http://whhotw.github.io/blog/2017/11/28/leetcode-number-2-add-two-numbers/"/>
     <updated>2017-11-28T17:31:11+08:00</updated>
     <id>http://whhotw.github.io/blog/2017/11/28/leetcode-number-2-add-two-numbers</id>
@@ -866,215 +990,6 @@ Output: 7 -> 0 -> 8</em></p>
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>AAA</span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Leetcode #357. Count Numbers With Unique Digits]]></title>
-    <link href="http://whhotw.github.io/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits/"/>
-    <updated>2017-11-16T14:44:14+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits</id>
-    <content type="html"><![CDATA[<p><em>Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x &lt; 10n.
-Example:
-Given n = 2, return 91. (The answer should be the total numbers in the range of 0 ≤ x &lt; 100, excluding [11,22,33,44,55,66,77,88,99])</em></p>
-
-<p>起初用暴力解但效率只能到達 n=6, 以上就會 time limit exceeded</p>
-
-<p><strong>我自己想的解法</strong></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>var countNumbersWithUniqueDigits = function(n) {
-</span><span class='line'>    console.log(Math.pow(10, n));
-</span><span class='line'>    let maxNum = Math.pow(10, n);
-</span><span class='line'>    let count = 0;
-</span><span class='line'>    for (let i = 10; i &lt; maxNum; i++) {
-</span><span class='line'>        let arr = i.toString().split('');
-</span><span class='line'>        let set = new Set(arr);
-</span><span class='line'>        if (arr.length !== set.size) {
-</span><span class='line'>            count++;
-</span><span class='line'>        }
-</span><span class='line'>    }
-</span><span class='line'>    
-</span><span class='line'>    return maxNum - count;
-</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>參考解答後優化的解法</strong></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>var countNumbersWithUniqueDigits = function(n) {
-</span><span class='line'>    if (n === 0) {
-</span><span class='line'>        return 1;
-</span><span class='line'>    } else {
-</span><span class='line'>        let v = 9;
-</span><span class='line'>        for (let i = 1; i &lt; n; i++) {
-</span><span class='line'>            v *= (11 - i - 1);
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        return countNumbersWithUniqueDigits(n - 1) + v;
-</span><span class='line'>    }
-</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
-
-
-<p>主要是運用動態規劃的方式</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>f(1)=f(0)+9
-</span><span class='line'>f(2)=f(1)+9*9
-</span><span class='line'>f(3)=f(2)+9*9*8
-</span><span class='line'>...
-</span><span class='line'>f(9)=f(8)+9*8*7*6*5*4*3*2
-</span><span class='line'>f(10)=f(9)+9*8*7*6*5*4*3*2*1</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[CLI 方式啟動 Android 模擬器]]></title>
-    <link href="http://whhotw.github.io/blog/2017/11/02/cli-fang-shi-qi-dong-android-mo-ni-qi/"/>
-    <updated>2017-11-02T17:18:48+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/11/02/cli-fang-shi-qi-dong-android-mo-ni-qi</id>
-    <content type="html"><![CDATA[<p><a href="https://developer.android.com/studio/run/emulator-commandline.html">android-emulator-commandline</a></p>
-
-<p><a href="https://developer.android.com/studio/command-line/avdmanager.html">avdmanager-commandline</a></p>
-
-<p>List avd</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>./avdmanager list avd
-</span><span class='line'>Available Android Virtual Devices:
-</span><span class='line'>    Name: Pixel_API_25
-</span><span class='line'>  Device: pixel (Google)
-</span><span class='line'>    Path: /Users/whh/.android/avd/Pixel_API_25.avd
-</span><span class='line'>  Target: Google APIs (Google Inc.)
-</span><span class='line'>          Based on: Android 7.1.1 (Nougat) Tag/ABI: google_apis/x86_64
-</span><span class='line'>    Skin: pixel
-</span><span class='line'>  Sdcard: 100M</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Run android emulator</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd ${ANDROID_HOME}/tools
-</span><span class='line'>emulator @${YOUR_AVD_NAME}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>List of devices attached</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>adb devices
-</span><span class='line'>List of devices attached
-</span><span class='line'>emulator-5554 device</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Reactotron 使用]]></title>
-    <link href="http://whhotw.github.io/blog/2017/11/01/reactotron-shi-yong/"/>
-    <updated>2017-11-01T16:27:58+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/11/01/reactotron-shi-yong</id>
-    <content type="html"><![CDATA[<h3><a href="https://github.com/infinitered/reactotron">Reactotron</a></h3>
-
-<p>開發 React 應用的時候，可以試試這個工具。可以觀察網路連線的資訊還可以印出自定義的日誌</p>
-
-<p>import 下面這行到你要用的地方
-<code>import Reactotron from 'reactotron-react-js'</code></p>
-
-<p>預設有三種等級可以選擇</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Reactotron.log('log')
-</span><span class='line'>Reactotron.warn('warn')
-</span><span class='line'>Reactotron.error('error')</span></code></pre></td></tr></table></div></figure>
-
-
-<p>也可以印出物件</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Reactotron.display({
-</span><span class='line'>  name: 'ORANGE',
-</span><span class='line'>  preview: 'Who?',
-</span><span class='line'>  value: 'Orange you glad you don\'t know me in real life?',
-</span><span class='line'>  important: true
-</span><span class='line'>})</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[定期執行SQL語法]]></title>
-    <link href="http://whhotw.github.io/blog/2017/10/12/ding-qi-zhi-xing-sqlyu-fa-and-ji-song-you-jian/"/>
-    <updated>2017-10-12T15:08:30+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/10/12/ding-qi-zhi-xing-sqlyu-fa-and-ji-song-you-jian</id>
-    <content type="html"><![CDATA[<h3>設定 mysql event schedule</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>CREATE EVENT `&lt;table_name&gt;`.`&lt;event_name&gt;`
-</span><span class='line'>ON SCHEDULE EVERY 1 YEAR
-</span><span class='line'>ON COMPLETION PRESERVE
-</span><span class='line'>ENABLE
-</span><span class='line'>DO
-</span><span class='line'>insert into field('b') values(now())</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>DO</code> 後面就是接一般的 <code>SQL</code> 語法新增，刪除，修改等</p>
-
-<h3>顯示 event schedule</h3>
-
-<p><code>mysql&gt; show processlist;</code></p>
 ]]></content>
   </entry>
   

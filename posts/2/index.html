@@ -9,12 +9,22 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="有些時候想要在 git 上 commit 一個空資料夾時，可以透過 .gitignore 的設定來做到。 專案結構 1
 2
 3
 4
-$ react-naitve init MyApp // 指定版本
-$ react-naitve init MyApp --version 0.49.0 ">
+5
+6
+7
+8
+9
+10
+$ tree -La 1
+.
+├── .git
+├── .gitignore
+├── README.md
+├── application &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +99,364 @@ $ react-naitve init MyApp --version 0.49.0 ">
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2018/01/05/git-kong-zi-liao-jia/">Commit 空資料夾到 Git</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-01-05T01:29:37+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>1:29 am</span></time>
+        
+           | <a href="/blog/2018/01/05/git-kong-zi-liao-jia/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/05/git-kong-zi-liao-jia/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>有些時候想要在 git 上 commit 一個空資料夾時，可以透過 .gitignore 的設定來做到。</p>
+
+<h3>專案結構</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree -La 1
+</span><span class='line'>.
+</span><span class='line'>├── .git
+</span><span class='line'>├── .gitignore
+</span><span class='line'>├── README.md
+</span><span class='line'>├── application
+</span><span class='line'>├── assets
+</span><span class='line'>├── index.php
+</span><span class='line'>├── system
+</span><span class='line'>└── vendor</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>假如你有一個空的資料夾，你是沒有辦法 commit 這個檔案到 git 上的，因此可以建立一個 .gitignore 在這個空的資料夾裡</p></blockquote>
+
+<h3>新的專案結構</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree -La 1
+</span><span class='line'>.
+</span><span class='line'>├── .git
+</span><span class='line'>├── .gitignore
+</span><span class='line'>├── README.md
+</span><span class='line'>├── application
+</span><span class='line'>├── assets
+</span><span class='line'>├── index.php
+</span><span class='line'>├── system
+</span><span class='line'>├── test
+</span><span class='line'>│   └── .gitignore
+</span><span class='line'>└── vendor</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>如此一來將可以 commit</p></blockquote>
+
+<p>另外你假如想要保留一個 temp 資料夾在 git 上，你可以順便利用這個 .gitignore</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ vim test/.gitignore
+</span><span class='line'>*
+</span><span class='line'>!.gitignore</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/12/18/">在 OSX 環境建置 Nginx+PHP</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-12-18T16:14:50+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>4:14 pm</span></time>
+        
+           | <a href="/blog/2017/12/18/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2017/12/18/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>參考
+<a href="https://gist.github.com/dtomasi/ab76d14338db82ec24a1fc137caff75b">https://gist.github.com/dtomasi/ab76d14338db82ec24a1fc137caff75b</a></p>
+
+<h2>Install Commandline Tools</h2>
+
+<p><code>$ xcode-select --install</code></p>
+
+<h2>Install Nginx</h2>
+
+<p><code>$ brew update</code></p>
+
+<h3>After install run</h3>
+
+<p><code>sudo nginx</code></p>
+
+<h3>Configuration</h3>
+
+<p><code>/usr/local/etc/nginx/nginx.conf</code></p>
+
+<h3>Stop nginx service</h3>
+
+<p><code>sudo nginx -s stop</code></p>
+
+<h3>Reload nginx service</h3>
+
+<p><code>sudo nginx -s reload</code></p>
+
+<h3>Nginx.conf</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ vim /usr/local/etc/nginx/nginx.conf
+</span><span class='line'>
+</span><span class='line'>    server {
+</span><span class='line'>        listen       8080;
+</span><span class='line'>        server_name  localhost;
+</span><span class='line'>
+</span><span class='line'>        root   html;
+</span><span class='line'>
+</span><span class='line'>        location / {
+</span><span class='line'>            try_files index.html /index.php;
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        location ~ \.php$ {
+</span><span class='line'>            fastcgi_pass  127.0.0.1:9000;
+</span><span class='line'>            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+</span><span class='line'>            include       fastcgi_params;
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        location ~ /\.ht {
+</span><span class='line'>            deny  all;
+</span><span class='line'>        }
+</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Install PHP56</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew tap homebrew/homebrew-php
+</span><span class='line'>$ brew install --without-apache --without-fpm --without-mysql php56</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>php-fpm</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ php-fpm
+</span><span class='line'>[18-Dec-2017 16:51:20] NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
+</span><span class='line'>[18-Dec-2017 16:51:20] NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root
+</span><span class='line'>
+</span><span class='line'>$sudo php-fpm</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>注意權限</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/12/14/php-an-zhuang-mcrypt/">在 OSX 環境下安裝 PHP Mcrypt 套件</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-12-14T11:09:46+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:09 am</span></time>
+        
+           | <a href="/blog/2017/12/14/php-an-zhuang-mcrypt/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2017/12/14/php-an-zhuang-mcrypt/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>指令</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew install mcrypt
+</span><span class='line'>$ brew tap homebrew/homebrew-php
+</span><span class='line'>$ brew install php56-mcrypt --without-homebrew-php</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>php.ini 加入 extension, 重啟 apache</p></blockquote>
+
+<p>網路上找到的解決辦法</p>
+
+<script src="https://gist.github.com/idleberg/24479f34dc5007e50d47.js"></script>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/12/14/php-htaccess-she-ding/">.htaccess 設定</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-12-14T03:44:11+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:44 am</span></time>
+        
+           | <a href="/blog/2017/12/14/php-htaccess-she-ding/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2017/12/14/php-htaccess-she-ding/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>其實用 <code>PHP</code> 寫的東西不是很多，再加上一直都不算是網頁端的開發者，所以很多相關的知識其實不太熟悉，哈；目前台灣傳統的資訊公司（新創應該都是 <code>Node.js</code> 了），應該還是用 <code>PHP</code> 來開發網路應用，一來當然是廣大社群的力量（有問題 google 一下，基本上都能找到解法），很多很棒的第三方套件，再加上建置成本相對便宜的因素。最近民間友人拜託看一個 bug ，就當作工作之餘也摸一些網頁的東西，並且趁這次記錄一下。註：我是 OSX 的環境</p>
+
+<h2>遇到 http 500 internal server error</h2>
+
+<p>確定 apache 的模組有載入</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ vim /etc/apache2/httpd.conf
+</span><span class='line'>
+</span><span class='line'>...
+</span><span class='line'>LoadModule rewrite_module libexec/apache2/mod_rewrite.so
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>開啟 .htaccess 功能</h2>
+
+<p>類似這樣</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;Directory "/myweb"&gt;
+</span><span class='line'>  ...
+</span><span class='line'>  AllowOverride all
+</span><span class='line'>  ...
+</span><span class='line'>&lt;/Directory&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>.htaccess 檔案內容</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;IfModule mod_rewrite.c&gt;
+</span><span class='line'>    RewriteEngine on
+</span><span class='line'>    RewriteBase /
+</span><span class='line'>    #RewriteCond $1 !^(index\.php|assets|.*\.ipa|images|swf|uploads|js|css|assets|robots\.txt|$)
+</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-f
+</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-d
+</span><span class='line'>    RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
+</span><span class='line'>&lt;/IfModule&gt;</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2017/12/13/react-native-app-package/">React-Native Init App</a></h1>
     
     
@@ -129,7 +497,7 @@ $ react-naitve init MyApp --version 0.49.0 ">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2017/11/28/leetcode-number-2-add-two-numbers/">Leetcode #2. Add Two Numbers</a></h1>
+      <h1 class="entry-title"><a href="/blog/2017/11/28/leetcode-number-2-add-two-numbers/">LeetCode #2. Add Two Numbers</a></h1>
     
     
       <p class="meta">
@@ -496,307 +864,6 @@ Output: 7 -> 0 -> 8</em></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits/">Leetcode #357. Count Numbers With Unique Digits</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-11-16T14:44:14+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>2:44 pm</span></time>
-        
-           | <a href="/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><em>Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x &lt; 10n.
-Example:
-Given n = 2, return 91. (The answer should be the total numbers in the range of 0 ≤ x &lt; 100, excluding [11,22,33,44,55,66,77,88,99])</em></p>
-
-<p>起初用暴力解但效率只能到達 n=6, 以上就會 time limit exceeded</p>
-
-<p><strong>我自己想的解法</strong></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>var countNumbersWithUniqueDigits = function(n) {
-</span><span class='line'>    console.log(Math.pow(10, n));
-</span><span class='line'>    let maxNum = Math.pow(10, n);
-</span><span class='line'>    let count = 0;
-</span><span class='line'>    for (let i = 10; i &lt; maxNum; i++) {
-</span><span class='line'>        let arr = i.toString().split('');
-</span><span class='line'>        let set = new Set(arr);
-</span><span class='line'>        if (arr.length !== set.size) {
-</span><span class='line'>            count++;
-</span><span class='line'>        }
-</span><span class='line'>    }
-</span><span class='line'>    
-</span><span class='line'>    return maxNum - count;
-</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>參考解答後優化的解法</strong></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>var countNumbersWithUniqueDigits = function(n) {
-</span><span class='line'>    if (n === 0) {
-</span><span class='line'>        return 1;
-</span><span class='line'>    } else {
-</span><span class='line'>        let v = 9;
-</span><span class='line'>        for (let i = 1; i &lt; n; i++) {
-</span><span class='line'>            v *= (11 - i - 1);
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        return countNumbersWithUniqueDigits(n - 1) + v;
-</span><span class='line'>    }
-</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
-
-
-<p>主要是運用動態規劃的方式</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>f(1)=f(0)+9
-</span><span class='line'>f(2)=f(1)+9*9
-</span><span class='line'>f(3)=f(2)+9*9*8
-</span><span class='line'>...
-</span><span class='line'>f(9)=f(8)+9*8*7*6*5*4*3*2
-</span><span class='line'>f(10)=f(9)+9*8*7*6*5*4*3*2*1</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/11/02/cli-fang-shi-qi-dong-android-mo-ni-qi/">CLI 方式啟動 Android 模擬器</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-11-02T17:18:48+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2017</span></span> <span class='time'>5:18 pm</span></time>
-        
-           | <a href="/blog/2017/11/02/cli-fang-shi-qi-dong-android-mo-ni-qi/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2017/11/02/cli-fang-shi-qi-dong-android-mo-ni-qi/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="https://developer.android.com/studio/run/emulator-commandline.html">android-emulator-commandline</a></p>
-
-<p><a href="https://developer.android.com/studio/command-line/avdmanager.html">avdmanager-commandline</a></p>
-
-<p>List avd</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>./avdmanager list avd
-</span><span class='line'>Available Android Virtual Devices:
-</span><span class='line'>    Name: Pixel_API_25
-</span><span class='line'>  Device: pixel (Google)
-</span><span class='line'>    Path: /Users/whh/.android/avd/Pixel_API_25.avd
-</span><span class='line'>  Target: Google APIs (Google Inc.)
-</span><span class='line'>          Based on: Android 7.1.1 (Nougat) Tag/ABI: google_apis/x86_64
-</span><span class='line'>    Skin: pixel
-</span><span class='line'>  Sdcard: 100M</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Run android emulator</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd ${ANDROID_HOME}/tools
-</span><span class='line'>emulator @${YOUR_AVD_NAME}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>List of devices attached</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>adb devices
-</span><span class='line'>List of devices attached
-</span><span class='line'>emulator-5554 device</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/11/01/reactotron-shi-yong/">Reactotron 使用</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-11-01T16:27:58+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2017</span></span> <span class='time'>4:27 pm</span></time>
-        
-           | <a href="/blog/2017/11/01/reactotron-shi-yong/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2017/11/01/reactotron-shi-yong/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3><a href="https://github.com/infinitered/reactotron">Reactotron</a></h3>
-
-<p>開發 React 應用的時候，可以試試這個工具。可以觀察網路連線的資訊還可以印出自定義的日誌</p>
-
-<p>import 下面這行到你要用的地方
-<code>import Reactotron from 'reactotron-react-js'</code></p>
-
-<p>預設有三種等級可以選擇</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Reactotron.log('log')
-</span><span class='line'>Reactotron.warn('warn')
-</span><span class='line'>Reactotron.error('error')</span></code></pre></td></tr></table></div></figure>
-
-
-<p>也可以印出物件</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Reactotron.display({
-</span><span class='line'>  name: 'ORANGE',
-</span><span class='line'>  preview: 'Who?',
-</span><span class='line'>  value: 'Orange you glad you don\'t know me in real life?',
-</span><span class='line'>  important: true
-</span><span class='line'>})</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/10/12/ding-qi-zhi-xing-sqlyu-fa-and-ji-song-you-jian/">定期執行SQL語法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-10-12T15:08:30+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:08 pm</span></time>
-        
-           | <a href="/blog/2017/10/12/ding-qi-zhi-xing-sqlyu-fa-and-ji-song-you-jian/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2017/10/12/ding-qi-zhi-xing-sqlyu-fa-and-ji-song-you-jian/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>設定 mysql event schedule</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>CREATE EVENT `&lt;table_name&gt;`.`&lt;event_name&gt;`
-</span><span class='line'>ON SCHEDULE EVERY 1 YEAR
-</span><span class='line'>ON COMPLETION PRESERVE
-</span><span class='line'>ENABLE
-</span><span class='line'>DO
-</span><span class='line'>insert into field('b') values(now())</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>DO</code> 後面就是接一般的 <code>SQL</code> 語法新增，刪除，修改等</p>
-
-<h3>顯示 event schedule</h3>
-
-<p><code>mysql&gt; show processlist;</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -814,23 +881,23 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/01/29/leetcode-number-581-shortest-unsorted-continuous-subarray/">LeetCode #581. Shortest Unsorted Continuous Subarray</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/01/29/si-jie/">死結(Deadlock)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/01/28/leetcode-number-493-reverse-pairs/">LeetCode #493. Reverse Pairs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/01/25/sublime-chang-yong-tao-jian/">Sublime Js 相關套件</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/01/25/react-native-kai-fa-huan-jing/">React-Native 開發環境</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/01/17/testing-ios-notification-with-apns/">Testing iOS Notification With APNs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/01/15/javascript-20-kinds-of-methods/">JavaScript 20 Kinds of Methods</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/01/12/stack-vs-heap/">Stack vs. Heap</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/01/11/">淺拷貝 vs. 深拷貝</a>
       </li>
     
   </ul>
@@ -844,7 +911,7 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 <li class='category'><a href='/blog/categories/git/'>git (3)</a></li>
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (6)</a></li>
-<li class='category'><a href='/blog/categories/leetcode/'>leetcode (3)</a></li>
+<li class='category'><a href='/blog/categories/leetcode/'>leetcode (5)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
 <li class='category'><a href='/blog/categories/react-native/'>react-native (5)</a></li>

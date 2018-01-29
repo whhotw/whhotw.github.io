@@ -5,14 +5,18 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ignore Self Signed Cert on React Native App - wlog</title>
+  <title>LeetCode #493. Reverse Pairs - wlog</title>
   <meta name="author" content="w">
 
   
-  <meta name="description" content="RN 裡面是不接受自簽憑證的，但是往往在開發環境中，有些時候還是會用到自簽憑證，這時候就會變得很麻煩，因為寫程式的時候等於不能跑在測試環境，這時候就可以新增 NSURLRequest 的 category 讓網路連線可以通過 https 的錯誤 1
+  <meta name="description" content="1
 2
 3
-+ (BOOL) &hellip;">
+4
+5
+6
+7
+for (let i = 0; i &lt; nums.length; i++) { for (let j = 0; j &lt; nums.length; j++) { if (i &lt; j && nums[i] &gt; 2 * nums[j]) { x &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +25,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2018/01/28/leetcode-number-493-reverse-pairs/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="wlog" type="application/atom+xml">
@@ -84,7 +88,7 @@
   
   <header>
     
-      <h1 class="entry-title">Ignore Self Signed Cert on React Native App</h1>
+      <h1 class="entry-title">LeetCode #493. Reverse Pairs</h1>
     
     
       <p class="meta">
@@ -93,7 +97,7 @@
 
 
 
-<time class='entry-date' datetime='2017-10-05T11:06:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:06 am</span></time>
+<time class='entry-date' datetime='2018-01-28T10:48:40+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:48 am</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://whhotw.github.io">Comments</a>
@@ -103,17 +107,23 @@
   </header>
 
 
-<div class="entry-content"><p><img src="/assets/Simulator%20Screen%20Shot%20Oct%205%2C%202017%2C%2011.19.10%20AM.png" width="360" height="640"></p>
-
-<p>RN 裡面是不接受自簽憑證的，但是往往在開發環境中，有些時候還是會用到自簽憑證，這時候就會變得很麻煩，因為寫程式的時候等於不能跑在測試環境，這時候就可以新增 <code>NSURLRequest</code> 的 category 讓網路連線可以通過 <code>https</code> 的錯誤</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>+ (BOOL)allowsAnyHTTPSCertificateForHost:(NSString *)host {
-</span><span class='line'>  return YES;
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>for (let i = 0; i &lt; nums.length; i++) {
+</span><span class='line'>    for (let j = 0; j &lt; nums.length; j++) {
+</span><span class='line'>        if (i &lt; j && nums[i] &gt; 2 * nums[j]) {
+</span><span class='line'>            x++;
+</span><span class='line'>        }
+</span><span class='line'>    }
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
+
+<blockquote><p>Big O(n<sup>2</sup>)</p></blockquote>
 </div>
 
 
@@ -129,12 +139,12 @@
 
 
 
-<time class='entry-date' datetime='2017-10-05T11:06:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:06 am</span></time>
+<time class='entry-date' datetime='2018-01-28T10:48:40+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:48 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/react-native/'>react-native</a>
+    <a class='category' href='/blog/categories/leetcode/'>leetcode</a>
   
 </span>
 
@@ -152,10 +162,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2017/09/29/how-about-push-large-size-file-to-git/" title="Previous Post: How about push large size file to Git">&laquo; How about push large size file to Git</a>
+        <a class="basic-alignment left" href="/blog/2018/01/25/sublime-chang-yong-tao-jian/" title="Previous Post: Sublime js 相關套件">&laquo; Sublime js 相關套件</a>
       
       
-        <a class="basic-alignment right" href="/blog/2017/10/12/ding-qi-zhi-xing-sqlyu-fa-and-ji-song-you-jian/" title="Next Post: 定期執行SQL語法">定期執行SQL語法 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2018/01/29/si-jie/" title="Next Post: 死結(Deadlock)">死結(Deadlock) &raquo;</a>
       
     </p>
   </footer>
@@ -170,8 +180,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app/';
-        var disqus_url = 'http://whhotw.github.io/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/28/leetcode-number-493-reverse-pairs/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/01/28/leetcode-number-493-reverse-pairs/';
         var disqus_script = 'embed.js';
       
     (function () {
@@ -284,8 +294,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app/';
-        var disqus_url = 'http://whhotw.github.io/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/28/leetcode-number-493-reverse-pairs/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/01/28/leetcode-number-493-reverse-pairs/';
         var disqus_script = 'embed.js';
       
     (function () {
