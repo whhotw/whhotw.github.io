@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-01-29T18:46:43+08:00</updated>
+  <updated>2018-01-29T18:51:47+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -71,17 +71,15 @@
     <link href="http://whhotw.github.io/blog/2018/01/29/si-jie/"/>
     <updated>2018-01-29T10:33:18+08:00</updated>
     <id>http://whhotw.github.io/blog/2018/01/29/si-jie</id>
-    <content type="html"><![CDATA[<p>死結(Deadlock)，只要以下四個條件都滿足就有死結。</p>
+    <content type="html"><![CDATA[<p>死結(Deadlock)，只要以下四個條件都滿足就有死結</p>
 
-<ul>
-<li>這個資源不能同時給兩個人用</li>
-<li>有一個人拿了一個資源，又想拿別人的資源</li>
-<li>如果一個人占了茅坑不拉屎，占用資源很久，仍不能趕他走</li>
-<li>A等B，B等C，C等D，D又等A 等成一圈。</li>
-</ul>
+<pre><code>* 這個資源不能同時給兩個人用
+* 有一個人拿了一個資源，又想拿別人的資源
+* 如果一個人占了茅坑不拉屎，占用資源很久，仍不能趕他走
+* A等B，B等C，C等D，D又等A 等成一圈
+</code></pre>
 
-
-<p>要解決這種狀況有Avoid(預防)或避免(Prevent)兩種方式，破除以上四種其中一種即可。</p>
+<p>要解決這種狀況有Avoid(預防)或避免(Prevent)兩種方式，破除以上四種其中一種即可</p>
 ]]></content>
   </entry>
   
