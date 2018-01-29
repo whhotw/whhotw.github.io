@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-01-29T18:51:47+08:00</updated>
+  <updated>2018-01-29T18:52:32+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -35,33 +35,23 @@
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>var findUnsortedSubarray = function(nums) {
-</span><span class='line'>    let n = nums.map((val) =&gt; val);
+</pre></td><td class='code'><pre><code class=''><span class='line'>let n = nums.map((val) =&gt; val);
+</span><span class='line'>nums.sort();
 </span><span class='line'>    
-</span><span class='line'>    nums.sort((a, b) =&gt; {
-</span><span class='line'>        return a - b;
-</span><span class='line'>    });
+</span><span class='line'>let l = 0;
+</span><span class='line'>let r = n.length;
 </span><span class='line'>    
-</span><span class='line'>    let l = 0;
-</span><span class='line'>    let r = n.length;
-</span><span class='line'>    
-</span><span class='line'>    while (l &lt;= r) {
-</span><span class='line'>        if (n[l] === nums[l]) {
-</span><span class='line'>            l++;
-</span><span class='line'>        } else if (n[r] === nums[r]) {
-</span><span class='line'>            r--;
-</span><span class='line'>        } else {
-</span><span class='line'>            break;
-</span><span class='line'>        }
+</span><span class='line'>while (l &lt;= r) {
+</span><span class='line'>    if (n[l] === nums[l]) {
+</span><span class='line'>        l++;
+</span><span class='line'>    } else if (n[r] === nums[r]) {
+</span><span class='line'>        r--;
+</span><span class='line'>    } else {
+</span><span class='line'>        break;
 </span><span class='line'>    }
+</span><span class='line'>}
 </span><span class='line'>    
-</span><span class='line'>    return l &gt; r ? 0 : r - l + 1;
-</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>return l &gt; r ? 0 : r - l + 1;</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>

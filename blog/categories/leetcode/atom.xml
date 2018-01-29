@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Leetcode | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/leetcode/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-01-29T18:51:47+08:00</updated>
+  <updated>2018-01-29T18:52:32+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -18,28 +18,23 @@
     <link href="http://whhotw.github.io/blog/2018/01/29/leetcode-number-581-shortest-unsorted-continuous-subarray/"/>
     <updated>2018-01-29T18:45:26+08:00</updated>
     <id>http://whhotw.github.io/blog/2018/01/29/leetcode-number-581-shortest-unsorted-continuous-subarray</id>
-    <content type="html"><![CDATA[<pre><code>var findUnsortedSubarray = function(nums) {
-    let n = nums.map((val) =&gt; val);
+    <content type="html"><![CDATA[<pre><code>let n = nums.map((val) =&gt; val);
+nums.sort();
 
-    nums.sort((a, b) =&gt; {
-        return a - b;
-    });
+let l = 0;
+let r = n.length;
 
-    let l = 0;
-    let r = n.length;
-
-    while (l &lt;= r) {
-        if (n[l] === nums[l]) {
-            l++;
-        } else if (n[r] === nums[r]) {
-            r--;
-        } else {
-            break;
-        }
+while (l &lt;= r) {
+    if (n[l] === nums[l]) {
+        l++;
+    } else if (n[r] === nums[r]) {
+        r--;
+    } else {
+        break;
     }
+}
 
-    return l &gt; r ? 0 : r - l + 1;
-};
+return l &gt; r ? 0 : r - l + 1;
 </code></pre>
 ]]></content>
   </entry>
