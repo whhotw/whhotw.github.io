@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Leetcode | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/leetcode/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-01-29T18:52:32+08:00</updated>
+  <updated>2018-01-31T10:42:13+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[LeetCode #717. 1-bit and 2-bit Characters]]></title>
+    <link href="http://whhotw.github.io/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/"/>
+    <updated>2018-01-31T10:38:51+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters</id>
+    <content type="html"><![CDATA[<pre><code>const len = bits.length - 1;
+let i = 0;
+while (i &lt; len) {
+    if (bits[i] === 0) {
+        i++;
+    } else if (bits[i] === 1) {
+        if (i + 1 === len) {
+            return false;
+        }
+
+        i += 2;
+    }
+}
+
+return true;
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[LeetCode #581. Shortest Unsorted Continuous Subarray]]></title>
@@ -132,63 +156,6 @@ Output: 7 -> 0 -> 8</em></p>
     toArray(root.left, arr, level + 1, idx * 2);
     toArray(root.right, arr, level + 1, idx * 2 + 1);
 };
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Leetcode #357. Count Numbers With Unique Digits]]></title>
-    <link href="http://whhotw.github.io/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits/"/>
-    <updated>2017-11-16T14:44:14+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits</id>
-    <content type="html"><![CDATA[<p><em>Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x &lt; 10n.
-Example:
-Given n = 2, return 91. (The answer should be the total numbers in the range of 0 ≤ x &lt; 100, excluding [11,22,33,44,55,66,77,88,99])</em></p>
-
-<p>起初用暴力解但效率只能到達 n=6, 以上就會 time limit exceeded</p>
-
-<p><strong>我自己想的解法</strong></p>
-
-<pre><code>var countNumbersWithUniqueDigits = function(n) {
-    console.log(Math.pow(10, n));
-    let maxNum = Math.pow(10, n);
-    let count = 0;
-    for (let i = 10; i &lt; maxNum; i++) {
-        let arr = i.toString().split('');
-        let set = new Set(arr);
-        if (arr.length !== set.size) {
-            count++;
-        }
-    }
-
-    return maxNum - count;
-};
-</code></pre>
-
-<p><strong>參考解答後優化的解法</strong></p>
-
-<pre><code>var countNumbersWithUniqueDigits = function(n) {
-    if (n === 0) {
-        return 1;
-    } else {
-        let v = 9;
-        for (let i = 1; i &lt; n; i++) {
-            v *= (11 - i - 1);
-        }
-
-        return countNumbersWithUniqueDigits(n - 1) + v;
-    }
-};
-</code></pre>
-
-<p>主要是運用動態規劃的方式</p>
-
-<pre><code>f(1)=f(0)+9
-f(2)=f(1)+9*9
-f(3)=f(2)+9*9*8
-...
-f(9)=f(8)+9*8*7*6*5*4*3*2
-f(10)=f(9)+9*8*7*6*5*4*3*2*1
 </code></pre>
 ]]></content>
   </entry>

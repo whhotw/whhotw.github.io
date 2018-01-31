@@ -24,11 +24,9 @@
 13
 14
 15
-16
-17
-let n = nums.map((val) =&gt; val);
-nums.sort(); let l = 0;
-let r = n.length; while (l &lt;= r) { if (n[l &hellip;">
+const len = bits.length - 1;
+let i = 0;
+while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -97,6 +95,68 @@ let r = n.length; while (l &lt;= r) { if (n[l &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/">LeetCode #717. 1-bit and 2-bit Characters</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-01-31T10:38:51+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>10:38 am</span></time>
+        
+           | <a href="/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>const len = bits.length - 1;
+</span><span class='line'>let i = 0;
+</span><span class='line'>while (i &lt; len) {
+</span><span class='line'>    if (bits[i] === 0) {
+</span><span class='line'>        i++;
+</span><span class='line'>    } else if (bits[i] === 1) {
+</span><span class='line'>        if (i + 1 === len) {
+</span><span class='line'>            return false;
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        i += 2;
+</span><span class='line'>    }
+</span><span class='line'>}
+</span><span class='line'>    
+</span><span class='line'>return true;</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -662,100 +722,6 @@ let r = n.length; while (l &lt;= r) { if (n[l &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/01/09/javascript-zhong-de-this/">JavaScript 中 This 的種種</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-01-09T09:56:40+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>9:56 am</span></time>
-        
-           | <a href="/blog/2018/01/09/javascript-zhong-de-this/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>JavaScript 中的 this 是一個很容易搞混的東東。</p>
-
-<p>具名函數搭配 bind 的寫法</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>function wth() {
-</span><span class='line'>  console.log(this);
-</span><span class='line'>}
-</span><span class='line'>
-</span><span class='line'>let o = {
-</span><span class='line'>  name: 1
-</span><span class='line'>};
-</span><span class='line'>
-</span><span class='line'>wth(); // window
-</span><span class='line'>
-</span><span class='line'>let wthBind = wth.bind(o);
-</span><span class='line'>
-</span><span class='line'>wthBind(); // object o</span></code></pre></td></tr></table></div></figure>
-
-
-<p>使用箭頭函數</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let wth = () =&gt; {
-</span><span class='line'>  console.log(this);
-</span><span class='line'>};
-</span><span class='line'>
-</span><span class='line'>let o = {
-</span><span class='line'>  name: 1
-</span><span class='line'>};
-</span><span class='line'>
-</span><span class='line'>wth(); // window
-</span><span class='line'>
-</span><span class='line'>let wthBind = wth.bind(o);
-</span><span class='line'>
-</span><span class='line'>wthBind(); // window</span></code></pre></td></tr></table></div></figure>
-
-
-<p>為什麼執行結果不同呢？是因為透過箭頭函數 this 對象會在宣告時就綁定，因此就算之後用 bind 也不會有變化</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -769,6 +735,10 @@ let r = n.length; while (l &lt;= r) { if (n[l &hellip;">
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/">LeetCode #717. 1-bit and 2-bit Characters</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/01/29/leetcode-number-581-shortest-unsorted-continuous-subarray/">LeetCode #581. Shortest Unsorted Continuous Subarray</a>
@@ -786,10 +756,6 @@ let r = n.length; while (l &lt;= r) { if (n[l &hellip;">
         <a href="/blog/2018/01/25/sublime-chang-yong-tao-jian/">Sublime Js 相關套件</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2018/01/25/react-native-kai-fa-huan-jing/">React-Native 開發環境</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -801,7 +767,7 @@ let r = n.length; while (l &lt;= r) { if (n[l &hellip;">
 <li class='category'><a href='/blog/categories/git/'>git (3)</a></li>
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (6)</a></li>
-<li class='category'><a href='/blog/categories/leetcode/'>leetcode (5)</a></li>
+<li class='category'><a href='/blog/categories/leetcode/'>leetcode (6)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
 <li class='category'><a href='/blog/categories/react-native/'>react-native (5)</a></li>

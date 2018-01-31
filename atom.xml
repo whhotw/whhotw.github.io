@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-01-29T18:52:32+08:00</updated>
+  <updated>2018-01-31T10:42:13+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[LeetCode #717. 1-bit and 2-bit Characters]]></title>
+    <link href="http://whhotw.github.io/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/"/>
+    <updated>2018-01-31T10:38:51+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>const len = bits.length - 1;
+</span><span class='line'>let i = 0;
+</span><span class='line'>while (i &lt; len) {
+</span><span class='line'>    if (bits[i] === 0) {
+</span><span class='line'>        i++;
+</span><span class='line'>    } else if (bits[i] === 1) {
+</span><span class='line'>        if (i + 1 === len) {
+</span><span class='line'>            return false;
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        i += 2;
+</span><span class='line'>    }
+</span><span class='line'>}
+</span><span class='line'>    
+</span><span class='line'>return true;</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[LeetCode #581. Shortest Unsorted Continuous Subarray]]></title>
@@ -945,39 +984,6 @@ Output: 7 -> 0 -> 8</em></p>
 
 
 <p>以上兩種都可行</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JavaScript 動態載入模組]]></title>
-    <link href="http://whhotw.github.io/blog/2017/11/20/mo-zu/"/>
-    <updated>2017-11-20T15:53:41+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/11/20/mo-zu</id>
-    <content type="html"><![CDATA[<p>兩個關鍵字 <code>import</code> <code>export</code>，用於載入與輸出模組。但實際上不一定會使用到模組的程式碼，這時候就需要動態載入，在確定需要使用的時候載入</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>export let go = () =&gt; {
-</span><span class='line'>  return 'AAA';
-</span><span class='line'>};
-</span><span class='line'>
-</span><span class='line'>async () =&gt; {
-</span><span class='line'>  let Module = await import('./Module.js');
-</span><span class='line'>  console.log(Module.go());
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>輸出</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>AAA</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
