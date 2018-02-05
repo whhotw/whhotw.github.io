@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-01-31T10:42:13+08:00</updated>
+  <updated>2018-02-05T11:04:46+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,79 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RN 中使用 SVG]]></title>
+    <link href="http://whhotw.github.io/blog/2018/02/05/rn-svg/"/>
+    <updated>2018-02-05T10:43:32+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/02/05/rn-svg</id>
+    <content type="html"><![CDATA[<h1>PNG、JPG</h1>
+
+<p>在 <code>RN</code> 中載入圖片是非常容易的事情，可以使用</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>require('./mypng.png')
+</span><span class='line'>require('./myjpg.jpg')</span></code></pre></td></tr></table></div></figure>
+
+
+<p>這類的<a href="https://facebook.github.io/react-native/docs/image.html#source">寫法</a></p>
+
+<h1>SVG</h1>
+
+<p>假如是想載入 <code>.svg</code> 的話，就需要第三方的套件幫忙，或是轉成字型檔載入，以下是我使用字型檔的方式</p>
+
+<blockquote><p>什麼是SVG？最大的優點就是縮放不會失真，細節可以<a href="https://zh.wikipedia.org/wiki/%E5%8F%AF%E7%B8%AE%E6%94%BE%E5%90%91%E9%87%8F%E5%9C%96%E5%BD%A2">參考</a></p></blockquote>
+
+<h1>React-Native-Vector-Icons</h1>
+
+<h2>Install</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>npm install react-native-vector-icons
+</span><span class='line'>react-native link</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Generate .ttf and .json by Fontello or Icomoon</h2>
+
+<p><a href="http://fontello.com/">Fontello</a>，<a href="https://icomoon.io/app">Icomoon</a></p>
+
+<h2>Link</h2>
+
+<ul>
+<li>將 <code>.ttf</code> 放到專案中的 <code>fonts</code> 資料夾裡</li>
+<li>在 <code>package.json</code> 中加入 <code>"rnpm": { "assets": ["fonts"] }</code></li>
+<li>執行 <code>react-native link</code></li>
+</ul>
+
+
+<h2>Import</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>import { createIconSetFromFontello } from 'react-native-vector-icons';
+</span><span class='line'>import fontelloConfig from './config.json';
+</span><span class='line'>const Icon = createIconSetFromFontello(fontelloConfig);</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[TCP 三次握手/四次握手]]></title>
+    <link href="http://whhotw.github.io/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou/"/>
+    <updated>2018-01-31T17:05:20+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou</id>
+    <content type="html"><![CDATA[<p>建立連線 => 三次握手(圖中紅色框框)</p>
+
+
+<p>結束連線 => 四次握手(圖中藍色框框)</p>
+
+
+<p><img src="http://img.my.csdn.net/uploads/201108/7/0_131271823564Rx.gif" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[LeetCode #717. 1-bit and 2-bit Characters]]></title>
@@ -885,105 +958,6 @@ Output: 7 -> 0 -> 8</em></p>
 </span><span class='line'>    toArray(root.right, arr, level + 1, idx * 2 + 1);
 </span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS App 打包用的指令]]></title>
-    <link href="http://whhotw.github.io/blog/2017/11/23/ios-app-da-bao-zhi-ling/"/>
-    <updated>2017-11-23T15:30:49+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/11/23/ios-app-da-bao-zhi-ling</id>
-    <content type="html"><![CDATA[<p>自動打包這件事情，在很多時候可以幫助開發者，節省很多的等待時間。簡單來說就是開始執行你就可以不用管了，之後的產出甚至可以結合自動測試，發布等等。這邊單純分享打包用的指令</p>
-
-<h3>Archive</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ xcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${TARGET_NAME} -sdk iphoneos -configuration archive -archivePath $PWD/build/${TARGET_NAME}.xcarchive</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Export *.ipa</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ xcodebuild -exportArchive -archivePath $PWD/build/${TARGET_NAME}.xcarchive -exportOptionsPlist BUILD.plist -exportPath $PWD/build</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>BUILD.plist</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cat BUILD.plist
-</span><span class='line'>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-</span><span class='line'>&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
-</span><span class='line'>&lt;plist version="1.0"&gt;
-</span><span class='line'>&lt;dict&gt;
-</span><span class='line'>        &lt;key&gt;teamID&lt;/key&gt;
-</span><span class='line'>        &lt;string&gt;${TEAM_ID}&lt;/string&gt;
-</span><span class='line'>        &lt;key&gt;method&lt;/key&gt;
-</span><span class='line'>        &lt;string&gt;${METHOD}&lt;/string&gt;
-</span><span class='line'>        &lt;key&gt;uploadSymbols&lt;/key&gt;
-</span><span class='line'>        &lt;true/&gt;
-</span><span class='line'>        &lt;key&gt;compileBitcode&lt;/key&gt;
-</span><span class='line'>        &lt;true/&gt;
-</span><span class='line'>&lt;/dict&gt;
-</span><span class='line'>&lt;/plist&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>Xcode8.3 以上透過 command-line 輸出 ipa 需要打入 <code>exportOptionsPlist</code> 這個鍵值，因此需要多配置一個檔案類似如上</p></blockquote>
-
-<ul>
-<li>method: (String) The method of distribution, which can be set as any of the following:
-
-<ul>
-<li>app-store</li>
-<li>enterprise</li>
-<li>ad-hoc</li>
-<li>development</li>
-</ul>
-</li>
-<li>teamID: (String) The development program team identifier.</li>
-<li>uploadSymbols: (Boolean) Option to include symbols in the generated ipa file.</li>
-<li>uploadBitcode: (Boolean) Option to include Bitcode.</li>
-</ul>
-
-
-<h3>我自己寫的 Shell Script</h3>
-
-<script src="https://gist.github.com/whhotw/b1d12e06844cbf08ae7dfa088e306fad.js"></script>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Git 設定忽略自簽憑證]]></title>
-    <link href="http://whhotw.github.io/blog/2017/11/21/git-she-ding-hu-lue-zi-qian-ping-zheng/"/>
-    <updated>2017-11-21T17:07:54+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/11/21/git-she-ding-hu-lue-zi-qian-ping-zheng</id>
-    <content type="html"><![CDATA[<p>公司的 git server 為了安全性有掛上自簽憑證，但是 git <code>http.sslVerify</code> 預設 <code>true</code> 因此會無法上傳 code，這時候可以手動修改 <code>http.sslVerify</code> 這個值</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git config --global http.sslVerify false</span></code></pre></td></tr></table></div></figure>
-
-
-<p>想要安全一些的話就設定自簽憑證路徑</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git config --system http.sslCAPath /path/to/cacerts</span></code></pre></td></tr></table></div></figure>
-
-
-<p>以上兩種都可行</p>
 ]]></content>
   </entry>
   

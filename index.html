@@ -9,24 +9,10 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="PNG、JPG 在 RN 中載入圖片是非常容易的事情，可以使用 1
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-const len = bits.length - 1;
-let i = 0;
-while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;">
+require('./mypng.png')
+require('./myjpg.jpg') 這類的寫法 SVG 假如是想載入 .svg 的話，就需要第三方的套件幫忙，或是轉成字型檔載入，以下是我使用字型檔的方式 什麼是SVG？ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,6 +81,125 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/02/05/rn-svg/">RN 中使用 SVG</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-02-05T10:43:32+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:43 am</span></time>
+        
+           | <a href="/blog/2018/02/05/rn-svg/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/02/05/rn-svg/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>PNG、JPG</h1>
+
+<p>在 <code>RN</code> 中載入圖片是非常容易的事情，可以使用</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>require('./mypng.png')
+</span><span class='line'>require('./myjpg.jpg')</span></code></pre></td></tr></table></div></figure>
+
+
+<p>這類的<a href="https://facebook.github.io/react-native/docs/image.html#source">寫法</a></p>
+
+<h1>SVG</h1>
+
+<p>假如是想載入 <code>.svg</code> 的話，就需要第三方的套件幫忙，或是轉成字型檔載入，以下是我使用字型檔的方式</p>
+
+<blockquote><p>什麼是SVG？最大的優點就是縮放不會失真，細節可以<a href="https://zh.wikipedia.org/wiki/%E5%8F%AF%E7%B8%AE%E6%94%BE%E5%90%91%E9%87%8F%E5%9C%96%E5%BD%A2">參考</a></p></blockquote>
+
+<h1>React-Native-Vector-Icons</h1>
+
+<h2>Install</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>npm install react-native-vector-icons
+</span><span class='line'>react-native link</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Generate .ttf and .json by Fontello or Icomoon</h2>
+
+<p><a href="http://fontello.com/">Fontello</a>，<a href="https://icomoon.io/app">Icomoon</a></p>
+
+<h2>Link</h2>
+
+<ul>
+<li>將 <code>.ttf</code> 放到專案中的 <code>fonts</code> 資料夾裡</li>
+<li>在 <code>package.json</code> 中加入 <code>"rnpm": { "assets": ["fonts"] }</code></li>
+<li>執行 <code>react-native link</code></li>
+</ul>
+
+
+<h2>Import</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>import { createIconSetFromFontello } from 'react-native-vector-icons';
+</span><span class='line'>import fontelloConfig from './config.json';
+</span><span class='line'>const Icon = createIconSetFromFontello(fontelloConfig);</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou/">TCP 三次握手/四次握手</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-01-31T17:05:20+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>5:05 pm</span></time>
+        
+           | <a href="/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>建立連線 => 三次握手(圖中紅色框框)</p>
+
+
+<p>結束連線 => 四次握手(圖中藍色框框)</p>
+
+
+<p><img src="http://img.my.csdn.net/uploads/201108/7/0_131271823564Rx.gif" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -544,184 +649,6 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/01/12/stack-vs-heap/">Stack vs. Heap</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-01-12T10:58:29+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:58 am</span></time>
-        
-           | <a href="/blog/2018/01/12/stack-vs-heap/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/12/stack-vs-heap/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近複習了一下<code>stack</code>跟<code>heap</code>的觀念。我主要是參考這部<a href="https://www.youtube.com/watch?v=_8-ht2AKyH4">影片</a></p>
-
-<p><img src="https://i.ytimg.com/vi/_8-ht2AKyH4/maxresdefault.jpg" alt="image" /></p>
-
-<blockquote><p>影片中我覺得很重要的一張圖</p></blockquote>
-
-<h3>Global</h3>
-
-<p>全域變數或是靜態變數</p>
-
-<h3>Stack</h3>
-
-<p>可預期生命週期的變數或是函式，例如：區域變數，函式變數</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>int f() {
-</span><span class='line'>  int a;
-</span><span class='line'>  a = ff();
-</span><span class='line'>  return a;
-</span><span class='line'>}
-</span><span class='line'>
-</span><span class='line'>int ff() {
-</span><span class='line'>  return 10;
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>編譯器會知道變數的生命週期，像是上面的片段。程式會在<code>stack</code>放入變數<code>a</code>接著等待函式<code>ff</code>的返回，當<code>ff</code>返回時會從<code>stack</code>中釋放變數<code>a</code>，因此程式可以自我管理記憶體空間不需要開發者介入</p>
-
-<h3>Heap</h3>
-
-<p>動態配置的空間，例如：指標</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>int f() {
-</span><span class='line'>  int *a;
-</span><span class='line'>  a = (int*)malloc(sizeof(int)); // 配置記憶體
-</span><span class='line'>  *a = 10;
-</span><span class='line'>  free(a); //釋放記憶體
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>編譯器並不會知道何時要釋放變數<code>a</code>，因此開發者必須自行執行函式<code>free</code>將記憶體釋放。配置跟釋放有<code>malloc</code> <code>free</code>跟<code>new</code> <code>delete</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/01/11/">淺拷貝 vs. 深拷貝</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-01-11T22:21:31+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:21 pm</span></time>
-        
-           | <a href="/blog/2018/01/11/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/11/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>複製物件你可能會這麼寫</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let a = {a: '1', b: '2', c: '3'};
-</span><span class='line'>let x = a;
-</span><span class='line'>x.a = 10
-</span><span class='line'>console.log(a); // {a: '10', b: '2', c: '3'}
-</span><span class='line'>console.log(x === a); // true</span></code></pre></td></tr></table></div></figure>
-
-
-<p>為什麼新的變數內容改變，舊的變數內容也會變呢？因為以上的寫法為<code>淺拷貝</code>但是很多時候我們並不想這樣，這時候就需要改成<code>深拷貝</code>的寫法</p>
-
-<h3>淺拷貝 => 分身術</h3>
-
-<p>外表（值）長得一樣，靈魂（記憶體位置）<strong>相同</strong></p>
-
-<h3>深拷貝 => 雙胞胎</h3>
-
-<p>外表（值）長得一樣，靈魂（記憶體位置）<strong>不同</strong></p>
-
-<h3>比較圖</h3>
-
-<p><img src="http://i.stack.imgur.com/hOPkR.png" alt="image" /></p>
-
-<h3>Object.assign</h3>
-
-<p>ES6 上可以用的函式但只能處理深度只有一層的物件</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let a = {a: '1', b: '2', c: '3'};
-</span><span class='line'>let x = Object.assign({}, a);
-</span><span class='line'>x.a = 10
-</span><span class='line'>console.log(a); // {a: '1', b: '2', c: '3'}
-</span><span class='line'>console.log(x === a); // false</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>lodash</h3>
-
-<p>網路上熱門的<a href="https://lodash.com/">函式庫</a></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let _ = require('lodash');
-</span><span class='line'>let a = {a: '1', b: '2', c: '3'};
-</span><span class='line'>let x = _.cloneDeep(a);
-</span><span class='line'>x.a = 10
-</span><span class='line'>console.log(a); // {a: '1', b: '2', c: '3'}
-</span><span class='line'>console.log(x === a); // false</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -737,6 +664,14 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/02/05/rn-svg/">RN 中使用 SVG</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou/">TCP 三次握手/四次握手</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/">LeetCode #717. 1-bit and 2-bit Characters</a>
       </li>
     
@@ -746,14 +681,6 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
     
       <li class="post">
         <a href="/blog/2018/01/29/si-jie/">死結(Deadlock)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/01/28/leetcode-number-493-reverse-pairs/">LeetCode #493. Reverse Pairs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/01/25/sublime-chang-yong-tao-jian/">Sublime Js 相關套件</a>
       </li>
     
   </ul>
@@ -770,7 +697,7 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (6)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
-<li class='category'><a href='/blog/categories/react-native/'>react-native (5)</a></li>
+<li class='category'><a href='/blog/categories/react-native/'>react-native (6)</a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (1)</a></li>
 
   </ul>

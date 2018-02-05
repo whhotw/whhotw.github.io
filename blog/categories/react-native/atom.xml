@@ -4,7 +4,7 @@
   <title><![CDATA[Category: React-native | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-01-31T10:42:13+08:00</updated>
+  <updated>2018-02-05T11:04:46+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RN 中使用 SVG]]></title>
+    <link href="http://whhotw.github.io/blog/2018/02/05/rn-svg/"/>
+    <updated>2018-02-05T10:43:32+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/02/05/rn-svg</id>
+    <content type="html"><![CDATA[<h1>PNG、JPG</h1>
+
+<p>在 <code>RN</code> 中載入圖片是非常容易的事情，可以使用</p>
+
+<pre><code>require('./mypng.png')
+require('./myjpg.jpg')
+</code></pre>
+
+<p>這類的<a href="https://facebook.github.io/react-native/docs/image.html#source">寫法</a></p>
+
+<h1>SVG</h1>
+
+<p>假如是想載入 <code>.svg</code> 的話，就需要第三方的套件幫忙，或是轉成字型檔載入，以下是我使用字型檔的方式</p>
+
+<blockquote><p>什麼是SVG？最大的優點就是縮放不會失真，細節可以<a href="https://zh.wikipedia.org/wiki/%E5%8F%AF%E7%B8%AE%E6%94%BE%E5%90%91%E9%87%8F%E5%9C%96%E5%BD%A2">參考</a></p></blockquote>
+
+<h1>React-Native-Vector-Icons</h1>
+
+<h2>Install</h2>
+
+<pre><code>npm install react-native-vector-icons
+react-native link
+</code></pre>
+
+<h2>Generate .ttf and .json by Fontello or Icomoon</h2>
+
+<p><a href="http://fontello.com/">Fontello</a>，<a href="https://icomoon.io/app">Icomoon</a></p>
+
+<h2>Link</h2>
+
+<ul>
+<li>將 <code>.ttf</code> 放到專案中的 <code>fonts</code> 資料夾裡</li>
+<li>在 <code>package.json</code> 中加入 <code>"rnpm": { "assets": ["fonts"] }</code></li>
+<li>執行 <code>react-native link</code></li>
+</ul>
+
+
+<h2>Import</h2>
+
+<pre><code>import { createIconSetFromFontello } from 'react-native-vector-icons';
+import fontelloConfig from './config.json';
+const Icon = createIconSetFromFontello(fontelloConfig);
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[React-Native 開發環境]]></title>
@@ -109,59 +160,6 @@ $ react-naitve init MyApp --version 0.49.0
     overrideBackPress: true
 });
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[First React Native App]]></title>
-    <link href="http://whhotw.github.io/blog/2017/09/06/first-react-native-app/"/>
-    <updated>2017-09-06T14:49:07+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/09/06/first-react-native-app</id>
-    <content type="html"><![CDATA[<h1>快速建立一個 React-Native App</h1>
-
-<h3>Install create-react-native-app</h3>
-
-<pre><code>npm install -g create-react-native-app
-</code></pre>
-
-<h3>Create React Native App</h3>
-
-<pre><code>create-react-native-app ${ProjectName}
-cd ${ProjectName}
-npm run ios(or android)
-</code></pre>
-
-<h1>建立一個 React-Native App</h1>
-
-<h3>Install react-native-cli</h3>
-
-<pre><code>npm install -g react-native-cli
-</code></pre>
-
-<h3>Init &amp; Run Project</h3>
-
-<pre><code>react-native init ${ProjectName}
-cd ${ProjectName}
-react-native run-ios(or -anroid)
-</code></pre>
-
-<blockquote><p>remind: stop apache</p></blockquote>
-
-<h1>常用的第三方套件</h1>
-
-<h3>Install &amp; Import react-native-vector-icons</h3>
-
-<pre><code>npm install --save react-native-vector-icons
-npm install -g rnpm
-rnpm link
-
-import Icon from 'react-native-vector-icons/Ionicons';
-</code></pre>
-
-<blockquote><p>react-native-i18n: 多語系<br/>
-react-native-keychain: 帳密處理<br/>
-react-native-navigation: 導覽列佈局<br/>
-react-native-vector-icons: 圖資源<br/></p></blockquote>
 ]]></content>
   </entry>
   
