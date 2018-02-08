@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-02-05T11:04:46+08:00</updated>
+  <updated>2018-02-08T10:46:48+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,79 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Setup Eslint for RN]]></title>
+    <link href="http://whhotw.github.io/blog/2018/02/08/sublime-setup-eslint-for-js/"/>
+    <updated>2018-02-08T00:25:20+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/02/08/sublime-setup-eslint-for-js</id>
+    <content type="html"><![CDATA[<p>我是使用 Sublime 3 的版本</p>
+
+<h1>Install Sublime Package</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>SublimeLinter // 先裝
+</span><span class='line'>SublimeLinter-eslint</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Manual</h1>
+
+<p>or add on package.json</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>yarn add eslint --dev
+</span><span class='line'>yarn add eslint-config-airbnb --dev
+</span><span class='line'>yarn add eslint-plugin-import --dev
+</span><span class='line'>yarn add eslint-plugin-react --dev
+</span><span class='line'>yarn add eslint-plugin-jsx-a11y --dev
+</span><span class='line'>yarn add babel-eslint --dev</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Create .eslintrc</h1>
+
+<p>located on project root</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "parser": "babel-eslint",
+</span><span class='line'>  "extends": "airbnb",
+</span><span class='line'>  "rules": {
+</span><span class='line'>    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+</span><span class='line'>    "react/prop-types": [1],
+</span><span class='line'>    "no-unused-vars": [1],
+</span><span class='line'>    "no-use-before-define": [1, { "functions": true, "classes": true }],
+</span><span class='line'>  },
+</span><span class='line'>  "globals": {
+</span><span class='line'>    "fetch": true,
+</span><span class='line'>    "__DEV__": true,
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>可以自訂規則寫在 <code>rules</code> 0 代表關閉、1 代表警告、2代表錯誤</p></blockquote>
+
+<p>上述步驟做完，重開 Sublime 即可看到效果</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RN 中使用 SVG]]></title>
@@ -917,45 +990,6 @@ Output: 7 -> 0 -> 8</em></p>
 </span><span class='line'>    } else {
 </span><span class='line'>        return null;
 </span><span class='line'>    }
-</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Leetcode #102. Binary Tree Level Order Traversal]]></title>
-    <link href="http://whhotw.github.io/blog/2017/11/27/leetcode-number-102-binary-tree-level-order-traversal/"/>
-    <updated>2017-11-27T13:30:41+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/11/27/leetcode-number-102-binary-tree-level-order-traversal</id>
-    <content type="html"><![CDATA[<p>分層印出二元樹的元素，自己寫了遞迴的方式，紀錄一下</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let toArray = (root, arr, level, idx) =&gt; {
-</span><span class='line'>    if (!root) {
-</span><span class='line'>        return null;
-</span><span class='line'>    } else {
-</span><span class='line'>        if (!arr[level]) {
-</span><span class='line'>            arr[level] = [];
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        arr[level].push(root.val);
-</span><span class='line'>    }
-</span><span class='line'>    
-</span><span class='line'>    toArray(root.left, arr, level + 1, idx * 2);
-</span><span class='line'>    toArray(root.right, arr, level + 1, idx * 2 + 1);
 </span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>

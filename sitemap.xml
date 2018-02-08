@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2018/02/08/sublime-setup-eslint-for-js/</loc>
+<lastmod>2018-02-08T00:25:20+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2018/02/05/rn-svg/</loc>
 <lastmod>2018-02-05T10:43:32+08:00</lastmod>
 </url>
@@ -189,14 +193,5 @@
 </url>
 <url>
 <loc>http://whhotw.github.io/blog/categories/php/</loc>
-</url>
-<url>
-<loc>http://whhotw.github.io/posts/2/</loc>
-</url>
-<url>
-<loc>http://whhotw.github.io/posts/3/</loc>
-</url>
-<url>
-<loc>http://whhotw.github.io/posts/4/</loc>
 </url>
 </urlset>
