@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>JavaScript 20 Kinds of Methods - wlog</title>
+  <title>認識 JWT - wlog</title>
   <meta name="author" content="w">
 
   
-  <meta name="description" content="js 中 20 種必須知道的陣列方法 ">
+  <meta name="description" content="流程圖 左邊是傳統的 cookie-session 的流程，右邊是使用 token 的流程，乍看是很類似的。也因為運作的慨念很類似，所以兩者之間的轉換幾乎沒什麼困難。 JWT 因為我都是在寫 APP 比較多，因此選擇用 token 的機制去解決身份驗證的問題，在實作上會快很多，重點是 lib &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2018/02/13/ren-shi-jwt/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="wlog" type="application/atom+xml">
@@ -81,7 +81,7 @@
   
   <header>
     
-      <h1 class="entry-title">JavaScript 20 Kinds of Methods</h1>
+      <h1 class="entry-title">認識 JWT</h1>
     
     
       <p class="meta">
@@ -90,7 +90,7 @@
 
 
 
-<time class='entry-date' datetime='2018-01-15T11:20:21+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:20 am</span></time>
+<time class='entry-date' datetime='2018-02-13T13:19:20+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>1:19 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://whhotw.github.io">Comments</a>
@@ -100,9 +100,98 @@
   </header>
 
 
-<div class="entry-content"><p>js 中 20 種必須知道的陣列方法</p>
+<div class="entry-content"><h1>流程圖</h1>
 
-<p><img src="https://raw.githubusercontent.com/tooto1985/js-array-operations/master/main.jpg" alt="image" /></p>
+<p><img src="https://stormpath.com/wp-content/uploads/2016/05/Cookie-v-Token-Diagram-v1-3-1024x536.png" alt="" /></p>
+
+<p>左邊是傳統的 <code>cookie-session</code> 的流程，右邊是使用 <code>token</code> 的流程，乍看是很類似的。也因為運作的慨念很類似，所以兩者之間的轉換幾乎沒什麼困難。</p>
+
+<h1><a href="https://jwt.io">JWT</a></h1>
+
+<p>因為我都是在寫 APP 比較多，因此選擇用 <code>token</code> 的機制去解決身份驗證的問題，在實作上會快很多，重點是 <code>lib</code> 人家都寫好了，呵呵</p>
+
+<h2>What is JSON Web Token?</h2>
+
+<blockquote><p>JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA.</p>
+
+<p>Let&rsquo;s explain some concepts of this definition further.</p>
+
+<p>Compact: Because of their smaller size, JWTs can be sent through a URL, POST parameter, or inside an HTTP header. Additionally, the smaller size means transmission is fast.</p>
+
+<p>Self-contained: The payload contains all the required information about the user, avoiding the need to query the database more than once.</p></blockquote>
+
+<p>被定義在<a href="https://tools.ietf.org/html/rfc7519">RFC7519</a>，可使傳輸過程變得安全並有輕量與自我驗證的優勢</p>
+
+<h2>When should you use JSON Web Tokens?</h2>
+
+<blockquote><p>Here are some scenarios where JSON Web Tokens are useful:</p>
+
+<p>Authentication: This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token. Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.</p>
+
+<p>Information Exchange: JSON Web Tokens are a good way of securely transmitting information between parties. Because JWTs can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are. Additionally, as the signature is calculated using the header and the payload, you can also verify that the content hasn&rsquo;t been tampered with.</p></blockquote>
+
+<p>取自官網上的資訊，主要的目的就是身份驗證與資料交換</p>
+
+<h2>What is the JSON Web Token structure?</h2>
+
+<p>三個部分</p>
+
+<ul>
+<li>Header</li>
+<li>Payload</li>
+<li>Signature</li>
+</ul>
+
+
+<h3>Header</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "alg": "HS256",
+</span><span class='line'>  "typ": "JWT"
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Payload</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "sub": "1234567890",
+</span><span class='line'>  "name": "John Doe",
+</span><span class='line'>  "admin": true
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p><a href="https://tools.ietf.org/html/rfc7519#section-4.1">Notice that the claim names are only three characters</a></p></blockquote>
+
+<h3>Signature</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>HMACSHA256(
+</span><span class='line'>  base64UrlEncode(header) + "." +
+</span><span class='line'>  base64UrlEncode(payload),
+</span><span class='line'>  secret)</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>參考資料</h1>
+
+<ul>
+<li><a href="https://jwt.io/introduction/">JWT</a></li>
+<li><a href="https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/">Refresh Token</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">HTTP Authorization</a></li>
+<li><a href="https://auth0.com/blog/cookies-vs-tokens-definitive-guide/">Cookie vs Token</a></li>
+</ul>
+
 </div>
 
 
@@ -118,14 +207,8 @@
 
 
 
-<time class='entry-date' datetime='2018-01-15T11:20:21+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:20 am</span></time>
+<time class='entry-date' datetime='2018-02-13T13:19:20+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>1:19 pm</span></time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/javascript/'>javascript</a>
-  
-</span>
 
 
     </p>
@@ -141,10 +224,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2018/01/12/stack-vs-heap/" title="Previous Post: stack vs. heap">&laquo; stack vs. heap</a>
+        <a class="basic-alignment left" href="/blog/2018/02/08/sublime-setup-eslint-for-js/" title="Previous Post: Sublime setup eslint for RN">&laquo; Sublime setup eslint for RN</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2018/01/17/testing-ios-notification-with-apns/" title="Next Post: Testing iOS Notification with APNs">Testing iOS Notification with APNs &raquo;</a>
       
     </p>
   </footer>
@@ -159,8 +240,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods/';
-        var disqus_url = 'http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/02/13/ren-shi-jwt/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/02/13/ren-shi-jwt/';
         var disqus_script = 'embed.js';
       
     (function () {
@@ -273,8 +354,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods/';
-        var disqus_url = 'http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/02/13/ren-shi-jwt/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/02/13/ren-shi-jwt/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-02-08T10:46:48+08:00</updated>
+  <updated>2018-02-13T14:42:33+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,106 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[認識 JWT]]></title>
+    <link href="http://whhotw.github.io/blog/2018/02/13/ren-shi-jwt/"/>
+    <updated>2018-02-13T13:19:20+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/02/13/ren-shi-jwt</id>
+    <content type="html"><![CDATA[<h1>流程圖</h1>
+
+<p><img src="https://stormpath.com/wp-content/uploads/2016/05/Cookie-v-Token-Diagram-v1-3-1024x536.png" alt="" /></p>
+
+<p>左邊是傳統的 <code>cookie-session</code> 的流程，右邊是使用 <code>token</code> 的流程，乍看是很類似的。也因為運作的慨念很類似，所以兩者之間的轉換幾乎沒什麼困難。</p>
+
+<h1><a href="https://jwt.io">JWT</a></h1>
+
+<p>因為我都是在寫 APP 比較多，因此選擇用 <code>token</code> 的機制去解決身份驗證的問題，在實作上會快很多，重點是 <code>lib</code> 人家都寫好了，呵呵</p>
+
+<h2>What is JSON Web Token?</h2>
+
+<blockquote><p>JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA.</p>
+
+<p>Let&rsquo;s explain some concepts of this definition further.</p>
+
+<p>Compact: Because of their smaller size, JWTs can be sent through a URL, POST parameter, or inside an HTTP header. Additionally, the smaller size means transmission is fast.</p>
+
+<p>Self-contained: The payload contains all the required information about the user, avoiding the need to query the database more than once.</p></blockquote>
+
+<p>被定義在<a href="https://tools.ietf.org/html/rfc7519">RFC7519</a>，可使傳輸過程變得安全並有輕量與自我驗證的優勢</p>
+
+<h2>When should you use JSON Web Tokens?</h2>
+
+<blockquote><p>Here are some scenarios where JSON Web Tokens are useful:</p>
+
+<p>Authentication: This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token. Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.</p>
+
+<p>Information Exchange: JSON Web Tokens are a good way of securely transmitting information between parties. Because JWTs can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are. Additionally, as the signature is calculated using the header and the payload, you can also verify that the content hasn&rsquo;t been tampered with.</p></blockquote>
+
+<p>取自官網上的資訊，主要的目的就是身份驗證與資料交換</p>
+
+<h2>What is the JSON Web Token structure?</h2>
+
+<p>三個部分</p>
+
+<ul>
+<li>Header</li>
+<li>Payload</li>
+<li>Signature</li>
+</ul>
+
+
+<h3>Header</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "alg": "HS256",
+</span><span class='line'>  "typ": "JWT"
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Payload</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "sub": "1234567890",
+</span><span class='line'>  "name": "John Doe",
+</span><span class='line'>  "admin": true
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p><a href="https://tools.ietf.org/html/rfc7519#section-4.1">Notice that the claim names are only three characters</a></p></blockquote>
+
+<h3>Signature</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>HMACSHA256(
+</span><span class='line'>  base64UrlEncode(header) + "." +
+</span><span class='line'>  base64UrlEncode(payload),
+</span><span class='line'>  secret)</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>參考資料</h1>
+
+<ul>
+<li><a href="https://jwt.io/introduction/">JWT</a></li>
+<li><a href="https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/">Refresh Token</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">HTTP Authorization</a></li>
+<li><a href="https://auth0.com/blog/cookies-vs-tokens-definitive-guide/">Cookie vs Token</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sublime Setup Eslint for RN]]></title>
@@ -905,92 +1005,6 @@
 </span><span class='line'>
 </span><span class='line'>// 指定版本
 </span><span class='line'>$ react-naitve init MyApp --version 0.49.0</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[LeetCode #2. Add Two Numbers]]></title>
-    <link href="http://whhotw.github.io/blog/2017/11/28/leetcode-number-2-add-two-numbers/"/>
-    <updated>2017-11-28T17:31:11+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/11/28/leetcode-number-2-add-two-numbers</id>
-    <content type="html"><![CDATA[<p><em>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</em></p>
-
-<p><em>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</em></p>
-
-<p><em>Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
-Output: 7 -> 0 -> 8</em></p>
-
-<blockquote><p>相加兩個 linked lists</p></blockquote>
-
-<p>兩個 list 不一定會是等長，因此當沒有下一個節點的時候會新增一個假的節點，在下一回合檢查的時候 <code>if (!l1.next &amp;&amp; !l2.next)</code> 為真即最後回合。</p>
-
-<p>PS. 處理進位問題不是很漂亮應該有更好的寫法！</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>var addTwoNumbers = function(l1, l2) {
-</span><span class='line'>    if (l1 && l2) { 
-</span><span class='line'>        let val = l1.val + l2.val;
-</span><span class='line'>        let l = new ListNode(val % 10);
-</span><span class='line'>        
-</span><span class='line'>        if (!l1.next && !l2.next) {
-</span><span class='line'>            l.next = (val &gt; 9 ? new ListNode(1) : null);
-</span><span class='line'>            return l;
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        if (!l1.next) {
-</span><span class='line'>            l1.next = new ListNode(0);
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        if (!l2.next) {
-</span><span class='line'>            l2.next = new ListNode(0);
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        if (val &gt; 9) {
-</span><span class='line'>            if (l1.next) {
-</span><span class='line'>                l1.next.val++;    
-</span><span class='line'>            } else {
-</span><span class='line'>                l1.next = new ListNode(1);
-</span><span class='line'>            }
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        l.next = addTwoNumbers(l1.next, l2.next);    
-</span><span class='line'>        return l;
-</span><span class='line'>    } else {
-</span><span class='line'>        return null;
-</span><span class='line'>    }
-</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
