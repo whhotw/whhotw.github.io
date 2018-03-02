@@ -5,26 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>JavaScript 中 This 的種種 - wlog</title>
+  <title>Jenkins 中 Poll SCM 與 Build Periodically 差異 - wlog</title>
   <meta name="author" content="w">
 
   
-  <meta name="description" content="JavaScript 中的 this 是一個很容易搞混的東東。 具名函數搭配 bind 的寫法 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-function wth() { console.log(this);
-} let o = { name: 1
-}; wth(); // &hellip;">
+  <meta name="description" content="Poll SCM 固定時間執行（假如代碼有改變） */5 * * * * （每 5 分鐘檢查一次） Build periodically 固定時間執行（不管代碼是否改變） 0 2 * * * （每天 AM 2:00 執行一次）
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -33,7 +19,7 @@ function wth() { console.log(this);
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="wlog" type="application/atom+xml">
@@ -96,7 +82,7 @@ function wth() { console.log(this);
   
   <header>
     
-      <h1 class="entry-title">JavaScript 中 This 的種種</h1>
+      <h1 class="entry-title">Jenkins 中 Poll SCM 與 Build Periodically 差異</h1>
     
     
       <p class="meta">
@@ -105,7 +91,7 @@ function wth() { console.log(this);
 
 
 
-<time class='entry-date' datetime='2018-01-09T09:56:40+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>9:56 am</span></time>
+<time class='entry-date' datetime='2018-02-27T11:00:34+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:00 am</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://whhotw.github.io">Comments</a>
@@ -115,69 +101,17 @@ function wth() { console.log(this);
   </header>
 
 
-<div class="entry-content"><p>JavaScript 中的 this 是一個很容易搞混的東東。</p>
+<div class="entry-content"><h1>Poll SCM</h1>
 
-<p>具名函數搭配 bind 的寫法</p>
+<p>固定時間執行（假如代碼有改變）</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>function wth() {
-</span><span class='line'>  console.log(this);
-</span><span class='line'>}
-</span><span class='line'>
-</span><span class='line'>let o = {
-</span><span class='line'>  name: 1
-</span><span class='line'>};
-</span><span class='line'>
-</span><span class='line'>wth(); // window
-</span><span class='line'>
-</span><span class='line'>let wthBind = wth.bind(o);
-</span><span class='line'>
-</span><span class='line'>wthBind(); // object o</span></code></pre></td></tr></table></div></figure>
+<p>*/5 * * * * （每 5 分鐘檢查一次）</p>
 
+<h1>Build periodically</h1>
 
-<p>使用箭頭函數</p>
+<p>固定時間執行（不管代碼是否改變）</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let wth = () =&gt; {
-</span><span class='line'>  console.log(this);
-</span><span class='line'>};
-</span><span class='line'>
-</span><span class='line'>let o = {
-</span><span class='line'>  name: 1
-</span><span class='line'>};
-</span><span class='line'>
-</span><span class='line'>wth(); // window
-</span><span class='line'>
-</span><span class='line'>let wthBind = wth.bind(o);
-</span><span class='line'>
-</span><span class='line'>wthBind(); // window</span></code></pre></td></tr></table></div></figure>
-
-
-<p>為什麼執行結果不同呢？是因為透過箭頭函數 this 對象會在宣告時就綁定，因此就算之後用 bind 也不會有變化</p>
+<p>0 2 * * * （每天 AM 2:00 執行一次）</p>
 </div>
 
 
@@ -193,12 +127,12 @@ function wth() { console.log(this);
 
 
 
-<time class='entry-date' datetime='2018-01-09T09:56:40+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>9:56 am</span></time>
+<time class='entry-date' datetime='2018-02-27T11:00:34+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:00 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/javascript/'>javascript</a>
+    <a class='category' href='/blog/categories/jenkins/'>jenkins</a>
   
 </span>
 
@@ -216,10 +150,10 @@ function wth() { console.log(this);
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2018/01/05/git-kong-zi-liao-jia/" title="Previous Post: commit 空資料夾到 git">&laquo; commit 空資料夾到 git</a>
+        <a class="basic-alignment left" href="/blog/2018/02/13/ren-shi-jwt/" title="Previous Post: 認識 JWT">&laquo; 認識 JWT</a>
       
       
-        <a class="basic-alignment right" href="/blog/2018/01/11/" title="Next Post: 淺拷貝 vs. 深拷貝">淺拷貝 vs. 深拷貝 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2018/03/02/wo-zi-ji-de-rn-xiang-mu-pei-zhi/" title="Next Post: 我自己的 RN 項目配置">我自己的 RN 項目配置 &raquo;</a>
       
     </p>
   </footer>
@@ -234,8 +168,8 @@ function wth() { console.log(this);
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/';
-        var disqus_url = 'http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/';
         var disqus_script = 'embed.js';
       
     (function () {
@@ -349,8 +283,8 @@ function wth() { console.log(this);
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/';
-        var disqus_url = 'http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/';
         var disqus_script = 'embed.js';
       
     (function () {

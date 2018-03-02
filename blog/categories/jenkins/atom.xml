@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Jenkins | wlog]]></title>
+  <link href="http://whhotw.github.io/blog/categories/jenkins/atom.xml" rel="self"/>
+  <link href="http://whhotw.github.io/"/>
+  <updated>2018-03-02T13:39:38+08:00</updated>
+  <id>http://whhotw.github.io/</id>
+  <author>
+    <name><![CDATA[w]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Jenkins 中 Poll SCM 與 Build Periodically 差異]]></title>
+    <link href="http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/"/>
+    <updated>2018-02-27T11:00:34+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi</id>
+    <content type="html"><![CDATA[<h1>Poll SCM</h1>
+
+<p>固定時間執行（假如代碼有改變）</p>
+
+<p>*/5 * * * * （每 5 分鐘檢查一次）</p>
+
+<h1>Build periodically</h1>
+
+<p>固定時間執行（不管代碼是否改變）</p>
+
+<p>0 2 * * * （每天 AM 2:00 執行一次）</p>
+]]></content>
+  </entry>
+  
+</feed>

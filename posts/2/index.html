@@ -9,14 +9,14 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="設定步驟可以參考蘋果的官方或是這篇 此篇主要是介紹我自己用的測試工具，Github 上可以抓到原檔 1
+  <meta name="description" content="JsFormat 格式化程式碼 手動修改 e4x 屬性支持 jsx 1
 2
 3
 4
 5
-// for production
-python push_debug.py aps.pem ${device_token} // for sandbox
-python &hellip;">
+{ "e4x": true, // jsformat options "format_on_save": true,
+} SublimeLinter-jsxhint 檢查 jsx 語法錯誤
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +85,148 @@ python &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/01/25/sublime-chang-yong-tao-jian/">Sublime Js 相關套件</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-01-25T12:49:38+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>12:49 pm</span></time>
+        
+           | <a href="/blog/2018/01/25/sublime-chang-yong-tao-jian/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/25/sublime-chang-yong-tao-jian/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2><a href="https://github.com/jdc0589/JsFormat">JsFormat</a> 格式化程式碼</h2>
+
+<p>手動修改 <code>e4x</code> 屬性支持 <code>jsx</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "e4x": true,
+</span><span class='line'>  // jsformat options
+</span><span class='line'>  "format_on_save": true,
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h2><a href="https://github.com/SublimeLinter/SublimeLinter-jsxhint">SublimeLinter-jsxhint</a></h2>
+
+<p>檢查 jsx 語法錯誤</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/01/25/react-native-kai-fa-huan-jing/">React-Native 開發環境</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-01-25T10:58:08+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:58 am</span></time>
+        
+           | <a href="/blog/2018/01/25/react-native-kai-fa-huan-jing/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/25/react-native-kai-fa-huan-jing/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://facebook.github.io/react-native/docs/getting-started.html">React-Native Getting Started</a></p>
+
+<h3>Homebrew</h3>
+
+<p><a href="https://brew.sh">安裝</a> OSX 的套件管理包</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>▶ brew -v
+</span><span class='line'>Homebrew 1.4.3
+</span><span class='line'>Homebrew/homebrew-core (git revision a76c8; last commit 2018-01-11)</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Node</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install node
+</span><span class='line'>▶ node -v
+</span><span class='line'>v8.9.4</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Watchman</h3>
+
+<p>追蹤檔案的變化</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew inatall watchman
+</span><span class='line'>▶ watchman -v
+</span><span class='line'>4.9.0</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Command-Line</h3>
+
+<p>指令工具用於創建專案，初始化，更新，打包服務等任務</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>npm install react-native-cli
+</span><span class='line'>▶ react-native -v
+</span><span class='line'>react-native-cli: 2.0.1</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Flow、Yarn</h3>
+
+<p>檢查 <code>JavaScript</code> 語法錯誤與更高效能的第三方套件管理工具，可取代 <code>npm</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install flow
+</span><span class='line'>npm install -g yarn 
+</span><span class='line'>▶ yarn -v
+</span><span class='line'>1.3.2</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -539,6 +681,10 @@ python &hellip;">
 </span><span class='line'>*
 </span><span class='line'>!.gitignore</span></code></pre></td></tr></table></div></figure>
 
+
+<h3>使用 <a href="http://www.ryanwright.me/cookbook/git/gitkeep">.gitkeep</a></h3>
+
+<p>也可以達到一樣的效果</p>
 </div>
   
   
@@ -722,130 +868,6 @@ python &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/12/14/php-htaccess-she-ding/">.htaccess 設定</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-12-14T03:44:11+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:44 am</span></time>
-        
-           | <a href="/blog/2017/12/14/php-htaccess-she-ding/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2017/12/14/php-htaccess-she-ding/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>其實用 <code>PHP</code> 寫的東西不是很多，再加上一直都不算是網頁端的開發者，所以很多相關的知識其實不太熟悉，哈；目前台灣傳統的資訊公司（新創應該都是 <code>Node.js</code> 了），應該還是用 <code>PHP</code> 來開發網路應用，一來當然是廣大社群的力量（有問題 google 一下，基本上都能找到解法），很多很棒的第三方套件，再加上建置成本相對便宜的因素。最近民間友人拜託看一個 bug ，就當作工作之餘也摸一些網頁的東西，並且趁這次記錄一下。註：我是 OSX 的環境</p>
-
-<h2>遇到 http 500 internal server error</h2>
-
-<p>確定 apache 的模組有載入</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vim /etc/apache2/httpd.conf
-</span><span class='line'>
-</span><span class='line'>...
-</span><span class='line'>LoadModule rewrite_module libexec/apache2/mod_rewrite.so
-</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>開啟 .htaccess 功能</h2>
-
-<p>類似這樣</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;Directory "/myweb"&gt;
-</span><span class='line'>  ...
-</span><span class='line'>  AllowOverride all
-</span><span class='line'>  ...
-</span><span class='line'>&lt;/Directory&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>.htaccess 檔案內容</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;IfModule mod_rewrite.c&gt;
-</span><span class='line'>    RewriteEngine on
-</span><span class='line'>    RewriteBase /
-</span><span class='line'>    #RewriteCond $1 !^(index\.php|assets|.*\.ipa|images|swf|uploads|js|css|assets|robots\.txt|$)
-</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-f
-</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-d
-</span><span class='line'>    RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
-</span><span class='line'>&lt;/IfModule&gt;</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/12/13/react-native-app-package/">React-Native Init App</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-12-13T15:43:29+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:43 pm</span></time>
-        
-           | <a href="/blog/2017/12/13/react-native-app-package/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2017/12/13/react-native-app-package/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ react-naitve init MyApp
-</span><span class='line'>
-</span><span class='line'>// 指定版本
-</span><span class='line'>$ react-naitve init MyApp --version 0.49.0</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -863,6 +885,14 @@ python &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/03/02/wo-zi-ji-de-rn-xiang-mu-pei-zhi/">我自己的 RN 項目配置</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/">Jenkins 中 Poll SCM 與 Build Periodically 差異</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/02/13/ren-shi-jwt/">認識 JWT</a>
       </li>
     
@@ -872,14 +902,6 @@ python &hellip;">
     
       <li class="post">
         <a href="/blog/2018/02/05/rn-svg/">RN 中使用 SVG</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou/">TCP 三次握手/四次握手</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/">LeetCode #717. 1-bit and 2-bit Characters</a>
       </li>
     
   </ul>
@@ -893,10 +915,11 @@ python &hellip;">
 <li class='category'><a href='/blog/categories/git/'>git (3)</a></li>
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (6)</a></li>
+<li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (6)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
-<li class='category'><a href='/blog/categories/react-native/'>react-native (6)</a></li>
+<li class='category'><a href='/blog/categories/react-native/'>react-native (7)</a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (1)</a></li>
 
   </ul>

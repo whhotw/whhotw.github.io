@@ -9,7 +9,11 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="流程圖 左邊是傳統的 cookie-session 的流程，右邊是使用 token 的流程，乍看是很類似的。也因為運作的慨念很類似，所以兩者之間的轉換幾乎沒什麼困難。 JWT 因為我都是在寫 APP 比較多，因此選擇用 token 的機制去解決身份驗證的問題，在實作上會快很多，重點是 lib &hellip;">
+  <meta name="description" content="記錄一下，建立一個新的 RN 項目時的步驟，每次都會忘記，再加上改版時不時就跑出一推問題，麻煩！這只是我個人有用到一些套件與建立步驟 CLI 1
+2
+3
+yarn init ${PROJECT_NAME} --version 0.51.0
+yarn add redux-thunk redux- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +82,276 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/03/02/wo-zi-ji-de-rn-xiang-mu-pei-zhi/">我自己的 RN 項目配置</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-03-02T01:34:59+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2018</span></span> <span class='time'>1:34 am</span></time>
+        
+           | <a href="/blog/2018/03/02/wo-zi-ji-de-rn-xiang-mu-pei-zhi/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/03/02/wo-zi-ji-de-rn-xiang-mu-pei-zhi/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>記錄一下，建立一個新的 RN 項目時的步驟，每次都會忘記，再加上改版時不時就跑出一推問題，麻煩！這只是我個人有用到一些套件與建立步驟</p>
+
+<h1>CLI</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>yarn init ${PROJECT_NAME} --version 0.51.0
+</span><span class='line'>yarn add redux-thunk redux-logger redux react-redux react-native-navigation react-native-vector-icons react-native-i18n react-native-elements prop-types
+</span><span class='line'>yarn add babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react babel-core@6.0.0 --dev</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>package.json</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "name": "${PROJECT_NAME}",
+</span><span class='line'>  "version": "0.0.1",
+</span><span class='line'>  "private": true,
+</span><span class='line'>  "scripts": {
+</span><span class='line'>    "start": "node node_modules/react-native/local-cli/cli.js start",
+</span><span class='line'>    "test": "jest"
+</span><span class='line'>  },
+</span><span class='line'>  "dependencies": {
+</span><span class='line'>    "prop-types": "^15.6.1",
+</span><span class='line'>    "react": "16.0.0",
+</span><span class='line'>    "react-native": "0.51.0",
+</span><span class='line'>    "react-native-elements": "^0.19.0",
+</span><span class='line'>    "react-native-i18n": "^2.0.12",
+</span><span class='line'>    "react-native-navigation": "^1.1.393",
+</span><span class='line'>    "react-native-vector-icons": "^4.5.0",
+</span><span class='line'>    "react-redux": "^5.0.7",
+</span><span class='line'>    "redux": "^3.7.2",
+</span><span class='line'>    "redux-logger": "^3.0.6",
+</span><span class='line'>    "redux-thunk": "^2.2.0"
+</span><span class='line'>  },
+</span><span class='line'>  "devDependencies": {
+</span><span class='line'>    "babel-core": "6.0.0",
+</span><span class='line'>    "babel-eslint": "^8.2.2",
+</span><span class='line'>    "babel-jest": "22.4.1",
+</span><span class='line'>    "babel-preset-react-native": "4.0.0",
+</span><span class='line'>    "eslint": "^4.18.1",
+</span><span class='line'>    "eslint-config-airbnb": "^16.1.0",
+</span><span class='line'>    "eslint-plugin-import": "^2.9.0",
+</span><span class='line'>    "eslint-plugin-jsx-a11y": "^6.0.3",
+</span><span class='line'>    "eslint-plugin-react": "^7.7.0",
+</span><span class='line'>    "jest": "22.4.2",
+</span><span class='line'>    "react-test-renderer": "16.0.0"
+</span><span class='line'>  },
+</span><span class='line'>  "jest": {
+</span><span class='line'>    "preset": "react-native"
+</span><span class='line'>  },
+</span><span class='line'>  "rnpm": {
+</span><span class='line'>    "assets": [
+</span><span class='line'>      "./src/fonts"
+</span><span class='line'>    ]
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Directory tree</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>▶ tree -La 1
+</span><span class='line'>.
+</span><span class='line'>├── .babelrc
+</span><span class='line'>├── .buckconfig
+</span><span class='line'>├── .eslintrc
+</span><span class='line'>├── .flowconfig
+</span><span class='line'>├── .gitattributes
+</span><span class='line'>├── .gitignore
+</span><span class='line'>├── .watchmanconfig
+</span><span class='line'>├── __tests__
+</span><span class='line'>├── android
+</span><span class='line'>├── app.json
+</span><span class='line'>├── index.js
+</span><span class='line'>├── ios
+</span><span class='line'>├── node_modules
+</span><span class='line'>├── package.json
+</span><span class='line'>├── src
+</span><span class='line'>└── yarn.lock</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Directory of src tree</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>▶ tree -L 1
+</span><span class='line'>.
+</span><span class='line'>├── actions
+</span><span class='line'>├── components
+</span><span class='line'>├── config
+</span><span class='line'>├── fonts
+</span><span class='line'>├── helpers
+</span><span class='line'>├── i18n
+</span><span class='line'>├── reducers
+</span><span class='line'>└── screens</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>.eslintrc</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "parser": "babel-eslint",
+</span><span class='line'>  "extends": "airbnb",
+</span><span class='line'>  "rules": {
+</span><span class='line'>    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+</span><span class='line'>    "react/prop-types": [1],
+</span><span class='line'>    "no-unused-vars": [1],
+</span><span class='line'>    "no-use-before-define": [1, { "functions": true, "classes": true }],
+</span><span class='line'>  },
+</span><span class='line'>  "globals": {
+</span><span class='line'>    "fetch": true,
+</span><span class='line'>    "__DEV__": true,
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/">Jenkins 中 Poll SCM 與 Build Periodically 差異</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-02-27T11:00:34+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:00 am</span></time>
+        
+           | <a href="/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>Poll SCM</h1>
+
+<p>固定時間執行（假如代碼有改變）</p>
+
+<p>*/5 * * * * （每 5 分鐘檢查一次）</p>
+
+<h1>Build periodically</h1>
+
+<p>固定時間執行（不管代碼是否改變）</p>
+
+<p>0 2 * * * （每天 AM 2:00 執行一次）</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -633,148 +907,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/01/25/sublime-chang-yong-tao-jian/">Sublime Js 相關套件</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-01-25T12:49:38+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>12:49 pm</span></time>
-        
-           | <a href="/blog/2018/01/25/sublime-chang-yong-tao-jian/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/25/sublime-chang-yong-tao-jian/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2><a href="https://github.com/jdc0589/JsFormat">JsFormat</a> 格式化程式碼</h2>
-
-<p>手動修改 <code>e4x</code> 屬性支持 <code>jsx</code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  "e4x": true,
-</span><span class='line'>  // jsformat options
-</span><span class='line'>  "format_on_save": true,
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<h2><a href="https://github.com/SublimeLinter/SublimeLinter-jsxhint">SublimeLinter-jsxhint</a></h2>
-
-<p>檢查 jsx 語法錯誤</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/01/25/react-native-kai-fa-huan-jing/">React-Native 開發環境</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-01-25T10:58:08+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:58 am</span></time>
-        
-           | <a href="/blog/2018/01/25/react-native-kai-fa-huan-jing/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/25/react-native-kai-fa-huan-jing/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="https://facebook.github.io/react-native/docs/getting-started.html">React-Native Getting Started</a></p>
-
-<h3>Homebrew</h3>
-
-<p><a href="https://brew.sh">安裝</a> OSX 的套件管理包</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>▶ brew -v
-</span><span class='line'>Homebrew 1.4.3
-</span><span class='line'>Homebrew/homebrew-core (git revision a76c8; last commit 2018-01-11)</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Node</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew install node
-</span><span class='line'>▶ node -v
-</span><span class='line'>v8.9.4</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Watchman</h3>
-
-<p>追蹤檔案的變化</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew inatall watchman
-</span><span class='line'>▶ watchman -v
-</span><span class='line'>4.9.0</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Command-Line</h3>
-
-<p>指令工具用於創建專案，初始化，更新，打包服務等任務</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>npm install react-native-cli
-</span><span class='line'>▶ react-native -v
-</span><span class='line'>react-native-cli: 2.0.1</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Flow、Yarn</h3>
-
-<p>檢查 <code>JavaScript</code> 語法錯誤與更高效能的第三方套件管理工具，可取代 <code>npm</code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew install flow
-</span><span class='line'>npm install -g yarn 
-</span><span class='line'>▶ yarn -v
-</span><span class='line'>1.3.2</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -790,6 +922,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/03/02/wo-zi-ji-de-rn-xiang-mu-pei-zhi/">我自己的 RN 項目配置</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/">Jenkins 中 Poll SCM 與 Build Periodically 差異</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/02/13/ren-shi-jwt/">認識 JWT</a>
       </li>
     
@@ -799,14 +939,6 @@
     
       <li class="post">
         <a href="/blog/2018/02/05/rn-svg/">RN 中使用 SVG</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou/">TCP 三次握手/四次握手</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/">LeetCode #717. 1-bit and 2-bit Characters</a>
       </li>
     
   </ul>
@@ -820,10 +952,11 @@
 <li class='category'><a href='/blog/categories/git/'>git (3)</a></li>
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (6)</a></li>
+<li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (6)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
-<li class='category'><a href='/blog/categories/react-native/'>react-native (6)</a></li>
+<li class='category'><a href='/blog/categories/react-native/'>react-native (7)</a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (1)</a></li>
 
   </ul>

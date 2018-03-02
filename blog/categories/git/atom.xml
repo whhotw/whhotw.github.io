@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-02-13T14:42:33+08:00</updated>
+  <updated>2018-03-02T13:39:38+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -60,6 +60,10 @@
 *
 !.gitignore
 </code></pre>
+
+<h3>使用 <a href="http://www.ryanwright.me/cookbook/git/gitkeep">.gitkeep</a></h3>
+
+<p>也可以達到一樣的效果</p>
 ]]></content>
   </entry>
   

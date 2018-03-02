@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-02-13T14:42:33+08:00</updated>
+  <updated>2018-03-02T13:39:38+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,230 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[我自己的 RN 項目配置]]></title>
+    <link href="http://whhotw.github.io/blog/2018/03/02/wo-zi-ji-de-rn-xiang-mu-pei-zhi/"/>
+    <updated>2018-03-02T01:34:59+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/03/02/wo-zi-ji-de-rn-xiang-mu-pei-zhi</id>
+    <content type="html"><![CDATA[<p>記錄一下，建立一個新的 RN 項目時的步驟，每次都會忘記，再加上改版時不時就跑出一推問題，麻煩！這只是我個人有用到一些套件與建立步驟</p>
+
+<h1>CLI</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>yarn init ${PROJECT_NAME} --version 0.51.0
+</span><span class='line'>yarn add redux-thunk redux-logger redux react-redux react-native-navigation react-native-vector-icons react-native-i18n react-native-elements prop-types
+</span><span class='line'>yarn add babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react babel-core@6.0.0 --dev</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>package.json</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "name": "${PROJECT_NAME}",
+</span><span class='line'>  "version": "0.0.1",
+</span><span class='line'>  "private": true,
+</span><span class='line'>  "scripts": {
+</span><span class='line'>    "start": "node node_modules/react-native/local-cli/cli.js start",
+</span><span class='line'>    "test": "jest"
+</span><span class='line'>  },
+</span><span class='line'>  "dependencies": {
+</span><span class='line'>    "prop-types": "^15.6.1",
+</span><span class='line'>    "react": "16.0.0",
+</span><span class='line'>    "react-native": "0.51.0",
+</span><span class='line'>    "react-native-elements": "^0.19.0",
+</span><span class='line'>    "react-native-i18n": "^2.0.12",
+</span><span class='line'>    "react-native-navigation": "^1.1.393",
+</span><span class='line'>    "react-native-vector-icons": "^4.5.0",
+</span><span class='line'>    "react-redux": "^5.0.7",
+</span><span class='line'>    "redux": "^3.7.2",
+</span><span class='line'>    "redux-logger": "^3.0.6",
+</span><span class='line'>    "redux-thunk": "^2.2.0"
+</span><span class='line'>  },
+</span><span class='line'>  "devDependencies": {
+</span><span class='line'>    "babel-core": "6.0.0",
+</span><span class='line'>    "babel-eslint": "^8.2.2",
+</span><span class='line'>    "babel-jest": "22.4.1",
+</span><span class='line'>    "babel-preset-react-native": "4.0.0",
+</span><span class='line'>    "eslint": "^4.18.1",
+</span><span class='line'>    "eslint-config-airbnb": "^16.1.0",
+</span><span class='line'>    "eslint-plugin-import": "^2.9.0",
+</span><span class='line'>    "eslint-plugin-jsx-a11y": "^6.0.3",
+</span><span class='line'>    "eslint-plugin-react": "^7.7.0",
+</span><span class='line'>    "jest": "22.4.2",
+</span><span class='line'>    "react-test-renderer": "16.0.0"
+</span><span class='line'>  },
+</span><span class='line'>  "jest": {
+</span><span class='line'>    "preset": "react-native"
+</span><span class='line'>  },
+</span><span class='line'>  "rnpm": {
+</span><span class='line'>    "assets": [
+</span><span class='line'>      "./src/fonts"
+</span><span class='line'>    ]
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Directory tree</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>▶ tree -La 1
+</span><span class='line'>.
+</span><span class='line'>├── .babelrc
+</span><span class='line'>├── .buckconfig
+</span><span class='line'>├── .eslintrc
+</span><span class='line'>├── .flowconfig
+</span><span class='line'>├── .gitattributes
+</span><span class='line'>├── .gitignore
+</span><span class='line'>├── .watchmanconfig
+</span><span class='line'>├── __tests__
+</span><span class='line'>├── android
+</span><span class='line'>├── app.json
+</span><span class='line'>├── index.js
+</span><span class='line'>├── ios
+</span><span class='line'>├── node_modules
+</span><span class='line'>├── package.json
+</span><span class='line'>├── src
+</span><span class='line'>└── yarn.lock</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Directory of src tree</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>▶ tree -L 1
+</span><span class='line'>.
+</span><span class='line'>├── actions
+</span><span class='line'>├── components
+</span><span class='line'>├── config
+</span><span class='line'>├── fonts
+</span><span class='line'>├── helpers
+</span><span class='line'>├── i18n
+</span><span class='line'>├── reducers
+</span><span class='line'>└── screens</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>.eslintrc</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "parser": "babel-eslint",
+</span><span class='line'>  "extends": "airbnb",
+</span><span class='line'>  "rules": {
+</span><span class='line'>    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+</span><span class='line'>    "react/prop-types": [1],
+</span><span class='line'>    "no-unused-vars": [1],
+</span><span class='line'>    "no-use-before-define": [1, { "functions": true, "classes": true }],
+</span><span class='line'>  },
+</span><span class='line'>  "globals": {
+</span><span class='line'>    "fetch": true,
+</span><span class='line'>    "__DEV__": true,
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jenkins 中 Poll SCM 與 Build Periodically 差異]]></title>
+    <link href="http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/"/>
+    <updated>2018-02-27T11:00:34+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi</id>
+    <content type="html"><![CDATA[<h1>Poll SCM</h1>
+
+<p>固定時間執行（假如代碼有改變）</p>
+
+<p>*/5 * * * * （每 5 分鐘檢查一次）</p>
+
+<h1>Build periodically</h1>
+
+<p>固定時間執行（不管代碼是否改變）</p>
+
+<p>0 2 * * * （每天 AM 2:00 執行一次）</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[認識 JWT]]></title>
@@ -798,6 +1022,10 @@
 </span><span class='line'>*
 </span><span class='line'>!.gitignore</span></code></pre></td></tr></table></div></figure>
 
+
+<h3>使用 <a href="http://www.ryanwright.me/cookbook/git/gitkeep">.gitkeep</a></h3>
+
+<p>也可以達到一樣的效果</p>
 ]]></content>
   </entry>
   
@@ -927,84 +1155,6 @@
 <p>網路上找到的解決辦法</p>
 
 <script src="https://gist.github.com/idleberg/24479f34dc5007e50d47.js"></script>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[.htaccess 設定]]></title>
-    <link href="http://whhotw.github.io/blog/2017/12/14/php-htaccess-she-ding/"/>
-    <updated>2017-12-14T03:44:11+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/12/14/php-htaccess-she-ding</id>
-    <content type="html"><![CDATA[<p>其實用 <code>PHP</code> 寫的東西不是很多，再加上一直都不算是網頁端的開發者，所以很多相關的知識其實不太熟悉，哈；目前台灣傳統的資訊公司（新創應該都是 <code>Node.js</code> 了），應該還是用 <code>PHP</code> 來開發網路應用，一來當然是廣大社群的力量（有問題 google 一下，基本上都能找到解法），很多很棒的第三方套件，再加上建置成本相對便宜的因素。最近民間友人拜託看一個 bug ，就當作工作之餘也摸一些網頁的東西，並且趁這次記錄一下。註：我是 OSX 的環境</p>
-
-<h2>遇到 http 500 internal server error</h2>
-
-<p>確定 apache 的模組有載入</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vim /etc/apache2/httpd.conf
-</span><span class='line'>
-</span><span class='line'>...
-</span><span class='line'>LoadModule rewrite_module libexec/apache2/mod_rewrite.so
-</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>開啟 .htaccess 功能</h2>
-
-<p>類似這樣</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;Directory "/myweb"&gt;
-</span><span class='line'>  ...
-</span><span class='line'>  AllowOverride all
-</span><span class='line'>  ...
-</span><span class='line'>&lt;/Directory&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>.htaccess 檔案內容</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;IfModule mod_rewrite.c&gt;
-</span><span class='line'>    RewriteEngine on
-</span><span class='line'>    RewriteBase /
-</span><span class='line'>    #RewriteCond $1 !^(index\.php|assets|.*\.ipa|images|swf|uploads|js|css|assets|robots\.txt|$)
-</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-f
-</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-d
-</span><span class='line'>    RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
-</span><span class='line'>&lt;/IfModule&gt;</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[React-Native Init App]]></title>
-    <link href="http://whhotw.github.io/blog/2017/12/13/react-native-app-package/"/>
-    <updated>2017-12-13T15:43:29+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/12/13/react-native-app-package</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ react-naitve init MyApp
-</span><span class='line'>
-</span><span class='line'>// 指定版本
-</span><span class='line'>$ react-naitve init MyApp --version 0.49.0</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>

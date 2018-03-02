@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2018/03/02/wo-zi-ji-de-rn-xiang-mu-pei-zhi/</loc>
+<lastmod>2018-03-02T01:34:59+08:00</lastmod>
+</url>
+<url>
+<loc>http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/</loc>
+<lastmod>2018-02-27T11:00:34+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2018/02/13/ren-shi-jwt/</loc>
 <lastmod>2018-02-13T13:19:20+08:00</lastmod>
 </url>
@@ -197,5 +205,20 @@
 </url>
 <url>
 <loc>http://whhotw.github.io/blog/categories/php/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/blog/categories/jenkins/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/posts/2/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/posts/3/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/posts/4/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/posts/5/</loc>
 </url>
 </urlset>
