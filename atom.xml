@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-03-02T13:46:37+08:00</updated>
+  <updated>2018-03-08T19:28:38+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[React Native Navigation 顯示 Modal 透明背景]]></title>
+    <link href="http://whhotw.github.io/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing/"/>
+    <updated>2018-03-08T19:15:14+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing</id>
+    <content type="html"><![CDATA[<p>不透明的背景</p>
+
+<p><img src="http://whhotw.github.io/assets/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-03-08%20at%2019.17.36.png"></p>
+
+<p>透明的背景</p>
+
+<p><img src="http://whhotw.github.io/assets/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-03-08%20at%2019.27.42.png"></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>static navigatorStyle = {
+</span><span class='line'>  screenBackgroundColor: 'transparent',
+</span><span class='line'>  modalPresentationStyle: 'overFullScreen'
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[我自己的 RN 項目配置]]></title>
@@ -1132,30 +1157,6 @@
 
 
 <blockquote><p>注意權限</p></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[在 OSX 環境下安裝 PHP Mcrypt 套件]]></title>
-    <link href="http://whhotw.github.io/blog/2017/12/14/php-an-zhuang-mcrypt/"/>
-    <updated>2017-12-14T11:09:46+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/12/14/php-an-zhuang-mcrypt</id>
-    <content type="html"><![CDATA[<p>指令</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew install mcrypt
-</span><span class='line'>$ brew tap homebrew/homebrew-php
-</span><span class='line'>$ brew install php56-mcrypt --without-homebrew-php</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>php.ini 加入 extension, 重啟 apache</p></blockquote>
-
-<p>網路上找到的解決辦法</p>
-
-<script src="https://gist.github.com/idleberg/24479f34dc5007e50d47.js"></script>
-
 ]]></content>
   </entry>
   

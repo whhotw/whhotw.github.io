@@ -4,7 +4,7 @@
   <title><![CDATA[Category: React-native | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-03-02T13:46:37+08:00</updated>
+  <updated>2018-03-08T19:28:38+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[React Native Navigation 顯示 Modal 透明背景]]></title>
+    <link href="http://whhotw.github.io/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing/"/>
+    <updated>2018-03-08T19:15:14+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing</id>
+    <content type="html"><![CDATA[<p>不透明的背景</p>
+
+<p><img src="/assets/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-03-08%20at%2019.17.36.png"></p>
+
+<p>透明的背景</p>
+
+<p><img src="/assets/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-03-08%20at%2019.27.42.png"></p>
+
+<pre><code>static navigatorStyle = {
+    screenBackgroundColor: 'transparent',
+    modalPresentationStyle: 'overFullScreen'
+}
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[我自己的 RN 項目配置]]></title>
@@ -243,22 +264,6 @@ npm install -g yarn
 
 // 指定版本
 $ react-naitve init MyApp --version 0.49.0
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ignore Self Signed Cert on React Native App]]></title>
-    <link href="http://whhotw.github.io/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app/"/>
-    <updated>2017-10-05T11:06:00+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/10/05/ignore-self-signed-cert-on-react-native-app</id>
-    <content type="html"><![CDATA[<p><img src="/assets/Simulator%20Screen%20Shot%20Oct%205%2C%202017%2C%2011.19.10%20AM.png" width="360" height="640"></p>
-
-<p>RN 裡面是不接受自簽憑證的，但是往往在開發環境中，有些時候還是會用到自簽憑證，這時候就會變得很麻煩，因為寫程式的時候等於不能跑在測試環境，這時候就可以新增 <code>NSURLRequest</code> 的 category 讓網路連線可以通過 <code>https</code> 的錯誤</p>
-
-<pre><code>+ (BOOL)allowsAnyHTTPSCertificateForHost:(NSString *)host {
-  return YES;
-}
 </code></pre>
 ]]></content>
   </entry>

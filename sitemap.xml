@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing/</loc>
+<lastmod>2018-03-08T19:15:14+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2018/03/02/wo-zi-ji-de-rn-xiang-mu-pei-zhi/</loc>
 <lastmod>2018-03-02T01:34:59+08:00</lastmod>
 </url>
@@ -165,10 +169,10 @@
 <lastmod>2017-09-06T14:49:07+08:00</lastmod>
 </url>
 <url>
-<loc>http://whhotw.github.io/blog/archives/</loc>
+<loc>http://whhotw.github.io/</loc>
 </url>
 <url>
-<loc>http://whhotw.github.io/</loc>
+<loc>http://whhotw.github.io/blog/archives/</loc>
 </url>
 <url>
 <loc>http://whhotw.github.io/about/</loc>
