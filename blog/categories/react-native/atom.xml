@@ -4,7 +4,7 @@
   <title><![CDATA[Category: React-native | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-03-08T19:28:38+08:00</updated>
+  <updated>2018-03-08T19:33:57+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -20,11 +20,11 @@
     <id>http://whhotw.github.io/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing</id>
     <content type="html"><![CDATA[<p>不透明的背景</p>
 
-<p><img src="/assets/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-03-08%20at%2019.17.36.png"></p>
+<p><img src="/assets/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-03-08%20at%2019.17.36.png" width="360" height="640"></p>
 
 <p>透明的背景</p>
 
-<p><img src="/assets/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-03-08%20at%2019.27.42.png"></p>
+<p><img src="/assets/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-03-08%20at%2019.27.42.png" width="360" height="640"></p>
 
 <pre><code>static navigatorStyle = {
     screenBackgroundColor: 'transparent',
