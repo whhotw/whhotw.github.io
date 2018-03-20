@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-03-08T20:13:58+08:00</updated>
+  <updated>2018-03-20T09:52:20+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,146 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Fetch API Content-Type]]></title>
+    <link href="http://whhotw.github.io/blog/2018/03/20/fetch-api-content-type/"/>
+    <updated>2018-03-20T09:38:46+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/03/20/fetch-api-content-type</id>
+    <content type="html"><![CDATA[<p>最近用到 js 中的 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">fetch</a> 發現 <code>Content-Type</code> 會因為參數而改變</p>
+
+<p>例如</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>const options = {
+</span><span class='line'>  method,
+</span><span class='line'>  headers: {
+</span><span class='line'>    Accept: 'application/json',
+</span><span class='line'>    'Content-Type': 'application/json', // 指定
+</span><span class='line'>  },
+</span><span class='line'>  body: params, // 第二張圖
+</span><span class='line'>  // body: JSON.stringify(params), // 第一張圖
+</span><span class='line'>};
+</span><span class='line'>    
+</span><span class='line'>return fetch(url, options)
+</span><span class='line'>  .then((res) =&gt; {
+</span><span class='line'>    if (!res.ok) {
+</span><span class='line'>      throw new Error('請檢查網路連線');
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    return res.json();
+</span><span class='line'>  });</span></code></pre></td></tr></table></div></figure>
+
+
+<p>假如 <code>params</code> 沒有用 <code>JSON.stringify</code> 的話，實際傳出去的 <code>Content-Type</code> 不一定是 <code>application/json</code></p>
+
+<p>我用 wireshark 做的實驗</p>
+
+<p><img src="http://whhotw.github.io/assets/Screen%20Shot%202018-03-20%20at%2009.44.png" width="1080" height="1920"></p>
+
+<p><img src="http://whhotw.github.io/assets/Screen%20Shot%202018-03-20%20at%2009.44.05.png" width="1080" height="1920"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[印出 OSX 上的模擬器]]></title>
+    <link href="http://whhotw.github.io/blog/2018/03/14/yin-chu-osx-shang-de-ios-mo-ni-qi-qing-dan/"/>
+    <updated>2018-03-14T11:04:15+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/03/14/yin-chu-osx-shang-de-ios-mo-ni-qi-qing-dan</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>▶ xcrun simctl list devices
+</span><span class='line'>== Devices ==
+</span><span class='line'>-- iOS 9.3 --
+</span><span class='line'>-- iOS 10.1 --
+</span><span class='line'>-- iOS 11.2 --
+</span><span class='line'>    iPhone 8 (C34476E5-474D-4295-B113-07A1C9A58F7C) (Booted)
+</span><span class='line'>    iPhone 8 Plus (7D2939FA-6C7C-4ECC-91BA-B81245193273) (Shutdown)
+</span><span class='line'>    iPhone SE (F6FC4EB2-57A8-43A5-B3DF-3C2D0D86EAB5) (Shutdown)
+</span><span class='line'>    iPhone X (CF6EAD3A-D89A-416B-9E22-A9FEE01FABC0) (Shutdown)
+</span><span class='line'>-- tvOS 11.2 --
+</span><span class='line'>-- watchOS 4.2 --
+</span><span class='line'>    Apple Watch - 38mm (762755FE-F880-4D3F-AC59-5273E136AA22) (Shutdown)
+</span><span class='line'>    Apple Watch - 42mm (9C46B910-2347-4632-87C1-4CB7C146A7DA) (Shutdown)
+</span><span class='line'>    Apple Watch Series 3 - 38mm (1636D402-593A-4E43-8936-5F8269FC8E06) (Shutdown)
+</span><span class='line'>    Apple Watch Series 3 - 42mm (F44308B7-7EE5-451E-A5BE-47C4AF6D2182) (Shutdown)
+</span><span class='line'>-- Unavailable: com.apple.CoreSimulator.SimRuntime.iOS-10-3 --
+</span><span class='line'>    iPhone 7 Plus (93B3F053-7A69-462B-995C-FDBB0DECD696) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>    iPad Air (D32532AE-CAD0-4A33-B5C3-D7D6603CD14A) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>-- Unavailable: com.apple.CoreSimulator.SimRuntime.iOS-11-1 --
+</span><span class='line'>    iPad Air (458272DE-23F5-4402-9499-38D34EE0C2C4) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>-- Unavailable: com.apple.CoreSimulator.SimRuntime.watchOS-3-1 --
+</span><span class='line'>    Apple Watch - 38mm (F517E442-BA3D-414E-8AC6-DC3DADEBBBA5) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>    Apple Watch - 42mm (77DAED46-0C55-4BF1-BEFB-29CFBF1878B9) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>    Apple Watch Series 2 - 38mm (3BC9851A-B5F0-4388-AB2F-970615C09131) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>    Apple Watch Series 2 - 42mm (D96A8FAE-A911-4F6E-B410-394F612D72A5) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>-- Unavailable: com.apple.CoreSimulator.SimRuntime.watchOS-3-2 --
+</span><span class='line'>    Apple Watch - 38mm (79FE64E2-6561-460D-B3B2-85D6E27E504C) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>    Apple Watch - 42mm (FAEC2DB5-99B5-406A-A9B9-2CCD0280802B) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>    Apple Watch Series 2 - 38mm (56BE61D3-3CDD-44CD-A383-C4B72F862A7F) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>    Apple Watch Series 2 - 42mm (D01D1358-9E50-4DCC-B1A0-58A1AED5A57A) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>-- Unavailable: com.apple.CoreSimulator.SimRuntime.watchOS-4-1 --
+</span><span class='line'>    Apple Watch - 38mm (83E57EAD-BC33-4ADA-AC43-C70DE030CB13) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>    Apple Watch - 42mm (45F4AB4B-CEFB-4F88-8ADD-B491E8AEDB51) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>    Apple Watch Series 2 - 38mm (DE82F3F9-0B17-4914-A146-CE8B047A0D32) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>    Apple Watch Series 2 - 42mm (1B69D57E-707E-4458-9A38-0142FADE86B4) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>    Apple Watch Series 3 - 38mm (8F4B32E9-EBC3-46F8-B1A1-F30C8D863F65) (Shutdown) (unavailable, runtime profile not found)
+</span><span class='line'>    Apple Watch Series 3 - 42mm (586539F8-FE12-4354-A102-3A17F71E867A) (Shutdown) (unavailable, runtime profile not found)</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[React Native Navigation 顯示 Modal 透明背景]]></title>
@@ -972,191 +1112,6 @@
 
 
 <p>為什麼執行結果不同呢？是因為透過箭頭函數 this 對象會在宣告時就綁定，因此就算之後用 bind 也不會有變化</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Commit 空資料夾到 Git]]></title>
-    <link href="http://whhotw.github.io/blog/2018/01/05/git-kong-zi-liao-jia/"/>
-    <updated>2018-01-05T01:29:37+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/01/05/git-kong-zi-liao-jia</id>
-    <content type="html"><![CDATA[<p>有些時候想要在 git 上 commit 一個空資料夾時，可以透過 .gitignore 的設定來做到。</p>
-
-<h3>專案結構</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree -La 1
-</span><span class='line'>.
-</span><span class='line'>├── .git
-</span><span class='line'>├── .gitignore
-</span><span class='line'>├── README.md
-</span><span class='line'>├── application
-</span><span class='line'>├── assets
-</span><span class='line'>├── index.php
-</span><span class='line'>├── system
-</span><span class='line'>└── vendor</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>假如你有一個空的資料夾，你是沒有辦法 commit 這個檔案到 git 上的，因此可以建立一個 .gitignore 在這個空的資料夾裡</p></blockquote>
-
-<h3>新的專案結構</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree -La 1
-</span><span class='line'>.
-</span><span class='line'>├── .git
-</span><span class='line'>├── .gitignore
-</span><span class='line'>├── README.md
-</span><span class='line'>├── application
-</span><span class='line'>├── assets
-</span><span class='line'>├── index.php
-</span><span class='line'>├── system
-</span><span class='line'>├── test
-</span><span class='line'>│   └── .gitignore
-</span><span class='line'>└── vendor</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>如此一來將可以 commit</p></blockquote>
-
-<p>另外你假如想要保留一個 temp 資料夾在 git 上，你可以順便利用這個 .gitignore</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vim test/.gitignore
-</span><span class='line'>*
-</span><span class='line'>!.gitignore</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>使用 <a href="http://www.ryanwright.me/cookbook/git/gitkeep">.gitkeep</a></h3>
-
-<p>也可以達到一樣的效果</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[在 OSX 環境建置 Nginx+PHP]]></title>
-    <link href="http://whhotw.github.io/blog/2017/12/18/"/>
-    <updated>2017-12-18T16:14:50+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/12/</id>
-    <content type="html"><![CDATA[<p>參考
-<a href="https://gist.github.com/dtomasi/ab76d14338db82ec24a1fc137caff75b">https://gist.github.com/dtomasi/ab76d14338db82ec24a1fc137caff75b</a></p>
-
-<h2>Install Commandline Tools</h2>
-
-<p><code>$ xcode-select --install</code></p>
-
-<h2>Install Nginx</h2>
-
-<p><code>$ brew update</code></p>
-
-<h3>After install run</h3>
-
-<p><code>sudo nginx</code></p>
-
-<h3>Configuration</h3>
-
-<p><code>/usr/local/etc/nginx/nginx.conf</code></p>
-
-<h3>Stop nginx service</h3>
-
-<p><code>sudo nginx -s stop</code></p>
-
-<h3>Reload nginx service</h3>
-
-<p><code>sudo nginx -s reload</code></p>
-
-<h3>Nginx.conf</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vim /usr/local/etc/nginx/nginx.conf
-</span><span class='line'>
-</span><span class='line'>    server {
-</span><span class='line'>        listen       8080;
-</span><span class='line'>        server_name  localhost;
-</span><span class='line'>
-</span><span class='line'>        root   html;
-</span><span class='line'>
-</span><span class='line'>        location / {
-</span><span class='line'>            try_files index.html /index.php;
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        location ~ \.php$ {
-</span><span class='line'>            fastcgi_pass  127.0.0.1:9000;
-</span><span class='line'>            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-</span><span class='line'>            include       fastcgi_params;
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        location ~ /\.ht {
-</span><span class='line'>            deny  all;
-</span><span class='line'>        }
-</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Install PHP56</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew tap homebrew/homebrew-php
-</span><span class='line'>$ brew install --without-apache --without-fpm --without-mysql php56</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>php-fpm</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ php-fpm
-</span><span class='line'>[18-Dec-2017 16:51:20] NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
-</span><span class='line'>[18-Dec-2017 16:51:20] NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root
-</span><span class='line'>
-</span><span class='line'>$sudo php-fpm</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>注意權限</p></blockquote>
 ]]></content>
   </entry>
   

@@ -16,7 +16,19 @@
 5
 6
 7
-for (let i = 0; i &lt; nums.length; i++) { for (let j = 0; j &lt; nums.length; j++) { if (i &lt; j && nums[i] &gt; 2 * nums[j]) { x &hellip;">
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+let n = nums.map((val) =&gt; val);
+nums.sort(); let l = 0;
+let r = n.length; while (l &lt;= r) { if (n[l &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +97,112 @@ for (let i = 0; i &lt; nums.length; i++) { for (let j = 0; j &lt; nums.length; j
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/01/29/leetcode-number-581-shortest-unsorted-continuous-subarray/">LeetCode #581. Shortest Unsorted Continuous Subarray</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-01-29T18:45:26+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>6:45 pm</span></time>
+        
+           | <a href="/blog/2018/01/29/leetcode-number-581-shortest-unsorted-continuous-subarray/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/29/leetcode-number-581-shortest-unsorted-continuous-subarray/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let n = nums.map((val) =&gt; val);
+</span><span class='line'>nums.sort();
+</span><span class='line'>    
+</span><span class='line'>let l = 0;
+</span><span class='line'>let r = n.length;
+</span><span class='line'>    
+</span><span class='line'>while (l &lt;= r) {
+</span><span class='line'>    if (n[l] === nums[l]) {
+</span><span class='line'>        l++;
+</span><span class='line'>    } else if (n[r] === nums[r]) {
+</span><span class='line'>        r--;
+</span><span class='line'>    } else {
+</span><span class='line'>        break;
+</span><span class='line'>    }
+</span><span class='line'>}
+</span><span class='line'>    
+</span><span class='line'>return l &gt; r ? 0 : r - l + 1;</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/01/29/si-jie/">死結(Deadlock)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-01-29T10:33:18+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:33 am</span></time>
+        
+           | <a href="/blog/2018/01/29/si-jie/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/29/si-jie/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>死結(Deadlock)，只要以下四個條件都滿足就有死結</p>
+
+<pre><code>* 這個資源不能同時給兩個人用
+* 有一個人拿了一個資源，又想拿別人的資源
+* 如果一個人占了茅坑不拉屎，占用資源很久，仍不能趕他走
+* A等B，B等C，C等D，D又等A 等成一圈
+</code></pre>
+
+<p>要解決這種狀況有Avoid(預防)或避免(Prevent)兩種方式，破除以上四種其中一種即可</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -638,237 +756,6 @@ for (let i = 0; i &lt; nums.length; i++) { for (let j = 0; j &lt; nums.length; j
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/01/05/git-kong-zi-liao-jia/">Commit 空資料夾到 Git</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-01-05T01:29:37+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>1:29 am</span></time>
-        
-           | <a href="/blog/2018/01/05/git-kong-zi-liao-jia/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/05/git-kong-zi-liao-jia/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>有些時候想要在 git 上 commit 一個空資料夾時，可以透過 .gitignore 的設定來做到。</p>
-
-<h3>專案結構</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree -La 1
-</span><span class='line'>.
-</span><span class='line'>├── .git
-</span><span class='line'>├── .gitignore
-</span><span class='line'>├── README.md
-</span><span class='line'>├── application
-</span><span class='line'>├── assets
-</span><span class='line'>├── index.php
-</span><span class='line'>├── system
-</span><span class='line'>└── vendor</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>假如你有一個空的資料夾，你是沒有辦法 commit 這個檔案到 git 上的，因此可以建立一個 .gitignore 在這個空的資料夾裡</p></blockquote>
-
-<h3>新的專案結構</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ tree -La 1
-</span><span class='line'>.
-</span><span class='line'>├── .git
-</span><span class='line'>├── .gitignore
-</span><span class='line'>├── README.md
-</span><span class='line'>├── application
-</span><span class='line'>├── assets
-</span><span class='line'>├── index.php
-</span><span class='line'>├── system
-</span><span class='line'>├── test
-</span><span class='line'>│   └── .gitignore
-</span><span class='line'>└── vendor</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>如此一來將可以 commit</p></blockquote>
-
-<p>另外你假如想要保留一個 temp 資料夾在 git 上，你可以順便利用這個 .gitignore</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vim test/.gitignore
-</span><span class='line'>*
-</span><span class='line'>!.gitignore</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>使用 <a href="http://www.ryanwright.me/cookbook/git/gitkeep">.gitkeep</a></h3>
-
-<p>也可以達到一樣的效果</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/12/18/">在 OSX 環境建置 Nginx+PHP</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-12-18T16:14:50+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>4:14 pm</span></time>
-        
-           | <a href="/blog/2017/12/18/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2017/12/18/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>參考
-<a href="https://gist.github.com/dtomasi/ab76d14338db82ec24a1fc137caff75b">https://gist.github.com/dtomasi/ab76d14338db82ec24a1fc137caff75b</a></p>
-
-<h2>Install Commandline Tools</h2>
-
-<p><code>$ xcode-select --install</code></p>
-
-<h2>Install Nginx</h2>
-
-<p><code>$ brew update</code></p>
-
-<h3>After install run</h3>
-
-<p><code>sudo nginx</code></p>
-
-<h3>Configuration</h3>
-
-<p><code>/usr/local/etc/nginx/nginx.conf</code></p>
-
-<h3>Stop nginx service</h3>
-
-<p><code>sudo nginx -s stop</code></p>
-
-<h3>Reload nginx service</h3>
-
-<p><code>sudo nginx -s reload</code></p>
-
-<h3>Nginx.conf</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vim /usr/local/etc/nginx/nginx.conf
-</span><span class='line'>
-</span><span class='line'>    server {
-</span><span class='line'>        listen       8080;
-</span><span class='line'>        server_name  localhost;
-</span><span class='line'>
-</span><span class='line'>        root   html;
-</span><span class='line'>
-</span><span class='line'>        location / {
-</span><span class='line'>            try_files index.html /index.php;
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        location ~ \.php$ {
-</span><span class='line'>            fastcgi_pass  127.0.0.1:9000;
-</span><span class='line'>            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-</span><span class='line'>            include       fastcgi_params;
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        location ~ /\.ht {
-</span><span class='line'>            deny  all;
-</span><span class='line'>        }
-</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Install PHP56</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew tap homebrew/homebrew-php
-</span><span class='line'>$ brew install --without-apache --without-fpm --without-mysql php56</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>php-fpm</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ php-fpm
-</span><span class='line'>[18-Dec-2017 16:51:20] NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
-</span><span class='line'>[18-Dec-2017 16:51:20] NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root
-</span><span class='line'>
-</span><span class='line'>$sudo php-fpm</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>注意權限</p></blockquote>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -886,6 +773,14 @@ for (let i = 0; i &lt; nums.length; i++) { for (let j = 0; j &lt; nums.length; j
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/03/20/fetch-api-content-type/">Fetch API Content-Type</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/03/14/yin-chu-osx-shang-de-ios-mo-ni-qi-qing-dan/">印出 OSX 上的模擬器</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing/">React Native Navigation 顯示 Modal 透明背景</a>
       </li>
     
@@ -895,14 +790,6 @@ for (let i = 0; i &lt; nums.length; i++) { for (let j = 0; j &lt; nums.length; j
     
       <li class="post">
         <a href="/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/">Jenkins 中 Poll SCM 與 Build Periodically 差異</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/02/13/ren-shi-jwt/">認識 JWT</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/02/08/sublime-setup-eslint-for-js/">Sublime Setup Eslint for RN</a>
       </li>
     
   </ul>
@@ -917,6 +804,7 @@ for (let i = 0; i &lt; nums.length; i++) { for (let j = 0; j &lt; nums.length; j
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (7)</a></li>
 <li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
+<li class='category'><a href='/blog/categories/js/'>js (1)</a></li>
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (6)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>

@@ -9,9 +9,32 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="在開發的時候會需要開一些服務，來幫助除錯或是測試程式，但有時候會遇到無法正常啟動的問題，這時候可以檢查看看是不是舊服務把 port 佔住，導致新的服務開不起來，可以使用 lsof(list open files) 這個指令檢查一下把不要的服務 kill 1
+  <meta name="description" content="參考 1
 2
-lsof -t -i:${PORT &hellip;">
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+var Singleton = (function () { var instance; function createInstance() { var &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +103,186 @@ lsof -t -i:${PORT &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/09/12/javascript-singleton/">JavaScript Singleton</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-09-12T09:52:10+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>9:52 am</span></time>
+        
+           | <a href="/blog/2017/09/12/javascript-singleton/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2017/09/12/javascript-singleton/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.dofactory.com/javascript/singleton-design-pattern">參考</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var Singleton = (function () {
+</span><span class='line'>    var instance;
+</span><span class='line'> 
+</span><span class='line'>    function createInstance() {
+</span><span class='line'>        var object = new Object("I am the instance");
+</span><span class='line'>        return object;
+</span><span class='line'>    }
+</span><span class='line'> 
+</span><span class='line'>    return {
+</span><span class='line'>        getInstance: function () {
+</span><span class='line'>            if (!instance) {
+</span><span class='line'>                instance = createInstance();
+</span><span class='line'>            }
+</span><span class='line'>            return instance;
+</span><span class='line'>        }
+</span><span class='line'>    };
+</span><span class='line'>})();
+</span><span class='line'> 
+</span><span class='line'>function run() {
+</span><span class='line'> 
+</span><span class='line'>    var instance1 = Singleton.getInstance();
+</span><span class='line'>    var instance2 = Singleton.getInstance();
+</span><span class='line'> 
+</span><span class='line'>    alert("Same instance? " + (instance1 === instance2));  
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/09/08/promise/">Promise</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-09-08T14:14:37+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>2:14 pm</span></time>
+        
+           | <a href="/blog/2017/09/08/promise/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2017/09/08/promise/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最早是在社群提出，但 <code>ES6</code> 推出後就被列入標準了，原生提供 <code>Promise</code> 對象，讓前端工程師處理非同步問題。例如：下載網路上的圖片之後顯示。</p>
+
+<h3>基本用法</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let promise = new Promise(function(resolve, reject) {
+</span><span class='line'>  // ... some code
+</span><span class='line'>
+</span><span class='line'>  if (true){
+</span><span class='line'>    resolve(value);
+</span><span class='line'>  } else {
+</span><span class='line'>    reject(error);
+</span><span class='line'>  }
+</span><span class='line'>});</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Promise.resolve()</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let p = Promise.resolve(arg);</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>傳入的參數是 <code>thenable</code> 將會執行該對象的 <code>then</code> 然後回傳一個 <code>Promise</code> 狀態為 <code>resolved</code> 的對象</li>
+<li>傳入的參數不具有 <code>thenable</code> 將會回傳一個 <code>Promise</code> 狀態為 <code>resolved</code> 的對象</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let p = Promise.resolve('Hello');
+</span><span class='line'>
+</span><span class='line'>p.then(function (s){
+</span><span class='line'>  console.log(s)
+</span><span class='line'>});
+</span><span class='line'>// Hello</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>沒有傳入參數將會回傳一個 <code>Promise</code> 狀態為 <code>resolved</code> 的對象</li>
+</ul>
+
+
+<h3>Promise.reject()</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let p = Promise.reject(arg);</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>大致原理跟 <code>Promise.resolve()</code> 一樣，只是狀態為 <code>rejected</code></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -225,6 +428,14 @@ react-native-vector-icons: 圖資源<br/></p></blockquote>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/03/20/fetch-api-content-type/">Fetch API Content-Type</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/03/14/yin-chu-osx-shang-de-ios-mo-ni-qi-qing-dan/">印出 OSX 上的模擬器</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing/">React Native Navigation 顯示 Modal 透明背景</a>
       </li>
     
@@ -234,14 +445,6 @@ react-native-vector-icons: 圖資源<br/></p></blockquote>
     
       <li class="post">
         <a href="/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/">Jenkins 中 Poll SCM 與 Build Periodically 差異</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/02/13/ren-shi-jwt/">認識 JWT</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/02/08/sublime-setup-eslint-for-js/">Sublime Setup Eslint for RN</a>
       </li>
     
   </ul>
@@ -256,6 +459,7 @@ react-native-vector-icons: 圖資源<br/></p></blockquote>
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (7)</a></li>
 <li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
+<li class='category'><a href='/blog/categories/js/'>js (1)</a></li>
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (6)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
