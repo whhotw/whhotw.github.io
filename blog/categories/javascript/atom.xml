@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-03-20T09:52:20+08:00</updated>
+  <updated>2018-03-20T09:54:58+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Fetch API Content-Type]]></title>
+    <link href="http://whhotw.github.io/blog/2018/03/20/fetch-api-content-type/"/>
+    <updated>2018-03-20T09:38:46+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/03/20/fetch-api-content-type</id>
+    <content type="html"><![CDATA[<p>最近用到 js 中的 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">fetch</a> 發現 <code>Content-Type</code> 會因為參數而改變</p>
+
+<p>例如</p>
+
+<pre><code>const options = {
+  method,
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json', // 指定
+  },
+  body: params, // 第二張圖
+  // body: JSON.stringify(params), // 第一張圖
+};
+
+return fetch(url, options)
+  .then((res) =&gt; {
+    if (!res.ok) {
+      throw new Error('請檢查網路連線');
+    }
+
+    return res.json();
+  });
+</code></pre>
+
+<p>假如 <code>params</code> 沒有用 <code>JSON.stringify</code> 的話，實際傳出去的 <code>Content-Type</code> 不一定是 <code>application/json</code></p>
+
+<p>我用 wireshark 做的實驗</p>
+
+<p><img src="/assets/Screen%20Shot%202018-03-20%20at%2009.44.png" width="360" height="640"></p>
+
+<p><img src="/assets/Screen%20Shot%202018-03-20%20at%2009.44.05.png" width="360" height="640"></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaScript 20 Kinds of Methods]]></title>
@@ -143,28 +182,6 @@ async () =&gt; {
 
 <pre><code>AAA
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JavaScript RSA 加密/簽名]]></title>
-    <link href="http://whhotw.github.io/blog/2017/09/26/js-rsa-jia-mi-slash-qian-ming/"/>
-    <updated>2017-09-26T11:14:39+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/09/26/js-rsa-jia-mi-slash-qian-ming</id>
-    <content type="html"><![CDATA[<p>大致上的流程就是伺服端生成公私鑰對後，將公鑰儲存在前端。登入時利用公鑰將敏感資料加密傳送給後端。通常我會習慣轉成 base64 後才傳給後端</p>
-
-<p>先安裝 <code>jsrsasign</code></p>
-
-<pre><code>import rs from 'jsrsasign';
-
-let pub = rs.KEYUTIL.getKey(file);
-let cipher = rs.KJUR.crypto.Cipher.encrypt(this.state.passwd, pub, 'RSA');
-return rs.hextob64(cipher);
-</code></pre>
-
-<p>getKey() 裡面放要使用的鑰匙資訊，像我是透過 <code>pem</code> 所以會從檔案中把資訊取出來。 可以使用 <code>react-native-fs</code> 存取檔案系統</p>
-
-<p>一開始以為可以透過類似讀圖片的方式 <code>require('url')</code> 得到憑證檔案，因為自己的想法是，假如要先手動把一些自定義的檔案放入個別的系統，真的很麻煩。經過了一個下午的努力與 google 的結果，似乎除了圖片目前還沒有自動連結實體檔案的方法，下次有時間研究一下 <code>rnpm link</code> 是怎麼做的！雖然是針對套件不過應該可以自己寫個 script 解決我這個問題</p>
 ]]></content>
   </entry>
   
