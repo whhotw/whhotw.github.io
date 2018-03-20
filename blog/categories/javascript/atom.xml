@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-03-20T09:57:37+08:00</updated>
+  <updated>2018-03-20T10:00:04+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -46,9 +46,9 @@ return fetch(url, options)
 
 <p>我用 wireshark 做的實驗</p>
 
-<p><img src="/assets/Screen%20Shot%202018-03-20%20at%2009.44.19.png" width="360" height="640"></p>
+<p><img src="/assets/Screen%20Shot%202018-03-20%20at%2009.44.19.png" width="1080" height="1920"></p>
 
-<p><img src="/assets/Screen%20Shot%202018-03-20%20at%2009.44.05.png" width="360" height="640"></p>
+<p><img src="/assets/Screen%20Shot%202018-03-20%20at%2009.44.05.png" width="1080" height="1920"></p>
 ]]></content>
   </entry>
   
