@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2018/04/03/keyboard-issues-with-react-native-gifted-chat/</loc>
+<lastmod>2018-04-03T14:13:35+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2018/03/20/fetch-api-content-type/</loc>
 <lastmod>2018-03-20T09:38:46+08:00</lastmod>
 </url>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: React-native | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-03-20T10:00:04+08:00</updated>
+  <updated>2018-04-03T14:26:46+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Keyboard Issues With React-native-gifted-chat]]></title>
+    <link href="http://whhotw.github.io/blog/2018/04/03/keyboard-issues-with-react-native-gifted-chat/"/>
+    <updated>2018-04-03T14:13:35+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/04/03/keyboard-issues-with-react-native-gifted-chat</id>
+    <content type="html"><![CDATA[<p>使用 <code>react-native-gifted-chat</code> 假如有同時使用 <code>react-native-keyboard-manager</code> 在設定的時候記得 <code>setEnable(false)</code></p>
+
+<pre><code>if (Platform.OS === 'ios') {
+  if (__DEV__) {
+    KeyboardManager.setEnableDebugging(true);
+  }
+
+  KeyboardManager.setEnable(false); // do not using it's
+  KeyboardManager.setKeyboardDistanceFromTextField(10);
+  KeyboardManager.setPreventShowingBottomBlankSpace(true);
+  KeyboardManager.setEnableAutoToolbar(true);
+  KeyboardManager.setToolbarManageBehaviour(0);
+  KeyboardManager.setShouldToolbarUsesTextFieldTintColor(false);
+  KeyboardManager.setToolbarPreviousNextButtonEnable(true);
+  KeyboardManager.setShouldShowTextFieldPlaceholder(true);
+  KeyboardManager.setOverrideKeyboardAppearance(false);
+  KeyboardManager.setShouldResignOnTouchOutside(false);
+  KeyboardManager.resignFirstResponder();
+}
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[React Native Navigation 顯示 Modal 透明背景]]></title>
@@ -251,19 +279,6 @@ react-native-cli: 2.0.1
 npm install -g yarn 
 ▶ yarn -v
 1.3.2
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[React-Native Init App]]></title>
-    <link href="http://whhotw.github.io/blog/2017/12/13/react-native-app-package/"/>
-    <updated>2017-12-13T15:43:29+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/12/13/react-native-app-package</id>
-    <content type="html"><![CDATA[<pre><code>$ react-naitve init MyApp
-
-// 指定版本
-$ react-naitve init MyApp --version 0.49.0
 </code></pre>
 ]]></content>
   </entry>

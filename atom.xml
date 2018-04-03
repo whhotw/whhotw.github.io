@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-03-20T10:00:04+08:00</updated>
+  <updated>2018-04-03T14:26:46+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Keyboard Issues With React-native-gifted-chat]]></title>
+    <link href="http://whhotw.github.io/blog/2018/04/03/keyboard-issues-with-react-native-gifted-chat/"/>
+    <updated>2018-04-03T14:13:35+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/04/03/keyboard-issues-with-react-native-gifted-chat</id>
+    <content type="html"><![CDATA[<p>使用 <code>react-native-gifted-chat</code> 假如有同時使用 <code>react-native-keyboard-manager</code> 在設定的時候記得 <code>setEnable(false)</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>if (Platform.OS === 'ios') {
+</span><span class='line'>  if (__DEV__) {
+</span><span class='line'>    KeyboardManager.setEnableDebugging(true);
+</span><span class='line'>  }
+</span><span class='line'>
+</span><span class='line'>  KeyboardManager.setEnable(false); // do not using it's
+</span><span class='line'>  KeyboardManager.setKeyboardDistanceFromTextField(10);
+</span><span class='line'>  KeyboardManager.setPreventShowingBottomBlankSpace(true);
+</span><span class='line'>  KeyboardManager.setEnableAutoToolbar(true);
+</span><span class='line'>  KeyboardManager.setToolbarManageBehaviour(0);
+</span><span class='line'>  KeyboardManager.setShouldToolbarUsesTextFieldTintColor(false);
+</span><span class='line'>  KeyboardManager.setToolbarPreviousNextButtonEnable(true);
+</span><span class='line'>  KeyboardManager.setShouldShowTextFieldPlaceholder(true);
+</span><span class='line'>  KeyboardManager.setOverrideKeyboardAppearance(false);
+</span><span class='line'>  KeyboardManager.setShouldResignOnTouchOutside(false);
+</span><span class='line'>  KeyboardManager.resignFirstResponder();
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fetch API Content-Type]]></title>
@@ -1041,77 +1086,6 @@
 </span><span class='line'>console.log(a); // {a: '1', b: '2', c: '3'}
 </span><span class='line'>console.log(x === a); // false</span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JavaScript 中 This 的種種]]></title>
-    <link href="http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/"/>
-    <updated>2018-01-09T09:56:40+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this</id>
-    <content type="html"><![CDATA[<p>JavaScript 中的 this 是一個很容易搞混的東東。</p>
-
-<p>具名函數搭配 bind 的寫法</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>function wth() {
-</span><span class='line'>  console.log(this);
-</span><span class='line'>}
-</span><span class='line'>
-</span><span class='line'>let o = {
-</span><span class='line'>  name: 1
-</span><span class='line'>};
-</span><span class='line'>
-</span><span class='line'>wth(); // window
-</span><span class='line'>
-</span><span class='line'>let wthBind = wth.bind(o);
-</span><span class='line'>
-</span><span class='line'>wthBind(); // object o</span></code></pre></td></tr></table></div></figure>
-
-
-<p>使用箭頭函數</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let wth = () =&gt; {
-</span><span class='line'>  console.log(this);
-</span><span class='line'>};
-</span><span class='line'>
-</span><span class='line'>let o = {
-</span><span class='line'>  name: 1
-</span><span class='line'>};
-</span><span class='line'>
-</span><span class='line'>wth(); // window
-</span><span class='line'>
-</span><span class='line'>let wthBind = wth.bind(o);
-</span><span class='line'>
-</span><span class='line'>wthBind(); // window</span></code></pre></td></tr></table></div></figure>
-
-
-<p>為什麼執行結果不同呢？是因為透過箭頭函數 this 對象會在宣告時就綁定，因此就算之後用 bind 也不會有變化</p>
 ]]></content>
   </entry>
   
