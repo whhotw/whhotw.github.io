@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Leetcode #357. Count Numbers With Unique Digits - wlog</title>
+  <title>RN WebView of Android Release Build Load Local HTML - wlog</title>
   <meta name="author" content="w">
 
   
-  <meta name="description" content="Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x &lt; 10n.
-Example:
-Given n = 2, return 91. (The answer should be &hellip;">
+  <meta name="description" content="RN 中的 WebView 可以使用 require() 讀取靜態的 HTML 檔案。但是安卓的 release 階段要用 file:///android_asset/xxx 的寫法，否則會無法正常執行 靜態檔案放在 android project 的 assets 底下 ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ Given n = 2, return 91. (The answer should be &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="wlog" type="application/atom+xml">
@@ -83,7 +81,7 @@ Given n = 2, return 91. (The answer should be &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Leetcode #357. Count Numbers With Unique Digits</h1>
+      <h1 class="entry-title">RN WebView of Android Release Build Load Local HTML</h1>
     
     
       <p class="meta">
@@ -92,7 +90,7 @@ Given n = 2, return 91. (The answer should be &hellip;">
 
 
 
-<time class='entry-date' datetime='2017-11-16T14:44:14+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>2:44 pm</span></time>
+<time class='entry-date' datetime='2018-04-16T11:52:04+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:52 am</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://whhotw.github.io">Comments</a>
@@ -102,87 +100,11 @@ Given n = 2, return 91. (The answer should be &hellip;">
   </header>
 
 
-<div class="entry-content"><p><em>Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x &lt; 10n.
-Example:
-Given n = 2, return 91. (The answer should be the total numbers in the range of 0 ≤ x &lt; 100, excluding [11,22,33,44,55,66,77,88,99])</em></p>
+<div class="entry-content"><p><code>RN</code> 中的 WebView 可以使用 <code>require()</code> 讀取靜態的 HTML 檔案。但是安卓的 <code>release</code> 階段要用 <code>file:///android_asset/xxx</code> 的寫法，否則會無法正常執行</p>
 
-<p>起初用暴力解但效率只能到達 n=6, 以上就會 time limit exceeded</p>
+<p>靜態檔案放在 android project 的 assets 底下</p>
 
-<p><strong>我自己想的解法</strong></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>var countNumbersWithUniqueDigits = function(n) {
-</span><span class='line'>    console.log(Math.pow(10, n));
-</span><span class='line'>    let maxNum = Math.pow(10, n);
-</span><span class='line'>    let count = 0;
-</span><span class='line'>    for (let i = 10; i &lt; maxNum; i++) {
-</span><span class='line'>        let arr = i.toString().split('');
-</span><span class='line'>        let set = new Set(arr);
-</span><span class='line'>        if (arr.length !== set.size) {
-</span><span class='line'>            count++;
-</span><span class='line'>        }
-</span><span class='line'>    }
-</span><span class='line'>    
-</span><span class='line'>    return maxNum - count;
-</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>參考解答後優化的解法</strong></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>var countNumbersWithUniqueDigits = function(n) {
-</span><span class='line'>    if (n === 0) {
-</span><span class='line'>        return 1;
-</span><span class='line'>    } else {
-</span><span class='line'>        let v = 9;
-</span><span class='line'>        for (let i = 1; i &lt; n; i++) {
-</span><span class='line'>            v *= (11 - i - 1);
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        return countNumbersWithUniqueDigits(n - 1) + v;
-</span><span class='line'>    }
-</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
-
-
-<p>主要是運用動態規劃的方式</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>f(1)=f(0)+9
-</span><span class='line'>f(2)=f(1)+9*9
-</span><span class='line'>f(3)=f(2)+9*9*8
-</span><span class='line'>...
-</span><span class='line'>f(9)=f(8)+9*8*7*6*5*4*3*2
-</span><span class='line'>f(10)=f(9)+9*8*7*6*5*4*3*2*1</span></code></pre></td></tr></table></div></figure>
-
+<p><img src="/assets/Screen%20Shot%202018-04-16%20at%2011.57.png" width="1080" height="1920"></p>
 </div>
 
 
@@ -198,12 +120,12 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 
 
 
-<time class='entry-date' datetime='2017-11-16T14:44:14+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>2:44 pm</span></time>
+<time class='entry-date' datetime='2018-04-16T11:52:04+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:52 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/leetcode/'>leetcode</a>
+    <a class='category' href='/blog/categories/react-native/'>react-native</a>
   
 </span>
 
@@ -221,10 +143,8 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2017/11/02/cli-fang-shi-qi-dong-android-mo-ni-qi/" title="Previous Post: CLI 方式啟動 Android 模擬器">&laquo; CLI 方式啟動 Android 模擬器</a>
+        <a class="basic-alignment left" href="/blog/2018/04/03/keyboard-issues-with-react-native-gifted-chat/" title="Previous Post: Keyboard issues with react-native-gifted-chat">&laquo; Keyboard issues with react-native-gifted-chat</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2017/11/20/mo-zu/" title="Next Post: JavaScript 動態載入模組">JavaScript 動態載入模組 &raquo;</a>
       
     </p>
   </footer>
@@ -239,8 +159,8 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits/';
-        var disqus_url = 'http://whhotw.github.io/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/';
         var disqus_script = 'embed.js';
       
     (function () {
@@ -354,8 +274,8 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits/';
-        var disqus_url = 'http://whhotw.github.io/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/';
         var disqus_script = 'embed.js';
       
     (function () {

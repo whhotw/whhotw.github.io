@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-04-03T14:26:46+08:00</updated>
+  <updated>2018-04-16T11:59:49+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[RN WebView of Android Release Build Load Local HTML]]></title>
+    <link href="http://whhotw.github.io/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/"/>
+    <updated>2018-04-16T11:52:04+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html</id>
+    <content type="html"><![CDATA[<p><code>RN</code> 中的 WebView 可以使用 <code>require()</code> 讀取靜態的 HTML 檔案。但是安卓的 <code>release</code> 階段要用 <code>file:///android_asset/xxx</code> 的寫法，否則會無法正常執行</p>
+
+<p>靜態檔案放在 android project 的 assets 底下</p>
+
+<p><img src="http://whhotw.github.io/assets/Screen%20Shot%202018-04-16%20at%2011.57.png" width="1080" height="1920"></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Keyboard Issues With React-native-gifted-chat]]></title>
@@ -1017,75 +1030,6 @@
 
 
 <p>編譯器並不會知道何時要釋放變數<code>a</code>，因此開發者必須自行執行函式<code>free</code>將記憶體釋放。配置跟釋放有<code>malloc</code> <code>free</code>跟<code>new</code> <code>delete</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[淺拷貝 vs. 深拷貝]]></title>
-    <link href="http://whhotw.github.io/blog/2018/01/11/"/>
-    <updated>2018-01-11T22:21:31+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/01/</id>
-    <content type="html"><![CDATA[<h3>複製物件你可能會這麼寫</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let a = {a: '1', b: '2', c: '3'};
-</span><span class='line'>let x = a;
-</span><span class='line'>x.a = 10
-</span><span class='line'>console.log(a); // {a: '10', b: '2', c: '3'}
-</span><span class='line'>console.log(x === a); // true</span></code></pre></td></tr></table></div></figure>
-
-
-<p>為什麼新的變數內容改變，舊的變數內容也會變呢？因為以上的寫法為<code>淺拷貝</code>但是很多時候我們並不想這樣，這時候就需要改成<code>深拷貝</code>的寫法</p>
-
-<h3>淺拷貝 => 分身術</h3>
-
-<p>外表（值）長得一樣，靈魂（記憶體位置）<strong>相同</strong></p>
-
-<h3>深拷貝 => 雙胞胎</h3>
-
-<p>外表（值）長得一樣，靈魂（記憶體位置）<strong>不同</strong></p>
-
-<h3>比較圖</h3>
-
-<p><img src="http://i.stack.imgur.com/hOPkR.png" alt="image" /></p>
-
-<h3>Object.assign</h3>
-
-<p>ES6 上可以用的函式但只能處理深度只有一層的物件</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let a = {a: '1', b: '2', c: '3'};
-</span><span class='line'>let x = Object.assign({}, a);
-</span><span class='line'>x.a = 10
-</span><span class='line'>console.log(a); // {a: '1', b: '2', c: '3'}
-</span><span class='line'>console.log(x === a); // false</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>lodash</h3>
-
-<p>網路上熱門的<a href="https://lodash.com/">函式庫</a></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let _ = require('lodash');
-</span><span class='line'>let a = {a: '1', b: '2', c: '3'};
-</span><span class='line'>let x = _.cloneDeep(a);
-</span><span class='line'>x.a = 10
-</span><span class='line'>console.log(a); // {a: '1', b: '2', c: '3'}
-</span><span class='line'>console.log(x === a); // false</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

@@ -9,24 +9,7 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="使用 react-native-gifted-chat 假如有同時使用 react-native-keyboard-manager 在設定的時候記得 setEnable(false) 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-if (Platform.OS &hellip;">
+  <meta name="description" content="RN 中的 WebView 可以使用 require() 讀取靜態的 HTML 檔案。但是安卓的 release 階段要用 file:///android_asset/xxx 的寫法，否則會無法正常執行 靜態檔案放在 android project 的 assets 底下 ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,6 +78,42 @@ if (Platform.OS &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/">RN WebView of Android Release Build Load Local HTML</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-04-16T11:52:04+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:52 am</span></time>
+        
+           | <a href="/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>RN</code> 中的 WebView 可以使用 <code>require()</code> 讀取靜態的 HTML 檔案。但是安卓的 <code>release</code> 階段要用 <code>file:///android_asset/xxx</code> 的寫法，否則會無法正常執行</p>
+
+<p>靜態檔案放在 android project 的 assets 底下</p>
+
+<p><img src="/assets/Screen%20Shot%202018-04-16%20at%2011.57.png" width="1080" height="1920"></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -968,44 +987,6 @@ if (Platform.OS &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou/">TCP 三次握手/四次握手</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-01-31T17:05:20+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>5:05 pm</span></time>
-        
-           | <a href="/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>建立連線 => 三次握手(圖中紅色框框)</p>
-
-
-<p>結束連線 => 四次握手(圖中藍色框框)</p>
-
-
-<p><img src="http://img.my.csdn.net/uploads/201108/7/0_131271823564Rx.gif" alt="" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -1019,6 +1000,10 @@ if (Platform.OS &hellip;">
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/">RN WebView of Android Release Build Load Local HTML</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/04/03/keyboard-issues-with-react-native-gifted-chat/">Keyboard Issues With React-native-gifted-chat</a>
@@ -1036,10 +1021,6 @@ if (Platform.OS &hellip;">
         <a href="/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing/">React Native Navigation 顯示 Modal 透明背景</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2018/03/02/wo-zi-ji-de-rn-xiang-mu-pei-zhi/">我自己的 RN 項目配置</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -1055,7 +1036,7 @@ if (Platform.OS &hellip;">
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (6)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
-<li class='category'><a href='/blog/categories/react-native/'>react-native (10)</a></li>
+<li class='category'><a href='/blog/categories/react-native/'>react-native (11)</a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (1)</a></li>
 
   </ul>
