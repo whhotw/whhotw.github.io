@@ -1,0 +1,55 @@
+---
+layout: post
+title: "淺拷貝 vs. 深拷貝"
+date: 2018-01-11 22:21:31 +0800
+comments: true
+categories: javascript
+---
+###複製物件你可能會這麼寫
+
+```
+let a = {a: '1', b: '2', c: '3'};
+let x = a;
+x.a = 10
+console.log(a); // {a: '10', b: '2', c: '3'}
+console.log(x === a); // true
+```
+
+為什麼新的變數內容改變，舊的變數內容也會變呢？因為以上的寫法為`淺拷貝`但是很多時候我們並不想這樣，這時候就需要改成`深拷貝`的寫法
+
+###淺拷貝 => 分身術
+
+外表（值）長得一樣，靈魂（記憶體位置）**相同**
+
+###深拷貝 => 雙胞胎 
+
+外表（值）長得一樣，靈魂（記憶體位置）**不同**
+
+###比較圖
+
+![image](http://i.stack.imgur.com/hOPkR.png)
+
+###Object.assign
+
+ES6 上可以用的函式但只能處理深度只有一層的物件
+
+```
+let a = {a: '1', b: '2', c: '3'};
+let x = Object.assign({}, a);
+x.a = 10
+console.log(a); // {a: '1', b: '2', c: '3'}
+console.log(x === a); // false
+```
+
+###lodash
+
+網路上熱門的[函式庫](https://lodash.com/)
+
+```
+let _ = require('lodash');
+let a = {a: '1', b: '2', c: '3'};
+let x = _.cloneDeep(a);
+x.a = 10
+console.log(a); // {a: '1', b: '2', c: '3'}
+console.log(x === a); // false
+```

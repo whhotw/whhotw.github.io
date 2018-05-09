@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "js 動態載入模組"
+title: "JavaScript 動態載入模組"
 date: 2017-11-20 15:53:41 +0800
 comments: true
-categories: js
+categories: javascript
 ---
 兩個關鍵字 `import` `export`，用於載入與輸出模組。但實際上不一定會使用到模組的程式碼，這時候就需要動態載入，在確定需要使用的時候載入
 

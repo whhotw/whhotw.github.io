@@ -1,0 +1,45 @@
+---
+layout: post
+title: "RN 中使用 SVG"
+date: 2018-02-05 10:43:32 +0800
+comments: true
+categories: react-native
+---
+#PNG、JPG
+
+在 `RN` 中載入圖片是非常容易的事情，可以使用
+
+```
+require('./mypng.png')
+require('./myjpg.jpg')
+```
+
+這類的[寫法](https://facebook.github.io/react-native/docs/image.html#source)
+
+#SVG
+
+假如是想載入 `.svg` 的話，就需要第三方的套件幫忙，或是轉成字型檔載入，以下是我使用字型檔的方式
+>什麼是SVG？最大的優點就是縮放不會失真，細節可以[參考](https://zh.wikipedia.org/wiki/可縮放向量圖形)
+
+#React-Native-Vector-Icons
+
+##Install
+```
+npm install react-native-vector-icons
+react-native link
+```
+
+##Generate .ttf and .json by Fontello or Icomoon
+[Fontello](http://fontello.com/)，[Icomoon](https://icomoon.io/app)
+
+##Link
+* 將 `.ttf` 放到專案中的 `fonts` 資料夾裡
+* 在 `package.json` 中加入 `"rnpm": { "assets": ["fonts"] }`
+* 執行 `react-native link`
+
+##Import
+```
+import { createIconSetFromFontello } from 'react-native-vector-icons';
+import fontelloConfig from './config.json';
+const Icon = createIconSetFromFontello(fontelloConfig);
+```

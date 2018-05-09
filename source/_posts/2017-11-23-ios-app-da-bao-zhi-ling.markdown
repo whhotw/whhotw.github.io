@@ -49,3 +49,7 @@ $ cat BUILD.plist
 * teamID: (String) The development program team identifier.
 * uploadSymbols: (Boolean) Option to include symbols in the generated ipa file.
 * uploadBitcode: (Boolean) Option to include Bitcode.
+
+###我自己寫的 Shell Script
+
+<script src="https://gist.github.com/whhotw/b1d12e06844cbf08ae7dfa088e306fad.js"></script>

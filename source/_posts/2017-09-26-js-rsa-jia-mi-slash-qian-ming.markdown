@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JS RSA 加密/簽名"
+title: "JavaScript RSA 加密/簽名"
 date: 2017-09-26 11:14:39 +0800
 comments: true
 categories: JavaScript

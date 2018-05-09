@@ -1,0 +1,69 @@
+---
+layout: post
+title: "在 OSX 環境建置 Nginx+PHP"
+date: 2017-12-18 16:14:50 +0800
+comments: true
+categories: php
+---
+參考
+[https://gist.github.com/dtomasi/ab76d14338db82ec24a1fc137caff75b](https://gist.github.com/dtomasi/ab76d14338db82ec24a1fc137caff75b)
+
+##Install Commandline Tools
+`$ xcode-select --install`
+
+##Install Nginx
+`$ brew update`
+
+###After install run
+`sudo nginx`
+
+###Configuration
+`/usr/local/etc/nginx/nginx.conf`
+
+###Stop nginx service
+`sudo nginx -s stop`
+
+###Reload nginx service
+`sudo nginx -s reload`
+
+###Nginx.conf
+```
+$ vim /usr/local/etc/nginx/nginx.conf
+
+    server {
+        listen       8080;
+        server_name  localhost;
+
+        root   html;
+
+        location / {
+            try_files index.html /index.php;
+        }
+        
+        location ~ \.php$ {
+            fastcgi_pass  127.0.0.1:9000;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            include       fastcgi_params;
+        }
+        
+        location ~ /\.ht {
+            deny  all;
+        }
+    }
+```
+
+###Install PHP56
+```
+$ brew tap homebrew/homebrew-php
+$ brew install --without-apache --without-fpm --without-mysql php56
+```
+
+###php-fpm
+```
+$ php-fpm
+[18-Dec-2017 16:51:20] NOTICE: [pool www] 'user' directive is ignored when FPM is not running as root
+[18-Dec-2017 16:51:20] NOTICE: [pool www] 'group' directive is ignored when FPM is not running as root
+
+$sudo php-fpm
+```
+>注意權限

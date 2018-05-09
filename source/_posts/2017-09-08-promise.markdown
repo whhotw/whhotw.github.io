@@ -3,12 +3,14 @@ layout: post
 title: "Promise"
 date: 2017-09-08 14:14:37 +0800
 comments: true
-categories: JavaScript
+categories: javascript
 ---
 最早是在社群提出，但 `ES6` 推出後就被列入標準了，原生提供 `Promise` 對象，讓前端工程師處理非同步問題。例如：下載網路上的圖片之後顯示。
-#基本用法
+
+###基本用法
+
 ```
-var promise = new Promise(function(resolve, reject) {
+let promise = new Promise(function(resolve, reject) {
   // ... some code
 
   if (true){
@@ -18,3 +20,32 @@ var promise = new Promise(function(resolve, reject) {
   }
 });
 ```
+
+### Promise.resolve()
+
+```
+let p = Promise.resolve(arg);
+```
+
+* 傳入的參數是 `thenable` 將會執行該對象的 `then` 然後回傳一個 `Promise` 狀態為 `resolved` 的對象
+* 傳入的參數不具有 `thenable` 將會回傳一個 `Promise` 狀態為 `resolved` 的對象
+
+```
+let p = Promise.resolve('Hello');
+
+p.then(function (s){
+  console.log(s)
+});
+// Hello
+```
+
+* 沒有傳入參數將會回傳一個 `Promise` 狀態為 `resolved` 的對象
+
+### Promise.reject()
+
+```
+let p = Promise.reject(arg);
+```
+
+* 大致原理跟 `Promise.resolve()` 一樣，只是狀態為 `rejected`
+

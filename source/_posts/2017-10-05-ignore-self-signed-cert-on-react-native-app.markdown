@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Ignore self signed cert on React-Native App"
+title: "Ignore self signed cert on React Native App"
 date: 2017-10-05 11:06:00 +0800
 comments: true
 categories: React-Native
