@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2018/05/09/number-vs-parseint/</loc>
+<lastmod>2018-05-09T17:58:06+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/</loc>
 <lastmod>2018-04-16T11:52:04+08:00</lastmod>
 </url>
@@ -228,5 +232,17 @@
 </url>
 <url>
 <loc>http://whhotw.github.io/blog/categories/jenkins/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/posts/2/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/posts/3/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/posts/4/</loc>
+</url>
+<url>
+<loc>http://whhotw.github.io/posts/5/</loc>
 </url>
 </urlset>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-04-16T13:52:05+08:00</updated>
+  <updated>2018-05-09T18:07:46+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Number() vs parseInt()]]></title>
+    <link href="http://whhotw.github.io/blog/2018/05/09/number-vs-parseint/"/>
+    <updated>2018-05-09T17:58:06+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/05/09/number-vs-parseint</id>
+    <content type="html"><![CDATA[<pre><code>parseInt('123', 10) // 123
+parseInt('123abc', 10) // 123
+parseInt(undefined, 10) // NaN
+parseInt(null, 10) // NaN
+parseInt('', 10) // NaN
+Number('123') // 123
+Number('123abc', 10) // NaN
+Number(undefined) // NaN
+Number(null) // 0
+Number('') // 0
+</code></pre>
+
+<h1>數字轉字串</h1>
+
+<pre><code>String(123) // "123"
+`123` // "123"
+
+let a = 123;
+a.toString() // "123"
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fetch API Content-Type]]></title>
@@ -158,30 +186,6 @@ wthBind(); // window
 </code></pre>
 
 <p>為什麼執行結果不同呢？是因為透過箭頭函數 this 對象會在宣告時就綁定，因此就算之後用 bind 也不會有變化</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JavaScript 動態載入模組]]></title>
-    <link href="http://whhotw.github.io/blog/2017/11/20/mo-zu/"/>
-    <updated>2017-11-20T15:53:41+08:00</updated>
-    <id>http://whhotw.github.io/blog/2017/11/20/mo-zu</id>
-    <content type="html"><![CDATA[<p>兩個關鍵字 <code>import</code> <code>export</code>，用於載入與輸出模組。但實際上不一定會使用到模組的程式碼，這時候就需要動態載入，在確定需要使用的時候載入</p>
-
-<pre><code>export let go = () =&gt; {
-    return 'AAA';
-};
-
-async () =&gt; {
-    let Module = await import('./Module.js');
-    console.log(Module.go());
-}
-</code></pre>
-
-<p>輸出</p>
-
-<pre><code>AAA
-</code></pre>
 ]]></content>
   </entry>
   

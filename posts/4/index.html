@@ -9,8 +9,8 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="公司的 git server 為了安全性有掛上自簽憑證，但是 git http.sslVerify 預設 true 因此會無法上傳 code，這時候可以手動修改 http.sslVerify 這個值 1
-git config --global http.sslVerify false &hellip;">
+  <meta name="description" content="自動打包這件事情，在很多時候可以幫助開發者，節省很多的等待時間。簡單來說就是開始執行你就可以不用管了，之後的產出甚至可以結合自動測試，發布等等。這邊單純分享打包用的指令 Archive 1
+$ xcodebuild -workspace ${PROJECT_NAME}.xcworkspace - &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,107 @@ git config --global http.sslVerify false &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/11/23/ios-app-da-bao-zhi-ling/">iOS App 打包用的指令</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-11-23T15:30:49+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2017</span></span> <span class='time'>3:30 pm</span></time>
+        
+           | <a href="/blog/2017/11/23/ios-app-da-bao-zhi-ling/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2017/11/23/ios-app-da-bao-zhi-ling/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>自動打包這件事情，在很多時候可以幫助開發者，節省很多的等待時間。簡單來說就是開始執行你就可以不用管了，之後的產出甚至可以結合自動測試，發布等等。這邊單純分享打包用的指令</p>
+
+<h3>Archive</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ xcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${TARGET_NAME} -sdk iphoneos -configuration archive -archivePath $PWD/build/${TARGET_NAME}.xcarchive</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Export *.ipa</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ xcodebuild -exportArchive -archivePath $PWD/build/${TARGET_NAME}.xcarchive -exportOptionsPlist BUILD.plist -exportPath $PWD/build</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>BUILD.plist</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cat BUILD.plist
+</span><span class='line'>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+</span><span class='line'>&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+</span><span class='line'>&lt;plist version="1.0"&gt;
+</span><span class='line'>&lt;dict&gt;
+</span><span class='line'>        &lt;key&gt;teamID&lt;/key&gt;
+</span><span class='line'>        &lt;string&gt;${TEAM_ID}&lt;/string&gt;
+</span><span class='line'>        &lt;key&gt;method&lt;/key&gt;
+</span><span class='line'>        &lt;string&gt;${METHOD}&lt;/string&gt;
+</span><span class='line'>        &lt;key&gt;uploadSymbols&lt;/key&gt;
+</span><span class='line'>        &lt;true/&gt;
+</span><span class='line'>        &lt;key&gt;compileBitcode&lt;/key&gt;
+</span><span class='line'>        &lt;true/&gt;
+</span><span class='line'>&lt;/dict&gt;
+</span><span class='line'>&lt;/plist&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>Xcode8.3 以上透過 command-line 輸出 ipa 需要打入 <code>exportOptionsPlist</code> 這個鍵值，因此需要多配置一個檔案類似如上</p></blockquote>
+
+<ul>
+<li>method: (String) The method of distribution, which can be set as any of the following:
+
+<ul>
+<li>app-store</li>
+<li>enterprise</li>
+<li>ad-hoc</li>
+<li>development</li>
+</ul>
+</li>
+<li>teamID: (String) The development program team identifier.</li>
+<li>uploadSymbols: (Boolean) Option to include symbols in the generated ipa file.</li>
+<li>uploadBitcode: (Boolean) Option to include Bitcode.</li>
+</ul>
+
+
+<h3>我自己寫的 Shell Script</h3>
+
+<script src="https://gist.github.com/whhotw/b1d12e06844cbf08ae7dfa088e306fad.js"></script>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -633,52 +734,6 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/09/20/react-native-rang-an-zhuo-fan-hui-jian-shi-xiao/">React Native - 讓安卓返回鍵失效</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-09-20T17:28:47+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>5:28 pm</span></time>
-        
-           | <a href="/blog/2017/09/20/react-native-rang-an-zhuo-fan-hui-jian-shi-xiao/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2017/09/20/react-native-rang-an-zhuo-fan-hui-jian-shi-xiao/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>設定 <code>overrideBackPress=true</code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>this.props.navigator.showLightBox({
-</span><span class='line'>    screen: '',
-</span><span class='line'>    passProps: {},
-</span><span class='line'>    style: {},
-</span><span class='line'>    overrideBackPress: true
-</span><span class='line'>});</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -696,6 +751,10 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/05/09/number-vs-parseint/">Number() vs parseInt()</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/">RN WebView of Android Release Build Load Local HTML</a>
       </li>
     
@@ -711,10 +770,6 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
         <a href="/blog/2018/03/14/yin-chu-osx-shang-de-ios-mo-ni-qi-qing-dan/">印出 OSX 上的模擬器</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing/">React Native Navigation 顯示 Modal 透明背景</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -725,7 +780,7 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 <li class='category'><a href='/blog/categories/cordova/'>cordova (1)</a></li>
 <li class='category'><a href='/blog/categories/git/'>git (3)</a></li>
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
-<li class='category'><a href='/blog/categories/javascript/'>javascript (8)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>javascript (9)</a></li>
 <li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (6)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
