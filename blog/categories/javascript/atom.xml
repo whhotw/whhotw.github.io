@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-05-09T18:07:46+08:00</updated>
+  <updated>2018-05-09T18:10:10+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -30,7 +30,7 @@ Number(null) // 0
 Number('') // 0
 </code></pre>
 
-<h1>數字轉字串</h1>
+<p>數字轉字串</p>
 
 <pre><code>String(123) // "123"
 `123` // "123"
