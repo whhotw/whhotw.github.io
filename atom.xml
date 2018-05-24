@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-05-09T18:10:10+08:00</updated>
+  <updated>2018-05-24T16:09:16+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[React-native-webrtc Crash on Running Device]]></title>
+    <link href="http://whhotw.github.io/blog/2018/05/24/react-native-webrtc-crash-on-running-device/"/>
+    <updated>2018-05-24T16:05:35+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/05/24/react-native-webrtc-crash-on-running-device</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/oney/react-native-webrtc">react-native-webrtc</a> 跑在安卓實機的時候一直閃退，找了好久終於找到解法</p>
+
+<p><a href="https://github.com/oney/react-native-webrtc/issues/230">參考這個issues</a></p>
+
+<p>proguard rule 裡面加入</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-keep class org.webrtc.** { *; }</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Number() vs parseInt()]]></title>
@@ -999,17 +1016,6 @@
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>openssl pkcs12 -in aps.p12 -out aps.pem -nodes -clcerts</span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JavaScript 20 Kinds of Methods]]></title>
-    <link href="http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods/"/>
-    <updated>2018-01-15T11:20:21+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods</id>
-    <content type="html"><![CDATA[<p>js 中 20 種必須知道的陣列方法</p>
-
-<p><img src="https://raw.githubusercontent.com/tooto1985/js-array-operations/master/main.jpg" alt="image" /></p>
 ]]></content>
   </entry>
   

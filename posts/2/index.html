@@ -9,10 +9,16 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="PNG、JPG 在 RN 中載入圖片是非常容易的事情，可以使用 1
+  <meta name="description" content="我是使用 Sublime 3 的版本 Install Sublime Package 1
 2
-require('./mypng.png')
-require('./myjpg.jpg') 這類的寫法 SVG 假如是想載入 .svg 的話，就需要第三方的套件幫忙，或是轉成字型檔載入，以下是我使用字型檔的方式 什麼是SVG？ &hellip;">
+SublimeLinter // 先裝
+SublimeLinter-eslint Manual or add on package.json 1
+2
+3
+4
+5
+6
+yarn add eslint -- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +87,102 @@ require('./myjpg.jpg') 這類的寫法 SVG 假如是想載入 .svg 的話，就�
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/02/08/sublime-setup-eslint-for-js/">Sublime Setup Eslint for RN</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-02-08T00:25:20+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>12:25 am</span></time>
+        
+           | <a href="/blog/2018/02/08/sublime-setup-eslint-for-js/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/02/08/sublime-setup-eslint-for-js/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>我是使用 Sublime 3 的版本</p>
+
+<h1>Install Sublime Package</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>SublimeLinter // 先裝
+</span><span class='line'>SublimeLinter-eslint</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Manual</h1>
+
+<p>or add on package.json</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>yarn add eslint --dev
+</span><span class='line'>yarn add eslint-config-airbnb --dev
+</span><span class='line'>yarn add eslint-plugin-import --dev
+</span><span class='line'>yarn add eslint-plugin-react --dev
+</span><span class='line'>yarn add eslint-plugin-jsx-a11y --dev
+</span><span class='line'>yarn add babel-eslint --dev</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Create .eslintrc</h1>
+
+<p>located on project root</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "parser": "babel-eslint",
+</span><span class='line'>  "extends": "airbnb",
+</span><span class='line'>  "rules": {
+</span><span class='line'>    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+</span><span class='line'>    "react/prop-types": [1],
+</span><span class='line'>    "no-unused-vars": [1],
+</span><span class='line'>    "no-use-before-define": [1, { "functions": true, "classes": true }],
+</span><span class='line'>  },
+</span><span class='line'>  "globals": {
+</span><span class='line'>    "fetch": true,
+</span><span class='line'>    "__DEV__": true,
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>可以自訂規則寫在 <code>rules</code> 0 代表關閉、1 代表警告、2代表錯誤</p></blockquote>
+
+<p>上述步驟做完，重開 Sublime 即可看到效果</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -615,40 +717,6 @@ require('./myjpg.jpg') 這類的寫法 SVG 假如是想載入 .svg 的話，就�
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/01/15/javascript-20-kinds-of-methods/">JavaScript 20 Kinds of Methods</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-01-15T11:20:21+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:20 am</span></time>
-        
-           | <a href="/blog/2018/01/15/javascript-20-kinds-of-methods/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>js 中 20 種必須知道的陣列方法</p>
-
-<p><img src="https://raw.githubusercontent.com/tooto1985/js-array-operations/master/main.jpg" alt="image" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -666,6 +734,10 @@ require('./myjpg.jpg') 這類的寫法 SVG 假如是想載入 .svg 的話，就�
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/05/24/react-native-webrtc-crash-on-running-device/">React-native-webrtc Crash on Running Device</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/05/09/number-vs-parseint/">Number() vs parseInt()</a>
       </li>
     
@@ -679,10 +751,6 @@ require('./myjpg.jpg') 這類的寫法 SVG 假如是想載入 .svg 的話，就�
     
       <li class="post">
         <a href="/blog/2018/03/20/fetch-api-content-type/">Fetch API Content-Type</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/03/14/yin-chu-osx-shang-de-ios-mo-ni-qi-qing-dan/">印出 OSX 上的模擬器</a>
       </li>
     
   </ul>
@@ -700,7 +768,7 @@ require('./myjpg.jpg') 這類的寫法 SVG 假如是想載入 .svg 的話，就�
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (6)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
-<li class='category'><a href='/blog/categories/react-native/'>react-native (11)</a></li>
+<li class='category'><a href='/blog/categories/react-native/'>react-native (12)</a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (1)</a></li>
 
   </ul>

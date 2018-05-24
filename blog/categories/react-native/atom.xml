@@ -4,7 +4,7 @@
   <title><![CDATA[Category: React-native | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-05-09T18:10:10+08:00</updated>
+  <updated>2018-05-24T16:09:16+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[React-native-webrtc Crash on Running Device]]></title>
+    <link href="http://whhotw.github.io/blog/2018/05/24/react-native-webrtc-crash-on-running-device/"/>
+    <updated>2018-05-24T16:05:35+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/05/24/react-native-webrtc-crash-on-running-device</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/oney/react-native-webrtc">react-native-webrtc</a> 跑在安卓實機的時候一直閃退，找了好久終於找到解法</p>
+
+<p><a href="https://github.com/oney/react-native-webrtc/issues/230">參考這個issues</a></p>
+
+<p>proguard rule 裡面加入</p>
+
+<pre><code>-keep class org.webrtc.** { *; }
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RN WebView of Android Release Build Load Local HTML]]></title>
@@ -188,57 +204,6 @@ yarn add babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-pl
     "__DEV__": true,
   }
 }
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[RN 中使用 SVG]]></title>
-    <link href="http://whhotw.github.io/blog/2018/02/05/rn-svg/"/>
-    <updated>2018-02-05T10:43:32+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/02/05/rn-svg</id>
-    <content type="html"><![CDATA[<h1>PNG、JPG</h1>
-
-<p>在 <code>RN</code> 中載入圖片是非常容易的事情，可以使用</p>
-
-<pre><code>require('./mypng.png')
-require('./myjpg.jpg')
-</code></pre>
-
-<p>這類的<a href="https://facebook.github.io/react-native/docs/image.html#source">寫法</a></p>
-
-<h1>SVG</h1>
-
-<p>假如是想載入 <code>.svg</code> 的話，就需要第三方的套件幫忙，或是轉成字型檔載入，以下是我使用字型檔的方式</p>
-
-<blockquote><p>什麼是SVG？最大的優點就是縮放不會失真，細節可以<a href="https://zh.wikipedia.org/wiki/%E5%8F%AF%E7%B8%AE%E6%94%BE%E5%90%91%E9%87%8F%E5%9C%96%E5%BD%A2">參考</a></p></blockquote>
-
-<h1>React-Native-Vector-Icons</h1>
-
-<h2>Install</h2>
-
-<pre><code>npm install react-native-vector-icons
-react-native link
-</code></pre>
-
-<h2>Generate .ttf and .json by Fontello or Icomoon</h2>
-
-<p><a href="http://fontello.com/">Fontello</a>，<a href="https://icomoon.io/app">Icomoon</a></p>
-
-<h2>Link</h2>
-
-<ul>
-<li>將 <code>.ttf</code> 放到專案中的 <code>fonts</code> 資料夾裡</li>
-<li>在 <code>package.json</code> 中加入 <code>"rnpm": { "assets": ["fonts"] }</code></li>
-<li>執行 <code>react-native link</code></li>
-</ul>
-
-
-<h2>Import</h2>
-
-<pre><code>import { createIconSetFromFontello } from 'react-native-vector-icons';
-import fontelloConfig from './config.json';
-const Icon = createIconSetFromFontello(fontelloConfig);
 </code></pre>
 ]]></content>
   </entry>
