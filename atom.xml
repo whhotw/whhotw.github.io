@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-05-24T16:09:16+08:00</updated>
+  <updated>2018-07-27T18:26:07+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[No Bundle Url Present: When the React Packager Tab Is Closed]]></title>
+    <link href="http://whhotw.github.io/blog/2018/07/27/no-bundle-url-present-when-the-react-packager-tab-is-closed/"/>
+    <updated>2018-07-27T18:17:11+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/07/27/no-bundle-url-present-when-the-react-packager-tab-is-closed</id>
+    <content type="html"><![CDATA[<p>當 Info.plist 中設定成如下圖時，可能會無法在 DEBUG 模式下正常執行</p>
+
+<p><img src="http://whhotw.github.io/assets/Screen-Shot-2018-07-27.png" width="1080" height="1920"></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>解決辦法
+</span><span class='line'>Allow Arbitrary Loads in Web Content is NO</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[React-native-webrtc Crash on Running Device]]></title>
@@ -982,39 +999,6 @@
 </span><span class='line'>npm install -g yarn 
 </span><span class='line'>▶ yarn -v
 </span><span class='line'>1.3.2</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Testing iOS Notification With APNs]]></title>
-    <link href="http://whhotw.github.io/blog/2018/01/17/testing-ios-notification-with-apns/"/>
-    <updated>2018-01-17T16:24:21+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/01/17/testing-ios-notification-with-apns</id>
-    <content type="html"><![CDATA[<p>設定步驟可以<a href="https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/HandlingRemoteNotifications.html">參考蘋果的官方</a>或是<a href="https://medium.com/@ankushaggarwal/generate-apns-certificate-for-ios-push-notifications-85e4a917d522">這篇</a></p>
-
-<p>此篇主要是介紹我自己用的測試工具，Github 上可以抓到<a href="https://github.com/pubnub/pubnub-support/blob/master/kb/code/push_debug.py">原檔</a></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// for production
-</span><span class='line'>python push_debug.py aps.pem ${device_token}
-</span><span class='line'>
-</span><span class='line'>// for sandbox
-</span><span class='line'>python push_debug.py aps.pem ${device_token} -s</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>產出PEM檔</h3>
-
-<p>從 keychain 導出 p12 檔後需要轉成 pem</p>
-
-<p><img src="https://files.readme.io/bMyAXe1tRjac9USLX1z0_34.jpg" alt="" /></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>openssl pkcs12 -in aps.p12 -out aps.pem -nodes -clcerts</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2018/07/27/no-bundle-url-present-when-the-react-packager-tab-is-closed/</loc>
+<lastmod>2018-07-27T18:17:11+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2018/05/24/react-native-webrtc-crash-on-running-device/</loc>
 <lastmod>2018-05-24T16:05:35+08:00</lastmod>
 </url>
