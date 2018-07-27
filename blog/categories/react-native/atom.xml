@@ -4,7 +4,7 @@
   <title><![CDATA[Category: React-native | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-07-27T18:26:07+08:00</updated>
+  <updated>2018-07-27T18:27:55+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -22,8 +22,9 @@
 
 <p><img src="/assets/Screen-Shot-2018-07-27.png" width="1080" height="1920"></p>
 
-<pre><code>解決辦法
-Allow Arbitrary Loads in Web Content is NO
+<p>解決辦法</p>
+
+<pre><code>Allow Arbitrary Loads in Web Content is NO
 </code></pre>
 ]]></content>
   </entry>

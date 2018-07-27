@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-07-27T18:26:07+08:00</updated>
+  <updated>2018-07-27T18:27:55+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -22,10 +22,10 @@
 
 <p><img src="http://whhotw.github.io/assets/Screen-Shot-2018-07-27.png" width="1080" height="1920"></p>
 
+<p>解決辦法</p>
+
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>解決辦法
-</span><span class='line'>Allow Arbitrary Loads in Web Content is NO</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Allow Arbitrary Loads in Web Content is NO</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
