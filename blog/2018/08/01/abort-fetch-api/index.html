@@ -5,20 +5,35 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>淺拷貝 vs. 深拷貝 - wlog</title>
+  <title>Abort Fetch API - wlog</title>
   <meta name="author" content="w">
 
   
-  <meta name="description" content="複製物件你可能會這麼寫 1
+  <meta name="description" content="在 Fetch API 中並沒有原生提供中斷請求的方法。但假設遇到並行事件時，需要取消前一個請求可以怎麼做呢？這時候就可以實作 Promise 的物件來解決 1
 2
 3
 4
 5
-let a = {a: '1', b: '2', c: '3'};
-let x = a;
-x.a = 10
-console.log(a); // {a: '10', b: '2', c: '3'}
-console.log(x === a); // &hellip;">
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -27,7 +42,7 @@ console.log(x === a); // &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/2018/01/11/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2018/08/01/abort-fetch-api/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="wlog" type="application/atom+xml">
@@ -90,7 +105,7 @@ console.log(x === a); // &hellip;">
   
   <header>
     
-      <h1 class="entry-title">淺拷貝 vs. 深拷貝</h1>
+      <h1 class="entry-title">Abort Fetch API</h1>
     
     
       <p class="meta">
@@ -99,7 +114,7 @@ console.log(x === a); // &hellip;">
 
 
 
-<time class='entry-date' datetime='2018-01-11T22:21:31+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:21 pm</span></time>
+<time class='entry-date' datetime='2018-08-01T21:46:22+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>9:46 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://whhotw.github.io">Comments</a>
@@ -109,53 +124,7 @@ console.log(x === a); // &hellip;">
   </header>
 
 
-<div class="entry-content"><h3>複製物件你可能會這麼寫</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let a = {a: '1', b: '2', c: '3'};
-</span><span class='line'>let x = a;
-</span><span class='line'>x.a = 10
-</span><span class='line'>console.log(a); // {a: '10', b: '2', c: '3'}
-</span><span class='line'>console.log(x === a); // true</span></code></pre></td></tr></table></div></figure>
-
-
-<p>為什麼新的變數內容改變，舊的變數內容也會變呢？因為以上的寫法為<code>淺拷貝</code>但是很多時候我們並不想這樣，這時候就需要改成<code>深拷貝</code>的寫法</p>
-
-<h3>淺拷貝 => 分身術</h3>
-
-<p>外表（值）長得一樣，靈魂（記憶體位置）<strong>相同</strong></p>
-
-<h3>深拷貝 => 雙胞胎</h3>
-
-<p>外表（值）長得一樣，靈魂（記憶體位置）<strong>不同</strong></p>
-
-<h3>比較圖</h3>
-
-<p><img src="http://i.stack.imgur.com/hOPkR.png" alt="image" /></p>
-
-<h3>Object.assign</h3>
-
-<p>ES6 上可以用的函式但只能處理深度只有一層的物件</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let a = {a: '1', b: '2', c: '3'};
-</span><span class='line'>let x = Object.assign({}, a);
-</span><span class='line'>x.a = 10
-</span><span class='line'>console.log(a); // {a: '1', b: '2', c: '3'}
-</span><span class='line'>console.log(x === a); // false</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>lodash</h3>
-
-<p>網路上熱門的<a href="https://lodash.com/">函式庫</a></p>
+<div class="entry-content"><p>在 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a> 中並沒有原生提供中斷請求的方法。但假設遇到並行事件時，需要取消前一個請求可以怎麼做呢？這時候就可以實作 <code>Promise</code> 的物件來解決</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -163,12 +132,50 @@ console.log(x === a); // &hellip;">
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let _ = require('lodash');
-</span><span class='line'>let a = {a: '1', b: '2', c: '3'};
-</span><span class='line'>let x = _.cloneDeep(a);
-</span><span class='line'>x.a = 10
-</span><span class='line'>console.log(a); // {a: '1', b: '2', c: '3'}
-</span><span class='line'>console.log(x === a); // false</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>const promise = new Promise(function (resolve, reject) {
+</span><span class='line'>  const f = fetch(url, options).then((res) =&gt; {
+</span><span class='line'>    if (!res.ok) {
+</span><span class='line'>      reject(new Error('something wrong'));
+</span><span class='line'>    } else {
+</span><span class='line'>      // resolve(res.json());
+</span><span class='line'>      resolve('it's work');
+</span><span class='line'>    }
+</span><span class='line'>  });
+</span><span class='line'>
+</span><span class='line'>  f.abort = function () {
+</span><span class='line'>    reject(new Error('abort error'));
+</span><span class='line'>  };
+</span><span class='line'>
+</span><span class='line'>  return f;
+</span><span class='line'>});
+</span><span class='line'>    
+</span><span class='line'>promise.then((res) =&gt; {
+</span><span class='line'>  console.log(res); // it's work
+</span><span class='line'>}).catch(e =&gt; {
+</span><span class='line'>  console.error(e); // something wrong or abort error
+</span><span class='line'>});
+</span><span class='line'>
+</span><span class='line'>// call this before resolve
+</span><span class='line'>promise.abort();</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -185,7 +192,7 @@ console.log(x === a); // &hellip;">
 
 
 
-<time class='entry-date' datetime='2018-01-11T22:21:31+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:21 pm</span></time>
+<time class='entry-date' datetime='2018-08-01T21:46:22+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>9:46 pm</span></time>
       
 
 <span class="categories">
@@ -208,10 +215,8 @@ console.log(x === a); // &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2018/01/09/javascript-zhong-de-this/" title="Previous Post: JavaScript 中 this 的種種">&laquo; JavaScript 中 this 的種種</a>
+        <a class="basic-alignment left" href="/blog/2018/07/27/no-bundle-url-present-when-the-react-packager-tab-is-closed/" title="Previous Post: No bundle url present: when the React Packager tab is closed">&laquo; No bundle url present: when the React Packager tab is closed</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2018/01/12/stack-vs-heap/" title="Next Post: stack vs. heap">stack vs. heap &raquo;</a>
       
     </p>
   </footer>
@@ -226,8 +231,8 @@ console.log(x === a); // &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/11/';
-        var disqus_url = 'http://whhotw.github.io/blog/2018/01/11/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/08/01/abort-fetch-api/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/08/01/abort-fetch-api/';
         var disqus_script = 'embed.js';
       
     (function () {
@@ -341,8 +346,8 @@ console.log(x === a); // &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/11/';
-        var disqus_url = 'http://whhotw.github.io/blog/2018/01/11/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/08/01/abort-fetch-api/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/08/01/abort-fetch-api/';
         var disqus_script = 'embed.js';
       
     (function () {

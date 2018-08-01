@@ -9,8 +9,31 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="當 Info.plist 中設定成下圖時，可能會無法在 DEBUG 模式下正常執行 解決辦法 1
-remove "Allow Arbitrary Loads in Web Content" ">
+  <meta name="description" content="在 Fetch API 中並沒有原生提供中斷請求的方法。但假設遇到並行事件時，需要取消前一個請求可以怎麼做呢？這時候就可以實作 Promise 的物件來解決 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +102,90 @@ remove "Allow Arbitrary Loads in Web Content" ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/08/01/abort-fetch-api/">Abort Fetch API</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-08-01T21:46:22+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>9:46 pm</span></time>
+        
+           | <a href="/blog/2018/08/01/abort-fetch-api/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/08/01/abort-fetch-api/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a> 中並沒有原生提供中斷請求的方法。但假設遇到並行事件時，需要取消前一個請求可以怎麼做呢？這時候就可以實作 <code>Promise</code> 的物件來解決</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>const promise = new Promise(function (resolve, reject) {
+</span><span class='line'>  const f = fetch(url, options).then((res) =&gt; {
+</span><span class='line'>    if (!res.ok) {
+</span><span class='line'>      reject(new Error('something wrong'));
+</span><span class='line'>    } else {
+</span><span class='line'>      // resolve(res.json());
+</span><span class='line'>      resolve('it's work');
+</span><span class='line'>    }
+</span><span class='line'>  });
+</span><span class='line'>
+</span><span class='line'>  f.abort = function () {
+</span><span class='line'>    reject(new Error('abort error'));
+</span><span class='line'>  };
+</span><span class='line'>
+</span><span class='line'>  return f;
+</span><span class='line'>});
+</span><span class='line'>    
+</span><span class='line'>promise.then((res) =&gt; {
+</span><span class='line'>  console.log(res); // it's work
+</span><span class='line'>}).catch(e =&gt; {
+</span><span class='line'>  console.error(e); // something wrong or abort error
+</span><span class='line'>});
+</span><span class='line'>
+</span><span class='line'>// call this before resolve
+</span><span class='line'>promise.abort();</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -792,48 +899,6 @@ remove "Allow Arbitrary Loads in Web Content" ">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/">Jenkins 中 Poll SCM 與 Build Periodically 差異</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-02-27T11:00:34+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:00 am</span></time>
-        
-           | <a href="/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1>Poll SCM</h1>
-
-<p>固定時間執行（假如代碼有改變）</p>
-
-<p>*/5 * * * * （每 5 分鐘檢查一次）</p>
-
-<h1>Build periodically</h1>
-
-<p>固定時間執行（不管代碼是否改變）</p>
-
-<p>0 2 * * * （每天 AM 2:00 執行一次）</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -847,6 +912,10 @@ remove "Allow Arbitrary Loads in Web Content" ">
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/08/01/abort-fetch-api/">Abort Fetch API</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/07/27/no-bundle-url-present-when-the-react-packager-tab-is-closed/">No Bundle Url Present: When the React Packager Tab Is Closed</a>
@@ -864,10 +933,6 @@ remove "Allow Arbitrary Loads in Web Content" ">
         <a href="/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/">RN WebView of Android Release Build Load Local HTML</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2018/04/03/keyboard-issues-with-react-native-gifted-chat/">Keyboard Issues With React-native-gifted-chat</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -878,7 +943,7 @@ remove "Allow Arbitrary Loads in Web Content" ">
 <li class='category'><a href='/blog/categories/cordova/'>cordova (1)</a></li>
 <li class='category'><a href='/blog/categories/git/'>git (3)</a></li>
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
-<li class='category'><a href='/blog/categories/javascript/'>javascript (9)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>javascript (10)</a></li>
 <li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (6)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>

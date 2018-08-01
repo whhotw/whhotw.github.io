@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-07-27T18:39:55+08:00</updated>
+  <updated>2018-08-01T22:03:58+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Abort Fetch API]]></title>
+    <link href="http://whhotw.github.io/blog/2018/08/01/abort-fetch-api/"/>
+    <updated>2018-08-01T21:46:22+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/08/01/abort-fetch-api</id>
+    <content type="html"><![CDATA[<p>在 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a> 中並沒有原生提供中斷請求的方法。但假設遇到並行事件時，需要取消前一個請求可以怎麼做呢？這時候就可以實作 <code>Promise</code> 的物件來解決</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>const promise = new Promise(function (resolve, reject) {
+</span><span class='line'>  const f = fetch(url, options).then((res) =&gt; {
+</span><span class='line'>    if (!res.ok) {
+</span><span class='line'>      reject(new Error('something wrong'));
+</span><span class='line'>    } else {
+</span><span class='line'>      // resolve(res.json());
+</span><span class='line'>      resolve('it's work');
+</span><span class='line'>    }
+</span><span class='line'>  });
+</span><span class='line'>
+</span><span class='line'>  f.abort = function () {
+</span><span class='line'>    reject(new Error('abort error'));
+</span><span class='line'>  };
+</span><span class='line'>
+</span><span class='line'>  return f;
+</span><span class='line'>});
+</span><span class='line'>    
+</span><span class='line'>promise.then((res) =&gt; {
+</span><span class='line'>  console.log(res); // it's work
+</span><span class='line'>}).catch(e =&gt; {
+</span><span class='line'>  console.error(e); // something wrong or abort error
+</span><span class='line'>});
+</span><span class='line'>
+</span><span class='line'>// call this before resolve
+</span><span class='line'>promise.abort();</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[No Bundle Url Present: When the React Packager Tab Is Closed]]></title>
@@ -931,75 +992,6 @@
 <h2><a href="https://github.com/SublimeLinter/SublimeLinter-jsxhint">SublimeLinter-jsxhint</a></h2>
 
 <p>檢查 jsx 語法錯誤</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[React-Native 開發環境]]></title>
-    <link href="http://whhotw.github.io/blog/2018/01/25/react-native-kai-fa-huan-jing/"/>
-    <updated>2018-01-25T10:58:08+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/01/25/react-native-kai-fa-huan-jing</id>
-    <content type="html"><![CDATA[<p><a href="https://facebook.github.io/react-native/docs/getting-started.html">React-Native Getting Started</a></p>
-
-<h3>Homebrew</h3>
-
-<p><a href="https://brew.sh">安裝</a> OSX 的套件管理包</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>▶ brew -v
-</span><span class='line'>Homebrew 1.4.3
-</span><span class='line'>Homebrew/homebrew-core (git revision a76c8; last commit 2018-01-11)</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Node</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew install node
-</span><span class='line'>▶ node -v
-</span><span class='line'>v8.9.4</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Watchman</h3>
-
-<p>追蹤檔案的變化</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew inatall watchman
-</span><span class='line'>▶ watchman -v
-</span><span class='line'>4.9.0</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Command-Line</h3>
-
-<p>指令工具用於創建專案，初始化，更新，打包服務等任務</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>npm install react-native-cli
-</span><span class='line'>▶ react-native -v
-</span><span class='line'>react-native-cli: 2.0.1</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Flow、Yarn</h3>
-
-<p>檢查 <code>JavaScript</code> 語法錯誤與更高效能的第三方套件管理工具，可取代 <code>npm</code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew install flow
-</span><span class='line'>npm install -g yarn 
-</span><span class='line'>▶ yarn -v
-</span><span class='line'>1.3.2</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
