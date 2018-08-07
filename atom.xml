@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-08-01T22:03:58+08:00</updated>
+  <updated>2018-08-07T17:53:51+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Turn on WebView Debug on Android]]></title>
+    <link href="http://whhotw.github.io/blog/2018/08/07/turn-on-webview-debug-on-android/"/>
+    <updated>2018-08-07T17:51:02+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/08/07/turn-on-webview-debug-on-android</id>
+    <content type="html"><![CDATA[<p><a href="https://developers.google.com/web/tools/chrome-devtools/remote-debugging/webviews">官方文件</a></p>
+
+<p>在 activity 起來的時候 enable</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>@Override
+</span><span class='line'>  public void onCreate() {
+</span><span class='line'>  super.onCreate();
+</span><span class='line'>  SoLoader.init(this, /* native exopackage */ false);
+</span><span class='line'>  WebView.setWebContentsDebuggingEnabled(true);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Abort Fetch API]]></title>
@@ -965,33 +990,6 @@
 
 
 <blockquote><p>Big O(n<sup>2</sup>)</p></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sublime Js 相關套件]]></title>
-    <link href="http://whhotw.github.io/blog/2018/01/25/sublime-chang-yong-tao-jian/"/>
-    <updated>2018-01-25T12:49:38+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/01/25/sublime-chang-yong-tao-jian</id>
-    <content type="html"><![CDATA[<h2><a href="https://github.com/jdc0589/JsFormat">JsFormat</a> 格式化程式碼</h2>
-
-<p>手動修改 <code>e4x</code> 屬性支持 <code>jsx</code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  "e4x": true,
-</span><span class='line'>  // jsformat options
-</span><span class='line'>  "format_on_save": true,
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<h2><a href="https://github.com/SublimeLinter/SublimeLinter-jsxhint">SublimeLinter-jsxhint</a></h2>
-
-<p>檢查 jsx 語法錯誤</p>
 ]]></content>
   </entry>
   

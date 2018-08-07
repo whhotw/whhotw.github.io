@@ -9,12 +9,7 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="1
-2
-3
-4
-$ react-naitve init MyApp // 指定版本
-$ react-naitve init MyApp --version 0.49.0 ">
+  <meta name="description" content="其實用 PHP 寫的東西不是很多，再加上一直都不算是網頁端的開發者，所以很多相關的知識其實不太熟悉，哈；目前台灣傳統的資訊公司（新創應該都是 Node.js 了），應該還是用 PHP 來開發網路應用，一來當然是廣大社群的力量（有問題 google 一下，基本上都能找到解法），很多很棒的第三方套件， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +78,90 @@ $ react-naitve init MyApp --version 0.49.0 ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/12/14/php-htaccess-she-ding/">.htaccess 設定</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-12-14T03:44:11+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:44 am</span></time>
+        
+           | <a href="/blog/2017/12/14/php-htaccess-she-ding/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2017/12/14/php-htaccess-she-ding/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>其實用 <code>PHP</code> 寫的東西不是很多，再加上一直都不算是網頁端的開發者，所以很多相關的知識其實不太熟悉，哈；目前台灣傳統的資訊公司（新創應該都是 <code>Node.js</code> 了），應該還是用 <code>PHP</code> 來開發網路應用，一來當然是廣大社群的力量（有問題 google 一下，基本上都能找到解法），很多很棒的第三方套件，再加上建置成本相對便宜的因素。最近民間友人拜託看一個 bug ，就當作工作之餘也摸一些網頁的東西，並且趁這次記錄一下。註：我是 OSX 的環境</p>
+
+<h2>遇到 http 500 internal server error</h2>
+
+<p>確定 apache 的模組有載入</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ vim /etc/apache2/httpd.conf
+</span><span class='line'>
+</span><span class='line'>...
+</span><span class='line'>LoadModule rewrite_module libexec/apache2/mod_rewrite.so
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>開啟 .htaccess 功能</h2>
+
+<p>類似這樣</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;Directory "/myweb"&gt;
+</span><span class='line'>  ...
+</span><span class='line'>  AllowOverride all
+</span><span class='line'>  ...
+</span><span class='line'>&lt;/Directory&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>.htaccess 檔案內容</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;IfModule mod_rewrite.c&gt;
+</span><span class='line'>    RewriteEngine on
+</span><span class='line'>    RewriteBase /
+</span><span class='line'>    #RewriteCond $1 !^(index\.php|assets|.*\.ipa|images|swf|uploads|js|css|assets|robots\.txt|$)
+</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-f
+</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-d
+</span><span class='line'>    RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
+</span><span class='line'>&lt;/IfModule&gt;</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -745,58 +824,6 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/10/12/ding-qi-zhi-xing-sqlyu-fa-and-ji-song-you-jian/">定期執行SQL語法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-10-12T15:08:30+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:08 pm</span></time>
-        
-           | <a href="/blog/2017/10/12/ding-qi-zhi-xing-sqlyu-fa-and-ji-song-you-jian/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2017/10/12/ding-qi-zhi-xing-sqlyu-fa-and-ji-song-you-jian/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>設定 mysql event schedule</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>CREATE EVENT `&lt;table_name&gt;`.`&lt;event_name&gt;`
-</span><span class='line'>ON SCHEDULE EVERY 1 YEAR
-</span><span class='line'>ON COMPLETION PRESERVE
-</span><span class='line'>ENABLE
-</span><span class='line'>DO
-</span><span class='line'>insert into field('b') values(now())</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>DO</code> 後面就是接一般的 <code>SQL</code> 語法新增，刪除，修改等</p>
-
-<h3>顯示 event schedule</h3>
-
-<p><code>mysql&gt; show processlist;</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -814,6 +841,10 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/08/07/turn-on-webview-debug-on-android/">Turn on WebView Debug on Android</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/08/01/abort-fetch-api/">Abort Fetch API</a>
       </li>
     
@@ -829,16 +860,12 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
         <a href="/blog/2018/05/09/number-vs-parseint/">Number() vs parseInt()</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/">RN WebView of Android Release Build Load Local HTML</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/android/'>android (1)</a></li>
+    <li class='category'><a href='/blog/categories/android/'>android (2)</a></li>
 <li class='category'><a href='/blog/categories/command/'>command (1)</a></li>
 <li class='category'><a href='/blog/categories/cordova/'>cordova (1)</a></li>
 <li class='category'><a href='/blog/categories/git/'>git (3)</a></li>
