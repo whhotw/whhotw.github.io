@@ -9,13 +9,7 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="官方文件 在 activity 起來的時候 enable 1
-2
-3
-4
-5
-6
-@Override public void onCreate() { super.onCreate(); SoLoader.init(this, /* native exopackage */ false); &hellip;">
+  <meta name="description" content="先說一下我是在 RN 0.51，搞不好新版本不會有這問題&hellip; 在 Android 平台上遇到的一個小小問題，需求是這樣的，畫面上有 4 個輸入框，我不希望使用者可以手動點擊要輸入的框框是哪一個，因此我鎖住 touch event (用一個 View 遮住)，然後透過 event 來取得 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +78,80 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/08/10/textinput-cannot-blur-on-press-back-button-of-android/">TextInput Cannot Blur on Press Back Button of Android</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-08-10T15:23:19+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>3:23 pm</span></time>
+        
+           | <a href="/blog/2018/08/10/textinput-cannot-blur-on-press-back-button-of-android/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/08/10/textinput-cannot-blur-on-press-back-button-of-android/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>先說一下我是在 RN 0.51，搞不好新版本不會有這問題&hellip;</p>
+
+<p>在 Android 平台上遇到的一個小小問題，需求是這樣的，畫面上有 4 個輸入框，我不希望使用者可以手動點擊要輸入的框框是哪一個，因此我鎖住 touch event (用一個 View 遮住)，然後透過 event 來取得 focus。</p>
+
+<p>在 iOS &amp; Android 7 以下都沒問題，行為都是我預期的那樣，使用者可以透過我準備的按鈕把鍵盤彈起，偏偏在 Android 8 的時候，假如使用者按 Back Button 把鍵盤收起來（或是系統的行為。如：收到簡訊），就無法在彈起了&hellip;</p>
+
+<p>這是為什麼呢？</p>
+
+<p>就我實驗的結果發現，假如使用者不是自己按下鍵盤上的<a href="https://cdn.wccftech.com/wp-content/uploads/2016/12/Google-Gboard-Keyboard-app.jpg">完成</a>，讓鍵盤收起。<code>TextInput</code> 事實上並不會 <code>call blur()</code></p>
+
+<p>什麼意思呢？</p>
+
+<blockquote><p>簡單的說即是焦點並沒有消失，導致下次就算 <code>call focus()</code> 也並不會有 <code>state</code> 的改變</p></blockquote>
+
+<p>為了解決這問題，我的方法是監聽鍵盤被收起的時候，手動 <code>blur()</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class AAA {
+</span><span class='line'>  componentDidMount() {
+</span><span class='line'>      this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide);
+</span><span class='line'>  }
+</span><span class='line'>
+</span><span class='line'>  componentWillUnmount() {
+</span><span class='line'>    this.keyboardDidHideListener.remove();
+</span><span class='line'>  }
+</span><span class='line'>  
+</span><span class='line'>  keyboardDidHide = () =&gt; {
+</span><span class='line'>      this.input.blur();
+</span><span class='line'>  };
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -653,54 +721,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing/">React Native Navigation 顯示 Modal 透明背景</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-03-08T19:15:14+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>7:15 pm</span></time>
-        
-           | <a href="/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>不透明的背景</p>
-
-<p><img src="/assets/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-03-08%20at%2019.17.36.png" width="360" height="640"></p>
-
-<p>透明的背景</p>
-
-<p><img src="/assets/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-03-08%20at%2019.27.42.png" width="360" height="640"></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>static navigatorStyle = {
-</span><span class='line'>  screenBackgroundColor: 'transparent',
-</span><span class='line'>  modalPresentationStyle: 'overFullScreen'
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -714,6 +734,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/08/10/textinput-cannot-blur-on-press-back-button-of-android/">TextInput Cannot Blur on Press Back Button of Android</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/08/07/turn-on-webview-debug-on-android/">Turn on WebView Debug on Android</a>
@@ -731,10 +755,6 @@
         <a href="/blog/2018/05/24/react-native-webrtc-crash-on-running-device/">React-native-webrtc Crash on Running Device</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2018/05/09/number-vs-parseint/">Number() vs parseInt()</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -750,7 +770,7 @@
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (6)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
-<li class='category'><a href='/blog/categories/react-native/'>react-native (13)</a></li>
+<li class='category'><a href='/blog/categories/react-native/'>react-native (14)</a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (1)</a></li>
 
   </ul>

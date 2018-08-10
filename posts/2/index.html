@@ -9,11 +9,12 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="記錄一下，建立一個新的 RN 項目時的步驟，每次都會忘記，再加上改版時不時就跑出一推問題，麻煩！這只是我個人有用到一些套件與建立步驟 CLI 1
+  <meta name="description" content="不透明的背景 透明的背景 1
 2
 3
-yarn init ${PROJECT_NAME} --version 0.51.0
-yarn add redux-thunk redux- &hellip;">
+4
+static navigatorStyle = { screenBackgroundColor: 'transparent', modalPresentationStyle: 'overFullScreen'
+} ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +83,54 @@ yarn add redux-thunk redux- &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing/">React Native Navigation 顯示 Modal 透明背景</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-03-08T19:15:14+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>7:15 pm</span></time>
+        
+           | <a href="/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>不透明的背景</p>
+
+<p><img src="/assets/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-03-08%20at%2019.17.36.png" width="360" height="640"></p>
+
+<p>透明的背景</p>
+
+<p><img src="/assets/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-03-08%20at%2019.27.42.png" width="360" height="640"></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>static navigatorStyle = {
+</span><span class='line'>  screenBackgroundColor: 'transparent',
+</span><span class='line'>  modalPresentationStyle: 'overFullScreen'
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -859,54 +908,6 @@ yarn add redux-thunk redux- &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/01/28/leetcode-number-493-reverse-pairs/">LeetCode #493. Reverse Pairs</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-01-28T10:48:40+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:48 am</span></time>
-        
-           | <a href="/blog/2018/01/28/leetcode-number-493-reverse-pairs/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/28/leetcode-number-493-reverse-pairs/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>for (let i = 0; i &lt; nums.length; i++) {
-</span><span class='line'>    for (let j = 0; j &lt; nums.length; j++) {
-</span><span class='line'>        if (i &lt; j && nums[i] &gt; 2 * nums[j]) {
-</span><span class='line'>            x++;
-</span><span class='line'>        }
-</span><span class='line'>    }
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>Big O(n<sup>2</sup>)</p></blockquote>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -924,6 +925,10 @@ yarn add redux-thunk redux- &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/08/10/textinput-cannot-blur-on-press-back-button-of-android/">TextInput Cannot Blur on Press Back Button of Android</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/08/07/turn-on-webview-debug-on-android/">Turn on WebView Debug on Android</a>
       </li>
     
@@ -937,10 +942,6 @@ yarn add redux-thunk redux- &hellip;">
     
       <li class="post">
         <a href="/blog/2018/05/24/react-native-webrtc-crash-on-running-device/">React-native-webrtc Crash on Running Device</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/05/09/number-vs-parseint/">Number() vs parseInt()</a>
       </li>
     
   </ul>
@@ -958,7 +959,7 @@ yarn add redux-thunk redux- &hellip;">
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (6)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
-<li class='category'><a href='/blog/categories/react-native/'>react-native (13)</a></li>
+<li class='category'><a href='/blog/categories/react-native/'>react-native (14)</a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (1)</a></li>
 
   </ul>
