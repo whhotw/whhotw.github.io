@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>JavaScript 動態載入模組 - wlog</title>
+  <title>LeetCode #766 Toeplitz Matrix - wlog</title>
   <meta name="author" content="w">
 
   
-  <meta name="description" content="兩個關鍵字 import export，用於載入與輸出模組。但實際上不一定會使用到模組的程式碼，這時候就需要動態載入，在確定需要使用的時候載入 1
+  <meta name="description" content="1
 2
 3
 4
@@ -17,8 +17,15 @@
 6
 7
 8
-export let go = () =&gt; { return 'AAA';
-}; async () =&gt; { &hellip;">
+9
+10
+11
+12
+13
+14
+15
+16
+var isToeplitzMatrix = function(matrix) { let a = true; for (let i = 0; i &lt; matrix.length; i++) { let j = 0 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -27,7 +34,7 @@ export let go = () =&gt; { return 'AAA';
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/2017/11/20/mo-zu/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2018/09/18/leetcode-number-766-toeplitz-matrix/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="wlog" type="application/atom+xml">
@@ -90,7 +97,7 @@ export let go = () =&gt; { return 'AAA';
   
   <header>
     
-      <h1 class="entry-title">JavaScript 動態載入模組</h1>
+      <h1 class="entry-title">LeetCode #766 Toeplitz Matrix</h1>
     
     
       <p class="meta">
@@ -99,7 +106,7 @@ export let go = () =&gt; { return 'AAA';
 
 
 
-<time class='entry-date' datetime='2017-11-20T15:53:41+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:53 pm</span></time>
+<time class='entry-date' datetime='2018-09-18T18:58:19+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>6:58 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://whhotw.github.io">Comments</a>
@@ -109,9 +116,7 @@ export let go = () =&gt; { return 'AAA';
   </header>
 
 
-<div class="entry-content"><p>兩個關鍵字 <code>import</code> <code>export</code>，用於載入與輸出模組。但實際上不一定會使用到模組的程式碼，這時候就需要動態載入，在確定需要使用的時候載入</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -119,20 +124,30 @@ export let go = () =&gt; { return 'AAA';
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>export let go = () =&gt; {
-</span><span class='line'>  return 'AAA';
-</span><span class='line'>};
-</span><span class='line'>
-</span><span class='line'>async () =&gt; {
-</span><span class='line'>  let Module = await import('./Module.js');
-</span><span class='line'>  console.log(Module.go());
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>輸出</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>AAA</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var isToeplitzMatrix = function(matrix) {
+</span><span class='line'>    let a = true;
+</span><span class='line'>    for (let i = 0; i &lt; matrix.length; i++) {
+</span><span class='line'>        let j = 0;
+</span><span class='line'>        while (j + 1 &lt; matrix[i].length && i + 1 &lt; matrix.length) {
+</span><span class='line'>            console.log(i + 1, j + 1);
+</span><span class='line'>            if (matrix[i][j] !== matrix[i + 1][j + 1]) {
+</span><span class='line'>                a = false;
+</span><span class='line'>            }
+</span><span class='line'>            
+</span><span class='line'>            j++;
+</span><span class='line'>        }
+</span><span class='line'>    }
+</span><span class='line'>    
+</span><span class='line'>    return a;
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -149,12 +164,12 @@ export let go = () =&gt; { return 'AAA';
 
 
 
-<time class='entry-date' datetime='2017-11-20T15:53:41+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:53 pm</span></time>
+<time class='entry-date' datetime='2018-09-18T18:58:19+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>6:58 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/javascript/'>javascript</a>
+    <a class='category' href='/blog/categories/leetcode/'>leetcode</a>
   
 </span>
 
@@ -172,10 +187,8 @@ export let go = () =&gt; { return 'AAA';
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2017/11/16/leetcode-number-357-count-numbers-with-unique-digits/" title="Previous Post: Leetcode #357. Count Numbers with Unique Digits">&laquo; Leetcode #357. Count Numbers with Unique Digits</a>
+        <a class="basic-alignment left" href="/blog/2018/08/14/zhi-qian-bang-peng-you-zuo-de-%5B%3F%5D-ge-an-zi-dot-dot-dot/" title="Previous Post: GTS Test & Replace™ Technician Instructions.">&laquo; GTS Test & Replace™ Technician Instructions.</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2017/11/21/git-she-ding-hu-lue-zi-qian-ping-zheng/" title="Next Post: git 設定忽略自簽憑證">git 設定忽略自簽憑證 &raquo;</a>
       
     </p>
   </footer>
@@ -190,8 +203,8 @@ export let go = () =&gt; { return 'AAA';
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2017/11/20/mo-zu/';
-        var disqus_url = 'http://whhotw.github.io/blog/2017/11/20/mo-zu/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/09/18/leetcode-number-766-toeplitz-matrix/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/09/18/leetcode-number-766-toeplitz-matrix/';
         var disqus_script = 'embed.js';
       
     (function () {
@@ -305,8 +318,8 @@ export let go = () =&gt; { return 'AAA';
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2017/11/20/mo-zu/';
-        var disqus_url = 'http://whhotw.github.io/blog/2017/11/20/mo-zu/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/09/18/leetcode-number-766-toeplitz-matrix/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/09/18/leetcode-number-766-toeplitz-matrix/';
         var disqus_script = 'embed.js';
       
     (function () {

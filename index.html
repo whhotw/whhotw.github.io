@@ -9,7 +9,23 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="意外看到去年幫朋友做的案子，那時候所拍的教學影片。雖然功能很簡單，但拍成影片就感覺蠻酷的！ ">
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+var isToeplitzMatrix = function(matrix) { let a = true; for (let i = 0; i &lt; matrix.length; i++) { let j = 0 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +94,70 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/09/18/leetcode-number-766-toeplitz-matrix/">LeetCode #766 Toeplitz Matrix</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-09-18T18:58:19+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>6:58 pm</span></time>
+        
+           | <a href="/blog/2018/09/18/leetcode-number-766-toeplitz-matrix/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/09/18/leetcode-number-766-toeplitz-matrix/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var isToeplitzMatrix = function(matrix) {
+</span><span class='line'>    let a = true;
+</span><span class='line'>    for (let i = 0; i &lt; matrix.length; i++) {
+</span><span class='line'>        let j = 0;
+</span><span class='line'>        while (j + 1 &lt; matrix[i].length && i + 1 &lt; matrix.length) {
+</span><span class='line'>            console.log(i + 1, j + 1);
+</span><span class='line'>            if (matrix[i][j] !== matrix[i + 1][j + 1]) {
+</span><span class='line'>                a = false;
+</span><span class='line'>            }
+</span><span class='line'>            
+</span><span class='line'>            j++;
+</span><span class='line'>        }
+</span><span class='line'>    }
+</span><span class='line'>    
+</span><span class='line'>    return a;
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -569,86 +649,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/03/20/fetch-api-content-type/">Fetch API Content-Type</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-03-20T09:38:46+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>9:38 am</span></time>
-        
-           | <a href="/blog/2018/03/20/fetch-api-content-type/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/03/20/fetch-api-content-type/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近用到 js 中的 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">fetch</a> 發現 <code>Content-Type</code> 會因為參數而改變</p>
-
-<p>例如</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>const options = {
-</span><span class='line'>  method,
-</span><span class='line'>  headers: {
-</span><span class='line'>    Accept: 'application/json',
-</span><span class='line'>    'Content-Type': 'application/json', // 指定
-</span><span class='line'>  },
-</span><span class='line'>  body: params, // 第二張圖
-</span><span class='line'>  // body: JSON.stringify(params), // 第一張圖
-</span><span class='line'>};
-</span><span class='line'>    
-</span><span class='line'>return fetch(url, options)
-</span><span class='line'>  .then((res) =&gt; {
-</span><span class='line'>    if (!res.ok) {
-</span><span class='line'>      throw new Error('請檢查網路連線');
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    return res.json();
-</span><span class='line'>  });</span></code></pre></td></tr></table></div></figure>
-
-
-<p>假如 <code>params</code> 沒有用 <code>JSON.stringify</code> 的話，實際傳出去的 <code>Content-Type</code> 不一定是 <code>application/json</code></p>
-
-<p>我用 wireshark 做的實驗</p>
-
-<p><img src="/assets/Screen%20Shot%202018-03-20%20at%2009.44.19.png" width="1080" height="1920"></p>
-
-<p><img src="/assets/Screen%20Shot%202018-03-20%20at%2009.44.05.png" width="1080" height="1920"></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -662,6 +662,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/09/18/leetcode-number-766-toeplitz-matrix/">LeetCode #766 Toeplitz Matrix</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/08/14/zhi-qian-bang-peng-you-zuo-de-%5B%3F%5D-ge-an-zi-dot-dot-dot/">GTS Test & Replace™ Technician Instructions.</a>
@@ -679,10 +683,6 @@
         <a href="/blog/2018/08/01/abort-fetch-api/">Abort Fetch API</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2018/07/27/no-bundle-url-present-when-the-react-packager-tab-is-closed/">No Bundle Url Present: When the React Packager Tab Is Closed</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -695,7 +695,7 @@
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (10)</a></li>
 <li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
-<li class='category'><a href='/blog/categories/leetcode/'>leetcode (6)</a></li>
+<li class='category'><a href='/blog/categories/leetcode/'>leetcode (7)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
 <li class='category'><a href='/blog/categories/react-native/'>react-native (14)</a></li>
