@@ -9,7 +9,7 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="有些時候想要在 git 上 commit 一個空資料夾時，可以透過 .gitignore 的設定來做到。 專案結構 1
+  <meta name="description" content="JavaScript 中的 this 是一個很容易搞混的東東。 具名函數搭配 bind 的寫法 1
 2
 3
 4
@@ -19,12 +19,12 @@
 8
 9
 10
-$ tree -La 1
-.
-├── .git
-├── .gitignore
-├── README.md
-├── application &hellip;">
+11
+12
+13
+function wth() { console.log(this);
+} let o = { name: 1
+}; wth(); // &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,6 +93,100 @@ $ tree -La 1
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/01/09/javascript-zhong-de-this/">JavaScript 中 This 的種種</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-01-09T09:56:40+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>9:56 am</span></time>
+        
+           | <a href="/blog/2018/01/09/javascript-zhong-de-this/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/09/javascript-zhong-de-this/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>JavaScript 中的 this 是一個很容易搞混的東東。</p>
+
+<p>具名函數搭配 bind 的寫法</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>function wth() {
+</span><span class='line'>  console.log(this);
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>let o = {
+</span><span class='line'>  name: 1
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>wth(); // window
+</span><span class='line'>
+</span><span class='line'>let wthBind = wth.bind(o);
+</span><span class='line'>
+</span><span class='line'>wthBind(); // object o</span></code></pre></td></tr></table></div></figure>
+
+
+<p>使用箭頭函數</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>let wth = () =&gt; {
+</span><span class='line'>  console.log(this);
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>let o = {
+</span><span class='line'>  name: 1
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>wth(); // window
+</span><span class='line'>
+</span><span class='line'>let wthBind = wth.bind(o);
+</span><span class='line'>
+</span><span class='line'>wthBind(); // window</span></code></pre></td></tr></table></div></figure>
+
+
+<p>為什麼執行結果不同呢？是因為透過箭頭函數 this 對象會在宣告時就綁定，因此就算之後用 bind 也不會有變化</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -812,62 +906,6 @@ Output: 7 -> 0 -> 8</em></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/11/20/mo-zu/">JavaScript 動態載入模組</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-11-20T15:53:41+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:53 pm</span></time>
-        
-           | <a href="/blog/2017/11/20/mo-zu/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2017/11/20/mo-zu/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>兩個關鍵字 <code>import</code> <code>export</code>，用於載入與輸出模組。但實際上不一定會使用到模組的程式碼，這時候就需要動態載入，在確定需要使用的時候載入</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>export let go = () =&gt; {
-</span><span class='line'>  return 'AAA';
-</span><span class='line'>};
-</span><span class='line'>
-</span><span class='line'>async () =&gt; {
-</span><span class='line'>  let Module = await import('./Module.js');
-</span><span class='line'>  console.log(Module.go());
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<p>輸出</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>AAA</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -885,6 +923,10 @@ Output: 7 -> 0 -> 8</em></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/09/26/leetcode-number-206-reverse-linked-list/">LeetCode #206 Reverse Linked List</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/09/18/leetcode-number-766-toeplitz-matrix/">LeetCode #766 Toeplitz Matrix</a>
       </li>
     
@@ -900,10 +942,6 @@ Output: 7 -> 0 -> 8</em></p>
         <a href="/blog/2018/08/07/turn-on-webview-debug-on-android/">Turn on WebView Debug on Android</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2018/08/01/abort-fetch-api/">Abort Fetch API</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -916,7 +954,7 @@ Output: 7 -> 0 -> 8</em></p>
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (10)</a></li>
 <li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
-<li class='category'><a href='/blog/categories/leetcode/'>leetcode (7)</a></li>
+<li class='category'><a href='/blog/categories/leetcode/'>leetcode (8)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
 <li class='category'><a href='/blog/categories/react-native/'>react-native (14)</a></li>

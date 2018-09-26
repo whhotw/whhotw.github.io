@@ -9,9 +9,16 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x &lt; 10n.
-Example:
-Given n = 2, return 91. (The answer should be &hellip;">
+  <meta name="description" content="兩個關鍵字 import export，用於載入與輸出模組。但實際上不一定會使用到模組的程式碼，這時候就需要動態載入，在確定需要使用的時候載入 1
+2
+3
+4
+5
+6
+7
+8
+export let go = () =&gt; { return 'AAA';
+}; async () =&gt; { &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +87,62 @@ Given n = 2, return 91. (The answer should be &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/11/20/mo-zu/">JavaScript 動態載入模組</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-11-20T15:53:41+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:53 pm</span></time>
+        
+           | <a href="/blog/2017/11/20/mo-zu/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2017/11/20/mo-zu/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>兩個關鍵字 <code>import</code> <code>export</code>，用於載入與輸出模組。但實際上不一定會使用到模組的程式碼，這時候就需要動態載入，在確定需要使用的時候載入</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>export let go = () =&gt; {
+</span><span class='line'>  return 'AAA';
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>async () =&gt; {
+</span><span class='line'>  let Module = await import('./Module.js');
+</span><span class='line'>  console.log(Module.go());
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>輸出</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>AAA</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -613,67 +676,6 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/09/13/react-native-setting-onmessage-on-a-webview-overrides-existing-values-of-window-dot-postmessage/">React Native - Setting onMessage on a WebView Overrides Existing Values of window.postMessage</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-09-13T15:56:07+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:56 pm</span></time>
-        
-           | <a href="/blog/2017/09/13/react-native-setting-onmessage-on-a-webview-overrides-existing-values-of-window-dot-postmessage/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2017/09/13/react-native-setting-onmessage-on-a-webview-overrides-existing-values-of-window-dot-postmessage/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近在玩 React Native 遇到的一個問題。假如想讓 WebView 與 React Native 溝通的話可以用 <code>onMessage</code> 這個介面，但是假如原本的網頁內容你不確定怎麼寫的，可能會遇到 <code>Setting onMessage on a WebView overrides existing values of window.postMessage</code>
-這樣的錯誤訊息，搜尋了一下解法，紀錄一下</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>const patchPostMessageFunction = () =&gt; {
-</span><span class='line'>  const originalPostMessage = window.postMessage;
-</span><span class='line'>
-</span><span class='line'>  const patchedPostMessage = (message, targetOrigin, transfer) =&gt; {
-</span><span class='line'>    originalPostMessage(message, targetOrigin, transfer);
-</span><span class='line'>  };
-</span><span class='line'>
-</span><span class='line'>  patchedPostMessage.toString = () =&gt; String(Object.hasOwnProperty).replace('hasOwnProperty', 'postMessage');
-</span><span class='line'>
-</span><span class='line'>  window.postMessage = patchedPostMessage;
-</span><span class='line'>};
-</span><span class='line'>
-</span><span class='line'>const patchPostMessageJsCode = `(${String(patchPostMessageFunction)})();`;</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/6">&larr; Older</a>
@@ -691,6 +693,10 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/09/26/leetcode-number-206-reverse-linked-list/">LeetCode #206 Reverse Linked List</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/09/18/leetcode-number-766-toeplitz-matrix/">LeetCode #766 Toeplitz Matrix</a>
       </li>
     
@@ -706,10 +712,6 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
         <a href="/blog/2018/08/07/turn-on-webview-debug-on-android/">Turn on WebView Debug on Android</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2018/08/01/abort-fetch-api/">Abort Fetch API</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -722,7 +724,7 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (10)</a></li>
 <li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
-<li class='category'><a href='/blog/categories/leetcode/'>leetcode (7)</a></li>
+<li class='category'><a href='/blog/categories/leetcode/'>leetcode (8)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
 <li class='category'><a href='/blog/categories/react-native/'>react-native (14)</a></li>
