@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-09-26T16:03:13+08:00</updated>
+  <updated>2018-10-04T11:51:10+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,85 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[LeetCode #23 Merge K Sorted Lists]]></title>
+    <link href="http://whhotw.github.io/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/"/>
+    <updated>2018-10-04T11:49:46+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists</id>
+    <content type="html"><![CDATA[<p>240ms 差強人意</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var mergeKLists = function(lists) {
+</span><span class='line'>    lists = lists.filter(list =&gt; list);
+</span><span class='line'>    
+</span><span class='line'>    if (lists.length === 0) {
+</span><span class='line'>        return null;
+</span><span class='line'>    }
+</span><span class='line'>    
+</span><span class='line'>    const list = new ListNode();
+</span><span class='line'>    let next = list;
+</span><span class='line'>    
+</span><span class='line'>    while (lists.length &gt; 0) {
+</span><span class='line'>        let min = 0;
+</span><span class='line'>        
+</span><span class='line'>        for (let i = 0; i &lt; lists.length; i++) {
+</span><span class='line'>            if (lists[i] && lists[i].val &lt; lists[min].val) {
+</span><span class='line'>                min = i;
+</span><span class='line'>            }
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        next.val = lists[min].val;
+</span><span class='line'>        lists[min] = lists[min].next;
+</span><span class='line'>        
+</span><span class='line'>        if (!lists[min]) {
+</span><span class='line'>            lists.splice(min, 1);
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        if (lists.length &gt; 0) {
+</span><span class='line'>            next.next = new ListNode();
+</span><span class='line'>            next = next.next;
+</span><span class='line'>        }
+</span><span class='line'>    }
+</span><span class='line'>    
+</span><span class='line'>    return list;
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[LeetCode #206 Reverse Linked List]]></title>
@@ -991,21 +1070,6 @@
 </span><span class='line'>import fontelloConfig from './config.json';
 </span><span class='line'>const Icon = createIconSetFromFontello(fontelloConfig);</span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[TCP 三次握手/四次握手]]></title>
-    <link href="http://whhotw.github.io/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou/"/>
-    <updated>2018-01-31T17:05:20+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou</id>
-    <content type="html"><![CDATA[<p>建立連線 => 三次握手(圖中紅色框框)</p>
-
-
-<p>結束連線 => 四次握手(圖中藍色框框)</p>
-
-
-<p><img src="http://img.my.csdn.net/uploads/201108/7/0_131271823564Rx.gif" alt="" /></p>
 ]]></content>
   </entry>
   

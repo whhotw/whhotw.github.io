@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Abort Fetch API - wlog</title>
+  <title>LeetCode #23 Merge K Sorted Lists - wlog</title>
   <meta name="author" content="w">
 
   
-  <meta name="description" content="在 Fetch API 中並沒有原生提供中斷請求的方法。但假設遇到並行事件時，需要取消前一個請求可以怎麼做呢？這時候就可以實作 Promise 的物件來解決 1
+  <meta name="description" content="240ms 差強人意 1
 2
 3
 4
@@ -33,7 +33,17 @@
 22
 23
 24
-25 &hellip;">
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+var mergeKLists = function(lists) { lists = &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -42,7 +52,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/2018/08/01/abort-fetch-api/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="wlog" type="application/atom+xml">
@@ -105,7 +115,7 @@
   
   <header>
     
-      <h1 class="entry-title">Abort Fetch API</h1>
+      <h1 class="entry-title">LeetCode #23 Merge K Sorted Lists</h1>
     
     
       <p class="meta">
@@ -114,7 +124,7 @@
 
 
 
-<time class='entry-date' datetime='2018-08-01T21:46:22+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>9:46 pm</span></time>
+<time class='entry-date' datetime='2018-10-04T11:49:46+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:49 am</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://whhotw.github.io">Comments</a>
@@ -124,7 +134,7 @@
   </header>
 
 
-<div class="entry-content"><p>在 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a> 中並沒有原生提供中斷請求的方法。但假設遇到並行事件時，需要取消前一個請求可以怎麼做呢？這時候就可以實作 <code>Promise</code> 的物件來解決</p>
+<div class="entry-content"><p>240ms 差強人意</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -151,31 +161,49 @@
 <span class='line-number'>23</span>
 <span class='line-number'>24</span>
 <span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>const promise = new Promise(function (resolve, reject) {
-</span><span class='line'>  const f = fetch(url, options).then((res) =&gt; {
-</span><span class='line'>    if (!res.ok) {
-</span><span class='line'>      reject(new Error('something wrong'));
-</span><span class='line'>    } else {
-</span><span class='line'>      // resolve(res.json());
-</span><span class='line'>      resolve('it's work');
-</span><span class='line'>    }
-</span><span class='line'>  });
-</span><span class='line'>
-</span><span class='line'>  f.abort = function () {
-</span><span class='line'>    reject(new Error('abort error'));
-</span><span class='line'>  };
-</span><span class='line'>
-</span><span class='line'>  return f;
-</span><span class='line'>});
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var mergeKLists = function(lists) {
+</span><span class='line'>    lists = lists.filter(list =&gt; list);
 </span><span class='line'>    
-</span><span class='line'>promise.then((res) =&gt; {
-</span><span class='line'>  console.log(res); // it's work
-</span><span class='line'>}).catch(e =&gt; {
-</span><span class='line'>  console.error(e); // something wrong or abort error
-</span><span class='line'>});
-</span><span class='line'>
-</span><span class='line'>// call this before resolve
-</span><span class='line'>promise.abort();</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>    if (lists.length === 0) {
+</span><span class='line'>        return null;
+</span><span class='line'>    }
+</span><span class='line'>    
+</span><span class='line'>    const list = new ListNode();
+</span><span class='line'>    let next = list;
+</span><span class='line'>    
+</span><span class='line'>    while (lists.length &gt; 0) {
+</span><span class='line'>        let min = 0;
+</span><span class='line'>        
+</span><span class='line'>        for (let i = 0; i &lt; lists.length; i++) {
+</span><span class='line'>            if (lists[i] && lists[i].val &lt; lists[min].val) {
+</span><span class='line'>                min = i;
+</span><span class='line'>            }
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        next.val = lists[min].val;
+</span><span class='line'>        lists[min] = lists[min].next;
+</span><span class='line'>        
+</span><span class='line'>        if (!lists[min]) {
+</span><span class='line'>            lists.splice(min, 1);
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        if (lists.length &gt; 0) {
+</span><span class='line'>            next.next = new ListNode();
+</span><span class='line'>            next = next.next;
+</span><span class='line'>        }
+</span><span class='line'>    }
+</span><span class='line'>    
+</span><span class='line'>    return list;
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -192,12 +220,12 @@
 
 
 
-<time class='entry-date' datetime='2018-08-01T21:46:22+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>9:46 pm</span></time>
+<time class='entry-date' datetime='2018-10-04T11:49:46+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:49 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/javascript/'>javascript</a>
+    <a class='category' href='/blog/categories/leetcode/'>leetcode</a>
   
 </span>
 
@@ -215,10 +243,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2018/07/27/no-bundle-url-present-when-the-react-packager-tab-is-closed/" title="Previous Post: No bundle url present: when the React Packager tab is closed">&laquo; No bundle url present: when the React Packager tab is closed</a>
+        <a class="basic-alignment left" href="/blog/2018/09/26/leetcode-number-206-reverse-linked-list/" title="Previous Post: LeetCode #206 Reverse Linked List">&laquo; LeetCode #206 Reverse Linked List</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2018/08/07/turn-on-webview-debug-on-android/" title="Next Post: Turn on WebView Debug on Android">Turn on WebView Debug on Android &raquo;</a>
       
     </p>
   </footer>
@@ -233,8 +259,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2018/08/01/abort-fetch-api/';
-        var disqus_url = 'http://whhotw.github.io/blog/2018/08/01/abort-fetch-api/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/';
         var disqus_script = 'embed.js';
       
     (function () {
@@ -348,8 +374,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2018/08/01/abort-fetch-api/';
-        var disqus_url = 'http://whhotw.github.io/blog/2018/08/01/abort-fetch-api/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/';
+        var disqus_url = 'http://whhotw.github.io/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/';
         var disqus_script = 'embed.js';
       
     (function () {

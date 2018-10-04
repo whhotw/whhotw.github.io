@@ -9,7 +9,7 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="面試經典題 1
+  <meta name="description" content="240ms 差強人意 1
 2
 3
 4
@@ -22,7 +22,28 @@
 11
 12
 13
-var reverseList = function(head) { let prev = null; let curr = head; let next = null; while (curr) { next = curr. &hellip;">
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+var mergeKLists = function(lists) { lists = &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,6 +112,108 @@ var reverseList = function(head) { let prev = null; let curr = head; let next = 
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/">LeetCode #23 Merge K Sorted Lists</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-10-04T11:49:46+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:49 am</span></time>
+        
+           | <a href="/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>240ms 差強人意</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var mergeKLists = function(lists) {
+</span><span class='line'>    lists = lists.filter(list =&gt; list);
+</span><span class='line'>    
+</span><span class='line'>    if (lists.length === 0) {
+</span><span class='line'>        return null;
+</span><span class='line'>    }
+</span><span class='line'>    
+</span><span class='line'>    const list = new ListNode();
+</span><span class='line'>    let next = list;
+</span><span class='line'>    
+</span><span class='line'>    while (lists.length &gt; 0) {
+</span><span class='line'>        let min = 0;
+</span><span class='line'>        
+</span><span class='line'>        for (let i = 0; i &lt; lists.length; i++) {
+</span><span class='line'>            if (lists[i] && lists[i].val &lt; lists[min].val) {
+</span><span class='line'>                min = i;
+</span><span class='line'>            }
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        next.val = lists[min].val;
+</span><span class='line'>        lists[min] = lists[min].next;
+</span><span class='line'>        
+</span><span class='line'>        if (!lists[min]) {
+</span><span class='line'>            lists.splice(min, 1);
+</span><span class='line'>        }
+</span><span class='line'>        
+</span><span class='line'>        if (lists.length &gt; 0) {
+</span><span class='line'>            next.next = new ListNode();
+</span><span class='line'>            next = next.next;
+</span><span class='line'>        }
+</span><span class='line'>    }
+</span><span class='line'>    
+</span><span class='line'>    return list;
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -602,42 +725,6 @@ var reverseList = function(head) { let prev = null; let curr = head; let next = 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/">RN WebView of Android Release Build Load Local HTML</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-04-16T11:52:04+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:52 am</span></time>
-        
-           | <a href="/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>RN</code> 中的 WebView 可以使用 <code>require()</code> 讀取靜態的 HTML 檔案。但是安卓的 <code>release</code> 階段要用 <code>file:///android_asset/xxx</code> 的寫法，否則會無法正常執行</p>
-
-<p>靜態檔案放在 android project 的 assets 底下</p>
-
-<p><img src="/assets/ScreenShot2018-04-16at1157.png" width="1080" height="1920"></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -651,6 +738,10 @@ var reverseList = function(head) { let prev = null; let curr = head; let next = 
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/">LeetCode #23 Merge K Sorted Lists</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/09/26/leetcode-number-206-reverse-linked-list/">LeetCode #206 Reverse Linked List</a>
@@ -668,10 +759,6 @@ var reverseList = function(head) { let prev = null; let curr = head; let next = 
         <a href="/blog/2018/08/10/textinput-cannot-blur-on-press-back-button-of-android/">TextInput Cannot Blur on Press Back Button of Android</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2018/08/07/turn-on-webview-debug-on-android/">Turn on WebView Debug on Android</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -684,7 +771,7 @@ var reverseList = function(head) { let prev = null; let curr = head; let next = 
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (10)</a></li>
 <li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
-<li class='category'><a href='/blog/categories/leetcode/'>leetcode (8)</a></li>
+<li class='category'><a href='/blog/categories/leetcode/'>leetcode (9)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
 <li class='category'><a href='/blog/categories/react-native/'>react-native (14)</a></li>
