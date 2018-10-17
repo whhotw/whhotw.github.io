@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-10-04T11:51:10+08:00</updated>
+  <updated>2018-10-18T01:43:08+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Install RVM]]></title>
+    <link href="http://whhotw.github.io/blog/2018/10/18/install-rvm/"/>
+    <updated>2018-10-18T01:34:36+08:00</updated>
+    <id>http://whhotw.github.io/blog/2018/10/18/install-rvm</id>
+    <content type="html"><![CDATA[<p>原本想說用 <code>brew</code> 安裝 <code>ruby</code> 結果沒想到版本相依的問題，這麼難搞，用了好幾天，實在沒辦法！最後還是用決定 <a href="https://rvm.io">RVM</a> 了</p>
+
+<h1>Install</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>\curl -sSL https://get.rvm.io | bash -s stable
+</span><span class='line'>rvm install x.x.x (e.g. 2.5.1)</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Usage</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rvm list
+</span><span class='line'>=&gt; ruby-2.3.7 [ x86_64 ]
+</span><span class='line'>   ruby-2.4.4 [ x86_64 ]
+</span><span class='line'> * ruby-2.5.1 [ x86_64 ]
+</span><span class='line'>
+</span><span class='line'># =&gt; - current
+</span><span class='line'># =* - current && default
+</span><span class='line'>#  * - default
+</span><span class='line'>
+</span><span class='line'>rvm use x.x.x
+</span><span class='line'>Using $HOME/.rvm/gems/ruby-x.x.x</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>RubyGems Environment</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem env
+</span><span class='line'>RubyGems Environment:
+</span><span class='line'>  - RUBYGEMS VERSION: 2.7.7
+</span><span class='line'>  - RUBY VERSION: 2.3.7 (2018-03-28 patchlevel 456) [x86_64-darwin17]
+</span><span class='line'>  - INSTALLATION DIRECTORY: $HOME/.rvm/gems/ruby-2.3.7
+</span><span class='line'>  ...</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[LeetCode #23 Merge K Sorted Lists]]></title>
@@ -1012,64 +1071,6 @@
 <blockquote><p>可以自訂規則寫在 <code>rules</code> 0 代表關閉、1 代表警告、2代表錯誤</p></blockquote>
 
 <p>上述步驟做完，重開 Sublime 即可看到效果</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[RN 中使用 SVG]]></title>
-    <link href="http://whhotw.github.io/blog/2018/02/05/rn-svg/"/>
-    <updated>2018-02-05T10:43:32+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/02/05/rn-svg</id>
-    <content type="html"><![CDATA[<h1>PNG、JPG</h1>
-
-<p>在 <code>RN</code> 中載入圖片是非常容易的事情，可以使用</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>require('./mypng.png')
-</span><span class='line'>require('./myjpg.jpg')</span></code></pre></td></tr></table></div></figure>
-
-
-<p>這類的<a href="https://facebook.github.io/react-native/docs/image.html#source">寫法</a></p>
-
-<h1>SVG</h1>
-
-<p>假如是想載入 <code>.svg</code> 的話，就需要第三方的套件幫忙，或是轉成字型檔載入，以下是我使用字型檔的方式</p>
-
-<blockquote><p>什麼是SVG？最大的優點就是縮放不會失真，細節可以<a href="https://zh.wikipedia.org/wiki/%E5%8F%AF%E7%B8%AE%E6%94%BE%E5%90%91%E9%87%8F%E5%9C%96%E5%BD%A2">參考</a></p></blockquote>
-
-<h1>React-Native-Vector-Icons</h1>
-
-<h2>Install</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>npm install react-native-vector-icons
-</span><span class='line'>react-native link</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Generate .ttf and .json by Fontello or Icomoon</h2>
-
-<p><a href="http://fontello.com/">Fontello</a>，<a href="https://icomoon.io/app">Icomoon</a></p>
-
-<h2>Link</h2>
-
-<ul>
-<li>將 <code>.ttf</code> 放到專案中的 <code>fonts</code> 資料夾裡</li>
-<li>在 <code>package.json</code> 中加入 <code>"rnpm": { "assets": ["fonts"] }</code></li>
-<li>執行 <code>react-native link</code></li>
-</ul>
-
-
-<h2>Import</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>import { createIconSetFromFontello } from 'react-native-vector-icons';
-</span><span class='line'>import fontelloConfig from './config.json';
-</span><span class='line'>const Icon = createIconSetFromFontello(fontelloConfig);</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

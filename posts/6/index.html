@@ -9,9 +9,14 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="use it.
-plugman install --platform ios --project path/to/your/ionicapp/platforms/android --plugin /Path/to/your/cordova-plugin/MyDemo/
-">
+  <meta name="description" content="設定 overrideBackPress=true 1
+2
+3
+4
+5
+6
+this.props.navigator.showLightBox({ screen: '', passProps: {}, style: {}, overrideBackPress: true
+}); ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +85,52 @@ plugman install --platform ios --project path/to/your/ionicapp/platforms/android
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/09/20/react-native-rang-an-zhuo-fan-hui-jian-shi-xiao/">React Native - 讓安卓返回鍵失效</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-09-20T17:28:47+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>5:28 pm</span></time>
+        
+           | <a href="/blog/2017/09/20/react-native-rang-an-zhuo-fan-hui-jian-shi-xiao/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2017/09/20/react-native-rang-an-zhuo-fan-hui-jian-shi-xiao/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>設定 <code>overrideBackPress=true</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>this.props.navigator.showLightBox({
+</span><span class='line'>    screen: '',
+</span><span class='line'>    passProps: {},
+</span><span class='line'>    style: {},
+</span><span class='line'>    overrideBackPress: true
+</span><span class='line'>});</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -499,6 +550,10 @@ react-native-vector-icons: 圖資源<br/></p></blockquote>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/10/18/install-rvm/">Install RVM</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/">LeetCode #23 Merge K Sorted Lists</a>
       </li>
     
@@ -512,10 +567,6 @@ react-native-vector-icons: 圖資源<br/></p></blockquote>
     
       <li class="post">
         <a href="/blog/2018/08/14/zhi-qian-bang-peng-you-zuo-de-%5B%3F%5D-ge-an-zi-dot-dot-dot/">GTS Test & Replace™ Technician Instructions.</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/08/10/textinput-cannot-blur-on-press-back-button-of-android/">TextInput Cannot Blur on Press Back Button of Android</a>
       </li>
     
   </ul>

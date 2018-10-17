@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2018/10/18/install-rvm/</loc>
+<lastmod>2018-10-18T01:34:36+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/</loc>
 <lastmod>2018-10-04T11:49:46+08:00</lastmod>
 </url>

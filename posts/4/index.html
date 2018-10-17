@@ -9,16 +9,16 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="複製物件你可能會這麼寫 1
+  <meta name="description" content="最近複習了一下stack跟heap的觀念。我主要是參考這部影片 影片中我覺得很重要的一張圖 Global 全域變數或是靜態變數 Stack 可預期生命週期的變數或是函式，例如：區域變數，函式變數 1
 2
 3
 4
 5
-let a = {a: '1', b: '2', c: '3'};
-let x = a;
-x.a = 10
-console.log(a); // {a: '10', b: '2', c: '3'}
-console.log(x === a); // &hellip;">
+6
+7
+8
+9
+int f() { int a; a = ff(); return &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +87,92 @@ console.log(x === a); // &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/01/12/stack-vs-heap/">Stack vs. Heap</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-01-12T10:58:29+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:58 am</span></time>
+        
+           | <a href="/blog/2018/01/12/stack-vs-heap/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/12/stack-vs-heap/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近複習了一下<code>stack</code>跟<code>heap</code>的觀念。我主要是參考這部<a href="https://www.youtube.com/watch?v=_8-ht2AKyH4">影片</a></p>
+
+<p><img src="https://i.ytimg.com/vi/_8-ht2AKyH4/maxresdefault.jpg" alt="image" /></p>
+
+<blockquote><p>影片中我覺得很重要的一張圖</p></blockquote>
+
+<h3>Global</h3>
+
+<p>全域變數或是靜態變數</p>
+
+<h3>Stack</h3>
+
+<p>可預期生命週期的變數或是函式，例如：區域變數，函式變數</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int f() {
+</span><span class='line'>  int a;
+</span><span class='line'>  a = ff();
+</span><span class='line'>  return a;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>int ff() {
+</span><span class='line'>  return 10;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>編譯器會知道變數的生命週期，像是上面的片段。程式會在<code>stack</code>放入變數<code>a</code>接著等待函式<code>ff</code>的返回，當<code>ff</code>返回時會從<code>stack</code>中釋放變數<code>a</code>，因此程式可以自我管理記憶體空間不需要開發者介入</p>
+
+<h3>Heap</h3>
+
+<p>動態配置的空間，例如：指標</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>int f() {
+</span><span class='line'>  int *a;
+</span><span class='line'>  a = (int*)malloc(sizeof(int)); // 配置記憶體
+</span><span class='line'>  *a = 10;
+</span><span class='line'>  free(a); //釋放記憶體
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>編譯器並不會知道何時要釋放變數<code>a</code>，因此開發者必須自行執行函式<code>free</code>將記憶體釋放。配置跟釋放有<code>malloc</code> <code>free</code>跟<code>new</code> <code>delete</code></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -847,107 +933,6 @@ Output: 7 -> 0 -> 8</em></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/11/23/ios-app-da-bao-zhi-ling/">iOS App 打包用的指令</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-11-23T15:30:49+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2017</span></span> <span class='time'>3:30 pm</span></time>
-        
-           | <a href="/blog/2017/11/23/ios-app-da-bao-zhi-ling/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2017/11/23/ios-app-da-bao-zhi-ling/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>自動打包這件事情，在很多時候可以幫助開發者，節省很多的等待時間。簡單來說就是開始執行你就可以不用管了，之後的產出甚至可以結合自動測試，發布等等。這邊單純分享打包用的指令</p>
-
-<h3>Archive</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ xcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${TARGET_NAME} -sdk iphoneos -configuration archive -archivePath $PWD/build/${TARGET_NAME}.xcarchive</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Export *.ipa</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ xcodebuild -exportArchive -archivePath $PWD/build/${TARGET_NAME}.xcarchive -exportOptionsPlist BUILD.plist -exportPath $PWD/build</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>BUILD.plist</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cat BUILD.plist
-</span><span class='line'>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-</span><span class='line'>&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
-</span><span class='line'>&lt;plist version="1.0"&gt;
-</span><span class='line'>&lt;dict&gt;
-</span><span class='line'>        &lt;key&gt;teamID&lt;/key&gt;
-</span><span class='line'>        &lt;string&gt;${TEAM_ID}&lt;/string&gt;
-</span><span class='line'>        &lt;key&gt;method&lt;/key&gt;
-</span><span class='line'>        &lt;string&gt;${METHOD}&lt;/string&gt;
-</span><span class='line'>        &lt;key&gt;uploadSymbols&lt;/key&gt;
-</span><span class='line'>        &lt;true/&gt;
-</span><span class='line'>        &lt;key&gt;compileBitcode&lt;/key&gt;
-</span><span class='line'>        &lt;true/&gt;
-</span><span class='line'>&lt;/dict&gt;
-</span><span class='line'>&lt;/plist&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>Xcode8.3 以上透過 command-line 輸出 ipa 需要打入 <code>exportOptionsPlist</code> 這個鍵值，因此需要多配置一個檔案類似如上</p></blockquote>
-
-<ul>
-<li>method: (String) The method of distribution, which can be set as any of the following:
-
-<ul>
-<li>app-store</li>
-<li>enterprise</li>
-<li>ad-hoc</li>
-<li>development</li>
-</ul>
-</li>
-<li>teamID: (String) The development program team identifier.</li>
-<li>uploadSymbols: (Boolean) Option to include symbols in the generated ipa file.</li>
-<li>uploadBitcode: (Boolean) Option to include Bitcode.</li>
-</ul>
-
-
-<h3>我自己寫的 Shell Script</h3>
-
-<script src="https://gist.github.com/whhotw/b1d12e06844cbf08ae7dfa088e306fad.js"></script>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -965,6 +950,10 @@ Output: 7 -> 0 -> 8</em></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/10/18/install-rvm/">Install RVM</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/">LeetCode #23 Merge K Sorted Lists</a>
       </li>
     
@@ -978,10 +967,6 @@ Output: 7 -> 0 -> 8</em></p>
     
       <li class="post">
         <a href="/blog/2018/08/14/zhi-qian-bang-peng-you-zuo-de-%5B%3F%5D-ge-an-zi-dot-dot-dot/">GTS Test & Replace™ Technician Instructions.</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/08/10/textinput-cannot-blur-on-press-back-button-of-android/">TextInput Cannot Blur on Press Back Button of Android</a>
       </li>
     
   </ul>

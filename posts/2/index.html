@@ -9,7 +9,21 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="RN 中的 WebView 可以使用 require() 讀取靜態的 HTML 檔案。但是安卓的 release 階段要用 file:///android_asset/xxx 的寫法，否則會無法正常執行 靜態檔案放在 android project 的 assets 底下 ">
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+parseInt('123', 10) // 123
+parseInt('123abc', 10) // 123
+parseInt(undefined, 10) // NaN
+parseInt(null, 10) // NaN
+parseInt('', &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +92,72 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/05/09/number-vs-parseint/">Number() vs parseInt()</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-05-09T17:58:06+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>5:58 pm</span></time>
+        
+           | <a href="/blog/2018/05/09/number-vs-parseint/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/05/09/number-vs-parseint/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>parseInt('123', 10) // 123
+</span><span class='line'>parseInt('123abc', 10) // 123
+</span><span class='line'>parseInt(undefined, 10) // NaN
+</span><span class='line'>parseInt(null, 10) // NaN
+</span><span class='line'>parseInt('', 10) // NaN
+</span><span class='line'>Number('123') // 123
+</span><span class='line'>Number('123abc', 10) // NaN
+</span><span class='line'>Number(undefined) // NaN
+</span><span class='line'>Number(null) // 0
+</span><span class='line'>Number('') // 0</span></code></pre></td></tr></table></div></figure>
+
+
+<p>數字轉字串</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>String(123) // "123"
+</span><span class='line'>`123` // "123"
+</span><span class='line'>
+</span><span class='line'>let a = 123;
+</span><span class='line'>a.toString() // "123"</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -906,87 +986,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/02/05/rn-svg/">RN 中使用 SVG</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-02-05T10:43:32+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:43 am</span></time>
-        
-           | <a href="/blog/2018/02/05/rn-svg/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/02/05/rn-svg/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1>PNG、JPG</h1>
-
-<p>在 <code>RN</code> 中載入圖片是非常容易的事情，可以使用</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>require('./mypng.png')
-</span><span class='line'>require('./myjpg.jpg')</span></code></pre></td></tr></table></div></figure>
-
-
-<p>這類的<a href="https://facebook.github.io/react-native/docs/image.html#source">寫法</a></p>
-
-<h1>SVG</h1>
-
-<p>假如是想載入 <code>.svg</code> 的話，就需要第三方的套件幫忙，或是轉成字型檔載入，以下是我使用字型檔的方式</p>
-
-<blockquote><p>什麼是SVG？最大的優點就是縮放不會失真，細節可以<a href="https://zh.wikipedia.org/wiki/%E5%8F%AF%E7%B8%AE%E6%94%BE%E5%90%91%E9%87%8F%E5%9C%96%E5%BD%A2">參考</a></p></blockquote>
-
-<h1>React-Native-Vector-Icons</h1>
-
-<h2>Install</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>npm install react-native-vector-icons
-</span><span class='line'>react-native link</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Generate .ttf and .json by Fontello or Icomoon</h2>
-
-<p><a href="http://fontello.com/">Fontello</a>，<a href="https://icomoon.io/app">Icomoon</a></p>
-
-<h2>Link</h2>
-
-<ul>
-<li>將 <code>.ttf</code> 放到專案中的 <code>fonts</code> 資料夾裡</li>
-<li>在 <code>package.json</code> 中加入 <code>"rnpm": { "assets": ["fonts"] }</code></li>
-<li>執行 <code>react-native link</code></li>
-</ul>
-
-
-<h2>Import</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>import { createIconSetFromFontello } from 'react-native-vector-icons';
-</span><span class='line'>import fontelloConfig from './config.json';
-</span><span class='line'>const Icon = createIconSetFromFontello(fontelloConfig);</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -1004,6 +1003,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/10/18/install-rvm/">Install RVM</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/">LeetCode #23 Merge K Sorted Lists</a>
       </li>
     
@@ -1017,10 +1020,6 @@
     
       <li class="post">
         <a href="/blog/2018/08/14/zhi-qian-bang-peng-you-zuo-de-%5B%3F%5D-ge-an-zi-dot-dot-dot/">GTS Test & Replace™ Technician Instructions.</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/08/10/textinput-cannot-blur-on-press-back-button-of-android/">TextInput Cannot Blur on Press Back Button of Android</a>
       </li>
     
   </ul>
