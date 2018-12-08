@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-10-18T01:43:08+08:00</updated>
+  <updated>2018-12-09T02:24:54+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -19,8 +19,6 @@
     <updated>2018-10-18T01:34:36+08:00</updated>
     <id>http://whhotw.github.io/blog/2018/10/18/install-rvm</id>
     <content type="html"><![CDATA[<p>原本想說用 <code>brew</code> 安裝 <code>ruby</code> 結果沒想到版本相依的問題，這麼難搞，用了好幾天，實在沒辦法！最後還是用決定 <a href="https://rvm.io">RVM</a> 了</p>
-
-<h1>Install</h1>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
