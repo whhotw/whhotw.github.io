@@ -9,21 +9,8 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-parseInt('123', 10) // 123
-parseInt('123abc', 10) // 123
-parseInt(undefined, 10) // NaN
-parseInt(null, 10) // NaN
-parseInt('', &hellip;">
+  <meta name="description" content="react-native-webrtc 跑在安卓實機的時候一直閃退，找了好久終於找到解法 參考這個issues proguard rule 裡面加入 1
+-keep class org.webrtc.** { *; } ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +79,46 @@ parseInt('', &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/05/24/react-native-webrtc-crash-on-running-device/">React-native-webrtc Crash on Running Device</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-05-24T16:05:35+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>4:05 pm</span></time>
+        
+           | <a href="/blog/2018/05/24/react-native-webrtc-crash-on-running-device/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/05/24/react-native-webrtc-crash-on-running-device/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://github.com/oney/react-native-webrtc">react-native-webrtc</a> 跑在安卓實機的時候一直閃退，找了好久終於找到解法</p>
+
+<p><a href="https://github.com/oney/react-native-webrtc/issues/230">參考這個issues</a></p>
+
+<p>proguard rule 裡面加入</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-keep class org.webrtc.** { *; }</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -890,102 +917,6 @@ parseInt('', &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/02/08/sublime-setup-eslint-for-js/">Sublime Setup Eslint for RN</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-02-08T00:25:20+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>12:25 am</span></time>
-        
-           | <a href="/blog/2018/02/08/sublime-setup-eslint-for-js/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/02/08/sublime-setup-eslint-for-js/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>我是使用 Sublime 3 的版本</p>
-
-<h1>Install Sublime Package</h1>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>SublimeLinter // 先裝
-</span><span class='line'>SublimeLinter-eslint</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>Manual</h1>
-
-<p>or add on package.json</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>yarn add eslint --dev
-</span><span class='line'>yarn add eslint-config-airbnb --dev
-</span><span class='line'>yarn add eslint-plugin-import --dev
-</span><span class='line'>yarn add eslint-plugin-react --dev
-</span><span class='line'>yarn add eslint-plugin-jsx-a11y --dev
-</span><span class='line'>yarn add babel-eslint --dev</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>Create .eslintrc</h1>
-
-<p>located on project root</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  "parser": "babel-eslint",
-</span><span class='line'>  "extends": "airbnb",
-</span><span class='line'>  "rules": {
-</span><span class='line'>    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-</span><span class='line'>    "react/prop-types": [1],
-</span><span class='line'>    "no-unused-vars": [1],
-</span><span class='line'>    "no-use-before-define": [1, { "functions": true, "classes": true }],
-</span><span class='line'>  },
-</span><span class='line'>  "globals": {
-</span><span class='line'>    "fetch": true,
-</span><span class='line'>    "__DEV__": true,
-</span><span class='line'>  }
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>可以自訂規則寫在 <code>rules</code> 0 代表關閉、1 代表警告、2代表錯誤</p></blockquote>
-
-<p>上述步驟做完，重開 Sublime 即可看到效果</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -1003,6 +934,10 @@ parseInt('', &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2019/04/10/upgrade-react-native-version/">Upgrade React-Native Version.</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/10/18/install-rvm/">Install RVM</a>
       </li>
     
@@ -1016,10 +951,6 @@ parseInt('', &hellip;">
     
       <li class="post">
         <a href="/blog/2018/09/18/leetcode-number-766-toeplitz-matrix/">LeetCode #766 Toeplitz Matrix</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/08/14/zhi-qian-bang-peng-you-zuo-de-%5B%3F%5D-ge-an-zi-dot-dot-dot/">GTS Test & Replace™ Technician Instructions.</a>
       </li>
     
   </ul>
@@ -1037,7 +968,7 @@ parseInt('', &hellip;">
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (9)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
-<li class='category'><a href='/blog/categories/react-native/'>react-native (14)</a></li>
+<li class='category'><a href='/blog/categories/react-native/'>react-native (15)</a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (1)</a></li>
 
   </ul>
@@ -1082,7 +1013,7 @@ parseInt('', &hellip;">
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2018 - w -
+  Copyright &copy; 2019 - w -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

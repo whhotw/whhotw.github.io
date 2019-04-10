@@ -4,7 +4,7 @@
   <title><![CDATA[Category: React-native | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2018-12-09T02:24:54+08:00</updated>
+  <updated>2019-04-10T23:38:48+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,47 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Upgrade React-Native Version.]]></title>
+    <link href="http://whhotw.github.io/blog/2019/04/10/upgrade-react-native-version/"/>
+    <updated>2019-04-10T23:34:34+08:00</updated>
+    <id>http://whhotw.github.io/blog/2019/04/10/upgrade-react-native-version</id>
+    <content type="html"><![CDATA[<pre><code>~ react-native-git-upgrade 0.59.3
+git-upgrade info Check for updates
+git-upgrade info Using yarn 1.10.1
+git-upgrade info Read package.json files
+git-upgrade info Check declared version
+git-upgrade info Check matching versions
+git-upgrade info Check React peer dependency
+git-upgrade info Check that Git is installed
+git-upgrade info Get information from NPM registry
+git-upgrade info Upgrading to React Native 0.59.3, React 16.8.3
+git-upgrade info Setup temporary working directory
+git-upgrade info Configure Git environment
+git-upgrade info Init Git repository
+git-upgrade info Add all files to commit
+git-upgrade info Commit current project sources
+git-upgrade info Create a tag before updating sources
+git-upgrade info Generate old version template
+git-upgrade ERR! An error occurred during upgrade:
+git-upgrade ERR! Error: Couldn't find preset "module:metro-react-native-babel-preset" relative to directory "/Users/whh/FUNBLOCK"
+    at /Users/whh/.config/yarn/global/node_modules/babel-core/lib/transformation/file/options/option-manager.js:293:19
+    at Array.map (&lt;anonymous&gt;)
+    at OptionManager.resolvePresets (/Users/whh/.config/yarn/global/node_modules/babel-core/lib/transformation/file/options/option-manager.js:275:20)
+    at OptionManager.mergePresets (/Users/whh/.config/yarn/global/node_modules/babel-core/lib/transformation/file/options/option-manager.js:264:10)
+    at OptionManager.mergeOptions (/Users/whh/.config/yarn/global/node_modules/babel-core/lib/transformation/file/options/option-manager.js:249:14)
+    at OptionManager.init (/Users/whh/.config/yarn/global/node_modules/babel-core/lib/transformation/file/options/option-manager.js:368:12)
+    at compile (/Users/whh/.config/yarn/global/node_modules/babel-register/lib/node.js:103:45)
+    at loader (/Users/whh/.config/yarn/global/node_modules/babel-register/lib/node.js:144:14)
+    at Object.require.extensions.(anonymous function) [as .js] (/Users/whh/.config/yarn/global/node_modules/babel-register/lib/node.js:154:7)
+    at Module.load (module.js:566:32)
+git-upgrade ERR! Restore initial sources
+</code></pre>
+
+<p>因為 <code>.babelrc</code> 不符合預期，刪除檔案可以排除問題。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[TextInput Cannot Blur on Press Back Button of Android]]></title>
@@ -93,34 +134,6 @@
 <p>靜態檔案放在 android project 的 assets 底下</p>
 
 <p><img src="/assets/ScreenShot2018-04-16at1157.png" width="1080" height="1920"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Keyboard Issues With React-native-gifted-chat]]></title>
-    <link href="http://whhotw.github.io/blog/2018/04/03/keyboard-issues-with-react-native-gifted-chat/"/>
-    <updated>2018-04-03T14:13:35+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/04/03/keyboard-issues-with-react-native-gifted-chat</id>
-    <content type="html"><![CDATA[<p>使用 <code>react-native-gifted-chat</code> 假如有同時使用 <code>react-native-keyboard-manager</code> 在設定的時候記得 <code>setEnable(false)</code></p>
-
-<pre><code>if (Platform.OS === 'ios') {
-  if (__DEV__) {
-    KeyboardManager.setEnableDebugging(true);
-  }
-
-  KeyboardManager.setEnable(false); // do not using it's
-  KeyboardManager.setKeyboardDistanceFromTextField(10);
-  KeyboardManager.setPreventShowingBottomBlankSpace(true);
-  KeyboardManager.setEnableAutoToolbar(true);
-  KeyboardManager.setToolbarManageBehaviour(0);
-  KeyboardManager.setShouldToolbarUsesTextFieldTintColor(false);
-  KeyboardManager.setToolbarPreviousNextButtonEnable(true);
-  KeyboardManager.setShouldShowTextFieldPlaceholder(true);
-  KeyboardManager.setOverrideKeyboardAppearance(false);
-  KeyboardManager.setShouldResignOnTouchOutside(false);
-  KeyboardManager.resignFirstResponder();
-}
-</code></pre>
 ]]></content>
   </entry>
   
