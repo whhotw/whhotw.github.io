@@ -13,14 +13,15 @@ footer: true
 	*	RESTful API development with PHP
 	*	Linux(Ubuntu, CentOS) and Shell script
 	* 	MySQL CRUD
-	*  AWS(EC2, RDS, Load-Balance, Auto-Scaling)
-	*  Git
-	*  Unit Test
-*	Achievement
-	*	Integrating phone connect device via bluetooth
-	*	Develop LBS 
-	* 	Video chat
-	*  AR
+	* 	AWS(EC2, RDS, Load-Balance, Auto-Scaling)
+	* 	Git
+	* 	Unit Test
+*	Application
+	*	BLE 4.0
+	*	LBS 
+	* 	WebRTC
+	* 	AR(Cardboard)
 *	Reference
 	*	RUNNii
 	*	GTS Test & Replace
+	*	FaceSaleBank
