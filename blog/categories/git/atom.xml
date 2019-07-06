@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2019-04-10T23:38:48+08:00</updated>
+  <updated>2019-07-06T20:55:02+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Set Git Submodule Don't Use Https]]></title>
+    <link href="http://whhotw.github.io/blog/2019/07/06/set-git-submodule-url/"/>
+    <updated>2019-07-06T20:47:55+08:00</updated>
+    <id>http://whhotw.github.io/blog/2019/07/06/set-git-submodule-url</id>
+    <content type="html"><![CDATA[<p>In <code>.gitmodules</code> file. Set repository url need use git@github.com:$NAME.git if is <a href="https://">https://</a> will meet SSH authentication failed.</p>
+
+<pre><code>[submodule "$NAME"]
+  path = $PATH
+  url = git@github.com:genesis-healthcare/$NAME.git
+  branch = master
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Commit 空資料夾到 Git]]></title>

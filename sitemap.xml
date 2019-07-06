@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2019/07/06/set-git-submodule-url/</loc>
+<lastmod>2019-07-06T20:47:55+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2019/04/10/upgrade-react-native-version/</loc>
 <lastmod>2019-04-10T23:34:34+08:00</lastmod>
 </url>

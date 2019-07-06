@@ -5,12 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Jenkins 中 Poll SCM 與 Build Periodically 差異 - wlog</title>
+  <title>Set Git Submodule Don't Use Https - wlog</title>
   <meta name="author" content="w">
 
   
-  <meta name="description" content="Poll SCM 固定時間執行（假如代碼有改變） */5 * * * * （每 5 分鐘檢查一次） Build periodically 固定時間執行（不管代碼是否改變） 0 2 * * * （每天 AM 2:00 執行一次）
-">
+  <meta name="description" content="In .gitmodules file. Set repository url need use git@github.com:$NAME.git if is https:// will meet SSH authentication failed. 1
+2
+3
+4
+[submodule "$ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +22,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2019/07/06/set-git-submodule-url/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="wlog" type="application/atom+xml">
@@ -82,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">Jenkins 中 Poll SCM 與 Build Periodically 差異</h1>
+      <h1 class="entry-title">Set Git Submodule Don't Use Https</h1>
     
     
       <p class="meta">
@@ -91,7 +94,7 @@
 
 
 
-<time class='entry-date' datetime='2018-02-27T11:00:34+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:00 am</span></time>
+<time class='entry-date' datetime='2019-07-06T20:47:55+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>8:47 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://whhotw.github.io">Comments</a>
@@ -101,17 +104,17 @@
   </header>
 
 
-<div class="entry-content"><h1>Poll SCM</h1>
+<div class="entry-content"><p>In <code>.gitmodules</code> file. Set repository url need use git@github.com:$NAME.git if is <a href="https://">https://</a> will meet SSH authentication failed.</p>
 
-<p>固定時間執行（假如代碼有改變）</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[submodule "$NAME"]
+</span><span class='line'>  path = $PATH
+</span><span class='line'>  url = git@github.com:genesis-healthcare/$NAME.git
+</span><span class='line'>  branch = master</span></code></pre></td></tr></table></div></figure>
 
-<p>*/5 * * * * （每 5 分鐘檢查一次）</p>
-
-<h1>Build periodically</h1>
-
-<p>固定時間執行（不管代碼是否改變）</p>
-
-<p>0 2 * * * （每天 AM 2:00 執行一次）</p>
 </div>
 
 
@@ -127,12 +130,12 @@
 
 
 
-<time class='entry-date' datetime='2018-02-27T11:00:34+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:00 am</span></time>
+<time class='entry-date' datetime='2019-07-06T20:47:55+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>8:47 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/jenkins/'>jenkins</a>
+    <a class='category' href='/blog/categories/git/'>git</a>
   
 </span>
 
@@ -150,10 +153,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2018/02/13/ren-shi-jwt/" title="Previous Post: 認識 JWT">&laquo; 認識 JWT</a>
+        <a class="basic-alignment left" href="/blog/2019/04/10/upgrade-react-native-version/" title="Previous Post: Upgrade React-Native Version.">&laquo; Upgrade React-Native Version.</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2018/03/02/wo-zi-ji-de-rn-xiang-mu-pei-zhi/" title="Next Post: 我自己的 RN 項目配置">我自己的 RN 項目配置 &raquo;</a>
       
     </p>
   </footer>
@@ -168,8 +169,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/';
-        var disqus_url = 'http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2019/07/06/set-git-submodule-url/';
+        var disqus_url = 'http://whhotw.github.io/blog/2019/07/06/set-git-submodule-url/';
         var disqus_script = 'embed.js';
       
     (function () {
@@ -283,8 +284,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/';
-        var disqus_url = 'http://whhotw.github.io/blog/2018/02/27/jenkins-zhong-poll-scm-yu-build-periodically-chai-yi/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2019/07/06/set-git-submodule-url/';
+        var disqus_url = 'http://whhotw.github.io/blog/2019/07/06/set-git-submodule-url/';
         var disqus_script = 'embed.js';
       
     (function () {
