@@ -128,7 +128,9 @@ if (a === 0.3) { // never into, why?
 
 <p>這段程式碼有很高的機率會是 <code>false</code> 甚至可以說一定會是 <code>false</code>，為什麼呢？市面上常見的程式語言，理論上都會遇到這個陷阱，尤其是像 <code>js</code> 這類的動態語言。當然！這也不是什麼困難問題，隨便 google 一下就知道怎麼解了，這邊我就簡單記錄一下，順帶一提，根本原因是系統對於浮點數的儲存原理，有興趣請自行上網搜尋。</p>
 
-<h1><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON">Number.EPSILON</a></h1>
+<h2>解法</h2>
+
+<h3><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON">Number.EPSILON</a></h3>
 
 <p>利用相減後的差額是否小於 <code>Number.EPSILON</code> 來判定是否成立</p>
 
@@ -140,7 +142,7 @@ if (a === 0.3) { // never into, why?
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 
-<h1><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toPrecision">Number.prototype.toPrecision()</a></h1>
+<h3><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toPrecision">Number.prototype.toPrecision()</a></h3>
 
 <p><a href="https://github.com/camsong/blog/issues/9">參考這篇</a></p>
 </div>
