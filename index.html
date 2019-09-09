@@ -9,11 +9,13 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="In .gitmodules file. Set repository url need use git@github.com:$NAME.git if is https:// will meet SSH authentication failed. 1
+  <meta name="description" content="1
 2
 3
 4
-[submodule "$ &hellip;">
+var a = 0.1 + 0.2;
+if (a === 0.3) { // never into, why?
+} 這段程式碼有很高的機率會是 false 甚至可以說一定會是 false，為什麼呢？市面上常見的程式語言，理論上都會遇到這個陷阱，尤其是像 js 這類的動態語言。當然！ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +94,64 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2019/09/09/0-dot-1-plus-0-dot-2-equals/">0.1 + 0.2 = ?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2019-09-09T23:14:37+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>11:14 pm</span></time>
+        
+           | <a href="/blog/2019/09/09/0-dot-1-plus-0-dot-2-equals/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2019/09/09/0-dot-1-plus-0-dot-2-equals/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var a = 0.1 + 0.2;
+</span><span class='line'>if (a === 0.3) {
+</span><span class='line'>  // never into, why?
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>這段程式碼有很高的機率會是 <code>false</code> 甚至可以說一定會是 <code>false</code>，為什麼呢？市面上常見的程式語言，理論上都會遇到這個陷阱，尤其是像 <code>js</code> 這類的動態語言。當然！這也不是什麼困難問題，隨便 google 一下就知道怎麼解了，這邊我就簡單記錄一下，順帶一提，根本原因是系統對於浮點數的儲存原理，有興趣請自行上網搜尋。</p>
+
+<h1><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON">Number.EPSILON</a></h1>
+
+<p>利用相減後的差額是否小於 <code>Number.EPSILON</code> 來判定是否成立</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>if (Math.abs(a - 0.3) &lt; Number.EPSILON) {
+</span><span class='line'>  // if true, a = 0.3
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h1><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toPrecision">Number.prototype.toPrecision()</a></h1>
+
+<p><a href="https://github.com/camsong/blog/issues/9">參考這篇</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -691,90 +751,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/08/01/abort-fetch-api/">Abort Fetch API</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-08-01T21:46:22+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>9:46 pm</span></time>
-        
-           | <a href="/blog/2018/08/01/abort-fetch-api/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/08/01/abort-fetch-api/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a> 中並沒有原生提供中斷請求的方法。但假設遇到並行事件時，需要取消前一個請求可以怎麼做呢？這時候就可以實作 <code>Promise</code> 的物件來解決</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>const promise = new Promise(function (resolve, reject) {
-</span><span class='line'>  const f = fetch(url, options).then((res) =&gt; {
-</span><span class='line'>    if (!res.ok) {
-</span><span class='line'>      reject(new Error('something wrong'));
-</span><span class='line'>    } else {
-</span><span class='line'>      // resolve(res.json());
-</span><span class='line'>      resolve('it's work');
-</span><span class='line'>    }
-</span><span class='line'>  });
-</span><span class='line'>
-</span><span class='line'>  f.abort = function () {
-</span><span class='line'>    reject(new Error('abort error'));
-</span><span class='line'>  };
-</span><span class='line'>
-</span><span class='line'>  return f;
-</span><span class='line'>});
-</span><span class='line'>    
-</span><span class='line'>promise.then((res) =&gt; {
-</span><span class='line'>  console.log(res); // it's work
-</span><span class='line'>}).catch(e =&gt; {
-</span><span class='line'>  console.error(e); // something wrong or abort error
-</span><span class='line'>});
-</span><span class='line'>
-</span><span class='line'>// call this before resolve
-</span><span class='line'>promise.abort();</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -788,6 +764,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2019/09/09/0-dot-1-plus-0-dot-2-equals/">0.1 + 0.2 = ?</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2019/07/06/set-git-submodule-url/">Set Git Submodule Don't Use Https</a>
@@ -805,10 +785,6 @@
         <a href="/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/">LeetCode #23 Merge K Sorted Lists</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2018/09/26/leetcode-number-206-reverse-linked-list/">LeetCode #206 Reverse Linked List</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -819,7 +795,7 @@
 <li class='category'><a href='/blog/categories/cordova/'>cordova (1)</a></li>
 <li class='category'><a href='/blog/categories/git/'>git (4)</a></li>
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
-<li class='category'><a href='/blog/categories/javascript/'>javascript (10)</a></li>
+<li class='category'><a href='/blog/categories/javascript/'>javascript (11)</a></li>
 <li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (9)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>

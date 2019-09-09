@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2019-09-09T22:05:06+08:00</updated>
+  <updated>2019-09-09T23:44:31+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[0.1 + 0.2 = ?]]></title>
+    <link href="http://whhotw.github.io/blog/2019/09/09/0-dot-1-plus-0-dot-2-equals/"/>
+    <updated>2019-09-09T23:14:37+08:00</updated>
+    <id>http://whhotw.github.io/blog/2019/09/09/0-dot-1-plus-0-dot-2-equals</id>
+    <content type="html"><![CDATA[<pre><code>var a = 0.1 + 0.2;
+if (a === 0.3) {
+    // never into, why?
+}
+</code></pre>
+
+<p>這段程式碼有很高的機率會是 <code>false</code> 甚至可以說一定會是 <code>false</code>，為什麼呢？市面上常見的程式語言，理論上都會遇到這個陷阱，尤其是像 <code>js</code> 這類的動態語言。當然！這也不是什麼困難問題，隨便 google 一下就知道怎麼解了，這邊我就簡單記錄一下，順帶一提，根本原因是系統對於浮點數的儲存原理，有興趣請自行上網搜尋。</p>
+
+<h1><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/EPSILON">Number.EPSILON</a></h1>
+
+<p>利用相減後的差額是否小於 <code>Number.EPSILON</code> 來判定是否成立</p>
+
+<pre><code>if (Math.abs(a - 0.3) &lt; Number.EPSILON) {
+    // if true, a = 0.3
+}
+</code></pre>
+
+<h1><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toPrecision">Number.prototype.toPrecision()</a></h1>
+
+<p><a href="https://github.com/camsong/blog/issues/9">參考這篇</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Abort Fetch API]]></title>
@@ -124,59 +152,6 @@ return fetch(url, options)
     <content type="html"><![CDATA[<p>js 中 20 種必須知道的陣列方法</p>
 
 <p><img src="https://raw.githubusercontent.com/tooto1985/js-array-operations/master/main.jpg" alt="image" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[淺拷貝 vs. 深拷貝]]></title>
-    <link href="http://whhotw.github.io/blog/2018/01/11/"/>
-    <updated>2018-01-11T22:21:31+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/01/</id>
-    <content type="html"><![CDATA[<h3>複製物件你可能會這麼寫</h3>
-
-<pre><code>let a = {a: '1', b: '2', c: '3'};
-let x = a;
-x.a = 10
-console.log(a); // {a: '10', b: '2', c: '3'}
-console.log(x === a); // true
-</code></pre>
-
-<p>為什麼新的變數內容改變，舊的變數內容也會變呢？因為以上的寫法為<code>淺拷貝</code>但是很多時候我們並不想這樣，這時候就需要改成<code>深拷貝</code>的寫法</p>
-
-<h3>淺拷貝 => 分身術</h3>
-
-<p>外表（值）長得一樣，靈魂（記憶體位置）<strong>相同</strong></p>
-
-<h3>深拷貝 => 雙胞胎</h3>
-
-<p>外表（值）長得一樣，靈魂（記憶體位置）<strong>不同</strong></p>
-
-<h3>比較圖</h3>
-
-<p><img src="http://i.stack.imgur.com/hOPkR.png" alt="image" /></p>
-
-<h3>Object.assign</h3>
-
-<p>ES6 上可以用的函式但只能處理深度只有一層的物件</p>
-
-<pre><code>let a = {a: '1', b: '2', c: '3'};
-let x = Object.assign({}, a);
-x.a = 10
-console.log(a); // {a: '1', b: '2', c: '3'}
-console.log(x === a); // false
-</code></pre>
-
-<h3>lodash</h3>
-
-<p>網路上熱門的<a href="https://lodash.com/">函式庫</a></p>
-
-<pre><code>let _ = require('lodash');
-let a = {a: '1', b: '2', c: '3'};
-let x = _.cloneDeep(a);
-x.a = 10
-console.log(a); // {a: '1', b: '2', c: '3'}
-console.log(x === a); // false
-</code></pre>
 ]]></content>
   </entry>
   
