@@ -5,28 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>LeetCode #717. 1-bit and 2-bit Characters - wlog</title>
+  <title>Upgrade Rn Version From 0.57.8 to 0.59.10 - wlog</title>
   <meta name="author" content="w">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="Change react-native version to 0.59.0 manually. 1
 2
 3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-const len = bits.length - 1;
-let i = 0;
-while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;">
+"dependencies": { "react-native": "0.59.0",
+} And run yarn install &amp; yarn upgrade 0.59.10 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -35,7 +22,7 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="wlog" type="application/atom+xml">
@@ -108,7 +95,7 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
   
   <header>
     
-      <h1 class="entry-title">LeetCode #717. 1-bit and 2-bit Characters</h1>
+      <h1 class="entry-title">Upgrade Rn Version From 0.57.8 to 0.59.10</h1>
     
     
       <p class="meta">
@@ -117,7 +104,7 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
 
 
 
-<time class='entry-date' datetime='2018-01-31T10:38:51+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>10:38 am</span></time>
+<time class='entry-date' datetime='2019-10-12T20:38:43+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>8:38 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://whhotw.github.io">Comments</a>
@@ -127,7 +114,21 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
   </header>
 
 
-<div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="entry-content"><p>Change react-native version to <code>0.59.0</code> manually.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"dependencies": {
+</span><span class='line'>  "react-native": "0.59.0",
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And run <code>yarn install</code> &amp; <code>yarn upgrade 0.59.10</code></p>
+
+<p>if got error message as below</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -140,24 +141,28 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>const len = bits.length - 1;
-</span><span class='line'>let i = 0;
-</span><span class='line'>while (i &lt; len) {
-</span><span class='line'>    if (bits[i] === 0) {
-</span><span class='line'>        i++;
-</span><span class='line'>    } else if (bits[i] === 1) {
-</span><span class='line'>        if (i + 1 === len) {
-</span><span class='line'>            return false;
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        i += 2;
-</span><span class='line'>    }
-</span><span class='line'>}
-</span><span class='line'>    
-</span><span class='line'>return true;</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Undefined symbols for architecture x86_64:
+</span><span class='line'>  "_JSClassCreate", referenced from:
+</span><span class='line'>      facebook::jsc::JSCRuntime::createObject(std::__1::shared_ptr&lt;facebook::jsi::HostObject&gt;)::$_0::operator()() const in libReact.a(JSCRuntime.o)
+</span><span class='line'>      facebook::jsc::JSCRuntime::createFunctionFromHostFunction(facebook::jsi::PropNameID const&, unsigned int, std::__1::function&lt;facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)&gt;)::$_1::operator()() const in libReact.a(JSCRuntime.o)
+</span><span class='line'>  "_JSContextGetGlobalObject", referenced from:
+</span><span class='line'>      facebook::jsc::JSCRuntime::global() in libReact.a(JSCRuntime.o)
+</span><span class='line'>      facebook::jsc::JSCRuntime::createFunctionFromHostFunction(facebook::jsi::PropNameID const&, unsigned int, std::__1::function&lt;facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)&gt;)::HostFunctionMetadata::initialize(OpaqueJSContext const*, OpaqueJSValue*) in libReact.a(JSCRuntime.o)
+</span><span class='line'>  "_JSEvaluateScript", referenced from:
+</span><span class='line'>      facebook::jsc::JSCRuntime::evaluateJavaScript(std::__1::unique_ptr&lt;facebook::jsi::Buffer const, std::__1::default_delete&lt;facebook::jsi::Buffer const&gt; &gt;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&) in libReact.a(JSCRuntime.o)
+</span><span class='line'>  "_JSGlobalContextCreateInGroup", referenced from:
+</span><span class='line'>      facebook::jsc::JSCRuntime::JSCRuntime() in libReact.a(JSCRuntime.o)
+</span><span class='line'>      facebook::jsc::JSCRuntime::JSCRuntime() in libReact.a(JSCRuntime
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
 
+
+<p>Remember add <code>JavaScriptCore.framework</code> to project</p>
+
+<h1>Upgrade-helper</h1>
+
+<p>It can find out differences between the two versions.</p>
+
+<p><a href="https://react-native-community.github.io/upgrade-helper">https://react-native-community.github.io/upgrade-helper</a></p>
 </div>
 
 
@@ -173,12 +178,12 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
 
 
 
-<time class='entry-date' datetime='2018-01-31T10:38:51+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>10:38 am</span></time>
+<time class='entry-date' datetime='2019-10-12T20:38:43+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>8:38 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/leetcode/'>leetcode</a>
+    <a class='category' href='/blog/categories/react-native/'>react-native</a>
   
 </span>
 
@@ -196,10 +201,8 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2018/01/29/leetcode-number-581-shortest-unsorted-continuous-subarray/" title="Previous Post: LeetCode #581. Shortest Unsorted Continuous Subarray">&laquo; LeetCode #581. Shortest Unsorted Continuous Subarray</a>
+        <a class="basic-alignment left" href="/blog/2019/09/09/0-dot-1-plus-0-dot-2-equals/" title="Previous Post: 0.1 + 0.2 = ?">&laquo; 0.1 + 0.2 = ?</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou/" title="Next Post: TCP 三次握手/四次握手">TCP 三次握手/四次握手 &raquo;</a>
       
     </p>
   </footer>
@@ -214,8 +217,8 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/';
-        var disqus_url = 'http://whhotw.github.io/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/';
+        var disqus_url = 'http://whhotw.github.io/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/';
         var disqus_script = 'embed.js';
       
     (function () {
@@ -308,8 +311,8 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/';
-        var disqus_url = 'http://whhotw.github.io/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/';
+        var disqus_url = 'http://whhotw.github.io/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/';
         var disqus_script = 'embed.js';
       
     (function () {

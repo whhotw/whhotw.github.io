@@ -9,13 +9,11 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="Change react-native version to 0.59.0 manually. 1
 2
 3
-4
-var a = 0.1 + 0.2;
-if (a === 0.3) { // never into, why?
-} 這段程式碼有很高的機率會是 false 甚至可以說一定會是 false，為什麼呢？市面上常見的程式語言，理論上都會遇到這個陷阱，尤其是像 js 這類的動態語言。當然！ &hellip;">
+"dependencies": { "react-native": "0.59.0",
+} And run yarn install &amp; yarn upgrade 0.59.10 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,6 +92,86 @@ if (a === 0.3) { // never into, why?
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/">Upgrade Rn Version From 0.57.8 to 0.59.10</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2019-10-12T20:38:43+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>8:38 pm</span></time>
+        
+           | <a href="/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Change react-native version to <code>0.59.0</code> manually.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"dependencies": {
+</span><span class='line'>  "react-native": "0.59.0",
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And run <code>yarn install</code> &amp; <code>yarn upgrade 0.59.10</code></p>
+
+<p>if got error message as below</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Undefined symbols for architecture x86_64:
+</span><span class='line'>  "_JSClassCreate", referenced from:
+</span><span class='line'>      facebook::jsc::JSCRuntime::createObject(std::__1::shared_ptr&lt;facebook::jsi::HostObject&gt;)::$_0::operator()() const in libReact.a(JSCRuntime.o)
+</span><span class='line'>      facebook::jsc::JSCRuntime::createFunctionFromHostFunction(facebook::jsi::PropNameID const&, unsigned int, std::__1::function&lt;facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)&gt;)::$_1::operator()() const in libReact.a(JSCRuntime.o)
+</span><span class='line'>  "_JSContextGetGlobalObject", referenced from:
+</span><span class='line'>      facebook::jsc::JSCRuntime::global() in libReact.a(JSCRuntime.o)
+</span><span class='line'>      facebook::jsc::JSCRuntime::createFunctionFromHostFunction(facebook::jsi::PropNameID const&, unsigned int, std::__1::function&lt;facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)&gt;)::HostFunctionMetadata::initialize(OpaqueJSContext const*, OpaqueJSValue*) in libReact.a(JSCRuntime.o)
+</span><span class='line'>  "_JSEvaluateScript", referenced from:
+</span><span class='line'>      facebook::jsc::JSCRuntime::evaluateJavaScript(std::__1::unique_ptr&lt;facebook::jsi::Buffer const, std::__1::default_delete&lt;facebook::jsi::Buffer const&gt; &gt;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&) in libReact.a(JSCRuntime.o)
+</span><span class='line'>  "_JSGlobalContextCreateInGroup", referenced from:
+</span><span class='line'>      facebook::jsc::JSCRuntime::JSCRuntime() in libReact.a(JSCRuntime.o)
+</span><span class='line'>      facebook::jsc::JSCRuntime::JSCRuntime() in libReact.a(JSCRuntime
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Remember add <code>JavaScriptCore.framework</code> to project</p>
+
+<h1>Upgrade-helper</h1>
+
+<p>It can find out differences between the two versions.</p>
+
+<p><a href="https://react-native-community.github.io/upgrade-helper">https://react-native-community.github.io/upgrade-helper</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -705,54 +783,6 @@ if (a === 0.3) { // never into, why?
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/08/07/turn-on-webview-debug-on-android/">Turn on WebView Debug on Android</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-08-07T17:51:02+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>5:51 pm</span></time>
-        
-           | <a href="/blog/2018/08/07/turn-on-webview-debug-on-android/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/08/07/turn-on-webview-debug-on-android/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="https://developers.google.com/web/tools/chrome-devtools/remote-debugging/webviews">官方文件</a></p>
-
-<p>在 activity 起來的時候 enable</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>@Override
-</span><span class='line'>  public void onCreate() {
-</span><span class='line'>  super.onCreate();
-</span><span class='line'>  SoLoader.init(this, /* native exopackage */ false);
-</span><span class='line'>  WebView.setWebContentsDebuggingEnabled(true);
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -766,6 +796,10 @@ if (a === 0.3) { // never into, why?
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/">Upgrade Rn Version From 0.57.8 to 0.59.10</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2019/09/09/0-dot-1-plus-0-dot-2-equals/">0.1 + 0.2 = ?</a>
@@ -783,10 +817,6 @@ if (a === 0.3) { // never into, why?
         <a href="/blog/2018/10/18/install-rvm/">Install RVM</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/">LeetCode #23 Merge K Sorted Lists</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -802,7 +832,7 @@ if (a === 0.3) { // never into, why?
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (9)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
-<li class='category'><a href='/blog/categories/react-native/'>react-native (15)</a></li>
+<li class='category'><a href='/blog/categories/react-native/'>react-native (16)</a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (1)</a></li>
 
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: React-native | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2019-09-09T23:46:22+08:00</updated>
+  <updated>2019-10-12T21:08:45+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,47 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Upgrade Rn Version From 0.57.8 to 0.59.10]]></title>
+    <link href="http://whhotw.github.io/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/"/>
+    <updated>2019-10-12T20:38:43+08:00</updated>
+    <id>http://whhotw.github.io/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10</id>
+    <content type="html"><![CDATA[<p>Change react-native version to <code>0.59.0</code> manually.</p>
+
+<pre><code>"dependencies": {
+    "react-native": "0.59.0",
+}
+</code></pre>
+
+<p>And run <code>yarn install</code> &amp; <code>yarn upgrade 0.59.10</code></p>
+
+<p>if got error message as below</p>
+
+<pre><code>Undefined symbols for architecture x86_64:
+  "_JSClassCreate", referenced from:
+      facebook::jsc::JSCRuntime::createObject(std::__1::shared_ptr&lt;facebook::jsi::HostObject&gt;)::$_0::operator()() const in libReact.a(JSCRuntime.o)
+      facebook::jsc::JSCRuntime::createFunctionFromHostFunction(facebook::jsi::PropNameID const&amp;, unsigned int, std::__1::function&lt;facebook::jsi::Value (facebook::jsi::Runtime&amp;, facebook::jsi::Value const&amp;, facebook::jsi::Value const*, unsigned long)&gt;)::$_1::operator()() const in libReact.a(JSCRuntime.o)
+  "_JSContextGetGlobalObject", referenced from:
+      facebook::jsc::JSCRuntime::global() in libReact.a(JSCRuntime.o)
+      facebook::jsc::JSCRuntime::createFunctionFromHostFunction(facebook::jsi::PropNameID const&amp;, unsigned int, std::__1::function&lt;facebook::jsi::Value (facebook::jsi::Runtime&amp;, facebook::jsi::Value const&amp;, facebook::jsi::Value const*, unsigned long)&gt;)::HostFunctionMetadata::initialize(OpaqueJSContext const*, OpaqueJSValue*) in libReact.a(JSCRuntime.o)
+  "_JSEvaluateScript", referenced from:
+      facebook::jsc::JSCRuntime::evaluateJavaScript(std::__1::unique_ptr&lt;facebook::jsi::Buffer const, std::__1::default_delete&lt;facebook::jsi::Buffer const&gt; &gt;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;) in libReact.a(JSCRuntime.o)
+  "_JSGlobalContextCreateInGroup", referenced from:
+      facebook::jsc::JSCRuntime::JSCRuntime() in libReact.a(JSCRuntime.o)
+      facebook::jsc::JSCRuntime::JSCRuntime() in libReact.a(JSCRuntime
+...
+</code></pre>
+
+<p>Remember add <code>JavaScriptCore.framework</code> to project</p>
+
+<h1>Upgrade-helper</h1>
+
+<p>It can find out differences between the two versions.</p>
+
+<p><a href="https://react-native-community.github.io/upgrade-helper">https://react-native-community.github.io/upgrade-helper</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Upgrade React-Native Version.]]></title>
@@ -121,19 +162,6 @@ git-upgrade ERR! Restore initial sources
 
 <pre><code>-keep class org.webrtc.** { *; }
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[RN WebView of Android Release Build Load Local HTML]]></title>
-    <link href="http://whhotw.github.io/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/"/>
-    <updated>2018-04-16T11:52:04+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html</id>
-    <content type="html"><![CDATA[<p><code>RN</code> 中的 WebView 可以使用 <code>require()</code> 讀取靜態的 HTML 檔案。但是安卓的 <code>release</code> 階段要用 <code>file:///android_asset/xxx</code> 的寫法，否則會無法正常執行</p>
-
-<p>靜態檔案放在 android project 的 assets 底下</p>
-
-<p><img src="/assets/ScreenShot2018-04-16at1157.png" width="1080" height="1920"></p>
 ]]></content>
   </entry>
   

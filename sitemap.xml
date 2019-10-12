@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://whhotw.github.io/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/</loc>
+<lastmod>2019-10-12T20:38:43+08:00</lastmod>
+</url>
+<url>
 <loc>http://whhotw.github.io/blog/2019/09/09/0-dot-1-plus-0-dot-2-equals/</loc>
 <lastmod>2019-09-09T23:14:37+08:00</lastmod>
 </url>
@@ -284,20 +288,5 @@
 </url>
 <url>
 <loc>http://whhotw.github.io/blog/categories/jenkins/</loc>
-</url>
-<url>
-<loc>http://whhotw.github.io/posts/2/</loc>
-</url>
-<url>
-<loc>http://whhotw.github.io/posts/3/</loc>
-</url>
-<url>
-<loc>http://whhotw.github.io/posts/4/</loc>
-</url>
-<url>
-<loc>http://whhotw.github.io/posts/5/</loc>
-</url>
-<url>
-<loc>http://whhotw.github.io/posts/6/</loc>
 </url>
 </urlset>

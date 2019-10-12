@@ -9,12 +9,14 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="React-Native Getting Started Homebrew 安裝 OSX 的套件管理包 1
+  <meta name="description" content="JsFormat 格式化程式碼 手動修改 e4x 屬性支持 jsx 1
 2
 3
-▶ brew -v
-Homebrew 1.4.3
-Homebrew/homebrew-core (git revision a76c8; last commit 2018-01-11 &hellip;">
+4
+5
+{ "e4x": true, // jsformat options "format_on_save": true,
+} SublimeLinter-jsxhint 檢查 jsx 語法錯誤
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,6 +95,56 @@ Homebrew/homebrew-core (git revision a76c8; last commit 2018-01-11 &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/01/25/sublime-chang-yong-tao-jian/">Sublime Js 相關套件</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-01-25T12:49:38+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>12:49 pm</span></time>
+        
+           | <a href="/blog/2018/01/25/sublime-chang-yong-tao-jian/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/25/sublime-chang-yong-tao-jian/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2><a href="https://github.com/jdc0589/JsFormat">JsFormat</a> 格式化程式碼</h2>
+
+<p>手動修改 <code>e4x</code> 屬性支持 <code>jsx</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "e4x": true,
+</span><span class='line'>  // jsformat options
+</span><span class='line'>  "format_on_save": true,
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h2><a href="https://github.com/SublimeLinter/SublimeLinter-jsxhint">SublimeLinter-jsxhint</a></h2>
+
+<p>檢查 jsx 語法錯誤</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -826,90 +878,6 @@ Homebrew/homebrew-core (git revision a76c8; last commit 2018-01-11 &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/12/14/php-htaccess-she-ding/">.htaccess 設定</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-12-14T03:44:11+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:44 am</span></time>
-        
-           | <a href="/blog/2017/12/14/php-htaccess-she-ding/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2017/12/14/php-htaccess-she-ding/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>其實用 <code>PHP</code> 寫的東西不是很多，再加上一直都不算是網頁端的開發者，所以很多相關的知識其實不太熟悉，哈；目前台灣傳統的資訊公司（新創應該都是 <code>Node.js</code> 了），應該還是用 <code>PHP</code> 來開發網路應用，一來當然是廣大社群的力量（有問題 google 一下，基本上都能找到解法），很多很棒的第三方套件，再加上建置成本相對便宜的因素。最近民間友人拜託看一個 bug ，就當作工作之餘也摸一些網頁的東西，並且趁這次記錄一下。註：我是 OSX 的環境</p>
-
-<h2>遇到 http 500 internal server error</h2>
-
-<p>確定 apache 的模組有載入</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vim /etc/apache2/httpd.conf
-</span><span class='line'>
-</span><span class='line'>...
-</span><span class='line'>LoadModule rewrite_module libexec/apache2/mod_rewrite.so
-</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>開啟 .htaccess 功能</h2>
-
-<p>類似這樣</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;Directory "/myweb"&gt;
-</span><span class='line'>  ...
-</span><span class='line'>  AllowOverride all
-</span><span class='line'>  ...
-</span><span class='line'>&lt;/Directory&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>.htaccess 檔案內容</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;IfModule mod_rewrite.c&gt;
-</span><span class='line'>    RewriteEngine on
-</span><span class='line'>    RewriteBase /
-</span><span class='line'>    #RewriteCond $1 !^(index\.php|assets|.*\.ipa|images|swf|uploads|js|css|assets|robots\.txt|$)
-</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-f
-</span><span class='line'>    RewriteCond %{REQUEST_FILENAME} !-d
-</span><span class='line'>    RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
-</span><span class='line'>&lt;/IfModule&gt;</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -927,6 +895,10 @@ Homebrew/homebrew-core (git revision a76c8; last commit 2018-01-11 &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/">Upgrade Rn Version From 0.57.8 to 0.59.10</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2019/09/09/0-dot-1-plus-0-dot-2-equals/">0.1 + 0.2 = ?</a>
       </li>
     
@@ -940,10 +912,6 @@ Homebrew/homebrew-core (git revision a76c8; last commit 2018-01-11 &hellip;">
     
       <li class="post">
         <a href="/blog/2018/10/18/install-rvm/">Install RVM</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/">LeetCode #23 Merge K Sorted Lists</a>
       </li>
     
   </ul>
@@ -961,7 +929,7 @@ Homebrew/homebrew-core (git revision a76c8; last commit 2018-01-11 &hellip;">
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (9)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
-<li class='category'><a href='/blog/categories/react-native/'>react-native (15)</a></li>
+<li class='category'><a href='/blog/categories/react-native/'>react-native (16)</a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (1)</a></li>
 
   </ul>

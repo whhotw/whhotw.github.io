@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2019-09-09T23:46:22+08:00</updated>
+  <updated>2019-10-12T21:08:45+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,63 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Upgrade Rn Version From 0.57.8 to 0.59.10]]></title>
+    <link href="http://whhotw.github.io/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/"/>
+    <updated>2019-10-12T20:38:43+08:00</updated>
+    <id>http://whhotw.github.io/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10</id>
+    <content type="html"><![CDATA[<p>Change react-native version to <code>0.59.0</code> manually.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"dependencies": {
+</span><span class='line'>  "react-native": "0.59.0",
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And run <code>yarn install</code> &amp; <code>yarn upgrade 0.59.10</code></p>
+
+<p>if got error message as below</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Undefined symbols for architecture x86_64:
+</span><span class='line'>  "_JSClassCreate", referenced from:
+</span><span class='line'>      facebook::jsc::JSCRuntime::createObject(std::__1::shared_ptr&lt;facebook::jsi::HostObject&gt;)::$_0::operator()() const in libReact.a(JSCRuntime.o)
+</span><span class='line'>      facebook::jsc::JSCRuntime::createFunctionFromHostFunction(facebook::jsi::PropNameID const&, unsigned int, std::__1::function&lt;facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)&gt;)::$_1::operator()() const in libReact.a(JSCRuntime.o)
+</span><span class='line'>  "_JSContextGetGlobalObject", referenced from:
+</span><span class='line'>      facebook::jsc::JSCRuntime::global() in libReact.a(JSCRuntime.o)
+</span><span class='line'>      facebook::jsc::JSCRuntime::createFunctionFromHostFunction(facebook::jsi::PropNameID const&, unsigned int, std::__1::function&lt;facebook::jsi::Value (facebook::jsi::Runtime&, facebook::jsi::Value const&, facebook::jsi::Value const*, unsigned long)&gt;)::HostFunctionMetadata::initialize(OpaqueJSContext const*, OpaqueJSValue*) in libReact.a(JSCRuntime.o)
+</span><span class='line'>  "_JSEvaluateScript", referenced from:
+</span><span class='line'>      facebook::jsc::JSCRuntime::evaluateJavaScript(std::__1::unique_ptr&lt;facebook::jsi::Buffer const, std::__1::default_delete&lt;facebook::jsi::Buffer const&gt; &gt;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&) in libReact.a(JSCRuntime.o)
+</span><span class='line'>  "_JSGlobalContextCreateInGroup", referenced from:
+</span><span class='line'>      facebook::jsc::JSCRuntime::JSCRuntime() in libReact.a(JSCRuntime.o)
+</span><span class='line'>      facebook::jsc::JSCRuntime::JSCRuntime() in libReact.a(JSCRuntime
+</span><span class='line'>...</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Remember add <code>JavaScriptCore.framework</code> to project</p>
+
+<h1>Upgrade-helper</h1>
+
+<p>It can find out differences between the two versions.</p>
+
+<p><a href="https://react-native-community.github.io/upgrade-helper">https://react-native-community.github.io/upgrade-helper</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[0.1 + 0.2 = ?]]></title>
@@ -797,211 +854,6 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>static navigatorStyle = {
 </span><span class='line'>  screenBackgroundColor: 'transparent',
 </span><span class='line'>  modalPresentationStyle: 'overFullScreen'
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[我自己的 RN 項目配置]]></title>
-    <link href="http://whhotw.github.io/blog/2018/03/02/wo-zi-ji-de-rn-xiang-mu-pei-zhi/"/>
-    <updated>2018-03-02T01:34:59+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/03/02/wo-zi-ji-de-rn-xiang-mu-pei-zhi</id>
-    <content type="html"><![CDATA[<p>記錄一下，建立一個新的 RN 項目時的步驟，每次都會忘記，再加上改版時不時就跑出一推問題，麻煩！這只是我個人有用到一些套件與建立步驟</p>
-
-<h1>CLI</h1>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>yarn init ${PROJECT_NAME} --version 0.51.0
-</span><span class='line'>yarn add redux-thunk redux-logger redux react-redux react-native-navigation react-native-vector-icons react-native-i18n react-native-elements prop-types
-</span><span class='line'>yarn add babel-eslint eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react babel-core@6.0.0 --dev</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>package.json</h1>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  "name": "${PROJECT_NAME}",
-</span><span class='line'>  "version": "0.0.1",
-</span><span class='line'>  "private": true,
-</span><span class='line'>  "scripts": {
-</span><span class='line'>    "start": "node node_modules/react-native/local-cli/cli.js start",
-</span><span class='line'>    "test": "jest"
-</span><span class='line'>  },
-</span><span class='line'>  "dependencies": {
-</span><span class='line'>    "prop-types": "^15.6.1",
-</span><span class='line'>    "react": "16.0.0",
-</span><span class='line'>    "react-native": "0.51.0",
-</span><span class='line'>    "react-native-elements": "^0.19.0",
-</span><span class='line'>    "react-native-i18n": "^2.0.12",
-</span><span class='line'>    "react-native-navigation": "^1.1.393",
-</span><span class='line'>    "react-native-vector-icons": "^4.5.0",
-</span><span class='line'>    "react-redux": "^5.0.7",
-</span><span class='line'>    "redux": "^3.7.2",
-</span><span class='line'>    "redux-logger": "^3.0.6",
-</span><span class='line'>    "redux-thunk": "^2.2.0"
-</span><span class='line'>  },
-</span><span class='line'>  "devDependencies": {
-</span><span class='line'>    "babel-core": "6.0.0",
-</span><span class='line'>    "babel-eslint": "^8.2.2",
-</span><span class='line'>    "babel-jest": "22.4.1",
-</span><span class='line'>    "babel-preset-react-native": "4.0.0",
-</span><span class='line'>    "eslint": "^4.18.1",
-</span><span class='line'>    "eslint-config-airbnb": "^16.1.0",
-</span><span class='line'>    "eslint-plugin-import": "^2.9.0",
-</span><span class='line'>    "eslint-plugin-jsx-a11y": "^6.0.3",
-</span><span class='line'>    "eslint-plugin-react": "^7.7.0",
-</span><span class='line'>    "jest": "22.4.2",
-</span><span class='line'>    "react-test-renderer": "16.0.0"
-</span><span class='line'>  },
-</span><span class='line'>  "jest": {
-</span><span class='line'>    "preset": "react-native"
-</span><span class='line'>  },
-</span><span class='line'>  "rnpm": {
-</span><span class='line'>    "assets": [
-</span><span class='line'>      "./src/fonts"
-</span><span class='line'>    ]
-</span><span class='line'>  }
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>Directory tree</h1>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>▶ tree -La 1
-</span><span class='line'>.
-</span><span class='line'>├── .babelrc
-</span><span class='line'>├── .buckconfig
-</span><span class='line'>├── .eslintrc
-</span><span class='line'>├── .flowconfig
-</span><span class='line'>├── .gitattributes
-</span><span class='line'>├── .gitignore
-</span><span class='line'>├── .watchmanconfig
-</span><span class='line'>├── __tests__
-</span><span class='line'>├── android
-</span><span class='line'>├── app.json
-</span><span class='line'>├── index.js
-</span><span class='line'>├── ios
-</span><span class='line'>├── node_modules
-</span><span class='line'>├── package.json
-</span><span class='line'>├── src
-</span><span class='line'>└── yarn.lock</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>Directory of src tree</h1>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>▶ tree -L 1
-</span><span class='line'>.
-</span><span class='line'>├── actions
-</span><span class='line'>├── components
-</span><span class='line'>├── config
-</span><span class='line'>├── fonts
-</span><span class='line'>├── helpers
-</span><span class='line'>├── i18n
-</span><span class='line'>├── reducers
-</span><span class='line'>└── screens</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>.eslintrc</h1>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  "parser": "babel-eslint",
-</span><span class='line'>  "extends": "airbnb",
-</span><span class='line'>  "rules": {
-</span><span class='line'>    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-</span><span class='line'>    "react/prop-types": [1],
-</span><span class='line'>    "no-unused-vars": [1],
-</span><span class='line'>    "no-use-before-define": [1, { "functions": true, "classes": true }],
-</span><span class='line'>  },
-</span><span class='line'>  "globals": {
-</span><span class='line'>    "fetch": true,
-</span><span class='line'>    "__DEV__": true,
-</span><span class='line'>  }
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
