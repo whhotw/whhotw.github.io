@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2019-10-12T21:08:45+08:00</updated>
+  <updated>2020-03-06T00:56:40+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Build Failed With lib/x86/libc++_shared.so]]></title>
+    <link href="http://whhotw.github.io/blog/2020/03/06/build-failed-with-lib-slash-x86-slash-libc-plus-plus-shared-dot-so/"/>
+    <updated>2020-03-06T00:53:46+08:00</updated>
+    <id>http://whhotw.github.io/blog/2020/03/06/build-failed-with-lib-slash-x86-slash-libc-plus-plus-shared-dot-so</id>
+    <content type="html"><![CDATA[<p>Add codes in <code>build.gradle</code> as below</p>
+
+<pre><code>packagingOptions {
+    pickFirst 'lib/x86/libc++_shared.so'
+    pickFirst 'lib/x86_64/libc++_shared.so'
+    pickFirst 'lib/arm64-v8a/libc++_shared.so'
+    pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+}
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Turn on WebView Debug on Android]]></title>

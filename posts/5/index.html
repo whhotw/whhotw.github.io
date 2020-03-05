@@ -9,7 +9,12 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="其實用 PHP 寫的東西不是很多，再加上一直都不算是網頁端的開發者，所以很多相關的知識其實不太熟悉，哈；目前台灣傳統的資訊公司（新創應該都是 Node.js 了），應該還是用 PHP 來開發網路應用，一來當然是廣大社群的力量（有問題 google 一下，基本上都能找到解法），很多很棒的第三方套件， &hellip;">
+  <meta name="description" content="指令 1
+2
+3
+$ brew install mcrypt
+$ brew tap homebrew/homebrew-php
+$ brew install php56-mcrypt --without-homebrew-php php.ini 加入 extension, 重啟 apache &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +93,53 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/12/14/php-an-zhuang-mcrypt/">在 OSX 環境下安裝 PHP Mcrypt 套件</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-12-14T11:09:46+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:09 am</span></time>
+        
+           | <a href="/blog/2017/12/14/php-an-zhuang-mcrypt/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2017/12/14/php-an-zhuang-mcrypt/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>指令</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ brew install mcrypt
+</span><span class='line'>$ brew tap homebrew/homebrew-php
+</span><span class='line'>$ brew install php56-mcrypt --without-homebrew-php</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>php.ini 加入 extension, 重啟 apache</p></blockquote>
+
+<p>網路上找到的解決辦法</p>
+
+<script src="https://gist.github.com/idleberg/24479f34dc5007e50d47.js"></script>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -771,69 +823,6 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/11/01/reactotron-shi-yong/">Reactotron 使用</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-11-01T16:27:58+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2017</span></span> <span class='time'>4:27 pm</span></time>
-        
-           | <a href="/blog/2017/11/01/reactotron-shi-yong/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2017/11/01/reactotron-shi-yong/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3><a href="https://github.com/infinitered/reactotron">Reactotron</a></h3>
-
-<p>開發 React 應用的時候，可以試試這個工具。可以觀察網路連線的資訊還可以印出自定義的日誌</p>
-
-<p>import 下面這行到你要用的地方
-<code>import Reactotron from 'reactotron-react-js'</code></p>
-
-<p>預設有三種等級可以選擇</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Reactotron.log('log')
-</span><span class='line'>Reactotron.warn('warn')
-</span><span class='line'>Reactotron.error('error')</span></code></pre></td></tr></table></div></figure>
-
-
-<p>也可以印出物件</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Reactotron.display({
-</span><span class='line'>  name: 'ORANGE',
-</span><span class='line'>  preview: 'Who?',
-</span><span class='line'>  value: 'Orange you glad you don\'t know me in real life?',
-</span><span class='line'>  important: true
-</span><span class='line'>})</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/6">&larr; Older</a>
@@ -851,7 +840,11 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/">Upgrade Rn Version From 0.57.8 to 0.59.10</a>
+        <a href="/blog/2020/03/06/build-failed-with-lib-slash-x86-slash-libc-plus-plus-shared-dot-so/">Build Failed With lib/x86/libc++_shared.so</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/">Upgrade RN Version From 0.57.8 to 0.59.10</a>
       </li>
     
       <li class="post">
@@ -866,16 +859,12 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
         <a href="/blog/2019/04/10/upgrade-react-native-version/">Upgrade React-Native Version.</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2018/10/18/install-rvm/">Install RVM</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/android/'>android (2)</a></li>
+    <li class='category'><a href='/blog/categories/android/'>android (3)</a></li>
 <li class='category'><a href='/blog/categories/command/'>command (1)</a></li>
 <li class='category'><a href='/blog/categories/cordova/'>cordova (1)</a></li>
 <li class='category'><a href='/blog/categories/git/'>git (4)</a></li>
@@ -909,7 +898,7 @@ Given n = 2, return 91. (The answer should be the total numbers in the range of 
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2019 - w -
+  Copyright &copy; 2020 - w -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

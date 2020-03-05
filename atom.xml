@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2019-10-12T21:08:45+08:00</updated>
+  <updated>2020-03-06T00:56:40+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -14,7 +14,30 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Upgrade Rn Version From 0.57.8 to 0.59.10]]></title>
+    <title type="html"><![CDATA[Build Failed With lib/x86/libc++_shared.so]]></title>
+    <link href="http://whhotw.github.io/blog/2020/03/06/build-failed-with-lib-slash-x86-slash-libc-plus-plus-shared-dot-so/"/>
+    <updated>2020-03-06T00:53:46+08:00</updated>
+    <id>http://whhotw.github.io/blog/2020/03/06/build-failed-with-lib-slash-x86-slash-libc-plus-plus-shared-dot-so</id>
+    <content type="html"><![CDATA[<p>Add codes in <code>build.gradle</code> as below</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>packagingOptions {
+</span><span class='line'>    pickFirst 'lib/x86/libc++_shared.so'
+</span><span class='line'>    pickFirst 'lib/x86_64/libc++_shared.so'
+</span><span class='line'>    pickFirst 'lib/arm64-v8a/libc++_shared.so'
+</span><span class='line'>    pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Upgrade RN Version From 0.57.8 to 0.59.10]]></title>
     <link href="http://whhotw.github.io/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/"/>
     <updated>2019-10-12T20:38:43+08:00</updated>
     <id>http://whhotw.github.io/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10</id>
@@ -830,31 +853,6 @@
 </span><span class='line'>    Apple Watch Series 2 - 42mm (1B69D57E-707E-4458-9A38-0142FADE86B4) (Shutdown) (unavailable, runtime profile not found)
 </span><span class='line'>    Apple Watch Series 3 - 38mm (8F4B32E9-EBC3-46F8-B1A1-F30C8D863F65) (Shutdown) (unavailable, runtime profile not found)
 </span><span class='line'>    Apple Watch Series 3 - 42mm (586539F8-FE12-4354-A102-3A17F71E867A) (Shutdown) (unavailable, runtime profile not found)</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[React Native Navigation 顯示 Modal 透明背景]]></title>
-    <link href="http://whhotw.github.io/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing/"/>
-    <updated>2018-03-08T19:15:14+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/03/08/react-native-navigation-xian-shi-m-tou-ming-bei-jing</id>
-    <content type="html"><![CDATA[<p>不透明的背景</p>
-
-<p><img src="http://whhotw.github.io/assets/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-03-08%20at%2019.17.36.png" width="360" height="640"></p>
-
-<p>透明的背景</p>
-
-<p><img src="http://whhotw.github.io/assets/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-03-08%20at%2019.27.42.png" width="360" height="640"></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>static navigatorStyle = {
-</span><span class='line'>  screenBackgroundColor: 'transparent',
-</span><span class='line'>  modalPresentationStyle: 'overFullScreen'
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
