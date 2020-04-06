@@ -5,11 +5,20 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>JavaScript 20 Kinds of Methods - wlog</title>
+  <title>A Network Error From Axios - wlog</title>
   <meta name="author" content="w">
 
   
-  <meta name="description" content="js 中 20 種必須知道的陣列方法 ">
+  <meta name="description" content="最近合作的專案中，在與後端合作時，遇到一個奇怪的現象，一開始以為是 bug 看了 Axios 原始碼後才知道，根本是我們的後端亂寫！哈，紀錄一下我的發現，以及我如何解決。 首先是呼叫 API 時，總是會發生錯誤，像我有寫 Interceptor 1
+2
+3
+4
+5
+6
+7
+8
+9
+10 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +27,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods/">
+  <link rel="canonical" href="http://whhotw.github.io/blog/2020/03/26/a-network-error-from-axios/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="wlog" type="application/atom+xml">
@@ -91,7 +100,7 @@
   
   <header>
     
-      <h1 class="entry-title">JavaScript 20 Kinds of Methods</h1>
+      <h1 class="entry-title">A Network Error From Axios</h1>
     
     
       <p class="meta">
@@ -100,7 +109,7 @@
 
 
 
-<time class='entry-date' datetime='2018-01-15T11:20:21+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:20 am</span></time>
+<time class='entry-date' datetime='2020-03-26T02:22:20+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2020</span></span> <span class='time'>2:22 am</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://whhotw.github.io">Comments</a>
@@ -110,9 +119,37 @@
   </header>
 
 
-<div class="entry-content"><p>js 中 20 種必須知道的陣列方法</p>
+<div class="entry-content"><p>最近合作的專案中，在與後端合作時，遇到一個奇怪的現象，一開始以為是 <code>bug</code> 看了 <code>Axios</code> 原始碼後才知道，根本是我們的後端亂寫！哈，紀錄一下我的發現，以及我如何解決。</p>
 
-<p><img src="https://raw.githubusercontent.com/tooto1985/js-array-operations/master/main.jpg" alt="image" /></p>
+<p>首先是呼叫 API 時，總是會發生錯誤，像我有寫 <code>Interceptor</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ApiService.interceptors.response.use(
+</span><span class='line'>  function(response) {
+</span><span class='line'>    // Do something before request is sent
+</span><span class='line'>    return response;
+</span><span class='line'>  },
+</span><span class='line'>  function(error) {
+</span><span class='line'>    // Do something with request error
+</span><span class='line'>    return error;
+</span><span class='line'>  }
+</span><span class='line'>);</span></code></pre></td></tr></table></div></figure>
+
+
+<p>就會一直跑入 function (error) ，但是神奇的地方在於，並不是每一隻 API 都會有問題，因此我就想說查看看 <code>Axios</code> 在收到回應後的處理是如何。</p>
+
+<p>正常情況下，收到回應後，會做一些檢查，其中一項是 <code>Content-Type</code> ，之後我又比較了正常與不正常的 API 回傳的差異，我發現，在不正常的回傳封包中的標頭竟然沒有帶入 <code>Content-Type</code> ，後來問了原因，只是因為後端認為沒有回傳的 <code>body</code> 所以不帶。</p>
+
+<p>最後我們把 <code>Content-Type</code> 帶入 <code>body</code> 維持空值一切就正常了！查了一下，HTTP1.1 的定義，也並沒有把 <code>Content-Type</code> 設為必要資訊，所以我想這應該就是 <code>Axios</code> 自行決定的吧！</p>
 </div>
 
 
@@ -128,12 +165,12 @@
 
 
 
-<time class='entry-date' datetime='2018-01-15T11:20:21+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:20 am</span></time>
+<time class='entry-date' datetime='2020-03-26T02:22:20+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2020</span></span> <span class='time'>2:22 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/javascript/'>javascript</a>
+    <a class='category' href='/blog/categories/react-native/'>react-native</a>
   
 </span>
 
@@ -151,10 +188,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2018/01/12/stack-vs-heap/" title="Previous Post: stack vs. heap">&laquo; stack vs. heap</a>
+        <a class="basic-alignment left" href="/blog/2020/03/06/build-failed-with-lib-slash-x86-slash-libc-plus-plus-shared-dot-so/" title="Previous Post: Build Failed with lib/x86/libc++_shared.so">&laquo; Build Failed with lib/x86/libc++_shared.so</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2018/01/17/testing-ios-notification-with-apns/" title="Next Post: Testing iOS Notification with APNs">Testing iOS Notification with APNs &raquo;</a>
       
     </p>
   </footer>
@@ -169,8 +204,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods/';
-        var disqus_url = 'http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2020/03/26/a-network-error-from-axios/';
+        var disqus_url = 'http://whhotw.github.io/blog/2020/03/26/a-network-error-from-axios/';
         var disqus_script = 'embed.js';
       
     (function () {
@@ -263,8 +298,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods/';
-        var disqus_url = 'http://whhotw.github.io/blog/2018/01/15/javascript-20-kinds-of-methods/';
+        var disqus_identifier = 'http://whhotw.github.io/blog/2020/03/26/a-network-error-from-axios/';
+        var disqus_url = 'http://whhotw.github.io/blog/2020/03/26/a-network-error-from-axios/';
         var disqus_script = 'embed.js';
       
     (function () {
