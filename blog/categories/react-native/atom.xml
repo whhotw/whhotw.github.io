@@ -4,7 +4,7 @@
   <title><![CDATA[Category: React-native | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/react-native/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2020-04-23T02:40:16+08:00</updated>
+  <updated>2020-04-23T02:41:29+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Disable Font Sacle on React-Native]]></title>
+    <link href="http://whhotw.github.io/blog/2020/04/23/disable-font-sacle-on-react-native/"/>
+    <updated>2020-04-23T02:38:39+08:00</updated>
+    <id>http://whhotw.github.io/blog/2020/04/23/disable-font-sacle-on-react-native</id>
+    <content type="html"><![CDATA[<p>必須在 <code>class</code> 裡面</p>
+
+<pre><code>export default class App extends Component {
+  constructor() {
+    super();
+    Text.defaultProps.allowFontScaling = false;
+    TextInput.defaultProps.allowFontScaling = false;
+  }
+}
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[A Network Error From Axios]]></title>
@@ -158,22 +176,6 @@ git-upgrade ERR! Restore initial sources
     this.input.blur();
   };
 }
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[No Bundle Url Present: When the React Packager Tab Is Closed]]></title>
-    <link href="http://whhotw.github.io/blog/2018/07/27/no-bundle-url-present-when-the-react-packager-tab-is-closed/"/>
-    <updated>2018-07-27T18:17:11+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/07/27/no-bundle-url-present-when-the-react-packager-tab-is-closed</id>
-    <content type="html"><![CDATA[<p>當 Info.plist 中設定成下圖時，可能會無法在 DEBUG 模式下正常執行</p>
-
-<p><img src="/assets/Screen-Shot-2018-07-27.png" width="1080" height="1920"></p>
-
-<p>解決辦法</p>
-
-<pre><code>remove "Allow Arbitrary Loads in Web Content"
 </code></pre>
 ]]></content>
   </entry>
