@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ract-native | wlog]]></title>
+  <link href="http://whhotw.github.io/blog/categories/ract-native/atom.xml" rel="self"/>
+  <link href="http://whhotw.github.io/"/>
+  <updated>2020-04-23T02:40:16+08:00</updated>
+  <id>http://whhotw.github.io/</id>
+  <author>
+    <name><![CDATA[w]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Disable Font Sacle on React-Native]]></title>
+    <link href="http://whhotw.github.io/blog/2020/04/23/disable-font-sacle-on-react-native/"/>
+    <updated>2020-04-23T02:38:39+08:00</updated>
+    <id>http://whhotw.github.io/blog/2020/04/23/disable-font-sacle-on-react-native</id>
+    <content type="html"><![CDATA[<p>必須在 <code>class</code> 裡面</p>
+
+<pre><code>export default class App extends Component {
+  constructor() {
+    super();
+    Text.defaultProps.allowFontScaling = false;
+    TextInput.defaultProps.allowFontScaling = false;
+  }
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

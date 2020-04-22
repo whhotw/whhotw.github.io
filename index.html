@@ -9,16 +9,14 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="最近合作的專案中，在與後端合作時，遇到一個奇怪的現象，一開始以為是 bug 看了 Axios 原始碼後才知道，根本是我們的後端亂寫！哈，紀錄一下我的發現，以及我如何解決。 首先是呼叫 API 時，總是會發生錯誤，像我有寫 Interceptor 1
+  <meta name="description" content="必須在 class 裡面 1
 2
 3
 4
 5
 6
 7
-8
-9
-10 &hellip;">
+export default class App extends Component { constructor() { super(); Text.defaultProps.allowFontScaling = false; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -97,6 +95,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2020/04/23/disable-font-sacle-on-react-native/">Disable Font Sacle on React-Native</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2020-04-23T02:38:39+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2020</span></span> <span class='time'>2:38 am</span></time>
+        
+           | <a href="/blog/2020/04/23/disable-font-sacle-on-react-native/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2020/04/23/disable-font-sacle-on-react-native/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>必須在 <code>class</code> 裡面</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>export default class App extends Component {
+</span><span class='line'>  constructor() {
+</span><span class='line'>    super();
+</span><span class='line'>    Text.defaultProps.allowFontScaling = false;
+</span><span class='line'>    TextInput.defaultProps.allowFontScaling = false;
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -724,70 +770,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/09/18/leetcode-number-766-toeplitz-matrix/">LeetCode #766 Toeplitz Matrix</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-09-18T18:58:19+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>6:58 pm</span></time>
-        
-           | <a href="/blog/2018/09/18/leetcode-number-766-toeplitz-matrix/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/09/18/leetcode-number-766-toeplitz-matrix/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>var isToeplitzMatrix = function(matrix) {
-</span><span class='line'>    let a = true;
-</span><span class='line'>    for (let i = 0; i &lt; matrix.length; i++) {
-</span><span class='line'>        let j = 0;
-</span><span class='line'>        while (j + 1 &lt; matrix[i].length && i + 1 &lt; matrix.length) {
-</span><span class='line'>            console.log(i + 1, j + 1);
-</span><span class='line'>            if (matrix[i][j] !== matrix[i + 1][j + 1]) {
-</span><span class='line'>                a = false;
-</span><span class='line'>            }
-</span><span class='line'>            
-</span><span class='line'>            j++;
-</span><span class='line'>        }
-</span><span class='line'>    }
-</span><span class='line'>    
-</span><span class='line'>    return a;
-</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -801,6 +783,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2020/04/23/disable-font-sacle-on-react-native/">Disable Font Sacle on React-Native</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2020/03/26/a-network-error-from-axios/">A Network Error From Axios</a>
@@ -818,10 +804,6 @@
         <a href="/blog/2019/09/09/0-dot-1-plus-0-dot-2-equals/">0.1 + 0.2 = ?</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2019/07/06/set-git-submodule-url/">Set Git Submodule Don't Use Https</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -836,6 +818,7 @@
 <li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
 <li class='category'><a href='/blog/categories/leetcode/'>leetcode (9)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
+<li class='category'><a href='/blog/categories/ract-native/'>ract-native (1)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
 <li class='category'><a href='/blog/categories/react-native/'>react-native (17)</a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (1)</a></li>
