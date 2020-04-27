@@ -9,32 +9,7 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="參考 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-var Singleton = (function () { var instance; function createInstance() { var &hellip;">
+  <meta name="description" content="最近在玩 React Native 遇到的一個問題。假如想讓 WebView 與 React Native 溝通的話可以用 onMessage 這個介面，但是假如原本的網頁內容你不確定怎麼寫的，可能會遇到 Setting onMessage on a WebView overrides &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,16 +41,6 @@ var Singleton = (function () { var instance; function createInstance() { var &he
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-  </script>
-
-
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-      google_ad_client: 'ca-pub-5450984287413564',
-      enable_page_level_ads: true
-    });
   </script>
 
 
@@ -113,6 +78,67 @@ var Singleton = (function () { var instance; function createInstance() { var &he
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/09/13/react-native-setting-onmessage-on-a-webview-overrides-existing-values-of-window-dot-postmessage/">React Native - Setting onMessage on a WebView Overrides Existing Values of window.postMessage</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-09-13T15:56:07+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:56 pm</span></time>
+        
+           | <a href="/blog/2017/09/13/react-native-setting-onmessage-on-a-webview-overrides-existing-values-of-window-dot-postmessage/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2017/09/13/react-native-setting-onmessage-on-a-webview-overrides-existing-values-of-window-dot-postmessage/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近在玩 React Native 遇到的一個問題。假如想讓 WebView 與 React Native 溝通的話可以用 <code>onMessage</code> 這個介面，但是假如原本的網頁內容你不確定怎麼寫的，可能會遇到 <code>Setting onMessage on a WebView overrides existing values of window.postMessage</code>
+這樣的錯誤訊息，搜尋了一下解法，紀錄一下</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>const patchPostMessageFunction = () =&gt; {
+</span><span class='line'>  const originalPostMessage = window.postMessage;
+</span><span class='line'>
+</span><span class='line'>  const patchedPostMessage = (message, targetOrigin, transfer) =&gt; {
+</span><span class='line'>    originalPostMessage(message, targetOrigin, transfer);
+</span><span class='line'>  };
+</span><span class='line'>
+</span><span class='line'>  patchedPostMessage.toString = () =&gt; String(Object.hasOwnProperty).replace('hasOwnProperty', 'postMessage');
+</span><span class='line'>
+</span><span class='line'>  window.postMessage = patchedPostMessage;
+</span><span class='line'>};
+</span><span class='line'>
+</span><span class='line'>const patchPostMessageJsCode = `(${String(patchPostMessageFunction)})();`;</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -438,6 +464,10 @@ react-native-vector-icons: 圖資源<br/></p></blockquote>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2020/04/28/jing-dian-mian-shi-ti-fan-zhuan-er-yuan-shu/">經典面試題-翻轉二元樹</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2020/04/23/disable-font-sacle-on-react-native/">Disable Font Sacle on React-Native</a>
       </li>
     
@@ -453,10 +483,6 @@ react-native-vector-icons: 圖資源<br/></p></blockquote>
         <a href="/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/">Upgrade RN Version From 0.57.8 to 0.59.10</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2019/09/09/0-dot-1-plus-0-dot-2-equals/">0.1 + 0.2 = ?</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -469,7 +495,7 @@ react-native-vector-icons: 圖資源<br/></p></blockquote>
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (11)</a></li>
 <li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
-<li class='category'><a href='/blog/categories/leetcode/'>leetcode (9)</a></li>
+<li class='category'><a href='/blog/categories/leetcode/'>leetcode (10)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
 <li class='category'><a href='/blog/categories/react-native/'>react-native (18)</a></li>

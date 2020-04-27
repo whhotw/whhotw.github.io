@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Leetcode | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/leetcode/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2020-04-23T02:41:29+08:00</updated>
+  <updated>2020-04-28T02:50:45+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[經典面試題-翻轉二元樹]]></title>
+    <link href="http://whhotw.github.io/blog/2020/04/28/jing-dian-mian-shi-ti-fan-zhuan-er-yuan-shu/"/>
+    <updated>2020-04-28T02:47:51+08:00</updated>
+    <id>http://whhotw.github.io/blog/2020/04/28/jing-dian-mian-shi-ti-fan-zhuan-er-yuan-shu</id>
+    <content type="html"><![CDATA[<pre><code>var invertTree = function(root) {
+    if (root == null) return root;
+    const tmp = root.left;
+    root.left = invertTree(root.right);
+    root.right = invertTree(tmp);
+    return root;
+};
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[LeetCode #23 Merge K Sorted Lists]]></title>
@@ -127,32 +143,6 @@ while (i &lt; len) {
 }
 
 return true;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[LeetCode #581. Shortest Unsorted Continuous Subarray]]></title>
-    <link href="http://whhotw.github.io/blog/2018/01/29/leetcode-number-581-shortest-unsorted-continuous-subarray/"/>
-    <updated>2018-01-29T18:45:26+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/01/29/leetcode-number-581-shortest-unsorted-continuous-subarray</id>
-    <content type="html"><![CDATA[<pre><code>let n = nums.map((val) =&gt; val);
-nums.sort();
-
-let l = 0;
-let r = n.length;
-
-while (l &lt;= r) {
-    if (n[l] === nums[l]) {
-        l++;
-    } else if (n[r] === nums[r]) {
-        r--;
-    } else {
-        break;
-    }
-}
-
-return l &gt; r ? 0 : r - l + 1;
 </code></pre>
 ]]></content>
   </entry>

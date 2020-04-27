@@ -9,7 +9,7 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="最近用到 js 中的 fetch 發現 Content-Type 會因為參數而改變 例如 1
+  <meta name="description" content="使用 react-native-gifted-chat 假如有同時使用 react-native-keyboard-manager 在設定的時候記得 setEnable(false) 1
 2
 3
 4
@@ -26,8 +26,7 @@
 15
 16
 17
-18
-const options = { method, headers: { Accept: 'application/ &hellip;">
+if (Platform.OS &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -59,16 +58,6 @@ const options = { method, headers: { Accept: 'application/ &hellip;">
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-  </script>
-
-
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-      google_ad_client: 'ca-pub-5450984287413564',
-      enable_page_level_ads: true
-    });
   </script>
 
 
@@ -106,6 +95,74 @@ const options = { method, headers: { Accept: 'application/ &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/04/03/keyboard-issues-with-react-native-gifted-chat/">Keyboard Issues With React-native-gifted-chat</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-04-03T14:13:35+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2018</span></span> <span class='time'>2:13 pm</span></time>
+        
+           | <a href="/blog/2018/04/03/keyboard-issues-with-react-native-gifted-chat/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/04/03/keyboard-issues-with-react-native-gifted-chat/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>使用 <code>react-native-gifted-chat</code> 假如有同時使用 <code>react-native-keyboard-manager</code> 在設定的時候記得 <code>setEnable(false)</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>if (Platform.OS === 'ios') {
+</span><span class='line'>  if (__DEV__) {
+</span><span class='line'>    KeyboardManager.setEnableDebugging(true);
+</span><span class='line'>  }
+</span><span class='line'>
+</span><span class='line'>  KeyboardManager.setEnable(false); // do not using it's
+</span><span class='line'>  KeyboardManager.setKeyboardDistanceFromTextField(10);
+</span><span class='line'>  KeyboardManager.setPreventShowingBottomBlankSpace(true);
+</span><span class='line'>  KeyboardManager.setEnableAutoToolbar(true);
+</span><span class='line'>  KeyboardManager.setToolbarManageBehaviour(0);
+</span><span class='line'>  KeyboardManager.setShouldToolbarUsesTextFieldTintColor(false);
+</span><span class='line'>  KeyboardManager.setToolbarPreviousNextButtonEnable(true);
+</span><span class='line'>  KeyboardManager.setShouldShowTextFieldPlaceholder(true);
+</span><span class='line'>  KeyboardManager.setOverrideKeyboardAppearance(false);
+</span><span class='line'>  KeyboardManager.setShouldResignOnTouchOutside(false);
+</span><span class='line'>  KeyboardManager.resignFirstResponder();
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -949,68 +1006,6 @@ const options = { method, headers: { Accept: 'application/ &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/">LeetCode #717. 1-bit and 2-bit Characters</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-01-31T10:38:51+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>10:38 am</span></time>
-        
-           | <a href="/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>const len = bits.length - 1;
-</span><span class='line'>let i = 0;
-</span><span class='line'>while (i &lt; len) {
-</span><span class='line'>    if (bits[i] === 0) {
-</span><span class='line'>        i++;
-</span><span class='line'>    } else if (bits[i] === 1) {
-</span><span class='line'>        if (i + 1 === len) {
-</span><span class='line'>            return false;
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        i += 2;
-</span><span class='line'>    }
-</span><span class='line'>}
-</span><span class='line'>    
-</span><span class='line'>return true;</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -1028,6 +1023,10 @@ const options = { method, headers: { Accept: 'application/ &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2020/04/28/jing-dian-mian-shi-ti-fan-zhuan-er-yuan-shu/">經典面試題-翻轉二元樹</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2020/04/23/disable-font-sacle-on-react-native/">Disable Font Sacle on React-Native</a>
       </li>
     
@@ -1043,10 +1042,6 @@ const options = { method, headers: { Accept: 'application/ &hellip;">
         <a href="/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/">Upgrade RN Version From 0.57.8 to 0.59.10</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2019/09/09/0-dot-1-plus-0-dot-2-equals/">0.1 + 0.2 = ?</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -1059,7 +1054,7 @@ const options = { method, headers: { Accept: 'application/ &hellip;">
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (11)</a></li>
 <li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
-<li class='category'><a href='/blog/categories/leetcode/'>leetcode (9)</a></li>
+<li class='category'><a href='/blog/categories/leetcode/'>leetcode (10)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
 <li class='category'><a href='/blog/categories/react-native/'>react-native (18)</a></li>
