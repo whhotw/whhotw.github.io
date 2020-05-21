@@ -9,14 +9,15 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="曾經面試時被問到過。 1
 2
 3
 4
 5
 6
 7
-var invertTree = function(root) { if (root == null) return root; const tmp = root.left; root.left = invertTree(root.right); root.right &hellip;">
+8
+var merge = function(nums1, m, nums2, n) { while(m + n &gt; 0) { if (n &lt;= 0) { break; } nums1[m + n - 1] = (nums1[m - 1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,6 +96,56 @@ var invertTree = function(root) { if (root == null) return root; const tmp = roo
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2020/05/22/merge-sorted-array/">#Leetcode 88. Merge Sorted Array</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2020-05-22T02:45:22+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2020</span></span> <span class='time'>2:45 am</span></time>
+        
+           | <a href="/blog/2020/05/22/merge-sorted-array/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2020/05/22/merge-sorted-array/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>曾經面試時被問到過。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var merge = function(nums1, m, nums2, n) {
+</span><span class='line'>    while(m + n &gt; 0) {
+</span><span class='line'>        if (n &lt;= 0) {
+</span><span class='line'>            break;
+</span><span class='line'>        }
+</span><span class='line'>        nums1[m + n - 1] = (nums1[m - 1] &gt;= nums2[n - 1]) ? nums1[--m] : nums2[--n];
+</span><span class='line'>    }
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -654,108 +705,6 @@ var invertTree = function(root) { if (root == null) return root; const tmp = roo
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/">LeetCode #23 Merge K Sorted Lists</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-10-04T11:49:46+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:49 am</span></time>
-        
-           | <a href="/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/10/04/leetcode-number-23-merge-k-sorted-lists/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>240ms 差強人意</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>var mergeKLists = function(lists) {
-</span><span class='line'>    lists = lists.filter(list =&gt; list);
-</span><span class='line'>    
-</span><span class='line'>    if (lists.length === 0) {
-</span><span class='line'>        return null;
-</span><span class='line'>    }
-</span><span class='line'>    
-</span><span class='line'>    const list = new ListNode();
-</span><span class='line'>    let next = list;
-</span><span class='line'>    
-</span><span class='line'>    while (lists.length &gt; 0) {
-</span><span class='line'>        let min = 0;
-</span><span class='line'>        
-</span><span class='line'>        for (let i = 0; i &lt; lists.length; i++) {
-</span><span class='line'>            if (lists[i] && lists[i].val &lt; lists[min].val) {
-</span><span class='line'>                min = i;
-</span><span class='line'>            }
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        next.val = lists[min].val;
-</span><span class='line'>        lists[min] = lists[min].next;
-</span><span class='line'>        
-</span><span class='line'>        if (!lists[min]) {
-</span><span class='line'>            lists.splice(min, 1);
-</span><span class='line'>        }
-</span><span class='line'>        
-</span><span class='line'>        if (lists.length &gt; 0) {
-</span><span class='line'>            next.next = new ListNode();
-</span><span class='line'>            next = next.next;
-</span><span class='line'>        }
-</span><span class='line'>    }
-</span><span class='line'>    
-</span><span class='line'>    return list;
-</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -769,6 +718,10 @@ var invertTree = function(root) { if (root == null) return root; const tmp = roo
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2020/05/22/merge-sorted-array/">#Leetcode 88. Merge Sorted Array</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2020/04/28/jing-dian-mian-shi-ti-fan-zhuan-er-yuan-shu/">經典面試題-翻轉二元樹</a>
@@ -786,10 +739,6 @@ var invertTree = function(root) { if (root == null) return root; const tmp = roo
         <a href="/blog/2020/03/06/build-failed-with-lib-slash-x86-slash-libc-plus-plus-shared-dot-so/">Build Failed With lib/x86/libc++_shared.so</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/">Upgrade RN Version From 0.57.8 to 0.59.10</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -802,7 +751,7 @@ var invertTree = function(root) { if (root == null) return root; const tmp = roo
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (11)</a></li>
 <li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
-<li class='category'><a href='/blog/categories/leetcode/'>leetcode (10)</a></li>
+<li class='category'><a href='/blog/categories/leetcode/'>leetcode (11)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
 <li class='category'><a href='/blog/categories/react-native/'>react-native (18)</a></li>

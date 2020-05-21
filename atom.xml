@@ -4,7 +4,7 @@
   <title><![CDATA[wlog]]></title>
   <link href="http://whhotw.github.io/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2020-04-28T22:19:57+08:00</updated>
+  <updated>2020-05-22T02:46:56+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[#Leetcode 88. Merge Sorted Array]]></title>
+    <link href="http://whhotw.github.io/blog/2020/05/22/merge-sorted-array/"/>
+    <updated>2020-05-22T02:45:22+08:00</updated>
+    <id>http://whhotw.github.io/blog/2020/05/22/merge-sorted-array</id>
+    <content type="html"><![CDATA[<p>曾經面試時被問到過。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var merge = function(nums1, m, nums2, n) {
+</span><span class='line'>    while(m + n &gt; 0) {
+</span><span class='line'>        if (n &lt;= 0) {
+</span><span class='line'>            break;
+</span><span class='line'>        }
+</span><span class='line'>        nums1[m + n - 1] = (nums1[m - 1] &gt;= nums2[n - 1]) ? nums1[--m] : nums2[--n];
+</span><span class='line'>    }
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[經典面試題-翻轉二元樹]]></title>
@@ -743,19 +770,6 @@
 </span><span class='line'>let a = 123;
 </span><span class='line'>a.toString() // "123"</span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[RN WebView of Android Release Build Load Local HTML]]></title>
-    <link href="http://whhotw.github.io/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html/"/>
-    <updated>2018-04-16T11:52:04+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/04/16/rn-webview-of-android-release-build-load-local-html</id>
-    <content type="html"><![CDATA[<p><code>RN</code> 中的 WebView 可以使用 <code>require()</code> 讀取靜態的 HTML 檔案。但是安卓的 <code>release</code> 階段要用 <code>file:///android_asset/xxx</code> 的寫法，否則會無法正常執行</p>
-
-<p>靜態檔案放在 android project 的 assets 底下</p>
-
-<p><img src="http://whhotw.github.io/assets/ScreenShot2018-04-16at1157.png" width="1080" height="1920"></p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Leetcode | wlog]]></title>
   <link href="http://whhotw.github.io/blog/categories/leetcode/atom.xml" rel="self"/>
   <link href="http://whhotw.github.io/"/>
-  <updated>2020-04-28T22:19:57+08:00</updated>
+  <updated>2020-05-22T02:46:56+08:00</updated>
   <id>http://whhotw.github.io/</id>
   <author>
     <name><![CDATA[w]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[#Leetcode 88. Merge Sorted Array]]></title>
+    <link href="http://whhotw.github.io/blog/2020/05/22/merge-sorted-array/"/>
+    <updated>2020-05-22T02:45:22+08:00</updated>
+    <id>http://whhotw.github.io/blog/2020/05/22/merge-sorted-array</id>
+    <content type="html"><![CDATA[<p>曾經面試時被問到過。</p>
+
+<pre><code>var merge = function(nums1, m, nums2, n) {
+    while(m + n &gt; 0) {
+        if (n &lt;= 0) {
+            break;
+        }
+        nums1[m + n - 1] = (nums1[m - 1] &gt;= nums2[n - 1]) ? nums1[--m] : nums2[--n];
+    }
+};
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[經典面試題-翻轉二元樹]]></title>
@@ -119,30 +138,6 @@
 
     return a;
 };
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[LeetCode #717. 1-bit and 2-bit Characters]]></title>
-    <link href="http://whhotw.github.io/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters/"/>
-    <updated>2018-01-31T10:38:51+08:00</updated>
-    <id>http://whhotw.github.io/blog/2018/01/31/leetcode-number-717-1-bit-and-2-bit-characters</id>
-    <content type="html"><![CDATA[<pre><code>const len = bits.length - 1;
-let i = 0;
-while (i &lt; len) {
-    if (bits[i] === 0) {
-        i++;
-    } else if (bits[i] === 1) {
-        if (i + 1 === len) {
-            return false;
-        }
-
-        i += 2;
-    }
-}
-
-return true;
 </code></pre>
 ]]></content>
   </entry>

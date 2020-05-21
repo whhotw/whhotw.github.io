@@ -9,24 +9,7 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-const len = bits.length - 1;
-let i = 0;
-while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;">
+  <meta name="description" content="建立連線 => 三次握手(圖中紅色框框) 結束連線 => 四次握手(圖中藍色框框) ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -105,6 +88,44 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou/">TCP 三次握手/四次握手</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-01-31T17:05:20+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>5:05 pm</span></time>
+        
+           | <a href="/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/31/tcp-san-ci-wo-shou-slash-si-ci-wo-shou/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>建立連線 => 三次握手(圖中紅色框框)</p>
+
+
+<p>結束連線 => 四次握手(圖中藍色框框)</p>
+
+
+<p><img src="http://img.my.csdn.net/uploads/201108/7/0_131271823564Rx.gif" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -640,98 +661,6 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/01/11/">淺拷貝 vs. 深拷貝</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-01-11T22:21:31+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:21 pm</span></time>
-        
-           | <a href="/blog/2018/01/11/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/01/11/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>複製物件你可能會這麼寫</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let a = {a: '1', b: '2', c: '3'};
-</span><span class='line'>let x = a;
-</span><span class='line'>x.a = 10
-</span><span class='line'>console.log(a); // {a: '10', b: '2', c: '3'}
-</span><span class='line'>console.log(x === a); // true</span></code></pre></td></tr></table></div></figure>
-
-
-<p>為什麼新的變數內容改變，舊的變數內容也會變呢？因為以上的寫法為<code>淺拷貝</code>但是很多時候我們並不想這樣，這時候就需要改成<code>深拷貝</code>的寫法</p>
-
-<h3>淺拷貝 => 分身術</h3>
-
-<p>外表（值）長得一樣，靈魂（記憶體位置）<strong>相同</strong></p>
-
-<h3>深拷貝 => 雙胞胎</h3>
-
-<p>外表（值）長得一樣，靈魂（記憶體位置）<strong>不同</strong></p>
-
-<h3>比較圖</h3>
-
-<p><img src="http://i.stack.imgur.com/hOPkR.png" alt="image" /></p>
-
-<h3>Object.assign</h3>
-
-<p>ES6 上可以用的函式但只能處理深度只有一層的物件</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let a = {a: '1', b: '2', c: '3'};
-</span><span class='line'>let x = Object.assign({}, a);
-</span><span class='line'>x.a = 10
-</span><span class='line'>console.log(a); // {a: '1', b: '2', c: '3'}
-</span><span class='line'>console.log(x === a); // false</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>lodash</h3>
-
-<p>網路上熱門的<a href="https://lodash.com/">函式庫</a></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>let _ = require('lodash');
-</span><span class='line'>let a = {a: '1', b: '2', c: '3'};
-</span><span class='line'>let x = _.cloneDeep(a);
-</span><span class='line'>x.a = 10
-</span><span class='line'>console.log(a); // {a: '1', b: '2', c: '3'}
-</span><span class='line'>console.log(x === a); // false</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -749,6 +678,10 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2020/05/22/merge-sorted-array/">#Leetcode 88. Merge Sorted Array</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2020/04/28/jing-dian-mian-shi-ti-fan-zhuan-er-yuan-shu/">經典面試題-翻轉二元樹</a>
       </li>
     
@@ -764,10 +697,6 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
         <a href="/blog/2020/03/06/build-failed-with-lib-slash-x86-slash-libc-plus-plus-shared-dot-so/">Build Failed With lib/x86/libc++_shared.so</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2019/10/12/upgrade-rn-version-from-0-dot-57-dot-8-to-0-dot-59-dot-10/">Upgrade RN Version From 0.57.8 to 0.59.10</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -780,7 +709,7 @@ while (i &lt; len) { if (bits[i] === 0) { i++; } else if (bits[i] === 1 &hellip;
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (11)</a></li>
 <li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
-<li class='category'><a href='/blog/categories/leetcode/'>leetcode (10)</a></li>
+<li class='category'><a href='/blog/categories/leetcode/'>leetcode (11)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
 <li class='category'><a href='/blog/categories/react-native/'>react-native (18)</a></li>
