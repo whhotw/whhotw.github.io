@@ -9,7 +9,7 @@
   <meta name="author" content="w">
 
   
-  <meta name="description" content="曾經面試時被問到過。 1
+  <meta name="description" content="1
 2
 3
 4
@@ -17,7 +17,13 @@
 6
 7
 8
-var merge = function(nums1, m, nums2, n) { while(m + n &gt; 0) { if (n &lt;= 0) { break; } nums1[m + n - 1] = (nums1[m - 1 &hellip;">
+9
+10
+11
+12
+13
+14
+var removeDuplicates = function(nums) { let previous = nums[0] let i = 1; while (i &lt;= nums.length) { if (nums[i &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,6 +102,66 @@ var merge = function(nums1, m, nums2, n) { while(m + n &gt; 0) { if (n &lt;= 0) 
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2020/08/30/leetcode-remove-duplicates-from-sorted-array/">LeetCode #26 Remove Duplicates From Sorted Array</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2020-08-30T22:17:07+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2020</span></span> <span class='time'>10:17 pm</span></time>
+        
+           | <a href="/blog/2020/08/30/leetcode-remove-duplicates-from-sorted-array/#disqus_thread"
+             data-disqus-identifier="http://whhotw.github.io/blog/2020/08/30/leetcode-remove-duplicates-from-sorted-array/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var removeDuplicates = function(nums) {
+</span><span class='line'>    let previous = nums[0]
+</span><span class='line'>    let i = 1;
+</span><span class='line'>    while (i &lt;= nums.length) {
+</span><span class='line'>        if (nums[i] === previous) {
+</span><span class='line'>            nums.splice(i, 1)
+</span><span class='line'>            continue
+</span><span class='line'>        } else {
+</span><span class='line'>            previous = nums[i]
+</span><span class='line'>        }
+</span><span class='line'>        i++
+</span><span class='line'>    }
+</span><span class='line'>    return nums.length
+</span><span class='line'>};</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -625,86 +691,6 @@ var merge = function(nums1, m, nums2, n) { while(m + n &gt; 0) { if (n &lt;= 0) 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/10/18/install-rvm/">Install RVM</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-10-18T01:34:36+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>1:34 am</span></time>
-        
-           | <a href="/blog/2018/10/18/install-rvm/#disqus_thread"
-             data-disqus-identifier="http://whhotw.github.io/blog/2018/10/18/install-rvm/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>原本想說用 <code>brew</code> 安裝 <code>ruby</code> 結果沒想到版本相依的問題，這麼難搞，用了好幾天，實在沒辦法！最後還是用決定 <a href="https://rvm.io">RVM</a> 了</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>\curl -sSL https://get.rvm.io | bash -s stable
-</span><span class='line'>rvm install x.x.x (e.g. 2.5.1)</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>Usage</h1>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rvm list
-</span><span class='line'>=&gt; ruby-2.3.7 [ x86_64 ]
-</span><span class='line'>   ruby-2.4.4 [ x86_64 ]
-</span><span class='line'> * ruby-2.5.1 [ x86_64 ]
-</span><span class='line'>
-</span><span class='line'># =&gt; - current
-</span><span class='line'># =* - current && default
-</span><span class='line'>#  * - default
-</span><span class='line'>
-</span><span class='line'>rvm use x.x.x
-</span><span class='line'>Using $HOME/.rvm/gems/ruby-x.x.x</span></code></pre></td></tr></table></div></figure>
-
-
-<h1>RubyGems Environment</h1>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem env
-</span><span class='line'>RubyGems Environment:
-</span><span class='line'>  - RUBYGEMS VERSION: 2.7.7
-</span><span class='line'>  - RUBY VERSION: 2.3.7 (2018-03-28 patchlevel 456) [x86_64-darwin17]
-</span><span class='line'>  - INSTALLATION DIRECTORY: $HOME/.rvm/gems/ruby-2.3.7
-</span><span class='line'>  ...</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -718,6 +704,10 @@ var merge = function(nums1, m, nums2, n) { while(m + n &gt; 0) { if (n &lt;= 0) 
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2020/08/30/leetcode-remove-duplicates-from-sorted-array/">LeetCode #26 Remove Duplicates From Sorted Array</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2020/05/22/merge-sorted-array/">Leetcode #88 Merge Sorted Array</a>
@@ -735,10 +725,6 @@ var merge = function(nums1, m, nums2, n) { while(m + n &gt; 0) { if (n &lt;= 0) 
         <a href="/blog/2020/03/26/a-network-error-from-axios/">A Network Error From Axios</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2020/03/06/build-failed-with-lib-slash-x86-slash-libc-plus-plus-shared-dot-so/">Build Failed With lib/x86/libc++_shared.so</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -751,7 +737,7 @@ var merge = function(nums1, m, nums2, n) { while(m + n &gt; 0) { if (n &lt;= 0) 
 <li class='category'><a href='/blog/categories/ios/'>ios (2)</a></li>
 <li class='category'><a href='/blog/categories/javascript/'>javascript (11)</a></li>
 <li class='category'><a href='/blog/categories/jenkins/'>jenkins (1)</a></li>
-<li class='category'><a href='/blog/categories/leetcode/'>leetcode (11)</a></li>
+<li class='category'><a href='/blog/categories/leetcode/'>leetcode (12)</a></li>
 <li class='category'><a href='/blog/categories/php/'>php (3)</a></li>
 <li class='category'><a href='/blog/categories/react/'>react (1)</a></li>
 <li class='category'><a href='/blog/categories/react-native/'>react-native (18)</a></li>
